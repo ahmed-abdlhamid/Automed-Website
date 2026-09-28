@@ -393,36 +393,25 @@
 
         <div class="projects">
 
-          <!-- PROJECT 01: KROKETT ASSISTANT WITH CLEAR ENLARGED CHAT INTERFACE (خالٍ من الحواف السوداء والكيبورد) -->
+          <!-- PROJECT 01: KROKETT ASSISTANT -->
           <article class="project">
             <div class="project-media">
               <div class="browser">
                 <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div class="custom-chat-display">
-                  <div class="chat-header-bar">
-                    <i class="fa-solid fa-robot" style="color:var(--accent);"></i>
-                    <div class="chat-header-info">
-                      <strong>Krokett AI Bot</strong>
-                      <span>متصل الآن (Online)</span>
-                    </div>
-                  </div>
-                  <div class="chat-messages-container">
-                    <div class="chat-bubble user">
-                      <div class="voice-note"><i class="fa-solid fa-microphone"></i> <span>رسالة صوتية (0:04)</span></div>
-                    </div>
-                    <div class="chat-bubble bot">
-                      أهلاً بك! تم استلام طلبك عبر الصوت وتحليله: 🍔 2 كروكيت دجاج + 1 كولا. الإجمالي: 180 ج.م. هل تؤكد الطلب؟
-                    </div>
-                    <div class="chat-bubble user">
-                      تمام أأكد الطلب، التوصيل للعنوان المسجل.
-                    </div>
-                    <div class="chat-bubble bot">
-                      تم تسجيل الطلب وإرسال التنبيه للمطبخ بنجاح! 🚀
-                    </div>
-                  </div>
+                <div class="custom-chat-display" style="padding:0; background:#000; display:flex; align-items:center; justify-content:center;">
+                  <video 
+                    src="assets/projects/krokett/krokett-mockup.mp4" 
+                    controls 
+                    playsinline
+                    muted
+                    loop
+                    style="width:100%; height:100%; object-fit:contain; background:#000; border:none; outline:none;"
+                    poster="assets/projects/krokett/krokett-full.png">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
                 </div>
               </div>
-              <span class="media-label">Krokett Assistant — Live Chat Preview</span>
+              <span class="media-label">Krokett Assistant — Live Demo Video</span>
             </div>
             <div class="project-body">
               <div>
@@ -682,10 +671,10 @@
       
       <div class="modal-tabs">
         <button class="tab-btn active" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/krokett-full.png', 'المخطط الهيكلي الشامل للمشروع (34 Nodes)', 'krokett-caption', this)">🌐 المخطط الكامل</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/Trigger.png', 'جزء استقبال الرسائل وفك التشفير الصوتي (Telegram Triggers)', 'krokett-caption', this)">⚡ 1. الاستقبال والصوت</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/Message Routing.png', 'منطق توجيه المسارات والاستعلامات (Message Routing)', 'krokett-caption', this)">🔀 2. توجيه المسارات</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/Order Processing & AI.png', 'محرك الذكاء الاصطناعي وربط الـ RAG (Gemini + Pinecone)', 'krokett-caption', this)">🧠 3. محرك الذكاء الاصطناعي</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/Message Confirmation.png', 'تسجيل الطلبات وإرسال التنبيهات (Google Sheets + Notifications)', 'krokett-caption', this)">✅ 4. التأكيد والتخزين</button>
+        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/trigger.png', 'جزء استقبال الرسائل وفك التشفير الصوتي (Telegram Triggers)', 'krokett-caption', this)">⚡ 1. الاستقبال والصوت</button>
+        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/message-routing.png', 'منطق توجيه المسارات والاستعلامات (Message Routing)', 'krokett-caption', this)">🔀 2. توجيه المسارات</button>
+        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/order-processing.png', 'محرك الذكاء الاصطناعي وربط الـ RAG (Gemini + Pinecone)', 'krokett-caption', this)">🧠 3. محرك الذكاء الاصطناعي</button>
+        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/message-confirmation.png', 'تسجيل الطلبات وإرسال التنبيهات (Google Sheets + Notifications)', 'krokett-caption', this)">✅ 4. التأكيد والتخزين</button>
       </div>
 
       <div class="image-container">
