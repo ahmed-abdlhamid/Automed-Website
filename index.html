@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ahmed Abdelhamid — AI Automation & Integration portfolio. n8n, RAG, AI agents, WhatsApp, Telegram and workflow automation.">
+  <meta name="description" content="Ahmed Abdelhamid — أتمتة ذكية للأعمال: بوتات واتساب وتليجرام، طلبات، إجازات، حجوزات، وربط أدوات شغلك في مسار واحد.">
   <title>Ahmed Abdelhamid — AI Automation & Integration</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,6 +135,34 @@
     .terminal-footer{margin-top:18px;padding-top:17px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
     .mini-tag{font:600 .68rem Inter,sans-serif;color:#8d9aad;border:1px solid var(--line);padding:5px 8px;border-radius:7px}
     .glow{position:absolute;width:280px;height:280px;background:rgba(100,216,255,.12);filter:blur(90px);border-radius:50%;z-index:-1;right:-60px;top:-50px}
+    /* Client-friendly hero flow */
+    .flow-card{
+      border:1px solid var(--line);background:rgba(12,18,29,.86);border-radius:24px;
+      box-shadow:var(--shadow);overflow:hidden;transform:rotate(1.5deg);
+    }
+    .flow-top{height:44px;display:flex;align-items:center;gap:7px;padding:0 16px;border-bottom:1px solid var(--line)}
+    .flow-top i{width:8px;height:8px;border-radius:50%;background:#5b6677}
+    .flow-title{margin-left:auto;color:#657286;font:500 .7rem Inter,sans-serif}
+    .flow-body{padding:26px 22px 18px;display:flex;flex-direction:column;gap:10px}
+    .flow-step{
+      display:flex;align-items:center;gap:14px;padding:13px 15px;border-radius:12px;
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+    }
+    .flow-icon{
+      width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      background:rgba(100,216,255,.12);color:var(--accent);font-size:1rem;flex-shrink:0;
+    }
+    .flow-step strong{display:block;font:600 .9rem Inter,sans-serif;color:#e8eef7;margin-bottom:2px}
+    .flow-step span{font:500 .76rem Inter,sans-serif;color:#8d9aad}
+    .flow-arrow{text-align:center;color:#4a5568;font-size:.8rem;line-height:1}
+    .flow-result{
+      margin-top:6px;padding:14px 16px;border-radius:12px;
+      background:linear-gradient(135deg,rgba(100,216,255,.12),rgba(126,231,135,.08));
+      border:1px solid rgba(100,216,255,.22);text-align:center;
+    }
+    .flow-result strong{display:block;font:600 .92rem Inter,sans-serif;color:#7ee787;margin-bottom:3px}
+    .flow-result span{font:500 .76rem Inter,sans-serif;color:#aeb9ca}
+    .flow-footer{padding:0 22px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 
     /* COMMON */
     section{padding:105px 0}
@@ -329,11 +357,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="dot"></span> AI Automation & Integration</div>
+          <div class="eyebrow"><span class="dot"></span> <span data-ar="أتمتة ذكية للأعمال" data-en="Smart Business Automation">أتمتة ذكية للأعمال</span></div>
           <h1 data-ar="أحوّل المهام المتكررة إلى <span class='gradient'>أنظمة ذكية</span>." data-en="Transforming repetitive tasks into <span class='gradient'>smart systems</span>.">أحوّل المهام المتكررة إلى <span class="gradient">أنظمة ذكية</span>.</h1>
-          <p class="hero-text" data-ar="أبني حلول أتمتة عملية تربط الذكاء الاصطناعي بالـ APIs وقواعد البيانات وقنوات التواصل، من workflows في n8n إلى RAG وAI Agents — بهدف تقليل العمل اليدوي وتحسين سير العمليات." data-en="I build practical automation solutions connecting AI with APIs, databases, and communication channels—from n8n workflows to RAG and AI Agents—to eliminate manual work and streamline operations.">
-            أبني حلول أتمتة عملية تربط الذكاء الاصطناعي بالـ APIs وقواعد البيانات وقنوات التواصل،
-            من workflows في n8n إلى RAG وAI Agents — بهدف تقليل العمل اليدوي وتحسين سير العمليات.
+          <p class="hero-text" data-ar="أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء." data-en="I design systems that reply to customers, log orders, and handle leave requests and bookings automatically — via WhatsApp, Telegram, and email — so your team saves time and reduces errors.">
+            أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-arrow-down"></i> <span data-ar="شوف المشاريع" data-en="View Projects">شوف المشاريع</span></a>
@@ -347,22 +374,45 @@
 
         <div class="hero-visual">
           <span class="glow"></span>
-          <div class="terminal">
-            <div class="terminal-top">
+          <div class="flow-card">
+            <div class="flow-top">
               <i></i><i></i><i></i>
-              <span class="terminal-title">automation.workflow</span>
+              <span class="flow-title">how it works</span>
             </div>
-            <div class="terminal-body">
-              <div class="code-line"><span class="kw">const</span> workflow = {</div>
-              <div class="code-line">&nbsp;&nbsp;<span class="key">trigger</span>: <span class="str">"WhatsApp / Telegram"</span>,</div>
-              <div class="code-line">&nbsp;&nbsp;<span class="key">ai</span>: <span class="str">"RAG + Agents"</span>,</div>
-              <div class="code-line">&nbsp;&nbsp;<span class="key">automation</span>: <span class="fn">"n8n"</span>,</div>
-              <div class="code-line">&nbsp;&nbsp;<span class="key">integrations</span>: [<span class="str">"APIs"</span>, <span class="str">"Sheets"</span>, <span class="str">"DB"</span>],</div>
-              <div class="code-line">&nbsp;&nbsp;<span class="key">result</span>: <span class="str">"less manual work"</span></div>
-              <div class="code-line">};</div>
-              <div class="terminal-footer">
-                <span class="mini-tag">n8n</span><span class="mini-tag">RAG</span><span class="mini-tag">AI Agents</span><span class="mini-tag">APIs</span>
+            <div class="flow-body">
+              <div class="flow-step">
+                <div class="flow-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                <div>
+                  <strong data-ar="رسالة من العميل أو الموظف" data-en="Message from customer or staff">رسالة من العميل أو الموظف</strong>
+                  <span data-ar="واتساب · تليجرام · إيميل" data-en="WhatsApp · Telegram · Email">واتساب · تليجرام · إيميل</span>
+                </div>
               </div>
+              <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+              <div class="flow-step">
+                <div class="flow-icon"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <strong data-ar="النظام يفهم ويقرر" data-en="System understands & decides">النظام يفهم ويقرر</strong>
+                  <span data-ar="طلب · استفسار · إجازة · حجز" data-en="Order · Inquiry · Leave · Booking">طلب · استفسار · إجازة · حجز</span>
+                </div>
+              </div>
+              <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+              <div class="flow-step">
+                <div class="flow-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <strong data-ar="تنفيذ تلقائي فوري" data-en="Instant automatic action">تنفيذ تلقائي فوري</strong>
+                  <span data-ar="تسجيل · تنبيه · اعتماد · رد" data-en="Log · Alert · Approve · Reply">تسجيل · تنبيه · اعتماد · رد</span>
+                </div>
+              </div>
+              <div class="flow-result">
+                <strong data-ar="نتيجة: وقت أقل · أخطاء أقل · رد أسرع" data-en="Result: less time · fewer errors · faster replies">نتيجة: وقت أقل · أخطاء أقل · رد أسرع</strong>
+                <span data-ar="من غير ما الفريق يتدخل في كل خطوة" data-en="Without your team handling every step">من غير ما الفريق يتدخل في كل خطوة</span>
+              </div>
+            </div>
+            <div class="flow-footer">
+              <span class="mini-tag">WhatsApp</span>
+              <span class="mini-tag">Telegram</span>
+              <span class="mini-tag">AI</span>
+              <span class="mini-tag">Automation</span>
             </div>
           </div>
         </div>
@@ -372,14 +422,30 @@
     <section id="about">
       <div class="container">
         <div class="section-head">
-          <div><div class="kicker" data-ar="01 — عن الخبرة" data-en="01 — About">01 — عن الخبرة</div><h2 class="section-title" data-ar="خبرة مبنية على أنظمة حقيقية" data-en="Built on Production Systems">خبرة مبنية على أنظمة حقيقية</h2></div>
-          <p class="section-desc" data-ar="تركيزي ليس على إضافة الذكاء الاصطناعي لمجرد الشكليات؛ بل على تصميم مسار عمل واضح، قابل للصيانة، ومربوط بمصادر البيانات الفعلية." data-en="My focus is not adding AI for hype; it is designing clean, maintainable workflows connected to real data sources.">تركيزي ليس على إضافة الذكاء الاصطناعي لمجرد الشكليات؛ بل على تصميم مسار عمل واضح، قابل للصيانة، ومربوط بمصادر البيانات الفعلية.</p>
+          <div><div class="kicker" data-ar="01 — عن الخبرة" data-en="01 — About">01 — عن الخبرة</div><h2 class="section-title" data-ar="أنظمة حقيقية بتشتغل كل يوم" data-en="Real systems that run every day">أنظمة حقيقية بتشتغل كل يوم</h2></div>
+          <p class="section-desc" data-ar="مش بضيف ذكاء اصطناعي للشكل. ببني مسار واضح: من الرسالة → للفهم → للتنفيذ، مربوط بأدواتك اللي بتستخدمها فعلًا." data-en="I don't add AI for show. I build a clear path: message → understanding → action, connected to the tools you already use.">مش بضيف ذكاء اصطناعي للشكل. ببني مسار واضح: من الرسالة → للفهم → للتنفيذ، مربوط بأدواتك اللي بتستخدمها فعلًا.</p>
         </div>
         <div class="stats">
-          <div class="stat"><div class="stat-icon"><i class="fa-solid fa-diagram-project"></i></div><strong>68+ Nodes</strong><span data-ar="هيكلية مشروع Nexus Health" data-en="Nexus Health Architecture">هيكلية مشروع Nexus Health</span></div>
-          <div class="stat"><div class="stat-icon"><div class="stat-icon"><i class="fa-solid fa-robot"></i></div><strong>AI Agents</strong><span data-ar="وكلاء متخصصون لمهام معقدة" data-en="Specialized Agents for complex tasks">وكلاء متخصصون لمهام معقدة</span></div></div>
-          <div class="stat"><div class="stat-icon"><i class="fa-solid fa-database"></i></div><strong>RAG + Vector DB</strong><span data-ar="ربط المعرفة بمصادر قابلة للتحقق" data-en="Retrieval grounded in verified sources">ربط المعرفة بمصادر قابلة للتحقق</span></div>
-          <div class="stat"><div class="stat-icon"><i class="fa-solid fa-plug"></i></div><strong>API Integration</strong><span>WhatsApp, Telegram, Gmail, Sheets</span></div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-hospital"></i></div>
+            <strong data-ar="مراكز طبية" data-en="Healthcare">مراكز طبية</strong>
+            <span data-ar="حجز · تذكير · متابعة مرضى" data-en="Booking · reminders · follow-ups">حجز · تذكير · متابعة مرضى</span>
+          </div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-utensils"></i></div>
+            <strong data-ar="مطاعم ومبيعات" data-en="Restaurants & Sales">مطاعم ومبيعات</strong>
+            <span data-ar="طلبات صوتية · تأكيد · تنبيه مطبخ" data-en="Voice orders · confirm · kitchen alert">طلبات صوتية · تأكيد · تنبيه مطبخ</span>
+          </div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <strong data-ar="موارد بشرية" data-en="HR">موارد بشرية</strong>
+            <span data-ar="إجازات · رصيد · اعتماد تلقائي" data-en="Leave · balance · auto-approval">إجازات · رصيد · اعتماد تلقائي</span>
+          </div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
+            <strong data-ar="قنوات جاهزة" data-en="Ready channels">قنوات جاهزة</strong>
+            <span>WhatsApp · Telegram · Gmail</span>
+          </div>
         </div>
       </div>
     </section>
@@ -388,7 +454,7 @@
       <div class="container">
         <div class="section-head">
           <div><div class="kicker" data-ar="02 — المشاريع" data-en="02 — Selected Work">02 — المشاريع</div><h2 class="section-title" data-ar="مشاريع مختارة" data-en="Featured Projects">مشاريع مختارة</h2></div>
-          <p class="section-desc" data-ar="نماذج من الأنظمة والأتمتة التي تم تصميمها لتنفذ خطوات فعلية، وليس مجرد بوت محادثة للعرض." data-en="Real automation systems built to execute end-to-end tasks, not just static chatbots.">نماذج من الأنظمة والأتمتة التي تم تصميمها لتنفذ خطوات فعلية، وليس مجرد بوت محادثة للعرض.</p>
+          <p class="section-desc" data-ar="أمثلة لأنظمة بتنفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه — مش مجرد بوت بيرد كلام." data-en="Examples of systems that complete real steps: from message to logging and alerts — not just chatbots that reply.">أمثلة لأنظمة بتنفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه — مش مجرد بوت بيرد كلام.</p>
         </div>
 
         <div class="projects">
@@ -415,14 +481,14 @@
             </div>
             <div class="project-body">
               <div>
-                <span class="project-num">01 / E-COMMERCE & RAG</span>
+                <span class="project-num">01 / مطاعم ومبيعات</span>
                 <h3>Krokett Assistant</h3>
-                <div class="project-sub" data-ar="مساعد طلبات المطاعم الذكي (34 Nodes)" data-en="Smart Restaurant Ordering Assistant (34 Nodes)">مساعد طلبات المطاعم الذكي (34 Nodes)</div>
-                <p data-ar="بوت مبيعات ومساعد طلبات تفاعلي عبر Telegram معالج بالذكاء الاصطناعي والتعرف الصوتي، يستخرج قائمة الطعام والأسعار تلقائياً عبر محرك RAG، ويجمع تفاصيل الطلب والتوصيل ويحفظ الفواتير." data-en="Interactive Telegram order assistant powered by AI and voice recognition. Extracts menu & pricing via RAG Engine, collects delivery details, and generates invoices.">بوت مبيعات ومساعد طلبات تفاعلي عبر Telegram معالج بالذكاء الاصطناعي والتعرف الصوتي، يستخرج قائمة الطعام والأسعار تلقائياً عبر محرك RAG، ويجمع تفاصيل الطلب والتوصيل ويحفظ الفواتير.</p>
+                <div class="project-sub" data-ar="مساعد طلبات المطاعم عبر تليجرام" data-en="Restaurant ordering assistant on Telegram">مساعد طلبات المطاعم عبر تليجرام</div>
+                <p data-ar="العميل يبعت رسالة أو صوت على تليجرام → النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا." data-en="Customer sends a text or voice note on Telegram → the system understands the order from the menu, calculates the price, collects address and payment method, then logs the order and alerts the kitchen automatically.">العميل يبعت رسالة أو صوت على تليجرام → النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا.</p>
                 <ul class="features">
-                  <li data-ar="استقبال وتحليل الرسائل الصوتية للعملاء" data-en="Voice message processing & transcription">استقبال وتحليل الرسائل الصوتية للعملاء</li>
-                  <li data-ar="ربط قاعدة المعرفة والمنيو عبر Vector Database (Pinecone)" data-en="Knowledge base & menu retrieval via Pinecone">ربط قاعدة المعرفة والمنيو عبر Vector Database (Pinecone)</li>
-                  <li data-ar="حساب التكلفة وتأكيد الطلب وإرسال التنبيهات تلقائياً" data-en="Automated billing, order confirmation & alerts">حساب التكلفة وتأكيد الطلب وإرسال التنبيهات تلقائياً</li>
+                  <li data-ar="يفهم الرسائل الصوتية والنصية بالعربية" data-en="Understands Arabic voice and text messages">يفهم الرسائل الصوتية والنصية بالعربية</li>
+                  <li data-ar="يرد من منيو المطعم والأسعار الحقيقية" data-en="Replies using the real menu and prices">يرد من منيو المطعم والأسعار الحقيقية</li>
+                  <li data-ar="يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي" data-en="Logs the order and alerts the kitchen with no manual work">يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي</li>
                 </ul>
               </div>
               <div>
@@ -435,7 +501,7 @@
                 </div>
                 <div class="project-actions">
                   <button class="btn-blueprint" onclick="openModal('krokett-modal')">
-                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض المخطط الهيكلي (Workflow Canvas)" data-en="View Workflow Canvas">عرض المخطط الهيكلي (Workflow Canvas)</span>
+                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
                   </button>
                 </div>
               </div>
@@ -467,23 +533,23 @@
   
   <div class="project-body">
     <div>
-      <span class="project-num">02 / HR AUTOMATION</span>
+      <span class="project-num">02 / موارد بشرية</span>
       <h3>HR Ninja Assistant</h3>
-      <div class="project-sub" data-ar="نظام أتمتة الإجازات واستفسارات الموظفين" data-en="Employee Leave & HR Requests Automation">
-        نظام أتمتة الإجازات واستفسارات الموظفين
+      <div class="project-sub" data-ar="أتمتة إجازات الموظفين عبر واتساب وتليجرام" data-en="Employee leave automation via WhatsApp & Telegram">
+        أتمتة إجازات الموظفين عبر واتساب وتليجرام
       </div>
-      <p data-ar="وكيل أتمتة ذكي لقسم الموارد البشرية يعمل عبر WhatsApp وTelegram معالج بـ n8n وGemini AI، يتيح للموظف الاستعلام عن رصيد إجازاته المتبقي وتلقي طلبات الإجازات، وإرسالها للمدير/HR للاعتماد أو الرفض، مع المزامنة اللحظية مع Google Sheets." data-en="Automated HR leave management AI Agent via WhatsApp & Telegram using n8n, Gemini AI, and Google Sheets, allowing employees to check leave balances, submit leave requests, and receive instant decision updates.">
-        وكيل أتمتة ذكي لقسم الموارد البشرية يعمل عبر WhatsApp وTelegram معالج بـ n8n وGemini AI، يتيح للموظف الاستعلام عن رصيد إجازاته المتبقي وتلقي طلبات الإجازات، وإرسالها للمدير/HR للاعتماد أو الرفض، مع المزامنة اللحظية مع Google Sheets.
+      <p data-ar="الموظف يسأل عن رصيد إجازته أو يقدّم طلب من واتساب/تليجرام → النظام يراجع الرصيد، يبعت الطلب للـ HR، وبعد الموافقة أو الرفض يحدّث الجدول ويرد على الموظف تلقائيًا." data-en="An employee asks about leave balance or submits a request on WhatsApp/Telegram → the system checks the balance, sends the request to HR, then after approval or rejection updates the sheet and replies to the employee automatically.">
+        الموظف يسأل عن رصيد إجازته أو يقدّم طلب من واتساب/تليجرام → النظام يراجع الرصيد، يبعت الطلب للـ HR، وبعد الموافقة أو الرفض يحدّث الجدول ويرد على الموظف تلقائيًا.
       </p>
       <ul class="features">
-        <li data-ar="الاستعلام الآلي عن رصيد الإجازات الاعتيادية والعارضة برقم القومي/الهوية" data-en="Automated leave balance check via National ID / Employee ID">
-          الاستعلام الآلي عن رصيد الإجازات الاعتيادية والعارضة برقم القومي/الهوية
+        <li data-ar="الاستعلام عن رصيد الإجازة برقم الهوية أو الكود" data-en="Check leave balance by ID or employee code">
+          الاستعلام عن رصيد الإجازة برقم الهوية أو الكود
         </li>
-        <li data-ar="استقبال وتأكيد طلبات الإجازات وتحويلها لمسؤول الموارد البشرية" data-en="Smart leave request submission and HR notification routing">
-          استقبال وتأكيد طلبات الإجازات وتحويلها لمسؤول الموارد البشرية
+        <li data-ar="تقديم الطلب وتحويله تلقائيًا لمسؤول الموارد البشرية" data-en="Submit requests and route them to HR automatically">
+          تقديم الطلب وتحويله تلقائيًا لمسؤول الموارد البشرية
         </li>
-        <li data-ar="متابعة حالة الطلب (موافقة / رفض) وتحديث رصيد الموظف تلقائياً في Google Sheets" data-en="Real-time approval/rejection tracking & automatic Google Sheets sync">
-          متابعة حالة الطلب (موافقة / رفض) وتحديث رصيد الموظف تلقائياً في Google Sheets
+        <li data-ar="تحديث الرصيد والرد على الموظف بعد الموافقة أو الرفض" data-en="Update balance and reply after approval or rejection">
+          تحديث الرصيد والرد على الموظف بعد الموافقة أو الرفض
         </li>
       </ul>
     </div>
@@ -497,7 +563,7 @@
       </div>
       <div class="project-actions">
         <button class="btn-blueprint" onclick="openModal('hrninja-modal')">
-          <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض المخطط الهيكلي (Workflow Canvas)" data-en="View Workflow Canvas">عرض المخطط الهيكلي (Workflow Canvas)</span>
+          <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
         </button>
       </div>
     </div>
@@ -542,14 +608,14 @@
             </div>
             <div class="project-body">
               <div>
-                <span class="project-num">03 / MULTI-AGENT</span>
+                <span class="project-num">03 / تأمين طبي</span>
                 <h3>PreAuth Mind</h3>
-                <div class="project-sub" data-ar="نظام التدقيق والتأمين الطبي الآلي" data-en="Automated Medical Insurance Audit System">نظام التدقيق والتأمين الطبي الآلي</div>
-                <p data-ar="نظام متعدد الوكلاء يتعامل مع طلبات الموافقة المسبقة القادمة عبر البريد الإلكتروني، يستخرج البيانات ويقارنها بقواعد المعرفة المخزنة ثم يجهز نتيجة المراجعة." data-en="Multi-agent system processing pre-authorization email requests, extracting patient data, auditing against policy rules, and outputting review decisions.">نظام متعدد الوكلاء يتعامل مع طلبات الموافقة المسبقة القادمة عبر البريد الإلكتروني، يستخرج البيانات ويقارنها بقواعد المعرفة المخزنة ثم يجهز نتيجة المراجعة.</p>
+                <div class="project-sub" data-ar="مراجعة طلبات الموافقة المسبقة تلقائيًا" data-en="Automated pre-authorization review">مراجعة طلبات الموافقة المسبقة تلقائيًا</div>
+                <p data-ar="طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب." data-en="A pre-auth request arrives by email → the system extracts the data, checks it against insurance rules, and prepares a review decision with reasons — instead of manual review for every request.">طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب.</p>
                 <ul class="features">
-                  <li data-ar="استخراج بيانات الطلب التلقائي من البريد" data-en="Automated email claim extraction">استخراج بيانات الطلب التلقائي من البريد</li>
-                  <li data-ar="مراجعة الطلب مقابل قواعد الموافقات الطبية" data-en="Medical policy compliance check">مراجعة الطلب مقابل قواعد الموافقات الطبية</li>
-                  <li data-ar="إخراج قرار منظم ومصحب بأسباب المراجعة" data-en="Structured decision output with audit logs">إخراج قرار منظم ومصحب بأسباب المراجعة</li>
+                  <li data-ar="قراءة الطلب من الإيميل واستخراج البيانات" data-en="Read the email and extract the data">قراءة الطلب من الإيميل واستخراج البيانات</li>
+                  <li data-ar="مقارنة الطلب بقواعد الموافقات الطبية" data-en="Compare against medical approval rules">مقارنة الطلب بقواعد الموافقات الطبية</li>
+                  <li data-ar="إخراج قرار واضح مع أسباب المراجعة" data-en="Clear decision output with review reasons">إخراج قرار واضح مع أسباب المراجعة</li>
                 </ul>
               </div>
               <div class="tags"><span class="tag">n8n</span><span class="tag">Multi-Agent</span><span class="tag">Vector Store</span><span class="tag">Gmail API</span></div>
@@ -570,14 +636,14 @@
             </div>
             <div class="project-body">
               <div>
-                <span class="project-num">04 / HEALTHCARE</span>
+                <span class="project-num">04 / مراكز طبية</span>
                 <h3>Nexus Health</h3>
-                <div class="project-sub" data-ar="منظومة أتمتة للمراكز الطبية" data-en="Healthcare Automation Infrastructure">منظومة أتمتة للمراكز الطبية</div>
-                <p data-ar="منظومة موسعة لإدارة التفاعل مع المرضى وربط قنوات التواصل والحجز والمتابعة داخل مسار عمل واحد." data-en="Comprehensive patient engagement system integrating communication channels, appointment bookings, and follow-ups into a unified workflow.">منظومة موسعة لإدارة التفاعل مع المرضى وربط قنوات التواصل والحجز والمتابعة داخل مسار عمل واحد.</p>
+                <div class="project-sub" data-ar="أتمتة التواصل والحجز والمتابعة مع المرضى" data-en="Patient communication, booking & follow-up automation">أتمتة التواصل والحجز والمتابعة مع المرضى</div>
+                <p data-ar="من رسالة المريض للفرز الأولي، حجز الموعد، ورسائل التذكير والمتابعة — كله في مسار واحد بدل تنسيق يدوي بين القنوات." data-en="From the patient's message to triage, appointment booking, and reminder/follow-up messages — all in one path instead of manual coordination across channels.">من رسالة المريض للفرز الأولي، حجز الموعد، ورسائل التذكير والمتابعة — كله في مسار واحد بدل تنسيق يدوي بين القنوات.</p>
                 <ul class="features">
-                  <li data-ar="فرز وتوجيه أولي وتلقائي للحالات" data-en="Automated patient triage and routing">فرز وتوجيه أولي وتلقائي للحالات</li>
-                  <li data-ar="تكامل حجز المواعيد عبر منصة Cal.com" data-en="Appointment scheduling via Cal.com">تكامل حجز المواعيد عبر منصة Cal.com</li>
-                  <li data-ar="إرسال رسائل التذكير والمتابعة عبر WhatsApp" data-en="WhatsApp appointment reminders and follow-ups">إرسال رسائل التذكير والمتابعة عبر WhatsApp</li>
+                  <li data-ar="فرز أولي وتوجيه الحالات تلقائيًا" data-en="Automatic triage and case routing">فرز أولي وتوجيه الحالات تلقائيًا</li>
+                  <li data-ar="حجز المواعيد وربطه بجدول العيادة" data-en="Appointment booking linked to clinic schedule">حجز المواعيد وربطه بجدول العيادة</li>
+                  <li data-ar="تذكير ومتابعة المرضى على واتساب" data-en="WhatsApp reminders and patient follow-ups">تذكير ومتابعة المرضى على واتساب</li>
                 </ul>
               </div>
               <div class="tags"><span class="tag">68+ Nodes</span><span class="tag">n8n</span><span class="tag">Cal.com</span><span class="tag">WhatsApp API</span></div>
@@ -592,13 +658,13 @@
       <div class="container">
         <div class="section-head">
           <div><div class="kicker" data-ar="03 — الخدمات" data-en="03 — Services">03 — الخدمات</div><h2 class="section-title" data-ar="ما الذي أستطيع إنجازه؟" data-en="What I Can Build">ما الذي أستطيع إنجازه؟</h2></div>
-          <p class="section-desc" data-ar="تبدأ الخدمة من تحليل وفهم مسار العمل الحالي، ثم هندسة الأتمتة وربط الأدوات المناسبة بدقة." data-en="Services start with analyzing your existing operations, followed by engineering robust workflows tailored to your stack.">تبدأ الخدمة من تحليل وفهم مسار العمل الحالي، ثم هندسة الأتمتة وربط الأدوات المناسبة بدقة.</p>
+          <p class="section-desc" data-ar="نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل." data-en="We start by understanding your daily work, then build the system that saves your team's time and connects the tools you already use.">نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل.</p>
         </div>
         <div class="services">
-          <div class="service"><i class="fa-solid fa-diagram-project"></i><h3>n8n Workflows</h3><p data-ar="تصميم مسارات العمل الأوتوماتيكية وربط Webhooks وقواعد البيانات بكفاءة." data-en="Designing automated workflows connecting Webhooks, APIs, and databases efficiently.">تصميم مسارات العمل الأوتوماتيكية وربط Webhooks وقواعد البيانات بكفاءة.</p></div>
-          <div class="service"><i class="fa-solid fa-brain"></i><h3>RAG & Knowledge Bases</h3><p data-ar="تحويل مستندات ومصادر عملك إلى قاعدة معرفة ذكية وجاهزة للاسترجاع." data-en="Converting operational documents into intelligent, retrievable knowledge bases.">تحويل مستندات ومصادر عملك إلى قاعدة معرفة ذكية وجاهزة للاسترجاع.</p></div>
-          <div class="service"><i class="fa-solid fa-robot"></i><h3>AI Agents</h3><p data-ar="تصميم وكلاء ذكاء اصطناعي لتنفيذ مهام محددة وتوفير مخرجات منظمة." data-en="Building specialized AI agents for autonomous execution with structured outputs.">تصميم وكلاء ذكاء اصطناعي لتنفيذ مهام محددة وتوفير مخرجات منظمة.</p></div>
-          <div class="service"><i class="fa-solid fa-comments"></i><h3>WhatsApp & Telegram</h3><p data-ar="بناء أنظمة المحادثة الآلية للطلبات بالحجوزات وخدمة العملاء والعمليات." data-en="Developing chat automation for orders, bookings, support, and internal ops.">بناء أنظمة المحادثة الآلية للطلبات بالحجوزات وخدمة العملاء والعمليات.</p></div>
+          <div class="service"><i class="fa-solid fa-comments"></i><h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3><p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries, and follow-ups.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة.</p></div>
+          <div class="service"><i class="fa-solid fa-link"></i><h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3><p data-ar="ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد." data-en="Connect sheets, email, booking systems, and chat channels into one flow.">ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد.</p></div>
+          <div class="service"><i class="fa-solid fa-brain"></i><h3 data-ar="مساعد يفهم بياناتك" data-en="Assistant that knows your data">مساعد يفهم بياناتك</h3><p data-ar="الرد من منيو، سياسات، ملفات، أو قواعد شركتك — مش إجابات عامة." data-en="Replies from your menu, policies, files, or company rules — not generic answers.">الرد من منيو، سياسات، ملفات، أو قواعد شركتك — مش إجابات عامة.</p></div>
+          <div class="service"><i class="fa-solid fa-gears"></i><h3 data-ar="أتمتة العمليات الداخلية" data-en="Internal process automation">أتمتة العمليات الداخلية</h3><p data-ar="إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر." data-en="Leave, approvals, alerts, and auto-logging instead of repetitive manual work.">إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر.</p></div>
         </div>
       </div>
     </section>
@@ -607,13 +673,13 @@
       <div class="container">
         <div class="section-head">
           <div><div class="kicker" data-ar="04 — خطة العمل" data-en="04 — Process">04 — خطة العمل</div><h2 class="section-title" data-ar="طريقة العمل" data-en="Work Methodology">طريقة العمل</h2></div>
-          <p class="section-desc" data-ar="خطوات منظمة وواضحة لتحويل التحديات والعمليات اليدوية إلى مسارات عمل قابلة للاستخدام." data-en="A systematic step-by-step approach to convert manual bottlenecks into reliable workflows.">خطوات منظمة وواضحة لتحويل التحديات والعمليات اليدوية إلى مسارات عمل قابلة للاستخدام.</p>
+          <p class="section-desc" data-ar="خطوات واضحة: من فهم المشكلة لحد تسليم نظام شغال وسهل المتابعة." data-en="Clear steps: from understanding the problem to delivering a working system that's easy to maintain.">خطوات واضحة: من فهم المشكلة لحد تسليم نظام شغال وسهل المتابعة.</p>
         </div>
         <div class="process">
-          <div class="step"><div class="step-no">01</div><h3 data-ar="الفهم والتحليل" data-en="Understand">الفهم والتحليل</h3><p data-ar="فهم العمليات الحالية وتحديد نقاط الهدر والأدوات المستخدمة." data-en="Analyzing existing procedures, pain points, and current toolstacks.">فهم العمليات الحالية وتحديد نقاط الهدر والأدوات المستخدمة.</p></div>
-          <div class="step"><div class="step-no">02</div><h3 data-ar="التصميم والمعمارية" data-en="Design">التصميم والمعمارية</h3><p data-ar="رسم مسار العمل وتحديد نطاق البيانات والربط المطلوب." data-en="Mapping out workflow diagrams, data architecture, and API endpoints.">رسم مسار العمل وتحديد نطاق البيانات والربط المطلوب.</p></div>
-          <div class="step"><div class="step-no">03</div><h3 data-ar="التنفيذ والربط" data-en="Build">التنفيذ والربط</h3><p data-ar="بناء الأتمتة وربط الذكاء الاصطناعي والـ APIs وقواعد البيانات." data-en="Developing automations, connecting AI models, APIs, and databases.">بناء الأتمتة وربط الذكاء الاصطناعي والـ APIs وقواعد البيانات.</p></div>
-          <div class="step"><div class="step-no">04</div><h3 data-ar="الاختبار والاعتماد" data-en="Validate">الاختبار والاعتماد</h3><p data-ar="اختبار كافة الحالات والتأكد من دقة وسرعة المخرجات." data-en="Rigorous testing across edge cases to ensure precision and reliability.">اختبار كافة الحالات والتأكد من دقة وسرعة المخرجات.</p></div>
+          <div class="step"><div class="step-no">01</div><h3 data-ar="الفهم والتحليل" data-en="Understand">الفهم والتحليل</h3><p data-ar="نفهم شغلك اليومي، فين الوقت بيضيع، وإيه الأدوات اللي بتستخدمها." data-en="We understand your daily work, where time is wasted, and which tools you already use.">نفهم شغلك اليومي، فين الوقت بيضيع، وإيه الأدوات اللي بتستخدمها.</p></div>
+          <div class="step"><div class="step-no">02</div><h3 data-ar="التصميم" data-en="Design">التصميم</h3><p data-ar="نرسم المسار: من الرسالة → للقرار → للتنفيذ، ونحدد إيه يتسجل فين." data-en="We map the path: message → decision → action, and where everything gets logged.">نرسم المسار: من الرسالة → للقرار → للتنفيذ، ونحدد إيه يتسجل فين.</p></div>
+          <div class="step"><div class="step-no">03</div><h3 data-ar="البناء والربط" data-en="Build">البناء والربط</h3><p data-ar="نبني النظام ونربطه بواتساب/تليجرام والجداول والإيميل اللي عندك." data-en="We build the system and connect it to your WhatsApp/Telegram, sheets, and email.">نبني النظام ونربطه بواتساب/تليجرام والجداول والإيميل اللي عندك.</p></div>
+          <div class="step"><div class="step-no">04</div><h3 data-ar="التجربة والتسليم" data-en="Test & deliver">التجربة والتسليم</h3><p data-ar="نجرب السيناريوهات الحقيقية معاك، ونسلّم نظام شغال مع شرح بسيط للمتابعة." data-en="We test real scenarios with you and deliver a working system with a simple handoff guide.">نجرب السيناريوهات الحقيقية معاك، ونسلّم نظام شغال مع شرح بسيط للمتابعة.</p></div>
         </div>
       </div>
     </section>
@@ -623,8 +689,8 @@
       <div class="container cta-container">
         <div class="cta">
           <div class="kicker" data-ar="05 — التواصل" data-en="05 — Contact">05 — التواصل</div>
-          <h2 data-ar="لديك عملية متكررة؟ لنحولها إلى مسار عمل آلي." data-en="Have a repetitive workflow? Let's automate it.">لديك عملية متكررة؟ لنحولها إلى مسار عمل آلي.</h2>
-          <p data-ar="إذا كانت لديك فكرة أتمتة أو عملية تستهلك وقت فريقك، يسعدني التواصل لبحث أفضل الحلول." data-en="If you have an automation idea or a process taking up team time, send over the details to get started.">إذا كانت لديك فكرة أتمتة أو عملية تستهلك وقت فريقك، يسعدني التواصل لبحث أفضل الحلول.</p>
+          <h2 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let’s make it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h2>
+          <p data-ar="لو فريقك بيضيع وقت في ردود، طلبات، إجازات، أو حجوزات — ابعتلي التفاصيل وهنقترح أبسط حل يناسب شغلك." data-en="If your team spends time on replies, orders, leave, or bookings — send the details and we’ll suggest the simplest fit for your work.">لو فريقك بيضيع وقت في ردود، طلبات، إجازات، أو حجوزات — ابعتلي التفاصيل وهنقترح أبسط حل يناسب شغلك.</p>
           <div class="cta-actions">
             <a class="btn btn-primary" href="mailto:asbany103@gmail.com"><i class="fa-regular fa-envelope"></i> البريد الإلكتروني</a>
             <a class="btn btn-secondary" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
@@ -755,8 +821,5 @@
       alert('تم تجهيز إرسال الطلب بنجاح إلى البريد الإلكتروني!');
     }
   </script>
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script></body>
+</body>
 </html>
