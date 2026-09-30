@@ -209,6 +209,34 @@
       padding: 10px 14px; background: #111a2a; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px;
     }
     .chat-header-bar img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+
+    /* Nexus dual-video media tabs */
+    .media-vid-tabs{
+      display:flex;gap:6px;padding:8px 10px;background:#0d1420;border-bottom:1px solid var(--line);
+      flex-wrap:wrap;
+    }
+    .media-vid-tab{
+      border:1px solid var(--line);background:transparent;color:#9aa8bc;
+      font:600 .72rem Inter,sans-serif;padding:6px 12px;border-radius:999px;cursor:pointer;
+      transition:.2s;
+    }
+    .media-vid-tab:hover{color:#e8eef7;border-color:#3a4a60}
+    .media-vid-tab.active{
+      color:#0a0e14;background:var(--accent,#64d8ff);border-color:transparent;
+    }
+    .nexus-media-shell{
+      width:100%;background:#000;display:flex;align-items:center;justify-content:center;
+      min-height:320px;transition:min-height .25s ease;
+    }
+    .nexus-media-shell.is-portrait{min-height:480px}
+    .nexus-media-shell video{
+      width:100%;height:100%;max-height:520px;object-fit:contain;background:#000;border:none;outline:none;
+    }
+    @media(max-width:900px){
+      .nexus-media-shell{min-height:260px}
+      .nexus-media-shell.is-portrait{min-height:420px}
+    }
+
     .chat-header-info { display: flex; flex-direction: column; }
     .chat-header-info strong { font-size: 0.85rem; color: #fff; }
     .chat-header-info span { font-size: 0.68rem; color: var(--green); }
@@ -600,7 +628,80 @@
   </div>
 </div>
 
-          <!-- PROJECT 03: PREAUTH MIND -->
+<!-- NEXUS HEALTH MODAL -->
+<div id="nexus-modal" class="modal">
+  <div class="modal-wrapper">
+    <span class="close-btn" onclick="closeModal('nexus-modal')">&times;</span>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/nexus-full.png', 'المخطط الهيكلي الشامل لمشروع Nexus Health', 'nexus-caption', this)">🌐 المخطط الكامل</button>
+      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/trigger.png', 'طبقة الاستقبال ومعالجة الوسائط (Telegram + WhatsApp)', 'nexus-caption', this)">⚡ 1. الاستقبال والوسائط</button>
+      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/ai-core.png', 'الطبقة الذكية وقاعدة المعرفة (Big Brain + RAG)', 'nexus-caption', this)">🧠 2. الذكاء الاصطناعي</button>
+      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/booking-type.png', 'مسار الحجز وإرسال الردود (Booking + Patient Response)', 'nexus-caption', this)">📅 3. الحجز والردود</button>
+      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/booking-confirmation.png', 'تأكيد الموعد وتحديث CRM (Cal.com Webhook)', 'nexus-caption', this)">✅ 4. تأكيد الموعد</button>
+    </div>
+    <div class="image-container">
+      <img id="nexus-img" src="assets/projects/nexushealth/nexus-full.png" alt="Nexus Health Workflow Blueprint">
+    </div>
+    <div id="nexus-caption" class="caption">المخطط الهيكلي الشامل لمشروع Nexus Health</div>
+  </div>
+</div>
+
+
+          <!-- PROJECT 03: NEXUS HEALTH -->
+          <article class="project">
+            <div class="project-media">
+              <div class="browser">
+                <div class="browser-bar"><b></b><b></b><b></b></div>
+                <div class="media-vid-tabs">
+                  <button type="button" class="media-vid-tab active" data-vid="booking" onclick="switchNexusVideo('booking', this)">
+                    <span data-ar="📅 عملية الحجز" data-en="📅 Booking flow">📅 عملية الحجز</span>
+                  </button>
+                  <button type="button" class="media-vid-tab" data-vid="image" onclick="switchNexusVideo('image', this)">
+                    <span data-ar="🖼️ تحليل الصور" data-en="🖼️ Image analysis">🖼️ تحليل الصور</span>
+                  </button>
+                </div>
+                <div id="nexus-media-shell" class="nexus-media-shell">
+                  <video id="nexus-demo-video" autoplay muted loop playsinline
+                    poster="assets/projects/nexushealth/nexus-full.png">
+                    <source id="nexus-demo-source" src="assets/projects/nexushealth/nexus-mockup.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+              <span class="media-label" id="nexus-media-label">Nexus Health — Booking Demo</span>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-num">03 / مراكز طبية</span>
+                <h3>Nexus Health</h3>
+                <div class="project-sub" data-ar="أتمتة التواصل والحجز والمتابعة مع المرضى" data-en="Patient communication, booking & follow-up automation">أتمتة التواصل والحجز والمتابعة مع المرضى</div>
+                <p data-ar="المريض يبعت رسالة أو صورة أو صوت على واتساب/تليجرام → النظام يفهم الاستفسار أو الأعراض، يرد من بيانات العيادة، ولو محتاج حجز يجمع البيانات ويسجّلها ويبعت رابط الموعد — من غير تنسيق يدوي بين القنوات." data-en="A patient sends a text, image, or voice note on WhatsApp/Telegram → the system understands the inquiry or symptoms, replies from clinic knowledge, and if booking is needed it collects the data, logs it, and sends the appointment link — without manual coordination across channels.">المريض يبعت رسالة أو صورة أو صوت على واتساب/تليجرام → النظام يفهم الاستفسار أو الأعراض، يرد من بيانات العيادة، ولو محتاج حجز يجمع البيانات ويسجّلها ويبعت رابط الموعد — من غير تنسيق يدوي بين القنوات.</p>
+                <ul class="features">
+                  <li data-ar="يفهم النص والصورة والصوت ويرد بالعربي" data-en="Understands text, image & voice and replies in Arabic">يفهم النص والصورة والصوت ويرد بالعربي</li>
+                  <li data-ar="مسار استشارة ومسار حجز منفصلين" data-en="Separate triage and booking paths">مسار استشارة ومسار حجز منفصلين</li>
+                  <li data-ar="تسجيل في CRM + تأكيد الموعد عبر Cal.com" data-en="CRM logging + appointment confirm via Cal.com">تسجيل في CRM + تأكيد الموعد عبر Cal.com</li>
+                </ul>
+              </div>
+              <div>
+                <div class="tags">
+                  <span class="tag">n8n</span>
+                  <span class="tag">Gemini AI</span>
+                  <span class="tag">Pinecone / RAG</span>
+                  <span class="tag">Airtable</span>
+                  <span class="tag">Cal.com</span>
+                  <span class="tag">WhatsApp</span>
+                  <span class="tag">Telegram</span>
+                </div>
+                <div class="project-actions">
+                  <button class="btn-blueprint" onclick="openModal('nexus-modal')">
+                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 04: PREAUTH MIND -->
           <article class="project">
             <div class="project-media">
               <div class="browser">
@@ -614,7 +715,7 @@
             </div>
             <div class="project-body">
               <div>
-                <span class="project-num">03 / تأمين طبي</span>
+                <span class="project-num">04 / تأمين طبي</span>
                 <h3>PreAuth Mind</h3>
                 <div class="project-sub" data-ar="مراجعة طلبات الموافقة المسبقة تلقائيًا" data-en="Automated pre-authorization review">مراجعة طلبات الموافقة المسبقة تلقائيًا</div>
                 <p data-ar="طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب." data-en="A pre-auth request arrives by email → the system extracts the data, checks it against insurance rules, and prepares a review decision with reasons — instead of manual review for every request.">طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب.</p>
@@ -625,34 +726,6 @@
                 </ul>
               </div>
               <div class="tags"><span class="tag">n8n</span><span class="tag">Multi-Agent</span><span class="tag">Vector Store</span><span class="tag">Gmail API</span></div>
-            </div>
-          </article>
-
-          <!-- PROJECT 04: NEXUS HEALTH -->
-          <article class="project">
-            <div class="project-media">
-              <div class="browser">
-                <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
-                  <div style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 4px; width: 40%;"></div>
-                  <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 4px; width: 90%;"></div>
-                </div>
-              </div>
-              <span class="media-label">Nexus Health — Workflow Architecture</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <span class="project-num">04 / مراكز طبية</span>
-                <h3>Nexus Health</h3>
-                <div class="project-sub" data-ar="أتمتة التواصل والحجز والمتابعة مع المرضى" data-en="Patient communication, booking & follow-up automation">أتمتة التواصل والحجز والمتابعة مع المرضى</div>
-                <p data-ar="من رسالة المريض للفرز الأولي، حجز الموعد، ورسائل التذكير والمتابعة — كله في مسار واحد بدل تنسيق يدوي بين القنوات." data-en="From the patient's message to triage, appointment booking, and reminder/follow-up messages — all in one path instead of manual coordination across channels.">من رسالة المريض للفرز الأولي، حجز الموعد، ورسائل التذكير والمتابعة — كله في مسار واحد بدل تنسيق يدوي بين القنوات.</p>
-                <ul class="features">
-                  <li data-ar="فرز أولي وتوجيه الحالات تلقائيًا" data-en="Automatic triage and case routing">فرز أولي وتوجيه الحالات تلقائيًا</li>
-                  <li data-ar="حجز المواعيد وربطه بجدول العيادة" data-en="Appointment booking linked to clinic schedule">حجز المواعيد وربطه بجدول العيادة</li>
-                  <li data-ar="تذكير ومتابعة المرضى على واتساب" data-en="WhatsApp reminders and patient follow-ups">تذكير ومتابعة المرضى على واتساب</li>
-                </ul>
-              </div>
-              <div class="tags"><span class="tag">68+ Nodes</span><span class="tag">n8n</span><span class="tag">Cal.com</span><span class="tag">WhatsApp API</span></div>
             </div>
           </article>
 
@@ -778,6 +851,30 @@
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = "none";
       document.body.style.overflow = "auto";
+    }
+
+
+    function switchNexusVideo(kind, btn) {
+      var shell = document.getElementById('nexus-media-shell');
+      var video = document.getElementById('nexus-demo-video');
+      var source = document.getElementById('nexus-demo-source');
+      var label = document.getElementById('nexus-media-label');
+      if (!shell || !video || !source) return;
+      document.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      if (kind === 'image') {
+        source.src = 'assets/projects/nexushealth/nexus-image.mp4';
+        video.removeAttribute('poster');
+        shell.classList.add('is-portrait');
+        if (label) label.textContent = 'Nexus Health — Image Analysis Demo';
+      } else {
+        source.src = 'assets/projects/nexushealth/nexus-mockup.mp4';
+        video.setAttribute('poster', 'assets/projects/nexushealth/nexus-full.png');
+        shell.classList.remove('is-portrait');
+        if (label) label.textContent = 'Nexus Health — Booking Demo';
+      }
+      video.load();
+      video.play().catch(function(){});
     }
 
     function switchCanvas(imgId, imgSrc, captionText, captionId, btn) {
