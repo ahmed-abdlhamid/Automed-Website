@@ -1,1079 +1,393 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ahmed Abdelhamid — أتمتة ذكية للأعمال: بوتات واتساب وتليجرام، طلبات، إجازات، حجوزات، وربط أدوات شغلك في مسار واحد.">
-  <title>Ahmed Abdelhamid — AI Automation & Integration</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ahmed Abdelhamid — أتمتة ذكية للأعمال: بوتات واتساب وتليجرام، طلبات، إجازات، حجوزات، وربط أدوات شغلك في مسار واحد.">
+<title>Ahmed Abdelhamid — AI Automation & Integration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--bg:#F4F6FA;--ink:#0F172A;--mut:#5B6478;--line:#DDE2EC;--blue:#2F5BFF;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.85 "IBM Plex Sans Arabic",sans-serif;overflow-x:hidden}
+h1,h2,h3,.brand,.btn{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{width:min(1160px,calc(100% - 36px));margin-inline:auto}
+section{padding:96px 0}
+.kick{color:var(--blue);font-weight:600;font-size:.9rem;margin-bottom:6px}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:18ch}
+.lead{color:var(--mut);max-width:52ch;margin-top:12px}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+/* nav — scrolls with the page (not fixed) */
+header{position:relative;z-index:50;padding:12px 0 0}
+.nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2F5BFF,#6B8CFF);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
+.links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:9px;color:var(--mut);font-weight:500;font-size:.92rem}.links a:hover{background:var(--bg);color:var(--ink)}
+.acts{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:#fff;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.pri{background:var(--blue);border-color:var(--blue);color:#fff}.pri:hover{box-shadow:0 10px 24px rgba(47,91,255,.3)}
+.sm{padding:7px 12px;font-size:.82rem}
 
-  <style>
-    :root{
-      --bg:#08090f;
-      --bg2:#0b111c;
-      --card:rgba(15,23,36,.72);
-      --card-solid:#101827;
-      --text:#f5f7fb;
-      --muted:#93a0b4;
-      --line:rgba(255,255,255,.09);
-      --accent:#ff6b4a;
-      --accent2:#fbbf24;
-      --green:#63e6be;
-      --shadow:0 24px 70px rgba(0,0,0,.28);
-      --radius:22px;
-      --max:1180px;
-    }
+/* hero */
+.hero{padding:56px 0 80px}
+.hg{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero p{color:var(--mut);font-size:1.08rem;max-width:54ch;margin-top:20px}
+.ha{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    body{
-      background:
-        radial-gradient(circle at 80% 5%, rgba(255,107,74,.10), transparent 28%),
-        radial-gradient(circle at 10% 25%, rgba(251,191,36,.07), transparent 30%),
-        var(--bg);
-      color:var(--text);
-      font-family:"Cairo",sans-serif;
-      line-height:1.75;
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;
-      background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
-                       linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
-      background-size:55px 55px;
-      mask-image:linear-gradient(to bottom,black,transparent 75%);
-    }
-    a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+/* hero badge + stacked title */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:#fff;color:var(--blue);font-weight:600;font-size:.88rem;margin-bottom:18px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
+h1{font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1.15;font-weight:700;letter-spacing:-.5px;max-width:12ch}
+h1 .line{display:block}
+h1 em{font-style:normal;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-    /* NAV */
-    nav{position:fixed;z-index:1000;top:14px;left:0;right:0;}
-    .nav{
-      width:min(var(--max),calc(100% - 30px));margin:auto;
-      height:64px;padding:0 18px;
-      display:flex;align-items:center;justify-content:space-between;
-      border:1px solid var(--line);
-      background:rgba(7,11,18,.72);
-      backdrop-filter:blur(18px);
-      border-radius:18px;
-      box-shadow:0 12px 35px rgba(0,0,0,.18);
-    }
-    .brand{display:flex;align-items:center;gap:11px;font-weight:800}
-    .brand-mark{
-      width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
-      color:#081018;background:linear-gradient(135deg,#ff6b4a,#fbbf24);
-      font-weight:900;
-    }
-    .brand span:last-child{font-family:Inter,sans-serif;letter-spacing:-.3px}
-    .nav-links{display:flex;gap:8px;list-style:none}
-    .nav-links a{
-      color:var(--muted);padding:8px 13px;border-radius:10px;font-size:.88rem;font-weight:600;
-      transition:.25s;
-    }
-    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-    
-    .nav-right { display: flex; align-items: center; gap: 10px; }
-    .lang-btn {
-      background: rgba(255,255,255,0.05); border: 1px solid var(--line); color: var(--text);
-      padding: 6px 12px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 6px; transition: 0.25s;
-    }
-    .lang-btn:hover { background: rgba(255,107,74,0.15); border-color: var(--accent); color: var(--accent); }
+/* how-it-works hook card */
+.hook{background:var(--navy);border-radius:24px;padding:18px;box-shadow:0 28px 60px rgba(14,23,48,.22);max-width:440px;margin-inline:auto;width:100%}
+.hook-top{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px;color:#8FA9FF;font-size:.78rem;font-weight:600}
+.hook-dots{display:flex;gap:5px}.hook-dots b{width:8px;height:8px;border-radius:50%;background:#3a4a6a}
+.hook-steps{display:flex;flex-direction:column;gap:10px}
+.hs{background:var(--navy2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:#EAF0FF}
+.hs i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:.95rem}
+.hs .ic1{background:rgba(47,91,255,.2);color:#8FA9FF}
+.hs .ic2{background:rgba(255,140,66,.18);color:#FFB87A}
+.hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
+.hs b{display:block;font-family:"Readex Pro";font-size:.95rem;margin-bottom:2px}
+.hs span{color:#9FB0D6;font-size:.8rem}
+.hs-result{background:rgba(20,184,122,.12);border:1px solid rgba(20,184,122,.35);border-radius:14px;padding:14px 16px;text-align:center;color:#7EE9BE}
+.hs-result strong{display:block;font-size:.95rem;margin-bottom:4px}
+.hs-result small{color:#9FB0D6;font-size:.78rem}
+.hook-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;justify-content:center}
+.hook-tags span{font-size:.72rem;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.07);color:#C9D5F2}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-    .nav-cta{
-      display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:11px;
-      background:linear-gradient(135deg,#ff6b4a,#fbbf24);color:#081018;font-size:.86rem;font-weight:800;
-      transition:.25s;border:0;
-    }
-    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,107,74,.28)}
-    .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.2rem}
+/* sectors */
+.sect{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+.sect div{padding:26px 22px;border-inline-start:1px solid var(--line)}
+.sect div:first-child{border-inline-start:0}
+.sect i{color:var(--blue);font-size:1.2rem;margin-bottom:12px;display:block}
+.sect b{font-family:"Readex Pro";display:block}.sect span{color:var(--mut);font-size:.86rem}
 
-    /* HERO */
-    .hero{min-height:100vh;display:flex;align-items:center;padding:145px 0 90px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center;direction:ltr;}
-    .hero-copy{direction:rtl}
-    html[dir="ltr"] .hero-copy { direction: ltr; }
-    
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(255,107,74,.25);
-      background:rgba(255,107,74,.08);border-radius:999px;color:var(--accent);
-      font-size:.78rem;font-weight:700;margin-bottom:22px;
-    }
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
-    h1{font-size:clamp(2.8rem,6vw,5.3rem);line-height:1.05;letter-spacing:-2px;font-weight:800;margin-bottom:24px;}
-    h1 .gradient{
-      background:linear-gradient(100deg,#ff6b4a,#fbbf24 65%,#fff);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .hero-text{max-width:680px;color:var(--muted);font-size:1.08rem;line-height:2}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .btn{
-      display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border-radius:13px;
-      font-weight:800;font-size:.9rem;border:1px solid var(--line);transition:.25s;cursor:pointer;
-    }
-    .btn-primary{background:linear-gradient(135deg,#ff6b4a,#fbbf24);color:#081018;border:0}
-    .btn-secondary{background:rgba(255,255,255,.035);color:var(--text)}
-    .btn:hover{transform:translateY(-3px)}
-    .hero-contact{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:.83rem}
-    .hero-contact a:hover{color:var(--accent)}
+/* showcase */
+.dark{background:var(--navy);color:#EAF0FF;border-radius:36px;margin-inline:12px;padding:88px 0}
+.dark .lead{color:#9FB0D6}.dark .kick{color:#8FA9FF}
+.show{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:40px}
+.pl{display:flex;flex-direction:column;gap:6px}
+.pi{text-align:start;background:transparent;border:1px solid transparent;color:#9FB0D6;padding:14px 16px;border-radius:14px;transition:.2s}
+.pi b{display:block;font:600 1.05rem "Readex Pro";color:#fff}.pi span{font-size:.82rem}
+.pi:hover{background:rgba(255,255,255,.05)}
+.pi[aria-selected=true]{background:#fff;border-color:#fff}.pi[aria-selected=true] b{color:var(--ink)}.pi[aria-selected=true] span{color:var(--blue);font-weight:600}
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--navy2);border-radius:26px;padding:22px;animation:in .4s}
+.media{background:var(--navy2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:340px;transition:min-height .25s ease}
+.media.is-portrait{min-height:480px}
+.vt{display:flex;gap:6px;padding:8px;background:#0a1128;flex-wrap:wrap}
+.vt button{border:1px solid rgba(255,255,255,.18);background:transparent;color:#B9C6E6;border-radius:99px;padding:4px 12px;font-size:.78rem}
+.vt button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+/* خلفية navy بدل الأسود عشان مفيش حواف سودا ظاهرة */
+.media video,.media img{width:100%;flex:1;min-height:0;max-height:480px;object-fit:contain;background:var(--navy2);display:block}
+.media.is-portrait video,.media.is-portrait img{max-height:560px}
+.pd h3{font-size:1.5rem;margin-bottom:2px;color:#fff}.pd .sub{color:#A8C0FF;font-weight:600;margin-bottom:12px}
+.pd p{color:#E2E8F5;font-size:.96rem;line-height:1.85}
+.pd ul{list-style:none;margin:14px 0;display:grid;gap:8px;font-size:.92rem;color:#F0F4FC}
+.pd li::before{content:"✓";color:#7EE9BE;font-weight:700;margin-inline-end:8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tags span{font-size:.75rem;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.1);color:#E8EEF8;font-family:Inter,sans-serif}
+.pd{background:#1A2748}
+.mi-cap{color:#C9D5F2;font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
 
-    .hero-visual{direction:ltr;position:relative}
-    .terminal{
-      border:1px solid var(--line);background:rgba(12,18,29,.86);border-radius:24px;
-      box-shadow:var(--shadow);overflow:hidden;transform:rotate(1.5deg);
-    }
-    .terminal-top{height:44px;display:flex;align-items:center;gap:7px;padding:0 16px;border-bottom:1px solid var(--line)}
-    .terminal-top i{width:8px;height:8px;border-radius:50%;background:#5b6677}
-    .terminal-title{margin-left:auto;color:#657286;font:500 .7rem Inter,sans-serif}
-    .terminal-body{padding:26px;font:500 .78rem/2 Inter,monospace;color:#aeb9ca}
-    .code-line{white-space:nowrap}
-    .kw{color:#c6a6ff}.fn{color:#ff8a65}.str{color:#7ee787}.key{color:#ffcc7a}
-    .terminal-footer{margin-top:18px;padding-top:17px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
-    .mini-tag{font:600 .68rem Inter,sans-serif;color:#8d9aad;border:1px solid var(--line);padding:5px 8px;border-radius:7px}
-    .glow{position:absolute;width:280px;height:280px;background:rgba(255,107,74,.12);filter:blur(90px);border-radius:50%;z-index:-1;right:-60px;top:-50px}
-    /* Client-friendly hero flow */
-    .flow-card{
-      border:1px solid var(--line);background:rgba(12,18,29,.86);border-radius:24px;
-      box-shadow:var(--shadow);overflow:hidden;transform:rotate(1.5deg);
-    }
-    .flow-top{height:44px;display:flex;align-items:center;gap:7px;padding:0 16px;border-bottom:1px solid var(--line)}
-    .flow-top i{width:8px;height:8px;border-radius:50%;background:#5b6677}
-    .flow-title{margin-left:auto;color:#657286;font:500 .7rem Inter,sans-serif}
-    .flow-body{padding:26px 22px 18px;display:flex;flex-direction:column;gap:10px}
-    .flow-step{
-      display:flex;align-items:center;gap:14px;padding:13px 15px;border-radius:12px;
-      background:rgba(255,255,255,.03);border:1px solid var(--line);
-    }
-    .flow-icon{
-      width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-      background:rgba(255,107,74,.12);color:var(--accent);font-size:1rem;flex-shrink:0;
-    }
-    .flow-step strong{display:block;font:600 .9rem Inter,sans-serif;color:#e8eef7;margin-bottom:2px}
-    .flow-step span{font:500 .76rem Inter,sans-serif;color:#8d9aad}
-    .flow-arrow{text-align:center;color:#4a5568;font-size:.8rem;line-height:1}
-    .flow-result{
-      margin-top:6px;padding:14px 16px;border-radius:12px;
-      background:linear-gradient(135deg,rgba(255,107,74,.12),rgba(126,231,135,.08));
-      border:1px solid rgba(255,107,74,.22);text-align:center;
-    }
-    .flow-result strong{display:block;font:600 .92rem Inter,sans-serif;color:#7ee787;margin-bottom:3px}
-    .flow-result span{font:500 .76rem Inter,sans-serif;color:#aeb9ca}
-    .flow-footer{padding:0 22px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+/* services */
+.sv{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:40px}
+.sv div{display:flex;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+.sv i{width:46px;height:46px;flex:none;border-radius:13px;background:#E6ECFF;color:var(--blue);display:grid;place-items:center;font-size:1.1rem}
+.sv h3{font-size:1.08rem}.sv p{color:var(--mut);font-size:.92rem}
 
-    /* COMMON */
-    section{padding:105px 0}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
-    .kicker{font:700 .72rem Inter,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-    .section-title{font-size:clamp(1.9rem,4vw,2.65rem);line-height:1.2;font-weight:800}
-    .section-desc{max-width:540px;color:var(--muted);font-size:.92rem}
+/* process */
+.pr{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;position:relative}
+.pr::before{content:"";position:absolute;inset-inline:0;top:19px;border-top:2px dashed var(--line)}
+.pr div{position:relative;padding-inline-end:20px}
+.pr b{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:"Readex Pro";margin-bottom:14px;position:relative}
+.pr h3{font-size:1.02rem}.pr p{color:var(--mut);font-size:.88rem}
 
-    /* STATS */
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .stat{padding:25px;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:18px;transition:.25s;}
-    .stat:hover{transform:translateY(-4px);border-color:rgba(255,107,74,.25)}
-    .stat-icon{color:var(--accent);font-size:1rem;margin-bottom:20px}
-    .stat strong{display:block;font:800 1.5rem Inter,sans-serif;margin-bottom:6px}
-    .stat span{font-size:.78rem;color:var(--muted)}
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:var(--blue);color:#fff;border-radius:26px;padding:40px}
+.card h2{color:#fff;font-size:1.9rem;max-width:none}.card p{opacity:.88;margin:12px 0 22px}
+.card .btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+.card .btns{display:flex;flex-wrap:wrap;gap:8px}
+form{background:#fff;border:1px solid var(--line);border-radius:26px;padding:32px;display:grid;gap:14px}
+label{font-weight:600;font-size:.88rem;display:grid;gap:5px}
+input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg)}
+input:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.ch{display:flex;gap:8px;flex-wrap:wrap}.ch .btn{flex:1;justify-content:center;color:#fff;border:0}
+footer{padding:28px 0 40px;color:var(--mut);font-size:.85rem}
+.fi{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+.so{display:flex;gap:8px}.so a{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center}.so a:hover{color:var(--blue);border-color:var(--blue)}
 
-    /* PROJECTS */
-    .projects{display:grid;gap:22px}
-    .project{
-      display:grid;grid-template-columns:43% 57%;direction:ltr;
-      border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,27,42,.9),rgba(10,15,24,.82));
-      border-radius:24px;overflow:hidden;min-height:390px;transition:.3s;
-    }
-    .project:hover{border-color:rgba(255,107,74,.28);box-shadow:0 20px 55px rgba(0,0,0,.18)}
-    .project:nth-child(even){grid-template-columns:57% 43%}
-    .project:nth-child(even) .project-media{order:2}
-    .project-media{
-      min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;
-      padding:15px;background:#070b12;border-right:1px solid var(--line);
-    }
-    .project:nth-child(even) .project-media{border-right:0;border-left:1px solid var(--line)}
-    .browser{
-      width:100%;height:100%;border:1px solid var(--line);border-radius:15px;overflow:hidden;
-      background:#070b12;box-shadow:0 20px 40px rgba(0,0,0,.35);display:flex;flex-direction:column;
-    }
-    .browser-bar{height:30px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;gap:5px;background:#0d1420;}
-    .browser-bar b{width:6px;height:6px;background:#657286;border-radius:50%}
-    
-    /* MOVIE / CHAT DISPLAY WITHOUT BLACK BORDERS AND WITHOUT KEYBOARD */
-    .custom-chat-display {
-      flex: 1; background: #080e18; display: flex; flex-direction: column; overflow: hidden; position: relative;
-    }
-    .chat-header-bar {
-      padding: 10px 14px; background: #111a2a; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px;
-    }
-    .chat-header-bar img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+/* modal */
+dialog{border:0;background:transparent;width:min(1200px,94vw);max-height:92vh;margin:auto;color:#fff}
+dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
+.mb{background:var(--navy2);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px;height:88vh}
+.mt{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mt button{border:1px solid rgba(255,255,255,.2);background:transparent;color:#C9D5F2;padding:6px 14px;border-radius:99px;font-size:.84rem}
+.mt button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.mt .x{margin-inline-start:auto;border:0;font-size:1.6rem;padding:0 8px}
+.mi{flex:1;min-height:0;background:#0a1128;border-radius:14px;overflow:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;gap:10px}
+.mi img{max-width:100%;max-height:calc(100% - 56px);object-fit:contain}
 
-    /* Nexus dual-video media tabs */
-    .media-vid-tabs{
-      display:flex;gap:6px;padding:8px 10px;background:#0d1420;border-bottom:1px solid var(--line);
-      flex-wrap:wrap;
-    }
-    .media-vid-tab{
-      border:1px solid var(--line);background:transparent;color:#9aa8bc;
-      font:600 .72rem Inter,sans-serif;padding:6px 12px;border-radius:999px;cursor:pointer;
-      transition:.2s;
-    }
-    .media-vid-tab:hover{color:#e8eef7;border-color:#3a4a60}
-    .media-vid-tab.active{
-      color:#0a0e14;background:var(--accent,#ff6b4a);border-color:transparent;
-    }
-    .nexus-media-shell{
-      width:100%;background:#000;display:flex;align-items:center;justify-content:center;
-      min-height:320px;transition:min-height .25s ease;
-    }
-    .nexus-media-shell.is-portrait{min-height:480px}
-    .nexus-media-shell video{
-      width:100%;height:100%;max-height:520px;object-fit:contain;background:#000;border:none;outline:none;
-    }
-    @media(max-width:900px){
-      .nexus-media-shell{min-height:260px}
-      .nexus-media-shell.is-portrait{min-height:420px}
-    }
-
-    .chat-header-info { display: flex; flex-direction: column; }
-    .chat-header-info strong { font-size: 0.85rem; color: #fff; }
-    .chat-header-info span { font-size: 0.68rem; color: var(--green); }
-    
-    .chat-messages-container {
-      flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; font-family: 'Cairo', sans-serif;
-    }
-    .chat-bubble {
-      max-width: 88%; padding: 10px 14px; border-radius: 14px; font-size: 0.95rem; line-height: 1.5; font-weight: 500;
-    }
-    .chat-bubble.bot {
-      background: rgba(255,255,255,0.06); border: 1px solid var(--line); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 2px;
-    }
-    .chat-bubble.user {
-      background: rgba(255,107,74,0.18); border: 1px solid rgba(255,107,74,0.35); color: #fff; align-self: flex-end; border-bottom-right-radius: 2px;
-    }
-    .chat-bubble .voice-note {
-      display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--accent);
-    }
-
-    .media-label{position:absolute;bottom:8px;color:#657286;font-size:.68rem;background:rgba(7,11,18,.8);padding:2px 8px;border-radius:4px;}
-    
-    .project-body{direction:rtl;padding:35px;display:flex;flex-direction:column;justify-content:space-between}
-    html[dir="ltr"] .project-body { direction: ltr; }
-
-    .project-num{font:700 .7rem Inter,sans-serif;color:#536176;letter-spacing:1px}
-    .project h3{font-size:1.5rem;margin:8px 0 5px;font-family:Inter,sans-serif;}
-    .project-sub{color:var(--accent);font-size:.8rem;font-weight:700;margin-bottom:14px}
-    .project p{color:var(--muted);font-size:.87rem;line-height:1.95}
-    .features{list-style:none;margin:18px 0 20px;display:grid;gap:7px}
-    .features li{font-size:.78rem;color:#c1c9d5}
-    .features li::before{content:"✓";color:var(--green);font-weight:800;margin-left:8px}
-    html[dir="ltr"] .features li::before{margin-left:0;margin-right:8px}
-    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;margin-bottom:15px}
-    .tag{font:600 .67rem Inter,sans-serif;color:#aeb9ca;padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.025)}
-    
-    .project-actions { margin-top: 10px; }
-    .btn-blueprint {
-      background: rgba(100, 216, 255, 0.08); border: 1px solid rgba(100, 216, 255, 0.25); color: var(--accent);
-      padding: 9px 15px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; cursor: pointer;
-    }
-    .btn-blueprint:hover { background: var(--accent); color: #070b12; border-color: var(--accent); }
-
-    /* SERVICES & PROCESS */
-    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .service{padding:25px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);transition:.25s}
-    .service:hover{transform:translateY(-4px);background:rgba(255,255,255,.04)}
-    .service i{font-size:1.35rem;color:var(--accent);margin-bottom:18px}
-    .service h3{font-size:1rem;margin-bottom:8px}
-    .service p{color:var(--muted);font-size:.78rem;line-height:1.9}
-
-    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .step{position:relative;padding:24px;border-top:1px solid var(--line)}
-    .step-no{font:800 1.7rem Inter,sans-serif;color:#334055;margin-bottom:16px}
-    .step h3{font-size:.95rem;margin-bottom:8px}
-    .step p{color:var(--muted);font-size:.77rem}
-
-    /* CONTACT FORM & CTA */
-    .cta-container {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;
-    }
-    .cta{
-      padding:40px;border:1px solid rgba(255,107,74,.16);border-radius:26px;
-      background:radial-gradient(circle at 15% 50%,rgba(255,107,74,.10),transparent 35%),radial-gradient(circle at 85% 50%,rgba(251,191,36,.10),transparent 35%),rgba(255,255,255,.025);
-    }
-    .cta h2{font-size:1.8rem;margin-bottom:8px}
-    .cta p{color:var(--muted);font-size:.86rem;margin-bottom:20px;}
-    .cta-actions{display:flex;gap:10px;flex-wrap:wrap}
-
-    .contact-form {
-      padding: 35px; border: 1px solid var(--line); border-radius: 26px; background: rgba(15,23,36,.6);
-      backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 15px;
-    }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 12px; background: rgba(7,11,18,.8); border: 1px solid var(--line); border-radius: 10px;
-      color: #fff; font-family: inherit; font-size: 0.85rem; outline: none; transition: 0.25s;
-    }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(255,107,74,0.2); }
-    .send-label{font-size:0.8rem;font-weight:700;color:var(--muted);margin-top:4px}
-    .send-channels{display:flex;gap:10px;flex-wrap:wrap}
-    .send-channels .btn{flex:1;min-width:120px;justify-content:center}
-    .btn-whatsapp{background:#25D366!important;border-color:#25D366!important;color:#fff!important}
-    .btn-whatsapp:hover{filter:brightness(1.08)}
-    .btn-telegram{background:#2AABEE!important;border-color:#2AABEE!important;color:#fff!important}
-    .btn-telegram:hover{filter:brightness(1.08)}
-    .btn-gmail{background:#EA4335!important;border-color:#EA4335!important;color:#fff!important}
-    .btn-gmail:hover{filter:brightness(1.08)}
-
-    footer{padding:30px 0 45px;border-top:1px solid var(--line);margin-top:80px}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#68758a;font-size:.72rem}
-    .socials{display:flex;gap:9px}
-    .socials a{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;transition:.2s}
-    .socials a:hover{color:var(--accent);border-color:rgba(255,107,74,.3)}
-
-    /* MODAL SYSTEM */
-    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(7, 11, 18, 0.94); backdrop-filter: blur(12px); }
-    .modal-wrapper { width: 92%; max-width: 1250px; margin: 2% auto; display: flex; flex-direction: column; height: 88vh; position: relative; }
-    .close-btn { position: absolute; top: -10px; right: 0; color: #fff; font-size: 32px; font-weight: bold; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.2s; }
-    .close-btn:hover { opacity: 1; color: var(--accent); }
-    
-    .modal-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; padding-right: 30px; }
-    .tab-btn { background: rgba(255,255,255,0.06); border: 1px solid var(--line); color: var(--muted); padding: 7px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600; font-family: "Cairo", sans-serif; transition: 0.3s; }
-    .tab-btn.active, .tab-btn:hover { background: var(--accent); color: #070b12; border-color: var(--accent); box-shadow: 0 0 15px rgba(100, 216, 255, 0.3); }
-
-    .image-container { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; background: #0c121d; border-radius: 16px; border: 1px solid var(--line); padding: 15px; }
-    .image-container img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
-    .caption { text-align: center; color: var(--muted); padding-top: 10px; font-size: 0.85rem; }
-
-    @media(max-width:950px){
-      .nav-links{display:none}.menu-btn{display:block}.nav-cta{display:none}
-      .hero-grid{grid-template-columns:1fr;gap:45px}.hero{padding-top:130px}.hero-visual{max-width:650px}
-      .stats,.services{grid-template-columns:repeat(2,1fr)}
-      .project,.project:nth-child(even){grid-template-columns:1fr}.project:nth-child(even) .project-media{order:0}
-      .project-media,.project:nth-child(even) .project-media{border:0;border-bottom:1px solid var(--line)}
-      .process{grid-template-columns:repeat(2,1fr)}
-      .cta-container{grid-template-columns:1fr}
-    }
-    @media(max-width:600px){
-      .container{width:min(var(--max),calc(100% - 26px))}
-      nav{top:8px}.nav{width:calc(100% - 16px);height:58px}
-      h1{font-size:2.55rem;letter-spacing:-1px}.hero-text{font-size:.94rem}
-      section{padding:75px 0}.section-head{display:block}.section-desc{margin-top:13px}
-      .stats,.services,.process{grid-template-columns:1fr}
-      .project-body{padding:25px}.project-media{min-height:285px}
-      .cta{padding:25px}.cta h2{font-size:1.45rem}
-      .footer-inner{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+@media(max-width:940px){.links,.acts .pri{display:none}.hg,.show,.pd,.ct,.sv{grid-template-columns:1fr}.sect,.pr{grid-template-columns:1fr 1fr;gap:20px 0}.sect div:nth-child(3){border-inline-start:0}.pr::before{display:none}.pl{flex-direction:row;overflow-x:auto}.pi{flex:none}.dark{border-radius:24px}.media.is-portrait{min-height:420px}}
+@media(max-width:560px){section{padding:68px 0}.sect,.pr{grid-template-columns:1fr}.sect div{border-inline-start:0;border-top:1px solid var(--line)}.card,form{padding:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.b,.done{opacity:1}}
+</style>
 </head>
-
 <body>
-  <nav>
-    <div class="nav">
-      <a href="#" class="brand">
-        <span class="brand-mark">A</span>
-        <span>Ahmed Abdelhamid</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about" data-ar="نبذة" data-en="About">نبذة</a></li>
-        <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
-        <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
-        <li><a href="#process" data-ar="طريقة العمل" data-en="Process">طريقة العمل</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="lang-text">EN</span></button>
-        <a class="nav-cta" href="#contact"><i class="fa-regular fa-paper-plane"></i> <span data-ar="تواصل معي" data-en="Contact">تواصل معي</span></a>
-        <button class="menu-btn" aria-label="فتح القائمة"><i class="fa-solid fa-bars"></i></button>
-      </div>
-    </div>
+<header><div class="nav">
+  <a href="#" class="brand"><span class="mark">A</span>Ahmed Abdelhamid</a>
+  <nav class="links">
+    <a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+    <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+    <a href="#process" data-ar="طريقة العمل" data-en="Process">طريقة العمل</a>
   </nav>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="dot"></span> <span data-ar="أتمتة ذكية للأعمال" data-en="Smart Business Automation">أتمتة ذكية للأعمال</span></div>
-          <h1 data-ar="أحوّل المهام المتكررة إلى <span class='gradient'>أنظمة ذكية</span>." data-en="Transforming repetitive tasks into <span class='gradient'>smart systems</span>.">أحوّل المهام المتكررة إلى <span class="gradient">أنظمة ذكية</span>.</h1>
-          <p class="hero-text" data-ar="أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء." data-en="I design systems that reply to customers, log orders, and handle leave requests and bookings automatically — via WhatsApp, Telegram, and email — so your team saves time and reduces errors.">
-            أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-arrow-down"></i> <span data-ar="شوف المشاريع" data-en="View Projects">شوف المشاريع</span></a>
-            <a class="btn btn-secondary" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <a class="btn btn-secondary" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <span class="glow"></span>
-          <div class="flow-card">
-            <div class="flow-top">
-              <i></i><i></i><i></i>
-              <span class="flow-title">how it works</span>
-            </div>
-            <div class="flow-body">
-              <div class="flow-step">
-                <div class="flow-icon"><i class="fa-solid fa-comment-dots"></i></div>
-                <div>
-                  <strong data-ar="رسالة من العميل أو الموظف" data-en="Message from customer or staff">رسالة من العميل أو الموظف</strong>
-                  <span data-ar="واتساب · تليجرام · إيميل" data-en="WhatsApp · Telegram · Email">واتساب · تليجرام · إيميل</span>
-                </div>
-              </div>
-              <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-              <div class="flow-step">
-                <div class="flow-icon"><i class="fa-solid fa-brain"></i></div>
-                <div>
-                  <strong data-ar="النظام يفهم ويقرر" data-en="System understands & decides">النظام يفهم ويقرر</strong>
-                  <span data-ar="طلب · استفسار · إجازة · حجز" data-en="Order · Inquiry · Leave · Booking">طلب · استفسار · إجازة · حجز</span>
-                </div>
-              </div>
-              <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-              <div class="flow-step">
-                <div class="flow-icon"><i class="fa-solid fa-bolt"></i></div>
-                <div>
-                  <strong data-ar="تنفيذ تلقائي فوري" data-en="Instant automatic action">تنفيذ تلقائي فوري</strong>
-                  <span data-ar="تسجيل · تنبيه · اعتماد · رد" data-en="Log · Alert · Approve · Reply">تسجيل · تنبيه · اعتماد · رد</span>
-                </div>
-              </div>
-              <div class="flow-result">
-                <strong data-ar="نتيجة: وقت أقل · أخطاء أقل · رد أسرع" data-en="Result: less time · fewer errors · faster replies">نتيجة: وقت أقل · أخطاء أقل · رد أسرع</strong>
-                <span data-ar="من غير ما الفريق يتدخل في كل خطوة" data-en="Without your team handling every step">من غير ما الفريق يتدخل في كل خطوة</span>
-              </div>
-            </div>
-            <div class="flow-footer">
-              <span class="mini-tag">WhatsApp</span>
-              <span class="mini-tag">Telegram</span>
-              <span class="mini-tag">AI</span>
-              <span class="mini-tag">Automation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="kicker" data-ar="01 — عن الخبرة" data-en="01 — About">01 — عن الخبرة</div><h2 class="section-title" data-ar="أنظمة حقيقية بتشتغل كل يوم" data-en="Real systems that run every day">أنظمة حقيقية بتشتغل كل يوم</h2></div>
-          <p class="section-desc" data-ar="مش بضيف ذكاء اصطناعي للشكل. ببني مسار واضح: من الرسالة → للفهم → للتنفيذ، مربوط بأدواتك اللي بتستخدمها فعلًا." data-en="I don't add AI for show. I build a clear path: message → understanding → action, connected to the tools you already use.">مش بضيف ذكاء اصطناعي للشكل. ببني مسار واضح: من الرسالة → للفهم → للتنفيذ، مربوط بأدواتك اللي بتستخدمها فعلًا.</p>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-icon"><i class="fa-solid fa-hospital"></i></div>
-            <strong data-ar="مراكز طبية" data-en="Healthcare">مراكز طبية</strong>
-            <span data-ar="حجز · تذكير · متابعة مرضى" data-en="Booking · reminders · follow-ups">حجز · تذكير · متابعة مرضى</span>
-          </div>
-          <div class="stat">
-            <div class="stat-icon"><i class="fa-solid fa-utensils"></i></div>
-            <strong data-ar="مطاعم ومبيعات" data-en="Restaurants & Sales">مطاعم ومبيعات</strong>
-            <span data-ar="طلبات صوتية · تأكيد · تنبيه مطبخ" data-en="Voice orders · confirm · kitchen alert">طلبات صوتية · تأكيد · تنبيه مطبخ</span>
-          </div>
-          <div class="stat">
-            <div class="stat-icon"><i class="fa-solid fa-user-tie"></i></div>
-            <strong data-ar="موارد بشرية" data-en="HR">موارد بشرية</strong>
-            <span data-ar="إجازات · رصيد · اعتماد تلقائي" data-en="Leave · balance · auto-approval">إجازات · رصيد · اعتماد تلقائي</span>
-          </div>
-          <div class="stat">
-            <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
-            <strong data-ar="قنوات جاهزة" data-en="Ready channels">قنوات جاهزة</strong>
-            <span>WhatsApp · Telegram · Gmail</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="kicker" data-ar="02 — المشاريع" data-en="02 — Selected Work">02 — المشاريع</div><h2 class="section-title" data-ar="مشاريع مختارة" data-en="Featured Projects">مشاريع مختارة</h2></div>
-          <p class="section-desc" data-ar="أمثلة لأنظمة بتنفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه — مش مجرد بوت بيرد كلام." data-en="Examples of systems that complete real steps: from message to logging and alerts — not just chatbots that reply.">أمثلة لأنظمة بتنفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه — مش مجرد بوت بيرد كلام.</p>
-        </div>
-
-        <div class="projects">
-
-          <!-- PROJECT 01: KROKETT ASSISTANT -->
-          <article class="project">
-            <div class="project-media">
-              <div class="browser">
-                <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div class="custom-chat-display" style="padding:0; background:#000; display:flex; align-items:center; justify-content:center;">
-                  <video 
-                    src="assets/projects/krokett/krokett-mockup.mp4" 
-                    controls 
-                    playsinline
-                    muted
-                    loop
-                    style="width:100%; height:100%; object-fit:contain; background:#000; border:none; outline:none;"
-                    poster="assets/projects/krokett/krokett-full.png">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                  </video>
-                </div>
-              </div>
-              <span class="media-label">Krokett Assistant — Live Demo Video</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <span class="project-num">01 / مطاعم ومبيعات</span>
-                <h3>Krokett Assistant</h3>
-                <div class="project-sub" data-ar="مساعد طلبات المطاعم عبر تليجرام" data-en="Restaurant ordering assistant on Telegram">مساعد طلبات المطاعم عبر تليجرام</div>
-                <p data-ar="العميل يبعت رسالة أو صوت على تليجرام → النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا." data-en="Customer sends a text or voice note on Telegram → the system understands the order from the menu, calculates the price, collects address and payment method, then logs the order and alerts the kitchen automatically.">العميل يبعت رسالة أو صوت على تليجرام → النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا.</p>
-                <ul class="features">
-                  <li data-ar="يفهم الرسائل الصوتية والنصية بالعربية" data-en="Understands Arabic voice and text messages">يفهم الرسائل الصوتية والنصية بالعربية</li>
-                  <li data-ar="يرد من منيو المطعم والأسعار الحقيقية" data-en="Replies using the real menu and prices">يرد من منيو المطعم والأسعار الحقيقية</li>
-                  <li data-ar="يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي" data-en="Logs the order and alerts the kitchen with no manual work">يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي</li>
-                </ul>
-              </div>
-              <div>
-                <div class="tags">
-                  <span class="tag">34 Nodes</span>
-                  <span class="tag">n8n</span>
-                  <span class="tag">RAG / Pinecone</span>
-                  <span class="tag">Gemini API</span>
-                  <span class="tag">Telegram API</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-blueprint" onclick="openModal('krokett-modal')">
-                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- ========================================== -->
-<!-- PROJECT 02: HR NINJA ASSISTANT             -->
-<!-- ========================================== -->
-<article class="project">
-  <div class="project-media">
-    <div class="browser">
-      <div class="browser-bar"><b></b><b></b><b></b></div>
-      <div class="custom-chat-display" style="padding:0; background:#000; display:flex; align-items:center; justify-content:center;">
-        <video 
-          src="assets/projects/hrninja/hr-ninja-mockup.mp4" 
-          controls 
-          playsinline
-          muted
-          loop
-          style="width:100%; height:100%; object-fit:contain; background:#000; border:none; outline:none;"
-          poster="assets/projects/hrninja/hr-ninja-full.png">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
-    </div>
-    <span class="media-label">HR Ninja Assistant — Live Demo Video</span>
+  <div class="acts">
+    <button class="btn sm" onclick="toggleLang()" aria-label="Language"><i class="fa-solid fa-globe"></i><span id="lt">EN</span></button>
+    <a class="btn pri sm" href="#contact" data-ar="تواصل معي" data-en="Contact me">تواصل معي</a>
   </div>
-  
-  <div class="project-body">
-    <div>
-      <span class="project-num">02 / موارد بشرية</span>
-      <h3>HR Ninja Assistant</h3>
-      <div class="project-sub" data-ar="أتمتة إجازات الموظفين عبر واتساب وتليجرام" data-en="Employee leave automation via WhatsApp & Telegram">
-        أتمتة إجازات الموظفين عبر واتساب وتليجرام
-      </div>
-      <p data-ar="الموظف يسأل عن رصيد إجازته أو يقدّم طلب من واتساب/تليجرام → النظام يراجع الرصيد، يبعت الطلب للـ HR، وبعد الموافقة أو الرفض يحدّث الجدول ويرد على الموظف تلقائيًا." data-en="An employee asks about leave balance or submits a request on WhatsApp/Telegram → the system checks the balance, sends the request to HR, then after approval or rejection updates the sheet and replies to the employee automatically.">
-        الموظف يسأل عن رصيد إجازته أو يقدّم طلب من واتساب/تليجرام → النظام يراجع الرصيد، يبعت الطلب للـ HR، وبعد الموافقة أو الرفض يحدّث الجدول ويرد على الموظف تلقائيًا.
-      </p>
-      <ul class="features">
-        <li data-ar="الاستعلام عن رصيد الإجازة برقم الهوية أو الكود" data-en="Check leave balance by ID or employee code">
-          الاستعلام عن رصيد الإجازة برقم الهوية أو الكود
-        </li>
-        <li data-ar="تقديم الطلب وتحويله تلقائيًا لمسؤول الموارد البشرية" data-en="Submit requests and route them to HR automatically">
-          تقديم الطلب وتحويله تلقائيًا لمسؤول الموارد البشرية
-        </li>
-        <li data-ar="تحديث الرصيد والرد على الموظف بعد الموافقة أو الرفض" data-en="Update balance and reply after approval or rejection">
-          تحديث الرصيد والرد على الموظف بعد الموافقة أو الرفض
-        </li>
-      </ul>
-    </div>
-    <div>
-      <div class="tags">
-        <span class="tag">n8n</span>
-        <span class="tag">Gemini AI</span>
-        <span class="tag">Google Sheets API</span>
-        <span class="tag">Evolution API (WhatsApp)</span>
-        <span class="tag">Telegram API</span>
-      </div>
-      <div class="project-actions">
-        <button class="btn-blueprint" onclick="openModal('hrninja-modal')">
-          <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
-        </button>
-      </div>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap hg">
+  <div>
+    <div class="badge"><i></i><span data-ar="أتمتة ذكية للأعمال" data-en="Smart business automation">أتمتة ذكية للأعمال</span></div>
+    <h1>
+      <span class="line" data-ar="أحوّل المهام" data-en="I turn repetitive">أحوّل المهام</span>
+      <span class="line" data-ar="المتكررة إلى" data-en="tasks into">المتكررة إلى</span>
+      <span class="line"><em data-ar="أنظمة ذكية." data-en="smart systems.">أنظمة ذكية.</em></span>
+    </h1>
+    <p data-ar="أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء." data-en="I design systems that reply to customers, log orders, and approve leave and bookings automatically — via WhatsApp, Telegram and email — so your team saves time and makes fewer mistakes.">أصمّم أنظمة ترد على العملاء، تسجّل الطلبات، وتعتمد الإجازات والحجوزات تلقائيًا — عبر واتساب وتليجرام والإيميل — عشان فريقك يوفّر وقت ويقلل الأخطاء.</p>
+    <div class="ha">
+      <a class="btn" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i>Telegram</a>
+      <a class="btn" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+      <a class="btn pri" href="#projects" data-ar="شوف المشاريع ↓" data-en="See projects ↓">شوف المشاريع ↓</a>
     </div>
   </div>
-</article>
-
-
-<!-- ========================================== -->
-<!-- HR NINJA MODAL SYSTEM                      -->
-<!-- (توضع قبل إغلاق علامة </body>)             -->
-<!-- ========================================== -->
-<div id="hrninja-modal" class="modal">
-  <div class="modal-wrapper">
-    <span class="close-btn" onclick="closeModal('hrninja-modal')">&times;</span>
-    
-    <div class="modal-tabs">
-      <button class="tab-btn active" onclick="switchCanvas('hrninja-img', 'assets/projects/hrninja/hr-ninja-full.png', 'المخطط الهيكلي الشامل لمشروع HR Ninja', 'hrninja-caption', this)">🌐 المخطط الكامل</button>
-      <button class="tab-btn" onclick="switchCanvas('hrninja-img', 'assets/projects/hrninja/trigger.png', 'مرحلة الاستقبال والتوجيه (Ingestion & Routing)', 'hrninja-caption', this)">⚡ 1. الاستقبال والتوجيه</button>
-      <button class="tab-btn" onclick="switchCanvas('hrninja-img', 'assets/projects/hrninja/emplyee-route.png', 'مسار الموظف والذكاء الاصطناعي (Employee Route & AI Agent)', 'hrninja-caption', this)">🧠 2. مسار الموظف و AI Agent</button>
-      <button class="tab-btn" onclick="switchCanvas('hrninja-img', 'assets/projects/hrninja/hr-route.png', 'مسار اعتماد الموارد البشرية وتحديث البيانات (HR Approval & Sheet Sync)', 'hrninja-caption', this)">✅ 3. مسار اعتماد HR والتحديث</button>
+  <div class="hook" aria-label="How it works">
+    <div class="hook-top"><span class="hook-dots"><b></b><b></b><b></b></span><span data-ar="كيف يشتغل" data-en="how it works">كيف يشتغل</span></div>
+    <div class="hook-steps">
+      <div class="hs"><i class="fa-solid fa-comments ic1"></i><div><b data-ar="رسالة من العميل أو الموظف" data-en="Message from customer or staff">رسالة من العميل أو الموظف</b><span data-ar="واتساب · تليجرام · إيميل" data-en="WhatsApp · Telegram · Email">واتساب · تليجرام · إيميل</span></div></div>
+      <div class="hs"><i class="fa-solid fa-brain ic2"></i><div><b data-ar="النظام يفهم ويقرّر" data-en="The system understands and decides">النظام يفهم ويقرّر</b><span data-ar="طلب · استفسار · إجازة · حجز" data-en="Order · Inquiry · Leave · Booking">طلب · استفسار · إجازة · حجز</span></div></div>
+      <div class="hs"><i class="fa-solid fa-bolt ic3"></i><div><b data-ar="تنفيذ تلقائي فوري" data-en="Instant automatic action">تنفيذ تلقائي فوري</b><span data-ar="تسجيل · تنبيه · اعتماد · رد" data-en="Log · Alert · Approve · Reply">تسجيل · تنبيه · اعتماد · رد</span></div></div>
+      <div class="hs-result"><strong data-ar="نتيجة: وقت أقل · أخطاء أقل · رد أسرع" data-en="Result: less time · fewer errors · faster replies">نتيجة: وقت أقل · أخطاء أقل · رد أسرع</strong><small data-ar="من غير ما الفريق يتدخل في كل خطوة" data-en="Without the team stepping into every step">من غير ما الفريق يتدخل في كل خطوة</small></div>
     </div>
-
-    <div class="image-container">
-      <img id="hrninja-img" src="assets/projects/hrninja/hr-ninja-full.png" alt="HR Ninja Workflow Blueprint">
-    </div>
-    
-    <div id="hrninja-caption" class="caption">المخطط الهيكلي الشامل لمشروع HR Ninja</div>
+    <div class="hook-tags"><span>WhatsApp</span><span>Telegram</span><span>AI</span><span>Automation</span></div>
   </div>
-</div>
+</div></section>
 
-<!-- NEXUS HEALTH MODAL -->
-<div id="nexus-modal" class="modal">
-  <div class="modal-wrapper">
-    <span class="close-btn" onclick="closeModal('nexus-modal')">&times;</span>
-    <div class="modal-tabs">
-      <button class="tab-btn active" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/nexus-full.png', 'المخطط الهيكلي الشامل لمشروع Nexus Health', 'nexus-caption', this)">🌐 المخطط الكامل</button>
-      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/trigger.png', 'طبقة الاستقبال ومعالجة الوسائط (Telegram + WhatsApp)', 'nexus-caption', this)">⚡ 1. الاستقبال والوسائط</button>
-      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/ai-core.png', 'الطبقة الذكية وقاعدة المعرفة (Big Brain + RAG)', 'nexus-caption', this)">🧠 2. الذكاء الاصطناعي</button>
-      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/booking-type.png', 'مسار الحجز وإرسال الردود (Booking + Patient Response)', 'nexus-caption', this)">📅 3. الحجز والردود</button>
-      <button class="tab-btn" onclick="switchCanvas('nexus-img', 'assets/projects/nexushealth/booking-confirmation.png', 'تأكيد الموعد وتحديث CRM (Cal.com Webhook)', 'nexus-caption', this)">✅ 4. تأكيد الموعد</button>
-    </div>
-    <div class="image-container">
-      <img id="nexus-img" src="assets/projects/nexushealth/nexus-full.png" alt="Nexus Health Workflow Blueprint">
-    </div>
-    <div id="nexus-caption" class="caption">المخطط الهيكلي الشامل لمشروع Nexus Health</div>
+<div class="wrap"><div class="sect">
+  <div><i class="fa-solid fa-hospital"></i><b data-ar="مراكز وعيادات طبية" data-en="Clinics & medical centers">مراكز وعيادات طبية</b><span data-ar="حجز، تذكير، متابعة مرضى" data-en="Booking, reminders, follow-ups">حجز، تذكير، متابعة مرضى</span></div>
+  <div><i class="fa-solid fa-utensils"></i><b data-ar="مطاعم ومبيعات" data-en="Restaurants & sales">مطاعم ومبيعات</b><span data-ar="طلبات صوتية، تأكيد، تنبيه المطبخ" data-en="Voice orders, confirmation, kitchen alerts">طلبات صوتية، تأكيد، تنبيه المطبخ</span></div>
+  <div><i class="fa-solid fa-user-tie"></i><b data-ar="موارد بشرية" data-en="HR">موارد بشرية</b><span data-ar="إجازات، رصيد، اعتماد تلقائي" data-en="Leave, balance, auto-approval">إجازات، رصيد، اعتماد تلقائي</span></div>
+  <div><i class="fa-solid fa-comments"></i><b data-ar="قنوات جاهزة" data-en="Ready channels">قنوات جاهزة</b><span>WhatsApp, Telegram, Gmail</span></div>
+</div></div>
+
+<section id="projects" style="padding-top:96px"><div class="dark"><div class="wrap">
+  <div class="kick" data-ar="أعمال حقيقية" data-en="Real work">أعمال حقيقية</div>
+  <h2 data-ar="حلول جاهزة من شغل حقيقي" data-en="Ready solutions from real work">حلول جاهزة من شغل حقيقي</h2>
+  <p class="lead" data-ar="كل مشروع بينفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه، مش مجرد بوت بيرد كلام." data-en="Each project completes real steps, from the message to logging and alerts, not just a bot that replies.">كل مشروع بينفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه، مش مجرد بوت بيرد كلام.</p>
+  <div class="show"><div class="pl" id="pl" role="tablist"></div><div id="pd"></div></div>
+</div></div></section>
+
+<section id="services"><div class="wrap">
+  <h2 data-ar="إيه اللي أقدر أبنيه لشغلك؟" data-en="What can I build for you?">إيه اللي أقدر أبنيه لشغلك؟</h2>
+  <p class="lead" data-ar="نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل." data-en="We start from your daily work, then build the system that saves your team time and connects the tools you already use.">نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل.</p>
+  <div class="sv">
+    <div><i class="fa-solid fa-comments"></i><span><h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3><p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries and follow-ups.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة.</p></span></div>
+    <div><i class="fa-solid fa-link"></i><span><h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3><p data-ar="ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد." data-en="Connect sheets, email, booking systems and chat channels into one flow.">ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد.</p></span></div>
+    <div><i class="fa-solid fa-brain"></i><span><h3 data-ar="مساعد يفهم بياناتك" data-en="An assistant that knows your data">مساعد يفهم بياناتك</h3><p data-ar="الرد من منيو، سياسات، ملفات، أو قواعد شركتك، مش إجابات عامة." data-en="Replies from your menu, policies, files or company rules, not generic answers.">الرد من منيو، سياسات، ملفات، أو قواعد شركتك، مش إجابات عامة.</p></span></div>
+    <div><i class="fa-solid fa-gears"></i><span><h3 data-ar="أتمتة العمليات الداخلية" data-en="Internal process automation">أتمتة العمليات الداخلية</h3><p data-ar="إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر." data-en="Leave, approvals, alerts and auto-logging instead of repetitive manual work.">إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر.</p></span></div>
   </div>
-</div>
+</div></section>
 
+<section id="process" style="padding-top:0"><div class="wrap">
+  <h2 data-ar="من الفكرة لنظام شغال" data-en="From idea to a working system">من الفكرة لنظام شغال</h2>
+  <div class="pr">
+    <div><b>1</b><h3 data-ar="الفهم والتحليل" data-en="Understand">الفهم والتحليل</h3><p data-ar="نفهم شغلك اليومي وفين الوقت بيضيع." data-en="We learn your daily work and where time is lost.">نفهم شغلك اليومي وفين الوقت بيضيع.</p></div>
+    <div><b>2</b><h3 data-ar="التصميم" data-en="Design">التصميم</h3><p data-ar="نرسم المسار من الرسالة للقرار للتنفيذ." data-en="We map the path from message to decision to action.">نرسم المسار من الرسالة للقرار للتنفيذ.</p></div>
+    <div><b>3</b><h3 data-ar="البناء والربط" data-en="Build">البناء والربط</h3><p data-ar="نبني النظام ونربطه بأدواتك." data-en="We build it and connect it to your tools.">نبني النظام ونربطه بأدواتك.</p></div>
+    <div><b>4</b><h3 data-ar="التجربة والتسليم" data-en="Test & deliver">التجربة والتسليم</h3><p data-ar="نجرب سيناريوهات حقيقية ونسلّمك نظام شغال مع شرح بسيط." data-en="We test real scenarios and hand over a working system with a simple guide.">نجرب سيناريوهات حقيقية ونسلّمك نظام شغال مع شرح بسيط.</p></div>
+  </div>
+</div></section>
 
-          <!-- PROJECT 03: NEXUS HEALTH -->
-          <article class="project">
-            <div class="project-media">
-              <div class="browser">
-                <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div class="media-vid-tabs">
-                  <button type="button" class="media-vid-tab active" data-vid="booking" onclick="switchNexusVideo('booking', this)">
-                    <span data-ar="📅 عملية الحجز" data-en="📅 Booking flow">📅 عملية الحجز</span>
-                  </button>
-                  <button type="button" class="media-vid-tab" data-vid="image" onclick="switchNexusVideo('image', this)">
-                    <span data-ar="🖼️ تحليل الصور" data-en="🖼️ Image analysis">🖼️ تحليل الصور</span>
-                  </button>
-                </div>
-                <div id="nexus-media-shell" class="nexus-media-shell">
-                  <video id="nexus-demo-video" controls autoplay muted loop playsinline
-                    poster="assets/projects/nexushealth/nexus-full.png">
-                    <source id="nexus-demo-source" src="assets/projects/nexushealth/nexus booking.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                  </video>
-                </div>
-              </div>
-              <span class="media-label" id="nexus-media-label">Nexus Health — Booking Demo</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <span class="project-num">03 / مراكز طبية</span>
-                <h3>Nexus Health</h3>
-                <div class="project-sub" data-ar="أتمتة التواصل والحجز والمتابعة مع المرضى" data-en="Patient communication, booking & follow-up automation">أتمتة التواصل والحجز والمتابعة مع المرضى</div>
-                <p data-ar="المريض يبعت رسالة أو صورة أو صوت على واتساب/تليجرام → النظام يفهم الاستفسار أو الأعراض، يرد من بيانات العيادة، ولو محتاج حجز يجمع البيانات ويسجّلها ويبعت رابط الموعد — من غير تنسيق يدوي بين القنوات." data-en="A patient sends a text, image, or voice note on WhatsApp/Telegram → the system understands the inquiry or symptoms, replies from clinic knowledge, and if booking is needed it collects the data, logs it, and sends the appointment link — without manual coordination across channels.">المريض يبعت رسالة أو صورة أو صوت على واتساب/تليجرام → النظام يفهم الاستفسار أو الأعراض، يرد من بيانات العيادة، ولو محتاج حجز يجمع البيانات ويسجّلها ويبعت رابط الموعد — من غير تنسيق يدوي بين القنوات.</p>
-                <ul class="features">
-                  <li data-ar="يفهم النص والصورة والصوت ويرد بالعربي" data-en="Understands text, image & voice and replies in Arabic">يفهم النص والصورة والصوت ويرد بالعربي</li>
-                  <li data-ar="مسار استشارة ومسار حجز منفصلين" data-en="Separate triage and booking paths">مسار استشارة ومسار حجز منفصلين</li>
-                  <li data-ar="تسجيل في CRM + تأكيد الموعد عبر Cal.com" data-en="CRM logging + appointment confirm via Cal.com">تسجيل في CRM + تأكيد الموعد عبر Cal.com</li>
-                </ul>
-              </div>
-              <div>
-                <div class="tags">
-                  <span class="tag">n8n</span>
-                  <span class="tag">Gemini AI</span>
-                  <span class="tag">Pinecone / RAG</span>
-                  <span class="tag">Airtable</span>
-                  <span class="tag">Cal.com</span>
-                  <span class="tag">WhatsApp</span>
-                  <span class="tag">Telegram</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-blueprint" onclick="openModal('nexus-modal')">
-                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- PROJECT 04: ELITE DENTAL CLINIC -->
-          <article class="project">
-            <div class="project-media">
-              <div class="browser">
-                <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div class="media-vid-tabs">
-                  <button type="button" class="media-vid-tab active" data-vid="booking" onclick="switchEliteVideo('booking', this)">
-                    <span data-ar="📅 عملية الحجز" data-en="📅 Booking flow">📅 عملية الحجز</span>
-                  </button>
-                  <button type="button" class="media-vid-tab" data-vid="care" onclick="switchEliteVideo('care', this)">
-                    <span data-ar="🩺 رعاية المريض" data-en="🩺 Patient care">🩺 رعاية المريض</span>
-                  </button>
-                </div>
-                <div id="elite-media-shell" class="nexus-media-shell is-portrait">
-                  <video id="elite-demo-video" controls muted loop playsinline
-                    poster="assets/projects/elitedental/elite-full.png">
-                    <source id="elite-demo-source" src="assets/projects/elitedental/appointment-booking.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                  </video>
-                </div>
-              </div>
-              <span class="media-label" id="elite-media-label">Elite Dental — Booking Demo</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <span class="project-num">04 / عيادات أسنان</span>
-                <h3>Elite Dental Clinic</h3>
-                <div class="project-sub" data-ar="مساعد عيادة أسنان عبر تليجرام" data-en="Dental clinic assistant on Telegram">مساعد عيادة أسنان عبر تليجرام</div>
-                <p data-ar="المريض يسأل عن خدمة أو سعر أو حجز على تليجرام → البوت يرد من بيانات العيادة، يجمع الاسم والموبايل، ويثبّت الموعد — من غير رد يدوي على كل رسالة." data-en="A patient asks about a service, price, or booking on Telegram → the bot replies from clinic data, collects name and phone, and confirms the appointment — without manual replies to every message.">المريض يسأل عن خدمة أو سعر أو حجز على تليجرام → البوت يرد من بيانات العيادة، يجمع الاسم والموبايل، ويثبّت الموعد — من غير رد يدوي على كل رسالة.</p>
-                <ul class="features">
-                  <li data-ar="رد فوري عن الأسعار والخدمات باللهجة المصرية" data-en="Instant replies on prices & services in Egyptian Arabic">رد فوري عن الأسعار والخدمات باللهجة المصرية</li>
-                  <li data-ar="مسار حجز كامل مع تسجيل بيانات المريض" data-en="Full booking path with patient data capture">مسار حجز كامل مع تسجيل بيانات المريض</li>
-                  <li data-ar="توجيه ذكي للحالات الطارئة ونصيحة أولية" data-en="Smart triage for urgent cases with first-aid tips">توجيه ذكي للحالات الطارئة ونصيحة أولية</li>
-                </ul>
-              </div>
-              <div>
-                <div class="tags">
-                  <span class="tag">n8n</span>
-                  <span class="tag">Gemini AI</span>
-                  <span class="tag">Pinecone / RAG</span>
-                  <span class="tag">Telegram</span>
-                  <span class="tag">Google Drive</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-blueprint" onclick="openModal('elite-modal')">
-                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- PROJECT 05: PREAUTH MIND -->
-          <article class="project">
-            <div class="project-media">
-              <div class="browser">
-                <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div class="custom-chat-display" style="padding:0; background:#0a1018; display:flex; align-items:center; justify-content:center; min-height:320px;">
-                  <img src="assets/projects/preauth/preauth-full.png" alt="PreAuth Mind Workflow" style="width:100%; height:100%; max-height:420px; object-fit:contain;">
-                </div>
-              </div>
-              <span class="media-label">PreAuth Mind — Full Workflow</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <span class="project-num">05 / تأمين طبي</span>
-                <h3>PreAuth Mind</h3>
-                <div class="project-sub" data-ar="مراجعة طلبات الموافقة المسبقة تلقائيًا" data-en="Automated pre-authorization review">مراجعة طلبات الموافقة المسبقة تلقائيًا</div>
-                <p data-ar="طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات من المرفقات، يقارنها بقواعد التأمين الرسمية، ويصدر قراراً أو يطلب مراجعة بشرية عبر تليجرام مع تقرير PDF جاهز." data-en="A pre-auth request arrives by email → the system extracts data from attachments, checks it against official insurance rules, then issues a decision or requests human review via Telegram with a ready PDF report.">طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات من المرفقات، يقارنها بقواعد التأمين الرسمية، ويصدر قراراً أو يطلب مراجعة بشرية عبر تليجرام مع تقرير PDF جاهز.</p>
-                <ul class="features">
-                  <li data-ar="استخراج تلقائي من المرفقات (رقم قومي + دواء)" data-en="Auto-extract from attachments (National ID + drug)">استخراج تلقائي من المرفقات (رقم قومي + دواء)</li>
-                  <li data-ar="مراجعة ذكية وفق قواعد التأمين (RAG)" data-en="Smart review against insurance rules (RAG)">مراجعة ذكية وفق قواعد التأمين (RAG)</li>
-                  <li data-ar="مراجعة بشرية عبر تليجرام + تقرير PDF" data-en="Human review via Telegram + PDF report">مراجعة بشرية عبر تليجرام + تقرير PDF</li>
-                </ul>
-              </div>
-              <div>
-                <div class="tags">
-                  <span class="tag">n8n</span>
-                  <span class="tag">Gemini AI</span>
-                  <span class="tag">Pinecone / RAG</span>
-                  <span class="tag">Gmail</span>
-                  <span class="tag">Google Sheets</span>
-                  <span class="tag">Telegram</span>
-                  <span class="tag">PDF</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-blueprint" onclick="openModal('preauth-modal')">
-                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="kicker" data-ar="03 — الخدمات" data-en="03 — Services">03 — الخدمات</div><h2 class="section-title" data-ar="ما الذي أستطيع إنجازه؟" data-en="What I Can Build">ما الذي أستطيع إنجازه؟</h2></div>
-          <p class="section-desc" data-ar="نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل." data-en="We start by understanding your daily work, then build the system that saves your team's time and connects the tools you already use.">نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل.</p>
-        </div>
-        <div class="services">
-          <div class="service"><i class="fa-solid fa-comments"></i><h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3><p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries, and follow-ups.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة.</p></div>
-          <div class="service"><i class="fa-solid fa-link"></i><h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3><p data-ar="ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد." data-en="Connect sheets, email, booking systems, and chat channels into one flow.">ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد.</p></div>
-          <div class="service"><i class="fa-solid fa-brain"></i><h3 data-ar="مساعد يفهم بياناتك" data-en="Assistant that knows your data">مساعد يفهم بياناتك</h3><p data-ar="الرد من منيو، سياسات، ملفات، أو قواعد شركتك — مش إجابات عامة." data-en="Replies from your menu, policies, files, or company rules — not generic answers.">الرد من منيو، سياسات، ملفات، أو قواعد شركتك — مش إجابات عامة.</p></div>
-          <div class="service"><i class="fa-solid fa-gears"></i><h3 data-ar="أتمتة العمليات الداخلية" data-en="Internal process automation">أتمتة العمليات الداخلية</h3><p data-ar="إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر." data-en="Leave, approvals, alerts, and auto-logging instead of repetitive manual work.">إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="process">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="kicker" data-ar="04 — خطة العمل" data-en="04 — Process">04 — خطة العمل</div><h2 class="section-title" data-ar="طريقة العمل" data-en="Work Methodology">طريقة العمل</h2></div>
-          <p class="section-desc" data-ar="خطوات واضحة: من فهم المشكلة لحد تسليم نظام شغال وسهل المتابعة." data-en="Clear steps: from understanding the problem to delivering a working system that's easy to maintain.">خطوات واضحة: من فهم المشكلة لحد تسليم نظام شغال وسهل المتابعة.</p>
-        </div>
-        <div class="process">
-          <div class="step"><div class="step-no">01</div><h3 data-ar="الفهم والتحليل" data-en="Understand">الفهم والتحليل</h3><p data-ar="نفهم شغلك اليومي، فين الوقت بيضيع، وإيه الأدوات اللي بتستخدمها." data-en="We understand your daily work, where time is wasted, and which tools you already use.">نفهم شغلك اليومي، فين الوقت بيضيع، وإيه الأدوات اللي بتستخدمها.</p></div>
-          <div class="step"><div class="step-no">02</div><h3 data-ar="التصميم" data-en="Design">التصميم</h3><p data-ar="نرسم المسار: من الرسالة → للقرار → للتنفيذ، ونحدد إيه يتسجل فين." data-en="We map the path: message → decision → action, and where everything gets logged.">نرسم المسار: من الرسالة → للقرار → للتنفيذ، ونحدد إيه يتسجل فين.</p></div>
-          <div class="step"><div class="step-no">03</div><h3 data-ar="البناء والربط" data-en="Build">البناء والربط</h3><p data-ar="نبني النظام ونربطه بواتساب/تليجرام والجداول والإيميل اللي عندك." data-en="We build the system and connect it to your WhatsApp/Telegram, sheets, and email.">نبني النظام ونربطه بواتساب/تليجرام والجداول والإيميل اللي عندك.</p></div>
-          <div class="step"><div class="step-no">04</div><h3 data-ar="التجربة والتسليم" data-en="Test & deliver">التجربة والتسليم</h3><p data-ar="نجرب السيناريوهات الحقيقية معاك، ونسلّم نظام شغال مع شرح بسيط للمتابعة." data-en="We test real scenarios with you and deliver a working system with a simple handoff guide.">نجرب السيناريوهات الحقيقية معاك، ونسلّم نظام شغال مع شرح بسيط للمتابعة.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION CONTACT FORM (تم تعديل الزر وطريقة التواصل) -->
-    <section id="contact">
-      <div class="container cta-container">
-        <div class="cta">
-          <div class="kicker" data-ar="05 — التواصل" data-en="05 — Contact">05 — التواصل</div>
-          <h2 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let’s make it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h2>
-          <p data-ar="لو فريقك بيضيع وقت في ردود، طلبات، إجازات، أو حجوزات — ابعتلي التفاصيل وهنقترح أبسط حل يناسب شغلك." data-en="If your team spends time on replies, orders, leave, or bookings — send the details and we’ll suggest the simplest fit for your work.">لو فريقك بيضيع وقت في ردود، طلبات، إجازات، أو حجوزات — ابعتلي التفاصيل وهنقترح أبسط حل يناسب شغلك.</p>
-          <div class="cta-actions">
-            <a class="btn btn-secondary" href="mailto:asbany103@gmail.com"><i class="fa-brands fa-google"></i> Gmail</a>
-            <a class="btn btn-secondary" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <a class="btn btn-secondary" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
-          </div>
-        </div>
-
-        <form class="contact-form" onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label data-ar="الاسم" data-en="Your Name">الاسم</label>
-            <input type="text" id="form-name" required placeholder="أحمد عبد الحميد">
-          </div>
-          <div class="form-group">
-            <label data-ar="البريد الإلكتروني" data-en="Your Email">البريد الإلكتروني</label>
-            <input type="email" id="form-email" required placeholder="name@company.com">
-          </div>
-          <div class="form-group">
-            <label data-ar="تفاصيل المشروع أو العملية" data-en="Project Details">تفاصيل المشروع أو العملية</label>
-            <textarea id="form-details" rows="4" required placeholder="اكتب التفاصيل هنا..."></textarea>
-          </div>
-          <div class="send-label" data-ar="أرسل عبر:" data-en="Send via:">أرسل عبر:</div>
-          <div class="send-channels">
-            <button type="button" class="btn btn-gmail" onclick="sendContact('email')">
-              <i class="fa-brands fa-google"></i> Gmail
-            </button>
-            <button type="button" class="btn btn-whatsapp" onclick="sendContact('whatsapp')">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp
-            </button>
-            <button type="button" class="btn btn-telegram" onclick="sendContact('telegram')">
-              <i class="fa-brands fa-telegram"></i> Telegram
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Ahmed Abdelhamid · AI Automation & Integration</div>
-      <div class="socials">
-        <a href="mailto:asbany103@gmail.com" aria-label="Gmail"><i class="fa-regular fa-envelope"></i></a>
-        <a href="https://wa.me/201021804181" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-        <a href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- MODAL SYSTEM -->
-
-  <!-- ELITE DENTAL MODAL -->
-  <div id="elite-modal" class="modal">
-    <div class="modal-wrapper">
-      <span class="close-btn" onclick="closeModal('elite-modal')">&times;</span>
-      <div class="modal-tabs">
-        <button class="tab-btn active" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/elite-full.png', 'المخطط الهيكلي الشامل لمشروع Elite Dental Clinic', 'elite-caption', this)">🌐 المخطط الكامل</button>
-        <button class="tab-btn" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/vs-database.png', 'بناء قاعدة المعرفة من Google Drive إلى Pinecone (RAG Ingestion)', 'elite-caption', this)">📚 1. قاعدة المعرفة</button>
-        <button class="tab-btn" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/ai-agent.png', 'المساعد الذكي مع Memory و Vector Store (Telegram AI Agent)', 'elite-caption', this)">🧠 2. الـ AI Agent</button>
-      </div>
-      <div class="image-container">
-        <img id="elite-img" src="assets/projects/elitedental/elite-full.png" alt="Elite Dental Workflow Blueprint">
-      </div>
-      <div id="elite-caption" class="caption">المخطط الهيكلي الشامل لمشروع Elite Dental Clinic</div>
+<section id="contact" style="padding-top:0"><div class="wrap ct">
+  <div class="card">
+    <h2 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h2>
+    <p data-ar="لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك." data-en="If your team spends time on replies, orders, leave or bookings, send me the details and I'll suggest the simplest fit.">لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك.</p>
+    <div class="btns">
+      <a class="btn" href="mailto:asbany103@gmail.com"><i class="fa-regular fa-envelope"></i>Gmail</a>
+      <a class="btn" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+      <a class="btn" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i>Telegram</a>
+      <a class="btn" href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i>LinkedIn</a>
     </div>
   </div>
-
-  <!-- PREAUTH MIND MODAL -->
-  <div id="preauth-modal" class="modal">
-    <div class="modal-wrapper">
-      <span class="close-btn" onclick="closeModal('preauth-modal')">&times;</span>
-      <div class="modal-tabs">
-        <button class="tab-btn active" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/preauth-full.png', 'المخطط الهيكلي الشامل لمشروع PreAuth Mind', 'preauth-caption', this)">🌐 المخطط الكامل</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/trigger.png', 'استقبال الإيميل ورد المراجع على تليجرام', 'preauth-caption', this)">⚡ 1. الاستقبال</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/extract-data.png', 'استخراج الرقم القومي والتحقق من التكرار', 'preauth-caption', this)">📄 2. الاستخراج</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/knowledge-base.png', 'بناء قواعد التأمين في Pinecone (RAG)', 'preauth-caption', this)">📚 3. قاعدة المعرفة</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/ai-auditor.png', 'المراجع الذكي والقرار الطبي', 'preauth-caption', this)">🧠 4. المراجع الذكي</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/generate-approval.png', 'توليد PDF والرد على الإيميل', 'preauth-caption', this)">📑 5. إصدار الموافقة</button>
-        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/human-review.png', 'أزرار الموافقة والرفض على تليجرام', 'preauth-caption', this)">👤 6. المراجعة البشرية</button>
-      </div>
-      <div class="image-container">
-        <img id="preauth-img" src="assets/projects/preauth/preauth-full.png" alt="PreAuth Mind Workflow Blueprint">
-      </div>
-      <div id="preauth-caption" class="caption">المخطط الهيكلي الشامل لمشروع PreAuth Mind</div>
+  <form onsubmit="event.preventDefault()">
+    <label><span data-ar="الاسم" data-en="Name">الاسم</span><input id="fn" required placeholder="محمد أحمد"></label>
+    <label><span data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</span><input id="fe" type="email" required placeholder="aaaa@gmail.com"></label>
+    <label><span data-ar="تفاصيل المشروع أو العملية" data-en="Project details">تفاصيل المشروع أو العملية</span><textarea id="fd" rows="4" required placeholder="مثال: عايز بوت واتساب يرد على العملاء ويسجّل الطلبات تلقائيًا"></textarea></label>
+    <div><b style="font-size:.88rem" data-ar="ابعت عن طريق" data-en="Send via">ابعت عن طريق</b></div>
+    <div class="ch">
+      <button type="button" class="btn" style="background:#EA4335" onclick="send('email')"><i class="fa-regular fa-envelope"></i>Gmail</button>
+      <button type="button" class="btn" style="background:#25D366" onclick="send('wa')"><i class="fa-brands fa-whatsapp"></i>WhatsApp</button>
+      <button type="button" class="btn" style="background:#2AABEE" onclick="send('tg')"><i class="fa-brands fa-telegram"></i>Telegram</button>
     </div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap fi">
+  <div>© 2026 Ahmed Abdelhamid · AI Automation & Integration</div>
+  <div class="so">
+    <a href="mailto:asbany103@gmail.com" aria-label="Gmail"><i class="fa-regular fa-envelope"></i></a>
+    <a href="https://wa.me/201021804181" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
   </div>
+</div></footer>
 
-  <div id="krokett-modal" class="modal">
-    <div class="modal-wrapper">
-      <span class="close-btn" onclick="closeModal('krokett-modal')">&times;</span>
-      
-      <div class="modal-tabs">
-        <button class="tab-btn active" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/krokett-full.png', 'المخطط الهيكلي الشامل للمشروع (34 Nodes)', 'krokett-caption', this)">🌐 المخطط الكامل</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/Trigger.png', 'جزء استقبال الرسائل وفك التشفير الصوتي (Telegram Triggers)', 'krokett-caption', this)">⚡ 1. الاستقبال والصوت</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/message-routing.png', 'منطق توجيه المسارات والاستعلامات (Message Routing)', 'krokett-caption', this)">🔀 2. توجيه المسارات</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/order-processing.png', 'محرك الذكاء الاصطناعي وربط الـ RAG (Gemini + Pinecone)', 'krokett-caption', this)">🧠 3. محرك الذكاء الاصطناعي</button>
-        <button class="tab-btn" onclick="switchCanvas('krokett-img', 'assets/projects/krokett/message-confirmation.png', 'تسجيل الطلبات وإرسال التنبيهات (Google Sheets + Notifications)', 'krokett-caption', this)">✅ 4. التأكيد والتخزين</button>
-      </div>
+<dialog id="md"><div class="mb"><div class="mt" id="mt"></div><div class="mi"><img id="mimg" alt=""><p class="mi-cap" id="mcap"></p></div></div></dialog>
 
-      <div class="image-container">
-        <img id="krokett-img" src="assets/projects/krokett/krokett-full.png" alt="n8n Architecture Blueprint">
-      </div>
-      
-      <div id="krokett-caption" class="caption">المخطط الهيكلي الشامل للمشروع (34 Nodes)</div>
-    </div>
-  </div>
+<script>
+const A='assets/projects/';
+/* portrait:true = 9:16 → taller box. Paths must match files in assets/projects/<folder>/ */
+const P=[
+{n:'Krokett Assistant',d:'krokett/',c:['مطاعم ومبيعات','Restaurants & sales'],p:'krokett-full.png',
+ s:['مساعد طلبات المطاعم عبر تليجرام','Restaurant ordering assistant on Telegram'],
+ t:['العميل يبعت رسالة أو صوت على تليجرام ← النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا.','Customer sends a text or voice note on Telegram → the system reads the order from the menu, prices it, collects address and payment, then logs the order and alerts the kitchen.'],
+ f:[['يفهم الرسائل الصوتية والنصية بالعربية','Understands Arabic voice and text'],['يرد من منيو المطعم والأسعار الحقيقية','Replies from the real menu and prices'],['يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي','Logs the order and alerts the kitchen, no manual work']],
+ g:['34 Nodes','n8n','RAG / Pinecone','Gemini API','Telegram API'],
+ v:[{f:'krokett-mockup.mp4',portrait:true}],
+ b:[
+  {t:['المخطط الكامل','Full blueprint'],f:'krokett-full.png',d:['نظرة شاملة على مسار الطلب من أول رسالة لحد تسجيله وتنبيه المطبخ.','Full path from the first message to order logging and kitchen alert.']},
+  {t:['الاستقبال والصوت','Intake & voice'],f:'Trigger.png',d:['استقبال رسائل تليجرام وفك الرسائل الصوتية عشان النظام يفهم الطلب.','Receives Telegram messages and transcribes voice notes so the system understands the order.']},
+  {t:['توجيه المسارات','Routing'],f:'message-routing.png',d:['توجيه المحادثة: استفسار عن المنيو، طلب جديد، أو متابعة طلب سابق.','Routes the chat: menu inquiry, new order, or follow-up on an existing one.']},
+  {t:['محرك الذكاء الاصطناعي','AI engine'],f:'order-processing.png',d:['الذكاء الاصطناعي + قاعدة المعرفة (RAG) لقراءة المنيو والأسعار والرد بدقة.','AI + knowledge base (RAG) to read the menu and prices and reply accurately.']},
+  {t:['التأكيد والتخزين','Confirm & store'],f:'message-confirmation.png',d:['تسجيل الطلب في الجدول وإرسال تنبيه للمطبخ أو المسؤول.','Logs the order in the sheet and sends an alert to the kitchen or manager.']}
+ ]},
+{n:'HR Ninja Assistant',d:'hrninja/',c:['موارد بشرية','HR'],p:'hr-ninja-full.png',
+ s:['أتمتة إجازات الموظفين عبر واتساب وتليجرام','Employee leave automation on WhatsApp & Telegram'],
+ t:['الموظف يسأل عن رصيد إجازته أو يقدّم طلب ← النظام يراجع الرصيد، يبعت الطلب للـ HR، وبعد الموافقة أو الرفض يحدّث الجدول ويرد على الموظف تلقائيًا.','An employee asks about balance or submits a request → the system checks the balance, sends it to HR, then updates the sheet and replies after approval or rejection.'],
+ f:[['الاستعلام عن الرصيد برقم الهوية أو الكود','Check balance by ID or employee code'],['تحويل الطلب تلقائيًا لمسؤول الموارد البشرية','Route requests to HR automatically'],['تحديث الرصيد والرد بعد الموافقة أو الرفض','Update balance and reply after the decision']],
+ g:['n8n','Gemini AI','Google Sheets API','Evolution API (WhatsApp)','Telegram API'],
+ v:[{f:'hr-ninja-mockup.mp4',portrait:false}],
+ b:[
+  {t:['المخطط الكامل','Full blueprint'],f:'hr-ninja-full.png',d:['المسار الكامل: من رسالة الموظف لحد اعتماد HR وتحديث الرصيد.','Full path: from the employee message to HR approval and balance update.']},
+  {t:['الاستقبال والتوجيه','Intake & routing'],f:'trigger.png',d:['استقبال الرسائل من واتساب وتليجرام وتوجيهها حسب نوع الطلب.','Receives WhatsApp and Telegram messages and routes them by request type.']},
+  {t:['مسار الموظف و AI Agent','Employee & AI'],f:'emplyee-route.png',d:['الموظف يسأل عن الرصيد أو يقدّم طلب، والـ AI يراجع البيانات ويرد.','The employee checks balance or submits a request; the AI reviews data and replies.']},
+  {t:['مسار اعتماد HR والتحديث','HR approval'],f:'hr-route.png',d:['مسؤول HR يوافق أو يرفض، والنظام يحدّث الجدول ويرد على الموظف.','HR approves or rejects; the system updates the sheet and replies to the employee.']}
+ ]},
+{n:'Nexus Health',d:'nexushealth/',c:['مراكز طبية','Medical centers'],p:'nexus-full.png',
+ s:['أتمتة التواصل والحجز والمتابعة مع المرضى','Patient communication, booking & follow-up'],
+ t:['المريض يبعت رسالة أو صورة أو صوت ← النظام يفهم الاستفسار، يرد من بيانات العيادة، ولو محتاج حجز يجمع البيانات ويسجّلها ويبعت رابط الموعد، من غير تنسيق يدوي بين القنوات.','A patient sends text, image or voice → the system understands, replies from clinic knowledge, and if booking is needed collects the data, logs it and sends the appointment link.'],
+ f:[['يفهم النص والصورة والصوت ويرد بالعربي','Understands text, image and voice, replies in Arabic'],['مسار استشارة ومسار حجز منفصلين','Separate triage and booking paths'],['تسجيل في CRM وتأكيد الموعد عبر Cal.com','CRM logging and confirmation via Cal.com']],
+ g:['n8n','Gemini AI','Pinecone / RAG','Airtable','Cal.com','WhatsApp','Telegram'],
+ v:[{f:'nexus-mockup.mp4',l:['📅 عملية الحجز','📅 Booking'],portrait:false},{f:'nexus-image.mp4',l:['🖼️ تحليل الصور','🖼️ Image analysis'],portrait:true}],
+ b:[
+  {t:['المخطط الكامل','Full blueprint'],f:'nexus-full.png',d:['نظرة على نظام العيادة: استقبال، فهم، حجز، وتأكيد الموعد.','Clinic system overview: intake, understanding, booking, and confirmation.']},
+  {t:['الاستقبال والوسائط','Intake & media'],f:'trigger.png',d:['استقبال رسائل واتساب وتليجرام مع دعم النص والصورة والصوت.','Receives WhatsApp and Telegram messages with text, image, and voice support.']},
+  {t:['الذكاء الاصطناعي','AI core'],f:'ai-core.png',d:['طبقة الفهم وقاعدة معرفة العيادة (أسعار، فروع، مواعيد) عبر RAG.','Understanding layer and clinic knowledge base (prices, branches, hours) via RAG.']},
+  {t:['الحجز والردود','Booking & replies'],f:'booking-type.png',d:['مسار الحجز يجمع بيانات المريض ويرسل الرد على نفس القناة.','Booking path collects patient data and replies on the same channel.']},
+  {t:['تأكيد الموعد','Confirmation'],f:'booking-confirmation.png',d:['عند تأكيد الموعد يتحدث الـ CRM ويصل إشعار للإدارة.','When the slot is confirmed, CRM updates and management is notified.']}
+ ]},
+{n:'Elite Dental Clinic',d:'elitedental/',c:['عيادات أسنان','Dental clinics'],p:'elite-full.png',
+ s:['مساعد عيادة أسنان عبر تليجرام','Dental clinic assistant on Telegram'],
+ t:['المريض يسأل عن خدمة أو سعر أو حجز ← البوت يرد من بيانات العيادة، يجمع الاسم والموبايل، ويثبّت الموعد، من غير رد يدوي على كل رسالة.','A patient asks about a service, price or booking → the bot replies from clinic data, collects name and phone, and confirms the slot.'],
+ f:[['رد فوري عن الأسعار والخدمات باللهجة المصرية','Instant replies on prices and services in Egyptian Arabic'],['مسار حجز كامل مع تسجيل بيانات المريض','Full booking path with patient data capture'],['توجيه ذكي للحالات الطارئة ونصيحة أولية','Smart triage for urgent cases with first tips']],
+ g:['n8n','Gemini AI','Pinecone / RAG','Telegram','Google Drive'],
+ v:[{f:'appointment-booking.mp4',l:['📅 عملية الحجز','📅 Booking'],portrait:true},{f:'smart-patient-care.mp4',l:['🩺 رعاية المريض','🩺 Patient care'],portrait:true}],
+ b:[
+  {t:['المخطط الكامل','Full blueprint'],f:'elite-full.png',d:['مسار عيادة الأسنان من رسالة المريض لحد تثبيت الموعد.','Dental clinic path from the patient message to confirmed appointment.']},
+  {t:['قاعدة المعرفة','Knowledge base'],f:'vs-database.png',d:['تحميل بيانات العيادة (خدمات وأسعار) إلى قاعدة معرفة قابلة للبحث.','Loads clinic data (services and prices) into a searchable knowledge base.']},
+  {t:['الـ AI Agent','AI Agent'],f:'ai-agent.png',d:['المساعد يرد من المعرفة، يجمع بيانات الحجز، ويوجّه الحالات الطارئة.','The assistant replies from knowledge, collects booking data, and triages urgent cases.']}
+ ]},
+{n:'PreAuth Mind',d:'preauth/',c:['تأمين طبي','Medical insurance'],p:'preauth-full.png',
+ s:['مراجعة طلبات الموافقة المسبقة تلقائيًا','Automated pre-authorization review'],
+ t:['طلب الموافقة يوصل بالإيميل ← النظام يستخرج البيانات من المرفقات، يقارنها بقواعد التأمين، ويصدر قرارًا أو يطلب مراجعة بشرية عبر تليجرام مع تقرير PDF جاهز.','A request arrives by email → the system extracts data from attachments, checks it against insurance rules, then decides or asks for human review on Telegram with a ready PDF report.'],
+ f:[['استخراج تلقائي من المرفقات (رقم قومي ودواء)','Auto-extract from attachments (National ID, drug)'],['مراجعة ذكية وفق قواعد التأمين (RAG)','Smart review against insurance rules (RAG)'],['مراجعة بشرية عبر تليجرام وتقرير PDF','Human review on Telegram with a PDF report']],
+ g:['n8n','Gemini AI','Pinecone / RAG','Gmail','Google Sheets','Telegram','PDF'],
+ v:[],
+ b:[
+  {t:['المخطط الكامل','Full blueprint'],f:'preauth-full.png',d:['مسار الموافقة المسبقة من الإيميل لحد القرار أو المراجعة البشرية.','Pre-auth path from email to decision or human review.']},
+  {t:['الاستقبال','Intake'],f:'trigger.png',d:['استقبال طلب الموافقة من الإيميل وإشعار المراجع على تليجرام.','Receives the pre-auth request by email and notifies the reviewer on Telegram.']},
+  {t:['الاستخراج','Extraction'],f:'extract-data.png',d:['استخراج الرقم القومي وبيانات الدواء من المرفقات والتحقق من التكرار.','Extracts National ID and drug data from attachments and checks for duplicates.']},
+  {t:['قاعدة المعرفة','Knowledge base'],f:'knowledge-base.png',d:['قواعد التأمين والسياسات الطبية مخزّنة للبحث الذكي (RAG).','Insurance rules and medical policies stored for smart retrieval (RAG).']},
+  {t:['المراجع الذكي','AI auditor'],f:'ai-auditor.png',d:['مقارنة الطلب بقواعد التأمين وإصدار توصية بالموافقة أو الرفض.','Compares the request to insurance rules and recommends approve or reject.']},
+  {t:['إصدار الموافقة','Approval output'],f:'generate-approval.png',d:['توليد تقرير PDF والرد على الإيميل بنتيجة المراجعة.','Generates a PDF report and replies to the email with the review result.']},
+  {t:['المراجعة البشرية','Human review'],f:'human-review.png',d:['أزرار موافقة/رفض على تليجرام للحالات اللي محتاجة تدخل بشري.','Approve/reject buttons on Telegram for cases that need a human decision.']}
+ ]}
+];
+let lang='ar',cur=0,vid=0;
+const T=o=>o[lang==='ar'?0:1],$=id=>document.getElementById(id);
+function src(p,f){return encodeURI(A+p.d+f)}
 
-  <script>
-    /* 1. Modal Management */
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
-      document.body.style.overflow = "hidden";
-    }
+function list(){
+  $('pl').innerHTML=P.map((p,i)=>`<button class="pi" role="tab" aria-selected="${i===cur}" onclick="pick(${i})"><b>${p.n}</b><span>${T(p.c)}</span></button>`).join('');
+}
+function detail(){
+  const p=P[cur],v=p.v[vid];
+  let m, portrait=false;
+  if(!p.v.length){
+    m=`<img src="${src(p,p.p)}" alt="${p.n}" onerror="this.style.opacity=.3">`;
+  }else{
+    portrait=!!v.portrait;
+    m=(p.v.length>1?`<div class="vt">${p.v.map((x,i)=>`<button aria-pressed="${i===vid}" onclick="pickVid(${i})">${T(x.l)}</button>`).join('')}</div>`:'')+
+      `<video controls muted loop playsinline poster="${src(p,p.p)}" src="${src(p,v.f)}" onerror="console.warn('video missing',this.src)"></video>`;
+  }
+  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn sm" style="background:#fff" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
+}
+function pick(i){cur=i;vid=0;list();detail()}
+function pickVid(i){vid=i;detail()}
+function openM(i){
+  const p=P[i];
+  $('mt').innerHTML=p.b.map((b,k)=>`<button aria-pressed="${k===0}" onclick="mTab(${i},${k},this)">${T(b.t)}</button>`).join('')+'<button class="x" onclick="$(\'md\').close()" aria-label="Close">&times;</button>';
+  $('mimg').src=src(p,p.b[0].f);
+  $('mcap').textContent=T(p.b[0].d);
+  $('md').showModal();
+}
+function mTab(i,k,el){
+  const b=P[i].b[k];
+  $('mimg').src=src(P[i],b.f);
+  $('mcap').textContent=T(b.d);
+  el.parentElement.querySelectorAll('button:not(.x)').forEach(btn=>btn.setAttribute('aria-pressed',btn===el?'true':'false'));
+}
+$('md').addEventListener('click',e=>{if(e.target.id==='md')e.target.close()});
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-
-
-    function switchEliteVideo(kind, btn) {
-      var shell = document.getElementById('elite-media-shell');
-      var video = document.getElementById('elite-demo-video');
-      var source = document.getElementById('elite-demo-source');
-      var label = document.getElementById('elite-media-label');
-      if (!shell || !video || !source) return;
-      if (btn && btn.parentElement) {
-        btn.parentElement.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
-        btn.classList.add('active');
-      }
-      // both Elite videos are 9:16 portrait — keep tall box
-      shell.classList.add('is-portrait');
-      if (kind === 'care') {
-        source.src = 'assets/projects/elitedental/smart-patient-care.mp4';
-        if (label) label.textContent = 'Elite Dental — Patient Care Demo';
-      } else {
-        source.src = 'assets/projects/elitedental/appointment-booking.mp4';
-        if (label) label.textContent = 'Elite Dental — Booking Demo';
-      }
-      video.setAttribute('poster', 'assets/projects/elitedental/elite-full.png');
-      video.load();
-      video.play().catch(function(){});
-    }
-
-    function switchNexusVideo(kind, btn) {
-      var shell = document.getElementById('nexus-media-shell');
-      var video = document.getElementById('nexus-demo-video');
-      var source = document.getElementById('nexus-demo-source');
-      var label = document.getElementById('nexus-media-label');
-      if (!shell || !video || !source) return;
-      if (btn && btn.parentElement) {
-        btn.parentElement.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
-        btn.classList.add('active');
-      }
-      if (kind === 'image') {
-        source.src = 'assets/projects/nexushealth/nexus image process.mp4';
-        video.removeAttribute('poster');
-        shell.classList.add('is-portrait');
-        if (label) label.textContent = 'Nexus Health — Image Analysis Demo';
-      } else {
-        source.src = 'assets/projects/nexushealth/nexus booking.mp4';
-        video.setAttribute('poster', 'assets/projects/nexushealth/nexus-full.png');
-        shell.classList.remove('is-portrait');
-        if (label) label.textContent = 'Nexus Health — Booking Demo';
-      }
-      video.load();
-      video.play().catch(function(){});
-    }
-
-    function switchCanvas(imgId, imgSrc, captionText, captionId, btn) {
-      document.getElementById(imgId).src = imgSrc;
-      document.getElementById(captionId).innerText = captionText;
-      
-      let buttons = btn.parentElement.getElementsByClassName('tab-btn');
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.remove('active');
-      }
-      btn.classList.add('active');
-    }
-
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-        event.target.style.display = "none";
-        document.body.style.overflow = "auto";
-      }
-    };
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape") {
-        const activeModals = document.querySelectorAll('.modal');
-        activeModals.forEach(modal => {
-          if (modal.style.display === "block") {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-          }
-        });
-      }
-    });
-
-    /* 2. Language Toggle Function */
-    let currentLang = 'ar';
-    function toggleLanguage() {
-      currentLang = currentLang === 'ar' ? 'en' : 'ar';
-      document.documentElement.setAttribute('lang', currentLang);
-      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-      
-      document.getElementById('lang-text').innerText = currentLang === 'ar' ? 'EN' : 'عربي';
-
-      document.querySelectorAll('[data-ar]').forEach(el => {
-        el.innerHTML = el.getAttribute(`data-${currentLang}`);
-      });
-    }
-
-    /* 3. Form Handling — إرسال عبر إيميل / واتساب / تليجرام */
-    function sendContact(channel) {
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const details = document.getElementById('form-details').value.trim();
-
-      if (!name || !email || !details) {
-        alert(document.documentElement.lang === 'en'
-          ? 'Please fill in all fields first.'
-          : 'من فضلك املأ كل الحقول أولاً.');
-        return;
-      }
-
-      const message = `الاسم: ${name}\nالبريد: ${email}\nالتفاصيل:\n${details}`;
-      const subject = `طلب تواصل من ${name}`;
-
-      if (channel === 'email') {
-        window.location.href = `mailto:asbany103@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-      } else if (channel === 'whatsapp') {
-        window.open(`https://wa.me/201021804181?text=${encodeURIComponent(message)}`, '_blank');
-      } else if (channel === 'telegram') {
-        window.open(`https://t.me/ahmed_abdlhamid?text=${encodeURIComponent(message)}`, '_blank');
-      }
-    }
-  </script>
+function toggleLang(){
+  lang=lang==='ar'?'en':'ar';
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  $('lt').textContent=lang==='ar'?'EN':'عربي';
+  document.querySelectorAll('[data-ar]').forEach(e=>{
+    const v=e.getAttribute('data-'+lang);
+    if(v!=null) e.innerHTML=v;
+  });
+  $('fn').placeholder=lang==='ar'?'محمد أحمد':'Mohamed Ahmed';
+  $('fe').placeholder='aaaa@gmail.com';
+  $('fd').placeholder=lang==='ar'
+    ?'مثال: عايز بوت واتساب يرد على العملاء ويسجّل الطلبات تلقائيًا'
+    :'Example: I need a WhatsApp bot that replies to customers and logs orders automatically';
+  list();detail();
+}
+function send(ch){
+  const n=$('fn').value.trim(),e=$('fe').value.trim(),d=$('fd').value.trim();
+  if(!n||!e||!d){alert(lang==='en'?'Please fill in all fields first.':'من فضلك املأ كل الحقول أولًا.');return}
+  const m=`الاسم: ${n}\nالبريد: ${e}\nالتفاصيل:\n${d}`,q=encodeURIComponent(m);
+  if(ch==='email')location.href=`mailto:asbany103@gmail.com?subject=${encodeURIComponent('طلب تواصل من '+n)}&body=${q}`;
+  else if(ch==='wa')window.open(`https://wa.me/201021804181?text=${q}`,'_blank');
+  else window.open(`https://t.me/ahmed_abdlhamid?text=${q}`,'_blank');
+}
+list();detail();
+</script>
 </body>
 </html>
