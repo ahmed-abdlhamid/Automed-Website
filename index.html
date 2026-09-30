@@ -663,7 +663,7 @@
                 <div id="nexus-media-shell" class="nexus-media-shell">
                   <video id="nexus-demo-video" autoplay muted loop playsinline
                     poster="assets/projects/nexushealth/nexus-full.png">
-                    <source id="nexus-demo-source" src="assets/projects/nexushealth/nexus-mockup.mp4" type="video/mp4">
+                    <source id="nexus-demo-source" src="assets/projects/nexushealth/nexus booking.mp4" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
                   </video>
                 </div>
@@ -863,12 +863,12 @@
       document.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
       if (btn) btn.classList.add('active');
       if (kind === 'image') {
-        source.src = 'assets/projects/nexushealth/nexus-image.mp4';
+        source.src = 'assets/projects/nexushealth/nexus image process.mp4';
         video.removeAttribute('poster');
         shell.classList.add('is-portrait');
         if (label) label.textContent = 'Nexus Health — Image Analysis Demo';
       } else {
-        source.src = 'assets/projects/nexushealth/nexus-mockup.mp4';
+        source.src = 'assets/projects/nexushealth/nexus booking.mp4';
         video.setAttribute('poster', 'assets/projects/nexushealth/nexus-full.png');
         shell.classList.remove('is-portrait');
         if (label) label.textContent = 'Nexus Health — Booking Demo';
