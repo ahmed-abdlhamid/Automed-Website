@@ -701,31 +701,97 @@
             </div>
           </article>
 
-          <!-- PROJECT 04: PREAUTH MIND -->
+          <!-- PROJECT 04: ELITE DENTAL CLINIC -->
           <article class="project">
             <div class="project-media">
               <div class="browser">
                 <div class="browser-bar"><b></b><b></b><b></b></div>
-                <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
-                  <div style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 4px; width: 60%;"></div>
-                  <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 4px; width: 80%;"></div>
+                <div class="media-vid-tabs">
+                  <button type="button" class="media-vid-tab active" data-vid="booking" onclick="switchEliteVideo('booking', this)">
+                    <span data-ar="📅 عملية الحجز" data-en="📅 Booking flow">📅 عملية الحجز</span>
+                  </button>
+                  <button type="button" class="media-vid-tab" data-vid="care" onclick="switchEliteVideo('care', this)">
+                    <span data-ar="🩺 رعاية المريض" data-en="🩺 Patient care">🩺 رعاية المريض</span>
+                  </button>
+                </div>
+                <div id="elite-media-shell" class="nexus-media-shell is-portrait">
+                  <video id="elite-demo-video" controls muted loop playsinline
+                    poster="assets/projects/elitedental/elite-full.png">
+                    <source id="elite-demo-source" src="assets/projects/elitedental/appointment-booking.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
                 </div>
               </div>
-              <span class="media-label">PreAuth Mind — System Preview</span>
+              <span class="media-label" id="elite-media-label">Elite Dental — Booking Demo</span>
             </div>
             <div class="project-body">
               <div>
-                <span class="project-num">04 / تأمين طبي</span>
-                <h3>PreAuth Mind</h3>
-                <div class="project-sub" data-ar="مراجعة طلبات الموافقة المسبقة تلقائيًا" data-en="Automated pre-authorization review">مراجعة طلبات الموافقة المسبقة تلقائيًا</div>
-                <p data-ar="طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب." data-en="A pre-auth request arrives by email → the system extracts the data, checks it against insurance rules, and prepares a review decision with reasons — instead of manual review for every request.">طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات، يقارنها بقواعد التأمين، ويجهّز قرار المراجعة مع الأسباب — بدل مراجعة يدوية لكل طلب.</p>
+                <span class="project-num">04 / عيادات أسنان</span>
+                <h3>Elite Dental Clinic</h3>
+                <div class="project-sub" data-ar="مساعد عيادة أسنان عبر تليجرام" data-en="Dental clinic assistant on Telegram">مساعد عيادة أسنان عبر تليجرام</div>
+                <p data-ar="المريض يسأل عن خدمة أو سعر أو حجز على تليجرام → البوت يرد من بيانات العيادة، يجمع الاسم والموبايل، ويثبّت الموعد — من غير رد يدوي على كل رسالة." data-en="A patient asks about a service, price, or booking on Telegram → the bot replies from clinic data, collects name and phone, and confirms the appointment — without manual replies to every message.">المريض يسأل عن خدمة أو سعر أو حجز على تليجرام → البوت يرد من بيانات العيادة، يجمع الاسم والموبايل، ويثبّت الموعد — من غير رد يدوي على كل رسالة.</p>
                 <ul class="features">
-                  <li data-ar="قراءة الطلب من الإيميل واستخراج البيانات" data-en="Read the email and extract the data">قراءة الطلب من الإيميل واستخراج البيانات</li>
-                  <li data-ar="مقارنة الطلب بقواعد الموافقات الطبية" data-en="Compare against medical approval rules">مقارنة الطلب بقواعد الموافقات الطبية</li>
-                  <li data-ar="إخراج قرار واضح مع أسباب المراجعة" data-en="Clear decision output with review reasons">إخراج قرار واضح مع أسباب المراجعة</li>
+                  <li data-ar="رد فوري عن الأسعار والخدمات باللهجة المصرية" data-en="Instant replies on prices & services in Egyptian Arabic">رد فوري عن الأسعار والخدمات باللهجة المصرية</li>
+                  <li data-ar="مسار حجز كامل مع تسجيل بيانات المريض" data-en="Full booking path with patient data capture">مسار حجز كامل مع تسجيل بيانات المريض</li>
+                  <li data-ar="توجيه ذكي للحالات الطارئة ونصيحة أولية" data-en="Smart triage for urgent cases with first-aid tips">توجيه ذكي للحالات الطارئة ونصيحة أولية</li>
                 </ul>
               </div>
-              <div class="tags"><span class="tag">n8n</span><span class="tag">Multi-Agent</span><span class="tag">Vector Store</span><span class="tag">Gmail API</span></div>
+              <div>
+                <div class="tags">
+                  <span class="tag">n8n</span>
+                  <span class="tag">Gemini AI</span>
+                  <span class="tag">Pinecone / RAG</span>
+                  <span class="tag">Telegram</span>
+                  <span class="tag">Google Drive</span>
+                </div>
+                <div class="project-actions">
+                  <button class="btn-blueprint" onclick="openModal('elite-modal')">
+                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 05: PREAUTH MIND -->
+          <article class="project">
+            <div class="project-media">
+              <div class="browser">
+                <div class="browser-bar"><b></b><b></b><b></b></div>
+                <div class="custom-chat-display" style="padding:0; background:#0a1018; display:flex; align-items:center; justify-content:center; min-height:320px;">
+                  <img src="assets/projects/preauth/preauth-full.png" alt="PreAuth Mind Workflow" style="width:100%; height:100%; max-height:420px; object-fit:contain;">
+                </div>
+              </div>
+              <span class="media-label">PreAuth Mind — Full Workflow</span>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-num">05 / تأمين طبي</span>
+                <h3>PreAuth Mind</h3>
+                <div class="project-sub" data-ar="مراجعة طلبات الموافقة المسبقة تلقائيًا" data-en="Automated pre-authorization review">مراجعة طلبات الموافقة المسبقة تلقائيًا</div>
+                <p data-ar="طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات من المرفقات، يقارنها بقواعد التأمين الرسمية، ويصدر قراراً أو يطلب مراجعة بشرية عبر تليجرام مع تقرير PDF جاهز." data-en="A pre-auth request arrives by email → the system extracts data from attachments, checks it against official insurance rules, then issues a decision or requests human review via Telegram with a ready PDF report.">طلب الموافقة يوصل بالإيميل → النظام يستخرج البيانات من المرفقات، يقارنها بقواعد التأمين الرسمية، ويصدر قراراً أو يطلب مراجعة بشرية عبر تليجرام مع تقرير PDF جاهز.</p>
+                <ul class="features">
+                  <li data-ar="استخراج تلقائي من المرفقات (رقم قومي + دواء)" data-en="Auto-extract from attachments (National ID + drug)">استخراج تلقائي من المرفقات (رقم قومي + دواء)</li>
+                  <li data-ar="مراجعة ذكية وفق قواعد التأمين (RAG)" data-en="Smart review against insurance rules (RAG)">مراجعة ذكية وفق قواعد التأمين (RAG)</li>
+                  <li data-ar="مراجعة بشرية عبر تليجرام + تقرير PDF" data-en="Human review via Telegram + PDF report">مراجعة بشرية عبر تليجرام + تقرير PDF</li>
+                </ul>
+              </div>
+              <div>
+                <div class="tags">
+                  <span class="tag">n8n</span>
+                  <span class="tag">Gemini AI</span>
+                  <span class="tag">Pinecone / RAG</span>
+                  <span class="tag">Gmail</span>
+                  <span class="tag">Google Sheets</span>
+                  <span class="tag">Telegram</span>
+                  <span class="tag">PDF</span>
+                </div>
+                <div class="project-actions">
+                  <button class="btn-blueprint" onclick="openModal('preauth-modal')">
+                    <i class="fa-solid fa-sitemap"></i> <span data-ar="عرض تفاصيل النظام" data-en="View system details">عرض تفاصيل النظام</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -821,6 +887,43 @@
   </footer>
 
   <!-- MODAL SYSTEM -->
+
+  <!-- ELITE DENTAL MODAL -->
+  <div id="elite-modal" class="modal">
+    <div class="modal-wrapper">
+      <span class="close-btn" onclick="closeModal('elite-modal')">&times;</span>
+      <div class="modal-tabs">
+        <button class="tab-btn active" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/elite-full.png', 'المخطط الهيكلي الشامل لمشروع Elite Dental Clinic', 'elite-caption', this)">🌐 المخطط الكامل</button>
+        <button class="tab-btn" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/vs-database.png', 'بناء قاعدة المعرفة من Google Drive إلى Pinecone (RAG Ingestion)', 'elite-caption', this)">📚 1. قاعدة المعرفة</button>
+        <button class="tab-btn" onclick="switchCanvas('elite-img', 'assets/projects/elitedental/ai-agent.png', 'المساعد الذكي مع Memory و Vector Store (Telegram AI Agent)', 'elite-caption', this)">🧠 2. الـ AI Agent</button>
+      </div>
+      <div class="image-container">
+        <img id="elite-img" src="assets/projects/elitedental/elite-full.png" alt="Elite Dental Workflow Blueprint">
+      </div>
+      <div id="elite-caption" class="caption">المخطط الهيكلي الشامل لمشروع Elite Dental Clinic</div>
+    </div>
+  </div>
+
+  <!-- PREAUTH MIND MODAL -->
+  <div id="preauth-modal" class="modal">
+    <div class="modal-wrapper">
+      <span class="close-btn" onclick="closeModal('preauth-modal')">&times;</span>
+      <div class="modal-tabs">
+        <button class="tab-btn active" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/preauth-full.png', 'المخطط الهيكلي الشامل لمشروع PreAuth Mind', 'preauth-caption', this)">🌐 المخطط الكامل</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/trigger.png', 'استقبال الإيميل ورد المراجع على تليجرام', 'preauth-caption', this)">⚡ 1. الاستقبال</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/extract-data.png', 'استخراج الرقم القومي والتحقق من التكرار', 'preauth-caption', this)">📄 2. الاستخراج</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/knowledge-base.png', 'بناء قواعد التأمين في Pinecone (RAG)', 'preauth-caption', this)">📚 3. قاعدة المعرفة</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/ai-auditor.png', 'المراجع الذكي والقرار الطبي', 'preauth-caption', this)">🧠 4. المراجع الذكي</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/generate-approval.png', 'توليد PDF والرد على الإيميل', 'preauth-caption', this)">📑 5. إصدار الموافقة</button>
+        <button class="tab-btn" onclick="switchCanvas('preauth-img', 'assets/projects/preauth/human-review.png', 'أزرار الموافقة والرفض على تليجرام', 'preauth-caption', this)">👤 6. المراجعة البشرية</button>
+      </div>
+      <div class="image-container">
+        <img id="preauth-img" src="assets/projects/preauth/preauth-full.png" alt="PreAuth Mind Workflow Blueprint">
+      </div>
+      <div id="preauth-caption" class="caption">المخطط الهيكلي الشامل لمشروع PreAuth Mind</div>
+    </div>
+  </div>
+
   <div id="krokett-modal" class="modal">
     <div class="modal-wrapper">
       <span class="close-btn" onclick="closeModal('krokett-modal')">&times;</span>
@@ -854,14 +957,40 @@
     }
 
 
+    function switchEliteVideo(kind, btn) {
+      var shell = document.getElementById('elite-media-shell');
+      var video = document.getElementById('elite-demo-video');
+      var source = document.getElementById('elite-demo-source');
+      var label = document.getElementById('elite-media-label');
+      if (!shell || !video || !source) return;
+      if (btn && btn.parentElement) {
+        btn.parentElement.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
+        btn.classList.add('active');
+      }
+      // both Elite videos are 9:16 portrait — keep tall box
+      shell.classList.add('is-portrait');
+      if (kind === 'care') {
+        source.src = 'assets/projects/elitedental/smart-patient-care.mp4';
+        if (label) label.textContent = 'Elite Dental — Patient Care Demo';
+      } else {
+        source.src = 'assets/projects/elitedental/appointment-booking.mp4';
+        if (label) label.textContent = 'Elite Dental — Booking Demo';
+      }
+      video.setAttribute('poster', 'assets/projects/elitedental/elite-full.png');
+      video.load();
+      video.play().catch(function(){});
+    }
+
     function switchNexusVideo(kind, btn) {
       var shell = document.getElementById('nexus-media-shell');
       var video = document.getElementById('nexus-demo-video');
       var source = document.getElementById('nexus-demo-source');
       var label = document.getElementById('nexus-media-label');
       if (!shell || !video || !source) return;
-      document.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
-      if (btn) btn.classList.add('active');
+      if (btn && btn.parentElement) {
+        btn.parentElement.querySelectorAll('.media-vid-tab').forEach(function(t){ t.classList.remove('active'); });
+        btn.classList.add('active');
+      }
       if (kind === 'image') {
         source.src = 'assets/projects/nexushealth/nexus image process.mp4';
         video.removeAttribute('poster');
