@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-:root{--bg:#F4F6FA;--ink:#0F172A;--mut:#5B6478;--line:#DDE2EC;--blue:#2F5BFF;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px;--card:#fff;--nav-bg:rgba(255,255,255,.92);--sect-soft:#E6ECFF}
-html[data-theme=dark]{--bg:#0B1020;--ink:#E8EEF8;--mut:#9AA8C0;--line:#243049;--blue:#5B8CFF;--navy:#070B16;--navy2:#121C36;--ok:#2DD4A0;--card:#121A2E;--nav-bg:rgba(18,26,46,.92);--sect-soft:#1A2748}
+:root{--bg:#F4F6FA;--ink:#0F172A;--mut:#5B6478;--line:#DDE2EC;--blue:#2F5BFF;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px;--card:#fff;--nav-bg:rgba(255,255,255,.68);--sect-soft:#E6ECFF;--pn:#E3EAFF;--pn2:#F6F8FF;--pline:rgba(47,91,255,.16);--oks:#0B7A56;--grad:linear-gradient(135deg,#2F5BFF,#6B8CFF)}
+html[data-theme=dark]{--bg:#0B1020;--ink:#E8EEF8;--mut:#9AA8C0;--line:#243049;--blue:#5B8CFF;--navy:#070B16;--navy2:#121C36;--ok:#2DD4A0;--card:#121A2E;--nav-bg:rgba(18,26,46,.66);--sect-soft:#1A2748;--pn:#141E3A;--pn2:#1C2A52;--pline:rgba(255,255,255,.1);--oks:#B8F5D8}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -21,13 +21,16 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .wrap{width:min(1160px,calc(100% - 36px));margin-inline:auto}
 section{padding:96px 0}
-.kick{color:var(--blue);font-weight:600;font-size:.9rem;margin-bottom:6px}
+.sh{margin-bottom:40px}.sh h2{max-width:none}
+.slogan{color:var(--blue);font:600 1.15rem/1.6 "Readex Pro","IBM Plex Sans Arabic",sans-serif;margin-top:4px}
+.sh .lead{margin-top:8px}
 h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:18ch}
 .lead{color:var(--mut);max-width:52ch;margin-top:12px}
 
 /* nav — scrolls with the page (not fixed) */
 header{position:relative;z-index:50;padding:12px 0 0}
-.nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);border:1px solid var(--line);border-radius:16px}
+header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(47,91,255,.18),transparent),radial-gradient(34% 60% at 82% 25%,rgba(107,140,255,.2),transparent)}
+.nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--line);border-radius:16px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2F5BFF,#6B8CFF);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
 .links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:9px;color:var(--mut);font-weight:500;font-size:.92rem}.links a:hover{background:var(--bg);color:var(--ink)}
@@ -57,21 +60,25 @@ h1 .line{display:block}
 h1 em{font-style:normal;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* how-it-works hook card */
-.hook{background:var(--navy);border-radius:24px;padding:18px;box-shadow:0 28px 60px rgba(14,23,48,.22);max-width:440px;margin-inline:auto;width:100%}
-.hook-top{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px;color:#8FA9FF;font-size:.78rem;font-weight:600}
-.hook-dots{display:flex;gap:5px}.hook-dots b{width:8px;height:8px;border-radius:50%;background:#3a4a6a}
+.hook{background:var(--pn);border:1px solid var(--pline);border-radius:24px;padding:18px;box-shadow:0 24px 50px rgba(47,91,255,.12);max-width:440px;margin-inline:auto;width:100%;transform:rotate(-2.5deg);transition:transform .3s}
+.hook:hover{transform:rotate(0)}
+.hook-top{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px;color:var(--blue);font-size:.78rem;font-weight:600}
+.hook-dots{display:flex;gap:5px}.hook-dots b{width:8px;height:8px;border-radius:50%;background:var(--mut);opacity:.4}
 .hook-steps{display:flex;flex-direction:column;gap:10px}
-.hs{background:var(--navy2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:#EAF0FF}
+.hs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:var(--ink)}
 .hs i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:.95rem}
-.hs .ic1{background:rgba(47,91,255,.2);color:#8FA9FF}
-.hs .ic2{background:rgba(255,140,66,.18);color:#FFB87A}
-.hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
+.hs .ic1{background:rgba(47,91,255,.12);color:#2F5BFF}
+.hs .ic2{background:rgba(255,140,66,.16);color:#E0702A}
+.hs .ic3{background:rgba(20,184,122,.16);color:#0E9F6E}
+html[data-theme=dark] .hs .ic1{background:rgba(47,91,255,.2);color:#8FA9FF}
+html[data-theme=dark] .hs .ic2{background:rgba(255,140,66,.18);color:#FFB87A}
+html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .hs b{display:block;font-family:"Readex Pro";font-size:.95rem;margin-bottom:2px}
-.hs span{color:#9FB0D6;font-size:.8rem}
-.hs-result{background:rgba(20,184,122,.12);border:1px solid rgba(20,184,122,.35);border-radius:14px;padding:14px 16px;text-align:center;color:#7EE9BE}
-.hs-result-label{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:3px 12px;border-radius:99px;background:rgba(20,184,122,.22);color:#7EE9BE;margin-bottom:8px;font-family:"Readex Pro",sans-serif}
-.hs-result strong{display:block;font-size:1.02rem;margin-bottom:4px;color:#B8F5D8}
-.hs-result small{color:#9FB0D6;font-size:.78rem}
+.hs span{color:var(--mut);font-size:.8rem}
+.hs-result{background:rgba(20,184,122,.1);border:1px solid rgba(20,184,122,.35);border-radius:14px;padding:14px 16px;text-align:center;color:var(--oks)}
+.hs-result-label{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:3px 12px;border-radius:99px;background:rgba(20,184,122,.18);color:var(--oks);margin-bottom:8px;font-family:"Readex Pro",sans-serif}
+.hs-result strong{display:block;font-size:1.02rem;margin-bottom:4px;color:var(--oks)}
+.hs-result small{color:var(--mut);font-size:.78rem}
 @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* sectors */
@@ -82,30 +89,27 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webki
 .sect b{font-family:"Readex Pro";display:block}.sect span{color:var(--mut);font-size:.86rem}
 
 /* showcase */
-.dark{background:var(--navy);color:#EAF0FF;border-radius:36px;margin-inline:12px;padding:88px 0}
-.dark .lead{color:#9FB0D6}.dark .kick{color:#8FA9FF}
-.show{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:40px}
+.dark{background:var(--pn);border:1px solid var(--pline);color:var(--ink);border-radius:36px;margin-inline:12px;padding:88px 0}
+.show{display:grid;grid-template-columns:300px 1fr;gap:28px}
 .pl{display:flex;flex-direction:column;gap:6px}
-.pi{text-align:start;background:transparent;border:1px solid transparent;color:#9FB0D6;padding:14px 16px;border-radius:14px;transition:.2s}
-.pi b{display:block;font:600 1.05rem "Readex Pro";color:#fff}.pi span{font-size:.82rem}
-.pi:hover{background:rgba(255,255,255,.05)}
-.pi[aria-selected=true]{background:#fff;border-color:#fff}.pi[aria-selected=true] b{color:var(--ink)}.pi[aria-selected=true] span{color:var(--blue);font-weight:600}
-.pd{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--navy2);border-radius:26px;padding:22px;animation:in .4s}
-.media{background:var(--navy2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:340px;transition:min-height .25s ease}
+.pi{text-align:start;background:transparent;border:1px solid transparent;color:var(--mut);padding:14px 16px;border-radius:14px;transition:.2s}
+.pi b{display:block;font:600 1.05rem "Readex Pro";color:var(--ink)}.pi span{font-size:.82rem}
+.pi:hover{background:var(--pn2)}
+.pi[aria-selected=true]{background:var(--card);border-color:var(--blue);box-shadow:0 8px 20px rgba(47,91,255,.12)}.pi[aria-selected=true] span{color:var(--blue);font-weight:600}
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px;animation:in .4s}
+.media{background:var(--pn);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:340px;transition:min-height .25s ease}
 .media.is-portrait{min-height:480px}
-.vt{display:flex;gap:6px;padding:8px;background:#0a1128;flex-wrap:wrap}
-.vt button{border:1px solid rgba(255,255,255,.18);background:transparent;color:#B9C6E6;border-radius:99px;padding:4px 12px;font-size:.78rem}
+.vt{display:flex;gap:6px;padding:8px;background:var(--pn);flex-wrap:wrap}
+.vt button{border:1px solid var(--pline);background:var(--card);color:var(--mut);border-radius:99px;padding:4px 12px;font-size:.78rem}
 .vt button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
-/* خلفية navy بدل الأسود عشان مفيش حواف سودا ظاهرة */
-.media video,.media img{width:100%;flex:1;min-height:0;max-height:480px;object-fit:contain;background:var(--navy2);display:block}
+.media video,.media img{width:100%;flex:1;min-height:0;max-height:480px;object-fit:contain;background:var(--pn);display:block}
 .media.is-portrait video,.media.is-portrait img{max-height:560px}
-.pd h3{font-size:1.5rem;margin-bottom:2px;color:#fff}.pd .sub{color:#A8C0FF;font-weight:600;margin-bottom:12px}
-.pd p{color:#E2E8F5;font-size:.96rem;line-height:1.85}
-.pd ul{list-style:none;margin:14px 0;display:grid;gap:8px;font-size:.92rem;color:#F0F4FC}
-.pd li::before{content:"✓";color:#7EE9BE;font-weight:700;margin-inline-end:8px}
+.pd h3{font-size:1.5rem;margin-bottom:2px;color:var(--ink)}.pd .sub{color:var(--blue);font-weight:600;margin-bottom:12px}
+.pd p{color:var(--mut);font-size:.96rem;line-height:1.85}
+.pd ul{list-style:none;margin:14px 0;display:grid;gap:8px;font-size:.92rem;color:var(--ink)}
+.pd li::before{content:"✓";color:var(--ok);font-weight:700;margin-inline-end:8px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.tags span{font-size:.75rem;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.1);color:#E8EEF8;font-family:Inter,sans-serif}
-.pd{background:#1A2748}
+.tags span{font-size:.75rem;padding:3px 10px;border-radius:8px;background:var(--sect-soft);color:var(--ink);font-family:Inter,sans-serif}
 .mi-cap{color:#C9D5F2;font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
 
 /* services */
@@ -120,13 +124,21 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webki
 .pr div{position:relative;padding-inline-end:20px}
 .pr b{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:"Readex Pro";margin-bottom:14px;position:relative}
 .pr h3{font-size:1.02rem}.pr p{color:var(--mut);font-size:.88rem}
+.pr .me{display:block;margin-top:10px;padding:8px 12px;border-radius:10px;background:var(--sect-soft);font-size:.82rem;color:var(--ink)}
+.pr .me em{font-style:normal;color:var(--blue);font-weight:600}
 
 /* contact */
 .ct{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.card{background:var(--blue);color:#fff;border-radius:26px;padding:40px}
-.card h2{color:#fff;font-size:1.9rem;max-width:none}.card p{opacity:.88;margin:12px 0 22px}
-.card .btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
-.card .btns{display:flex;flex-wrap:wrap;gap:8px}
+.card{background:var(--grad);color:#fff;border-radius:26px;padding:36px}
+.card h3{font-size:1.7rem;line-height:1.45;color:#fff}.card p{margin:12px 0 22px;color:#fff;font-size:.95rem}
+.card .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ct-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--card);color:var(--ink);border:1px solid transparent;transition:transform .2s,box-shadow .2s;min-width:0}
+.ct-item:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,23,48,.18)}
+.ct-item i{width:30px;height:30px;flex:none;border-radius:9px;display:grid;place-items:center;font-size:.85rem;color:#fff}
+.ct-item span{display:block;min-width:0;line-height:1.35}
+.ct-item b{display:block;font:600 .84rem "Readex Pro"}
+.ct-item small{display:block;color:var(--mut);font-size:.74rem;direction:ltr;text-align:start;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ct-wa i{background:#25D366}.ct-mail i{background:#EA4335}.ct-tg i{background:#2AABEE}.ct-in i{background:#0A66C2}
 form{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:32px;display:grid;gap:14px}
 label{font-weight:600;font-size:.88rem;display:grid;gap:5px}
 input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg)}
@@ -148,7 +160,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 .mi img{max-width:100%;max-height:calc(100% - 56px);object-fit:contain}
 
 @media(max-width:940px){.links,.acts .pri{display:none}.hg,.show,.pd,.ct,.sv{grid-template-columns:1fr}.sect,.pr{grid-template-columns:1fr 1fr;gap:20px 0}.sect div:nth-child(3){border-inline-start:0}.pr::before{display:none}.pl{flex-direction:row;overflow-x:auto}.pi{flex:none}.dark{border-radius:24px}.media.is-portrait{min-height:420px}}
-@media(max-width:560px){section{padding:68px 0}.sect,.pr{grid-template-columns:1fr}.sect div{border-inline-start:0;border-top:1px solid var(--line)}.card,form{padding:24px}}
+@media(max-width:560px){.card .btns{grid-template-columns:1fr}.hook{transform:rotate(-1.5deg)}section{padding:68px 0}.sect,.pr{grid-template-columns:1fr}.sect div{border-inline-start:0;border-top:1px solid var(--line)}.card,form{padding:24px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.b,.done{opacity:1}}
 </style>
 </head>
@@ -156,7 +168,8 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 <header><div class="nav">
   <a href="#" class="brand"><span class="mark">A</span>Ahmed Abdelhamid</a>
   <nav class="links">
-    <a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+    <a href="#expertise" data-ar="الخبرة" data-en="Expertise">الخبرة</a>
+    <a href="#projects" data-ar="معرض الأعمال" data-en="Portfolio">معرض الأعمال</a>
     <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
     <a href="#process" data-ar="طريقة العمل" data-en="Process">طريقة العمل</a>
   </nav>
@@ -198,23 +211,35 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
   </div>
 </div></section>
 
-<div class="wrap"><div class="sect">
+<section id="expertise" style="padding:72px 0 24px"><div class="wrap">
+  <div class="sh">
+    <h2 data-ar="الخبرة" data-en="Expertise">الخبرة</h2>
+    <div class="slogan" data-ar="مجالات اشتغلت فيها" data-en="Fields I have worked in">مجالات اشتغلت فيها</div>
+    <p class="lead" data-ar="أنظمة اتبنت لقطاعات مختلفة ومربوطة بأدوات شغلها." data-en="Systems built for different sectors, connected to their own tools.">أنظمة اتبنت لقطاعات مختلفة ومربوطة بأدوات شغلها.</p>
+  </div>
+  <div class="sect">
   <div><i class="fa-solid fa-hospital"></i><b data-ar="مراكز وعيادات طبية" data-en="Clinics & medical centers">مراكز وعيادات طبية</b><span data-ar="حجز، تذكير، متابعة مرضى" data-en="Booking, reminders, follow-ups">حجز، تذكير، متابعة مرضى</span></div>
   <div><i class="fa-solid fa-utensils"></i><b data-ar="مطاعم ومبيعات" data-en="Restaurants & sales">مطاعم ومبيعات</b><span data-ar="طلبات صوتية، تأكيد، تنبيه المطبخ" data-en="Voice orders, confirmation, kitchen alerts">طلبات صوتية، تأكيد، تنبيه المطبخ</span></div>
   <div><i class="fa-solid fa-user-tie"></i><b data-ar="موارد بشرية" data-en="HR">موارد بشرية</b><span data-ar="إجازات، رصيد، اعتماد تلقائي" data-en="Leave, balance, auto-approval">إجازات، رصيد، اعتماد تلقائي</span></div>
   <div><i class="fa-solid fa-comments"></i><b data-ar="قنوات جاهزة" data-en="Ready channels">قنوات جاهزة</b><span>WhatsApp, Telegram, Gmail</span></div>
-</div></div>
+  </div>
+</div></section>
 
 <section id="projects" style="padding-top:96px"><div class="dark"><div class="wrap">
-  <div class="kick" data-ar="معرض الأعمال" data-en="Work showcase">معرض الأعمال</div>
-  <h2 data-ar="نماذج أنظمة أتمتة جاهزة" data-en="Ready automation system models">نماذج أنظمة أتمتة جاهزة</h2>
-  <p class="lead" data-ar="كل مشروع بينفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه، مش مجرد بوت بيرد كلام." data-en="Each project completes real steps, from the message to logging and alerts, not just a bot that replies.">كل مشروع بينفّذ خطوات كاملة: من الرسالة للتسجيل والتنبيه، مش مجرد بوت بيرد كلام.</p>
+  <div class="sh">
+    <h2 data-ar="معرض الأعمال" data-en="Portfolio">معرض الأعمال</h2>
+    <div class="slogan" data-ar="نماذج أنظمة أتمتة جاهزة" data-en="Ready automation system models">نماذج أنظمة أتمتة جاهزة</div>
+    <p class="lead" data-ar="شوف كل نظام وهو شغال، بالفيديو والمخطط." data-en="Watch each system in action, with video and diagram.">شوف كل نظام وهو شغال، بالفيديو والمخطط.</p>
+  </div>
   <div class="show"><div class="pl" id="pl" role="tablist"></div><div id="pd"></div></div>
 </div></div></section>
 
 <section id="services"><div class="wrap">
-  <h2 data-ar="إيه اللي أقدر أبنيه لشغلك؟" data-en="What can I build for you?">إيه اللي أقدر أبنيه لشغلك؟</h2>
-  <p class="lead" data-ar="نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل." data-en="We start from your daily work, then build the system that saves your team time and connects the tools you already use.">نبدأ من فهم شغلك اليومي، وبعدين نبني النظام اللي يوفّر وقت فريقك ويربط الأدوات اللي بتستخدمها بالفعل.</p>
+  <div class="sh">
+    <h2 data-ar="الخدمات" data-en="Services">الخدمات</h2>
+    <div class="slogan" data-ar="إيه اللي أقدر أبنيه لشغلك؟" data-en="What can I build for your business?">إيه اللي أقدر أبنيه لشغلك؟</div>
+    <p class="lead" data-ar="أربع خدمات بتوفّر وقت فريقك وتقلل الأخطاء." data-en="Four services that save your team time and cut mistakes.">أربع خدمات بتوفّر وقت فريقك وتقلل الأخطاء.</p>
+  </div>
   <div class="sv">
     <div><i class="fa-solid fa-comments"></i><span><h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3><p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries and follow-ups.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة.</p></span></div>
     <div><i class="fa-solid fa-link"></i><span><h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3><p data-ar="ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد." data-en="Connect sheets, email, booking systems and chat channels into one flow.">ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد.</p></span></div>
@@ -224,24 +249,34 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 </div></section>
 
 <section id="process" style="padding-top:0"><div class="wrap">
-  <h2 data-ar="من الفكرة لنظام شغال" data-en="From idea to a working system">من الفكرة لنظام شغال</h2>
+  <div class="sh">
+    <h2 data-ar="طريقة العمل" data-en="How we work">طريقة العمل</h2>
+    <div class="slogan" data-ar="من الفكرة لنظام شغال" data-en="From idea to a working system">من الفكرة لنظام شغال</div>
+    <p class="lead" data-ar="أربع خطوات بسيطة، ومش محتاج تفهم في التقنية." data-en="Four simple steps, no technical knowledge needed.">أربع خطوات بسيطة، ومش محتاج تفهم في التقنية.</p>
+  </div>
   <div class="pr">
-    <div><b>1</b><h3 data-ar="الفهم والتحليل" data-en="Understand">الفهم والتحليل</h3><p data-ar="نفهم شغلك اليومي وفين الوقت بيضيع." data-en="We learn your daily work and where time is lost.">نفهم شغلك اليومي وفين الوقت بيضيع.</p></div>
-    <div><b>2</b><h3 data-ar="التصميم" data-en="Design">التصميم</h3><p data-ar="نرسم المسار من الرسالة للقرار للتنفيذ." data-en="We map the path from message to decision to action.">نرسم المسار من الرسالة للقرار للتنفيذ.</p></div>
-    <div><b>3</b><h3 data-ar="البناء والربط" data-en="Build">البناء والربط</h3><p data-ar="نبني النظام ونربطه بأدواتك." data-en="We build it and connect it to your tools.">نبني النظام ونربطه بأدواتك.</p></div>
-    <div><b>4</b><h3 data-ar="التجربة والتسليم" data-en="Test & deliver">التجربة والتسليم</h3><p data-ar="نجرب سيناريوهات حقيقية ونسلّمك نظام شغال مع شرح بسيط." data-en="We test real scenarios and hand over a working system with a simple guide.">نجرب سيناريوهات حقيقية ونسلّمك نظام شغال مع شرح بسيط.</p></div>
+    <div><b>1</b><h3 data-ar="نفهم شغلك" data-en="We understand your work">نفهم شغلك</h3><p data-ar="بنقعد سوا ونحدد المهام اللي بتاخد وقت وبتتكرر كل يوم." data-en="We sit together and pick the tasks that take time and repeat every day.">بنقعد سوا ونحدد المهام اللي بتاخد وقت وبتتكرر كل يوم.</p><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تحكيلي شغلك اليومي بكلامك العادي." data-en="Tell me about your daily work in plain words.">تحكيلي شغلك اليومي بكلامك العادي.</span></span></div>
+    <div><b>2</b><h3 data-ar="نرسم الخطة" data-en="We draw the plan">نرسم الخطة</h3><p data-ar="بوضّحلك الرسالة هتوصل منين، والنظام هيعمل إيه، وإيه اللي هيتسجل فين." data-en="I show where messages arrive, what the system does, and what gets saved where.">بوضّحلك الرسالة هتوصل منين، والنظام هيعمل إيه، وإيه اللي هيتسجل فين.</p><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="توافق على الخطة أو تعدّل عليها." data-en="Approve the plan or adjust it.">توافق على الخطة أو تعدّل عليها.</span></span></div>
+    <div><b>3</b><h3 data-ar="نبني ونربط" data-en="We build and connect">نبني ونربط</h3><p data-ar="بنبني النظام ونربطه بواتساب أو تليجرام والجداول والإيميل اللي بتستخدمهم، من غير ما تغيّر أدواتك." data-en="We build the system and connect it to the WhatsApp, Telegram, sheets and email you already use.">بنبني النظام ونربطه بواتساب أو تليجرام والجداول والإيميل اللي بتستخدمهم، من غير ما تغيّر أدواتك.</p><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تديني صلاحية الوصول للأدوات." data-en="Give me access to your tools.">تديني صلاحية الوصول للأدوات.</span></span></div>
+    <div><b>4</b><h3 data-ar="نجرّب ونسلّم" data-en="We test and hand over">نجرّب ونسلّم</h3><p data-ar="بنجرّب النظام سوا على مواقف حقيقية، وبعد ما يشتغل تمام بسلّمهولك مع شرح بسيط." data-en="We test it together on real situations, then hand it over with a simple guide.">بنجرّب النظام سوا على مواقف حقيقية، وبعد ما يشتغل تمام بسلّمهولك مع شرح بسيط.</p><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تجرّب وتقولي ملاحظاتك." data-en="Try it and share your feedback.">تجرّب وتقولي ملاحظاتك.</span></span></div>
   </div>
 </div></section>
 
-<section id="contact" style="padding-top:0"><div class="wrap ct">
+<section id="contact" style="padding-top:0"><div class="wrap">
+  <div class="sh">
+    <h2 data-ar="التواصل" data-en="Contact">التواصل</h2>
+    <div class="slogan" data-ar="احكيلي عن شغلك" data-en="Tell me about your business">احكيلي عن شغلك</div>
+    <p class="lead" data-ar="ابعت التفاصيل وهرد عليك بأبسط حل مناسب." data-en="Send the details and I'll reply with the simplest fit.">ابعت التفاصيل وهرد عليك بأبسط حل مناسب.</p>
+  </div>
+  <div class="ct">
   <div class="card">
-    <h2 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h2>
+    <h3 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h3>
     <p data-ar="لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك." data-en="If your team spends time on replies, orders, leave or bookings, send me the details and I'll suggest the simplest fit.">لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك.</p>
     <div class="btns">
-      <a class="btn" href="mailto:asbany103@gmail.com"><i class="fa-regular fa-envelope"></i>Gmail</a>
-      <a class="btn" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
-      <a class="btn" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i>Telegram</a>
-      <a class="btn" href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i>LinkedIn</a>
+      <a class="ct-item ct-wa" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span><b>WhatsApp</b><small>+20 102 180 4181</small></span></a>
+      <a class="ct-item ct-tg" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i><span><b>Telegram</b><small>@ahmed_abdlhamid</small></span></a>
+      <a class="ct-item ct-mail" href="mailto:asbany103@gmail.com"><i class="fa-regular fa-envelope"></i><span><b>Gmail</b><small>asbany103@gmail.com</small></span></a>
+      <a class="ct-item ct-in" href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>ahmed-abdelhamid15</small></span></a>
     </div>
   </div>
   <form onsubmit="event.preventDefault()">
@@ -255,6 +290,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
       <button type="button" class="btn" style="background:#2AABEE" onclick="send('tg')"><i class="fa-brands fa-telegram"></i>Telegram</button>
     </div>
   </form>
+  </div>
 </div></section>
 </main>
 
@@ -356,7 +392,7 @@ function detail(){
     m=(p.v.length>1?`<div class="vt">${p.v.map((x,i)=>`<button aria-pressed="${i===vid}" onclick="pickVid(${i})">${T(x.l)}</button>`).join('')}</div>`:'')+
       `<video controls muted loop playsinline poster="${src(p,p.p)}" src="${src(p,v.f)}" onerror="console.warn('video missing',this.src)"></video>`;
   }
-  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn sm" style="background:#fff" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
+  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn sm" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
 }
 function pick(i){cur=i;vid=0;list();detail()}
 function pickVid(i){vid=i;detail()}
