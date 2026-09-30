@@ -39,6 +39,7 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 .btn:hover{transform:translateY(-2px)}
 .pri{background:var(--blue);border-color:var(--blue);color:#fff}.pri:hover{box-shadow:0 10px 24px rgba(47,91,255,.3)}
 .sm{padding:7px 12px;font-size:.82rem}
+.pri:active{transform:scale(.97);box-shadow:none}
 .btn-wa{border-color:#25D366;color:#128C7E}.btn-wa i{color:#25D366}
 .btn-wa:hover{background:#25D366;border-color:#25D366;color:#fff}.btn-wa:hover i{color:#fff}
 .btn-tg{border-color:#2AABEE;color:#229ED9}.btn-tg i{color:#2AABEE}
@@ -113,6 +114,20 @@ html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .mi-cap{color:#C9D5F2;font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
 
 /* services */
+.xp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.xc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column}
+.xi{width:44px;height:44px;border-radius:12px;background:var(--sect-soft);color:var(--blue);display:grid;place-items:center;font-size:1.1rem;margin-bottom:14px}
+.xc h3{font-size:1.15rem}.xc>p{color:var(--mut);font-size:.92rem;margin:4px 0 14px}
+.xc ul{list-style:none;display:grid;gap:7px;font-size:.9rem;margin-bottom:18px}
+.xc li::before{content:"✓";color:var(--ok);font-weight:700;margin-inline-end:8px}
+.pj{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--mut)}
+.pj div,.tools div{display:flex;flex-wrap:wrap;gap:6px}.pj div{margin-top:8px}
+.pj a{padding:4px 11px;border-radius:99px;background:var(--sect-soft);color:var(--blue);font-weight:600;transition:background .2s,color .2s}
+.pj a:hover{background:var(--blue);color:#fff}
+.tools{margin-top:16px;padding:18px 26px;border:1px solid var(--line);border-radius:20px;background:var(--card);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tools b{font:600 .95rem "Readex Pro"}
+.tools span{font:500 .78rem Inter,sans-serif;padding:4px 11px;border-radius:8px;background:var(--pn);color:var(--ink)}
+@media(max-width:940px){.xp{grid-template-columns:1fr}}
 .sv{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:40px}
 .sv div{display:flex;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
 .sv i{width:46px;height:46px;flex:none;border-radius:13px;background:var(--sect-soft);color:var(--blue);display:grid;place-items:center;font-size:1.1rem}
@@ -129,16 +144,14 @@ html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 
 /* contact */
 .ct{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.card{background:var(--grad);color:#fff;border-radius:26px;padding:36px}
-.card h3{font-size:1.7rem;line-height:1.45;color:#fff}.card p{margin:12px 0 22px;color:#fff;font-size:.95rem}
-.card .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ct-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--card);color:var(--ink);border:1px solid transparent;transition:transform .2s,box-shadow .2s;min-width:0}
-.ct-item:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,23,48,.18)}
-.ct-item i{width:30px;height:30px;flex:none;border-radius:9px;display:grid;place-items:center;font-size:.85rem;color:#fff}
-.ct-item span{display:block;min-width:0;line-height:1.35}
-.ct-item b{display:block;font:600 .84rem "Readex Pro"}
-.ct-item small{display:block;color:var(--mut);font-size:.74rem;direction:ltr;text-align:start;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ct-wa i{background:#25D366}.ct-mail i{background:#EA4335}.ct-tg i{background:#2AABEE}.ct-in i{background:#0A66C2}
+.card{background:var(--pn);border:1px solid var(--pline);color:var(--ink);border-radius:26px;padding:36px}
+.card h3{font-size:1.6rem;line-height:1.5;color:var(--ink)}.card p{margin:12px 0 20px;color:var(--mut);font-size:.95rem}
+.card .btns{display:flex;flex-direction:column;gap:8px}
+.ct-item{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:12px;background:var(--card);color:var(--ink);border:1px solid var(--line);font-size:.96rem;font-weight:500;transition:border-color .2s,transform .2s}
+.ct-item:hover{border-color:var(--blue);transform:translateY(-1px)}
+.ct-item i{width:20px;flex:none;text-align:center;font-size:1rem}
+.ct-item span{direction:ltr;unicode-bidi:isolate;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ct-wa i{color:#25D366}.ct-mail i{color:#EA4335}.ct-tg i{color:#2AABEE}.ct-in i{color:#0A66C2}
 form{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:32px;display:grid;gap:14px}
 label{font-weight:600;font-size:.88rem;display:grid;gap:5px}
 input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg)}
@@ -215,13 +228,47 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
   <div class="sh">
     <h2 data-ar="الخبرة" data-en="Expertise">الخبرة</h2>
     <div class="slogan" data-ar="مجالات اشتغلت فيها" data-en="Fields I have worked in">مجالات اشتغلت فيها</div>
-    <p class="lead" data-ar="أنظمة اتبنت لقطاعات مختلفة ومربوطة بأدوات شغلها." data-en="Systems built for different sectors, connected to their own tools.">أنظمة اتبنت لقطاعات مختلفة ومربوطة بأدوات شغلها.</p>
+    <p class="lead" data-ar="كل مجال فيه أمثلة حقيقية من أنظمة نفّذتها." data-en="Each field comes with real examples of systems I built.">كل مجال فيه أمثلة حقيقية من أنظمة نفّذتها.</p>
   </div>
-  <div class="sect">
-  <div><i class="fa-solid fa-hospital"></i><b data-ar="مراكز وعيادات طبية" data-en="Clinics & medical centers">مراكز وعيادات طبية</b><span data-ar="حجز، تذكير، متابعة مرضى" data-en="Booking, reminders, follow-ups">حجز، تذكير، متابعة مرضى</span></div>
-  <div><i class="fa-solid fa-utensils"></i><b data-ar="مطاعم ومبيعات" data-en="Restaurants & sales">مطاعم ومبيعات</b><span data-ar="طلبات صوتية، تأكيد، تنبيه المطبخ" data-en="Voice orders, confirmation, kitchen alerts">طلبات صوتية، تأكيد، تنبيه المطبخ</span></div>
-  <div><i class="fa-solid fa-user-tie"></i><b data-ar="موارد بشرية" data-en="HR">موارد بشرية</b><span data-ar="إجازات، رصيد، اعتماد تلقائي" data-en="Leave, balance, auto-approval">إجازات، رصيد، اعتماد تلقائي</span></div>
-  <div><i class="fa-solid fa-comments"></i><b data-ar="قنوات جاهزة" data-en="Ready channels">قنوات جاهزة</b><span>WhatsApp, Telegram, Gmail</span></div>
+  <div class="xp">
+    <article class="xc">
+      <i class="xi fa-solid fa-hospital"></i>
+      <h3 data-ar="العيادات والمراكز الطبية" data-en="Clinics & medical centers">العيادات والمراكز الطبية</h3>
+      <p data-ar="تواصل مع المرضى شغال طول اليوم من غير رد يدوي على كل رسالة." data-en="Patient communication that runs all day without replying to every message by hand.">تواصل مع المرضى شغال طول اليوم من غير رد يدوي على كل رسالة.</p>
+      <ul>
+        <li data-ar="الرد على الاستفسارات عن الخدمات والأسعار" data-en="Answer questions about services and prices">الرد على الاستفسارات عن الخدمات والأسعار</li>
+        <li data-ar="حجز المواعيد وتأكيدها وتسجيل بيانات المريض" data-en="Book and confirm appointments, record patient data">حجز المواعيد وتأكيدها وتسجيل بيانات المريض</li>
+        <li data-ar="فهم الصور والرسائل الصوتية من المريض" data-en="Understand images and voice notes from patients">فهم الصور والرسائل الصوتية من المريض</li>
+        <li data-ar="مراجعة طلبات الموافقة المسبقة للتأمين" data-en="Review insurance pre-authorization requests">مراجعة طلبات الموافقة المسبقة للتأمين</li>
+      </ul>
+      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(2)">Nexus Health</a><a href="#projects" onclick="pick(3)">Elite Dental</a><a href="#projects" onclick="pick(4)">PreAuth Mind</a></div></div>
+    </article>
+    <article class="xc">
+      <i class="xi fa-solid fa-utensils"></i>
+      <h3 data-ar="المطاعم والمبيعات" data-en="Restaurants & sales">المطاعم والمبيعات</h3>
+      <p data-ar="استلام الطلبات بالكتابة أو بالصوت وتجهيزها تلقائيًا." data-en="Take orders by text or voice and prepare them automatically.">استلام الطلبات بالكتابة أو بالصوت وتجهيزها تلقائيًا.</p>
+      <ul>
+        <li data-ar="فهم الطلب من المنيو وحساب السعر" data-en="Read the order from the menu and price it">فهم الطلب من المنيو وحساب السعر</li>
+        <li data-ar="جمع العنوان وطريقة الدفع من العميل" data-en="Collect the address and payment method">جمع العنوان وطريقة الدفع من العميل</li>
+        <li data-ar="تسجيل الطلب وتنبيه المطبخ فورًا" data-en="Log the order and alert the kitchen instantly">تسجيل الطلب وتنبيه المطبخ فورًا</li>
+      </ul>
+      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(0)">Krokett Assistant</a></div></div>
+    </article>
+    <article class="xc">
+      <i class="xi fa-solid fa-user-tie"></i>
+      <h3 data-ar="الموارد البشرية" data-en="Human resources">الموارد البشرية</h3>
+      <p data-ar="متابعة طلبات الموظفين من غير ورق ولا رسائل مبعثرة." data-en="Handle staff requests without paperwork or scattered messages.">متابعة طلبات الموظفين من غير ورق ولا رسائل مبعثرة.</p>
+      <ul>
+        <li data-ar="الاستعلام عن رصيد الإجازات" data-en="Check leave balances">الاستعلام عن رصيد الإجازات</li>
+        <li data-ar="تحويل الطلب لمسؤول الموارد البشرية" data-en="Route the request to the HR officer">تحويل الطلب لمسؤول الموارد البشرية</li>
+        <li data-ar="تحديث الرصيد والرد على الموظف بعد القرار" data-en="Update the balance and reply after the decision">تحديث الرصيد والرد على الموظف بعد القرار</li>
+      </ul>
+      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(1)">HR Ninja Assistant</a></div></div>
+    </article>
+  </div>
+  <div class="tools">
+    <b data-ar="قنوات وأدوات بربطها ببعض" data-en="Channels and tools I connect">قنوات وأدوات بربطها ببعض</b>
+    <div><span>WhatsApp</span><span>Telegram</span><span>Gmail</span><span>Google Sheets</span><span>Google Drive</span><span>Airtable</span><span>Cal.com</span><span>n8n</span><span>Gemini AI</span><span>Pinecone (RAG)</span></div>
   </div>
 </div></section>
 
@@ -273,10 +320,10 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
     <h3 data-ar="عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده." data-en="Got work that repeats every day? Let it run on its own.">عندك شغل بيتكرر كل يوم؟ خلّيه يشتغل لوحده.</h3>
     <p data-ar="لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك." data-en="If your team spends time on replies, orders, leave or bookings, send me the details and I'll suggest the simplest fit.">لو فريقك بيضيع وقت في ردود أو طلبات أو إجازات أو حجوزات، ابعتلي التفاصيل وهقترح أبسط حل يناسب شغلك.</p>
     <div class="btns">
-      <a class="ct-item ct-wa" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span><b>WhatsApp</b><small>+20 102 180 4181</small></span></a>
-      <a class="ct-item ct-tg" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i><span><b>Telegram</b><small>@ahmed_abdlhamid</small></span></a>
-      <a class="ct-item ct-mail" href="mailto:asbany103@gmail.com"><i class="fa-regular fa-envelope"></i><span><b>Gmail</b><small>asbany103@gmail.com</small></span></a>
-      <a class="ct-item ct-in" href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>ahmed-abdelhamid15</small></span></a>
+      <a class="ct-item ct-wa" href="https://wa.me/201021804181" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>+20 102 180 4181</span></a>
+      <a class="ct-item ct-tg" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i><span>@ahmed_abdlhamid</span></a>
+      <a class="ct-item ct-mail" href="mailto:asbany103@gmail.com" aria-label="Gmail"><i class="fa-regular fa-envelope"></i><span>asbany103@gmail.com</span></a>
+      <a class="ct-item ct-in" href="https://www.linkedin.com/in/ahmed-abdlhamid" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i><span>ahmed-abdlhamid</span></a>
     </div>
   </div>
   <form onsubmit="event.preventDefault()">
@@ -300,7 +347,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
     <a href="mailto:asbany103@gmail.com" aria-label="Gmail"><i class="fa-regular fa-envelope"></i></a>
     <a href="https://wa.me/201021804181" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <a href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-    <a href="https://www.linkedin.com/in/ahmed-abdelhamid15" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.linkedin.com/in/ahmed-abdlhamid" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
   </div>
 </div></footer>
 
@@ -392,7 +439,7 @@ function detail(){
     m=(p.v.length>1?`<div class="vt">${p.v.map((x,i)=>`<button aria-pressed="${i===vid}" onclick="pickVid(${i})">${T(x.l)}</button>`).join('')}</div>`:'')+
       `<video controls muted loop playsinline poster="${src(p,p.p)}" src="${src(p,v.f)}" onerror="console.warn('video missing',this.src)"></video>`;
   }
-  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn sm" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
+  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn pri" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
 }
 function pick(i){cur=i;vid=0;list();detail()}
 function pickVid(i){vid=i;detail()}
