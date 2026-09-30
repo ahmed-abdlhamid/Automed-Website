@@ -38,7 +38,7 @@ You can check out the live version of the portfolio here:
 
 * **Portfolio / Website:** [portfolio-ten-ashen-evq2zrjl14.vercel.app](https://portfolio-ten-ashen-evq2zrjl14.vercel.app/)
 * **GitHub:** [@ahmed-abdlhamid](https://github.com/ahmed-abdlhamid)
-* **Telegram:**  [@ahmed_abdlhamid]
+* **Telegram:**  [@ahmed_abdlhamid](https://web.telegram.org/)
 * **Field:** AI Automation Engineering & Systems Integration
 
 ---
