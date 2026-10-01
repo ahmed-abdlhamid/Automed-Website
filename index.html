@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-:root{--bg:#F4F6FA;--ink:#0F172A;--mut:#5B6478;--line:#DDE2EC;--blue:#2F5BFF;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px;--card:#fff;--nav-bg:rgba(255,255,255,.68);--sect-soft:#E6ECFF;--pn:#E3EAFF;--pn2:#F6F8FF;--pline:rgba(47,91,255,.16);--oks:#0B7A56;--grad:linear-gradient(135deg,#2F5BFF,#6B8CFF)}
-html[data-theme=dark]{--bg:#0B1020;--ink:#E8EEF8;--mut:#9AA8C0;--line:#243049;--blue:#5B8CFF;--navy:#070B16;--navy2:#121C36;--ok:#2DD4A0;--card:#121A2E;--nav-bg:rgba(18,26,46,.66);--sect-soft:#1A2748;--pn:#141E3A;--pn2:#1C2A52;--pline:rgba(255,255,255,.1);--oks:#B8F5D8}
+:root{--bg:#F5F7FB;--ink:#0F172A;--mut:#5B6478;--line:#E2E7F0;--blue:#4A6FE8;--blue-strong:#3B5FE0;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px;--card:#fff;--nav-bg:rgba(255,255,255,.72);--sect-soft:#EEF2FC;--pn:#EEF2FA;--pn2:#F7F9FC;--pline:rgba(74,111,232,.14);--oks:#0B7A56;--grad:linear-gradient(135deg,#4A6FE8,#7B9BFF)}
+html[data-theme=dark]{--bg:#0B1020;--ink:#E8EEF8;--mut:#9AA8C0;--line:#243049;--blue:#7B9BFF;--blue-strong:#5B8CFF;--navy:#070B16;--navy2:#121C36;--ok:#2DD4A0;--card:#121A2E;--nav-bg:rgba(18,26,46,.66);--sect-soft:#1A2748;--pn:#151D32;--pn2:#1A243C;--pline:rgba(255,255,255,.1);--oks:#B8F5D8}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -22,22 +22,22 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 .wrap{width:min(1160px,calc(100% - 36px));margin-inline:auto}
 section{padding:96px 0}
 .sh{margin-bottom:40px}.sh h2{max-width:none}
-.slogan{color:var(--blue);font:600 1.15rem/1.6 "Readex Pro","IBM Plex Sans Arabic",sans-serif;margin-top:4px}
+.slogan{color:var(--blue-strong);font:600 1.15rem/1.6 "Readex Pro","IBM Plex Sans Arabic",sans-serif;margin-top:4px;opacity:.92}
 .sh .lead{margin-top:8px}
 h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:18ch}
 .lead{color:var(--mut);max-width:52ch;margin-top:12px}
 
 /* nav — scrolls with the page (not fixed) */
 header{position:relative;z-index:50;padding:12px 0 0}
-header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(47,91,255,.18),transparent),radial-gradient(34% 60% at 82% 25%,rgba(107,140,255,.2),transparent)}
+header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(74,111,232,.12),transparent),radial-gradient(34% 60% at 82% 25%,rgba(123,155,255,.14),transparent)}
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--line);border-radius:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
-.mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2F5BFF,#6B8CFF);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#4A6FE8,#7B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#4A6FE8,#7B9BFF);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
 .links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:9px;color:var(--mut);font-weight:500;font-size:.92rem}.links a:hover{background:var(--bg);color:var(--ink)}
 .acts{display:flex;gap:8px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
-.pri{background:var(--blue);border-color:var(--blue);color:#fff}.pri:hover{box-shadow:0 10px 24px rgba(47,91,255,.3)}
+.pri{background:var(--blue-strong);border-color:var(--blue-strong);color:#fff}.pri:hover{box-shadow:0 10px 24px rgba(59,95,224,.28)}
 .sm{padding:7px 12px;font-size:.82rem}
 .pri:active{transform:scale(.97);box-shadow:none}
 .btn-wa{border-color:#25D366;color:#128C7E}.btn-wa i{color:#25D366}
@@ -58,20 +58,20 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
 h1{font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1.15;font-weight:700;letter-spacing:-.5px;max-width:12ch}
 h1 .line{display:block}
-h1 em{font-style:normal;background:linear-gradient(90deg,#2F5BFF,#6B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 em{font-style:normal;background:linear-gradient(90deg,#4A6FE8,#7B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* how-it-works hook card */
-.hook{background:var(--pn);border:1px solid var(--pline);border-radius:24px;padding:18px;box-shadow:0 24px 50px rgba(47,91,255,.12);max-width:440px;margin-inline:auto;width:100%;transform:rotate(-2.5deg);transition:transform .3s}
+.hook{background:var(--pn);border:1px solid var(--pline);border-radius:24px;padding:18px;box-shadow:0 20px 44px rgba(74,111,232,.1);max-width:440px;margin-inline:auto;width:100%;transform:rotate(-2.5deg);transition:transform .3s}
 .hook:hover{transform:rotate(0)}
 .hook-top{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px;color:var(--blue);font-size:.78rem;font-weight:600}
 .hook-dots{display:flex;gap:5px}.hook-dots b{width:8px;height:8px;border-radius:50%;background:var(--mut);opacity:.4}
 .hook-steps{display:flex;flex-direction:column;gap:10px}
 .hs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:var(--ink)}
 .hs i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:.95rem}
-.hs .ic1{background:rgba(47,91,255,.12);color:#2F5BFF}
+.hs .ic1{background:rgba(74,111,232,.12);color:#4A6FE8}
 .hs .ic2{background:rgba(255,140,66,.16);color:#E0702A}
 .hs .ic3{background:rgba(20,184,122,.16);color:#0E9F6E}
-html[data-theme=dark] .hs .ic1{background:rgba(47,91,255,.2);color:#8FA9FF}
+html[data-theme=dark] .hs .ic1{background:rgba(74,111,232,.2);color:#8FA9FF}
 html[data-theme=dark] .hs .ic2{background:rgba(255,140,66,.18);color:#FFB87A}
 html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .hs b{display:block;font-family:"Readex Pro";font-size:.95rem;margin-bottom:2px}
@@ -97,7 +97,7 @@ html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .pi{text-align:start;background:transparent;border:1px solid transparent;color:var(--mut);padding:14px 16px;border-radius:14px;transition:.2s}
 .pi b{display:block;font:600 1.05rem "Readex Pro";color:var(--ink)}.pi span{font-size:.82rem}
 .pi:hover{background:var(--pn2)}
-.pi[aria-selected=true]{background:var(--card);border-color:var(--blue);box-shadow:0 8px 20px rgba(47,91,255,.12)}.pi[aria-selected=true] span{color:var(--blue);font-weight:600}
+.pi[aria-selected=true]{background:var(--card);border-color:var(--blue);box-shadow:0 8px 20px rgba(74,111,232,.1)}.pi[aria-selected=true] span{color:var(--blue);font-weight:600}
 .pd{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px;animation:in .4s}
 .media{background:var(--pn);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;height:520px}
 .vt{display:flex;gap:6px;padding:8px;background:var(--pn);flex-wrap:wrap}
@@ -110,7 +110,7 @@ html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .pd li::before{content:"✓";color:var(--ok);font-weight:700;margin-inline-end:8px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .tags span{font-size:.75rem;padding:3px 10px;border-radius:8px;background:var(--sect-soft);color:var(--ink);font-family:Inter,sans-serif}
-.mi-cap{color:#C9D5F2;font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
+.mi-cap{color:#D5DFF5;font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
 
 /* services */
 .xp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -222,7 +222,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
   <div class="sh">
     <h2 data-ar="الخبرة" data-en="Expertise">الخبرة</h2>
     <div class="slogan" data-ar="مجالات اشتغلت فيها" data-en="Fields I have worked in">مجالات اشتغلت فيها</div>
-    <p class="lead" data-ar="كل مجال فيه أمثلة حقيقية من أنظمة نفّذتها." data-en="Each field comes with real examples of systems I built.">كل مجال فيه أمثلة حقيقية من أنظمة نفّذتها.</p>
+    <p class="lead" data-ar="كل مجال فيه نماذج أنظمة صممتها وجربتها." data-en="Each field includes system models I designed and tested.">كل مجال فيه نماذج أنظمة صممتها وجربتها.</p>
   </div>
   <div class="xp">
     <article class="xc">
@@ -235,7 +235,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
         <li data-ar="فهم الصور والرسائل الصوتية من المريض" data-en="Understand images and voice notes from patients">فهم الصور والرسائل الصوتية من المريض</li>
         <li data-ar="مراجعة طلبات الموافقة المسبقة للتأمين" data-en="Review insurance pre-authorization requests">مراجعة طلبات الموافقة المسبقة للتأمين</li>
       </ul>
-      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(2)">Nexus Health</a><a href="#projects" onclick="pick(3)">Elite Dental</a><a href="#projects" onclick="pick(4)">PreAuth Mind</a></div></div>
+      <div class="pj"><span data-ar="نماذج من المجال" data-en="Models in this field">نماذج من المجال</span><div><a href="#projects" onclick="pick(2)">Nexus Health</a><a href="#projects" onclick="pick(3)">Elite Dental</a><a href="#projects" onclick="pick(4)">PreAuth Mind</a></div></div>
     </article>
     <article class="xc">
       <i class="xi fa-solid fa-utensils"></i>
@@ -246,7 +246,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
         <li data-ar="جمع العنوان وطريقة الدفع من العميل" data-en="Collect the address and payment method">جمع العنوان وطريقة الدفع من العميل</li>
         <li data-ar="تسجيل الطلب وتنبيه المطبخ فورًا" data-en="Log the order and alert the kitchen instantly">تسجيل الطلب وتنبيه المطبخ فورًا</li>
       </ul>
-      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(0)">Krokett Assistant</a></div></div>
+      <div class="pj"><span data-ar="نماذج من المجال" data-en="Models in this field">نماذج من المجال</span><div><a href="#projects" onclick="pick(0)">Krokett Assistant</a></div></div>
     </article>
     <article class="xc">
       <i class="xi fa-solid fa-user-tie"></i>
@@ -257,7 +257,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
         <li data-ar="تحويل الطلب لمسؤول الموارد البشرية" data-en="Route the request to the HR officer">تحويل الطلب لمسؤول الموارد البشرية</li>
         <li data-ar="تحديث الرصيد والرد على الموظف بعد القرار" data-en="Update the balance and reply after the decision">تحديث الرصيد والرد على الموظف بعد القرار</li>
       </ul>
-      <div class="pj"><span data-ar="أمثلة من شغلي" data-en="Examples">أمثلة من شغلي</span><div><a href="#projects" onclick="pick(1)">HR Ninja Assistant</a></div></div>
+      <div class="pj"><span data-ar="نماذج من المجال" data-en="Models in this field">نماذج من المجال</span><div><a href="#projects" onclick="pick(1)">HR Ninja Assistant</a></div></div>
     </article>
   </div>
   <div class="tools">
