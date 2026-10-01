@@ -285,7 +285,52 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 @media(max-width:940px){.links,.acts .pri{display:none}.hg,.show,.pd,.ct{grid-template-columns:1fr}.sect{grid-template-columns:1fr 1fr;gap:20px 0}.pr{grid-template-columns:1fr 1fr}.sect div:nth-child(3){border-inline-start:0}.pr::before{display:none}.pl{flex-direction:row;overflow-x:auto}.pi{flex:none}.dark{border-radius:24px}.media{height:460px}}
 @media(max-width:560px){.dark .wrap{padding-inline:16px}.hook{transform:rotate(-1.5deg)}section{padding:68px 0}.sect,.pr{grid-template-columns:1fr}.sect div{border-inline-start:0;border-top:1px solid var(--line)}.card,form{padding:24px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.b,.done{opacity:1}}
+
+/* ===== v5: reference look (dark teal hero, corner-accent cards, motion) ===== */
+.sh{text-align:center}.sh .lead{margin-inline:auto}
+/* hero panel */
+.hero{padding:20px 0 90px}
+.hero .hg{position:relative;width:min(1160px,calc(100% - 24px));padding:56px 52px 70px;border-radius:36px;color:#fff;background:radial-gradient(60% 80% at 85% 20%,rgba(42,155,146,.55),transparent),linear-gradient(135deg,#0A4A45,#0D5C56 65%,#0F6B63);box-shadow:0 30px 60px rgba(10,74,69,.25)}
+.hero .hg::after{content:"\2193";position:absolute;left:50%;bottom:-26px;margin-left:-26px;width:52px;height:52px;border-radius:50%;background:var(--bg);color:var(--teal);display:grid;place-items:center;font-size:1.3rem;font-weight:700;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.hero h1{color:#fff}html .hero h1 em{background:linear-gradient(90deg,#F5A623,#FFD28A);-webkit-background-clip:text;background-clip:text}
+.hero p{color:rgba(255,255,255,.82)}
+.hero .badge{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}.hero .badge i{background:#F5A623}
+.hero .btn-wa,.hero .btn-tg{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:#fff}
+.hero .btn-wa:hover,.hero .btn-tg:hover{background:rgba(255,255,255,.2);border-color:#fff;color:#fff}
+.hero .btn-wa i,.hero .btn-wa:hover i{color:#25D366}.hero .btn-tg i,.hero .btn-tg:hover i{color:#2AABEE}
+.stats{display:flex;gap:36px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18)}
+.stats b{display:block;font:700 1.9rem/1.1 "Readex Pro",sans-serif;color:#fff}.stats span{font-size:.8rem;color:rgba(255,255,255,.7)}
+.hook{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 24px 50px rgba(0,0,0,.2)}
+.hook-top{color:#fff}.hook-dots b{background:#fff}
+.hs-result{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff}
+.hs-result-label{background:rgba(245,166,35,.25);color:#FFD28A}.hs-result strong{color:#fff}.hs-result small{color:rgba(255,255,255,.75)}
+/* cards: thick corner accents like the reference */
+.xc,.svc-card,.pr>div,.ct form{position:relative;overflow:hidden;border-radius:22px;transition:transform .3s ease,box-shadow .3s ease}
+.xc::before,.svc-card::before,.pr>div::before,.ct form::before{content:"";position:absolute;inset:0 0 auto auto;width:60px;height:60px;border:0;border-top:4px solid var(--teal);border-right:4px solid var(--teal);border-top-right-radius:22px;background:none!important;opacity:1;transition:width .35s,height .35s,border-color .35s}
+.xc::after,.svc-card::after,.pr>div::after,.ct form::after{content:"";position:absolute;inset:auto auto 0 0;width:60px;height:60px;border-bottom:4px solid var(--teal);border-left:4px solid var(--teal);border-bottom-left-radius:22px;transition:width .35s,height .35s,border-color .35s;pointer-events:none}
+.xc:hover::before,.xc:hover::after,.svc-card:hover::before,.svc-card:hover::after,.pr>div:hover::before,.pr>div:hover::after{width:96px;height:96px;border-color:var(--orange)}
+.xc .xi,.xc:nth-child(n) .xi,.svc-ico,.svc-card:nth-child(n) .svc-ico,.pr b,.pr div:nth-child(n) b{background:linear-gradient(135deg,#2E8F83,#1B6F66)!important;box-shadow:0 10px 22px rgba(13,92,86,.25)!important;transition:transform .3s}
+.xc:hover .xi,.svc-card:hover .svc-ico,.pr>div:hover b{transform:rotate(-6deg) scale(1.08)}
+.tools{border-radius:22px}.tools span{transition:background .2s,color .2s}.tools span:hover{background:var(--teal);color:#fff}
+/* projects: dark teal section, glass list */
+.dark{background:linear-gradient(160deg,#126A62,#0B524C);border-color:transparent;color:#fff}
+.dark .sh h2{color:#fff}.dark .slogan{color:#FFD28A}.dark .lead{color:rgba(255,255,255,.8)}
+.pi{color:rgba(255,255,255,.72)}.pi b{color:#fff}.pi:hover{background:rgba(255,255,255,.1)}
+.pi[aria-selected=true]{background:var(--card);border-color:var(--orange);transform:translateX(-4px)}.pi[aria-selected=true] b{color:var(--ink)}.pi[aria-selected=true] span{color:var(--teal)}
+/* contact buttons: brand-colored logos */
+.ch .btn{background:var(--card);color:var(--ink);border:1px solid var(--line);padding:13px 16px}
+.ch .btn i{font-size:1.2rem}
+.ch-mail i{color:#EA4335}.ch-wa i{color:#25D366}.ch-tg i{color:#2AABEE}
+.ch-mail:hover{border-color:#EA4335;box-shadow:0 10px 22px rgba(234,67,53,.18)}.ch-wa:hover{border-color:#25D366;box-shadow:0 10px 22px rgba(37,211,102,.2)}.ch-tg:hover{border-color:#2AABEE;box-shadow:0 10px 22px rgba(42,171,238,.2)}
+.so a[aria-label=Gmail] i{color:#EA4335}.so a[aria-label=WhatsApp] i{color:#25D366}.so a[aria-label=Telegram] i{color:#2AABEE}.so a[aria-label=LinkedIn] i{color:#0A66C2}
+/* scroll reveal */
+html.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+html.js .rv.in{opacity:1;transform:none}
+@media(max-width:940px){.hero .hg{padding:36px 24px 60px}.stats{gap:24px}}
+@media(prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none}.hero .hg::after{animation:none}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <header><div class="nav">
@@ -317,6 +362,11 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
       <a class="btn pri" href="#projects" data-ar="شوف المشاريع ↓" data-en="See projects ↓">شوف المشاريع ↓</a>
       <a class="btn btn-wa" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
       <a class="btn btn-tg" href="https://t.me/ahmed_abdlhamid" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i>Telegram</a>
+    </div>
+    <div class="stats">
+      <div><b data-count="5">0</b><span data-ar="أنظمة منفّذة" data-en="Systems built">أنظمة منفّذة</span></div>
+      <div><b data-count="3">0</b><span data-ar="مجالات عمل" data-en="Sectors">مجالات عمل</span></div>
+      <div><b data-count="3">0</b><span data-ar="قنوات تواصل" data-en="Channels">قنوات تواصل</span></div>
     </div>
   </div>
   <div class="hook" aria-label="How it works">
@@ -457,9 +507,9 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
     <label><span data-ar="تفاصيل المشروع أو العملية" data-en="Project details">تفاصيل المشروع أو العملية</span><textarea id="fd" rows="4" required placeholder="مثال: عايز بوت واتساب يرد على العملاء ويسجّل الطلبات تلقائيًا"></textarea></label>
     <div><b style="font-size:.88rem" data-ar="ابعت عن طريق" data-en="Send via">ابعت عن طريق</b></div>
     <div class="ch">
-      <button type="button" class="btn" style="background:var(--teal)" onclick="send('email')"><i class="fa-regular fa-envelope"></i>Gmail</button>
-      <button type="button" class="btn" style="background:var(--orange);color:#0C1F1E" onclick="send('wa')"><i class="fa-brands fa-whatsapp"></i>WhatsApp</button>
-      <button type="button" class="btn" style="background:var(--teal2)" onclick="send('tg')"><i class="fa-brands fa-telegram"></i>Telegram</button>
+      <button type="button" class="btn ch-mail" onclick="send('email')"><i class="fa-solid fa-envelope"></i>Gmail</button>
+      <button type="button" class="btn ch-wa" onclick="send('wa')"><i class="fa-brands fa-whatsapp"></i>WhatsApp</button>
+      <button type="button" class="btn ch-tg" onclick="send('tg')"><i class="fa-brands fa-telegram"></i>Telegram</button>
     </div>
   </form>
   </div>
@@ -624,6 +674,13 @@ function send(ch){
   else window.open(`https://t.me/ahmed_abdlhamid?text=${q}`,'_blank');
 }
 list();detail();
+
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');setTimeout(function(){el.classList.remove('rv','in')},1100)})},{threshold:.15});
+  document.querySelectorAll('.sh,.xc,.svc-card,.pr>div,.tools,.show,.ct form').forEach(function(el){el.classList.add('rv');el.style.setProperty('--i',Array.prototype.indexOf.call(el.parentNode.children,el)%4);io.observe(el)});
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var t=+e.target.dataset.count,t0=performance.now();(function f(n){var k=Math.min((n-t0)/1200,1);e.target.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+})();
 </script>
 </body>
 </html>
