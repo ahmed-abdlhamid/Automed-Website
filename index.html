@@ -10,8 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-:root{--bg:#F5F7FB;--ink:#0F172A;--mut:#5B6478;--line:#E2E7F0;--blue:#4A6FE8;--blue-strong:#3B5FE0;--navy:#0E1730;--navy2:#16224A;--ok:#14B87A;--r:18px;--card:#fff;--nav-bg:rgba(255,255,255,.72);--sect-soft:#EEF2FC;--pn:#EEF2FA;--pn2:#F7F9FC;--pline:rgba(74,111,232,.14);--oks:#0B7A56;--grad:linear-gradient(135deg,#4A6FE8,#7B9BFF)}
-html[data-theme=dark]{--bg:#0B1020;--ink:#E8EEF8;--mut:#9AA8C0;--line:#243049;--blue:#7B9BFF;--blue-strong:#5B8CFF;--navy:#070B16;--navy2:#121C36;--ok:#2DD4A0;--card:#121A2E;--nav-bg:rgba(18,26,46,.66);--sect-soft:#1A2748;--pn:#151D32;--pn2:#1A243C;--pline:rgba(255,255,255,.1);--oks:#B8F5D8}
+:root{
+  --bg:#F6F5F2;--ink:#12131A;--mut:#5C6270;--line:#E6E3DC;
+  --blue:#5B6CFF;--blue-strong:#4F5FE8;--accent:#FF6B4A;--accent2:#FF8F6B;
+  --navy:#12131A;--navy2:#1C1E2A;--ok:#12B886;--r:18px;
+  --card:#FFFFFF;--nav-bg:rgba(255,255,255,.78);
+  --sect-soft:#F0EEFF;--pn:#F0EEFA;--pn2:#F8F7F4;
+  --pline:rgba(91,108,255,.14);--oks:#0B7A56;
+  --grad:linear-gradient(135deg,#5B6CFF,#8B7CFF);
+  --grad-warm:linear-gradient(135deg,#FF6B4A,#FF9A6C);
+}
+html[data-theme=dark]{
+  --bg:#0C0D12;--ink:#F0F1F5;--mut:#9AA0B0;--line:#2A2D3A;
+  --blue:#8B9BFF;--blue-strong:#7B8CFF;--accent:#FF7A5C;--accent2:#FFA07A;
+  --navy:#08090E;--navy2:#161822;--ok:#2DD4A0;
+  --card:#161822;--nav-bg:rgba(22,24,34,.75);
+  --sect-soft:#1E2030;--pn:#1A1C28;--pn2:#1E2030;
+  --pline:rgba(255,255,255,.1);--oks:#B8F5D8;
+  --grad:linear-gradient(135deg,#5B6CFF,#9B8CFF);
+  --grad-warm:linear-gradient(135deg,#FF6B4A,#FF9A6C);
+}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -29,15 +47,15 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:
 
 /* nav — scrolls with the page (not fixed) */
 header{position:relative;z-index:50;padding:12px 0 0}
-header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(74,111,232,.12),transparent),radial-gradient(34% 60% at 82% 25%,rgba(123,155,255,.14),transparent)}
+header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(91,108,255,.11),transparent),radial-gradient(34% 60% at 82% 25%,rgba(255,107,74,.1),transparent)}
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--line);border-radius:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#4A6FE8,#7B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
-.mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#4A6FE8,#7B9BFF);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;background:linear-gradient(90deg,#5B6CFF,#8B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mark{width:32px;height:32px;border-radius:9px;background:var(--grad-warm);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
 .links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:9px;color:var(--mut);font-weight:500;font-size:.92rem}.links a:hover{background:var(--bg);color:var(--ink)}
 .acts{display:flex;gap:8px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
-.pri{background:var(--blue-strong);border-color:var(--blue-strong);color:#fff}.pri:hover{box-shadow:0 10px 24px rgba(59,95,224,.28)}
+.pri{background:var(--accent);border-color:var(--accent);color:#fff}.pri:hover{box-shadow:0 12px 28px rgba(255,107,74,.35);background:var(--accent2);border-color:var(--accent2)}
 .sm{padding:7px 12px;font-size:.82rem}
 .pri:active{transform:scale(.97);box-shadow:none}
 .btn-wa{border-color:#25D366;color:#128C7E}.btn-wa i{color:#25D366}
@@ -58,7 +76,7 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
 h1{font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1.15;font-weight:700;letter-spacing:-.5px;max-width:12ch}
 h1 .line{display:block}
-h1 em{font-style:normal;background:linear-gradient(90deg,#4A6FE8,#7B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 em{font-style:normal;background:linear-gradient(90deg,#5B6CFF,#8B9BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* how-it-works hook card */
 .hook{background:var(--pn);border:1px solid var(--pline);border-radius:24px;padding:18px;box-shadow:0 20px 44px rgba(74,111,232,.1);max-width:440px;margin-inline:auto;width:100%;transform:rotate(-2.5deg);transition:transform .3s}
@@ -68,7 +86,7 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#4A6FE8,#7B9BFF);-webki
 .hook-steps{display:flex;flex-direction:column;gap:10px}
 .hs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:var(--ink)}
 .hs i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:.95rem}
-.hs .ic1{background:rgba(74,111,232,.12);color:#4A6FE8}
+.hs .ic1{background:rgba(74,111,232,.12);color:#5B6CFF}
 .hs .ic2{background:rgba(255,140,66,.16);color:#E0702A}
 .hs .ic3{background:rgba(20,184,122,.16);color:#0E9F6E}
 html[data-theme=dark] .hs .ic1{background:rgba(74,111,232,.2);color:#8FA9FF}
@@ -127,10 +145,43 @@ html[data-theme=dark] .hs .ic3{background:rgba(20,184,122,.18);color:#7EE9BE}
 .tools b{font:600 .95rem "Readex Pro"}
 .tools span{font:500 .78rem Inter,sans-serif;padding:4px 11px;border-radius:8px;background:var(--pn);color:var(--ink)}
 @media(max-width:940px){.xp{grid-template-columns:1fr}}
-.sv{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:40px}
-.sv div{display:flex;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
-.sv i{width:46px;height:46px;flex:none;border-radius:13px;background:var(--sect-soft);color:var(--blue);display:grid;place-items:center;font-size:1.1rem}
-.sv h3{font-size:1.08rem}.sv p{color:var(--mut);font-size:.92rem}
+/* services — stylish bento cards */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.svc-card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;
+  padding:28px 26px 26px;overflow:hidden;transition:transform .28s ease,box-shadow .28s ease,border-color .28s;
+  display:flex;flex-direction:column;min-height:220px;
+}
+.svc-card::before{
+  content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;
+  background:var(--grad);opacity:.85;
+}
+.svc-card:nth-child(2)::before{background:var(--grad-warm)}
+.svc-card:nth-child(3)::before{background:linear-gradient(90deg,#12B886,#5B6CFF)}
+.svc-card:nth-child(4)::before{background:linear-gradient(90deg,#FF6B4A,#5B6CFF)}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(18,19,26,.1);border-color:transparent}
+html[data-theme=dark] .svc-card:hover{box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.svc-num{
+  position:absolute;top:18px;inset-inline-end:20px;
+  font:700 2.4rem/1 "Readex Pro",sans-serif;color:var(--ink);opacity:.06;letter-spacing:-1px;
+  pointer-events:none;user-select:none;
+}
+.svc-ico{
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  font-size:1.25rem;margin-bottom:16px;color:#fff;
+  background:var(--grad);box-shadow:0 10px 24px rgba(91,108,255,.25);
+}
+.svc-card:nth-child(2) .svc-ico{background:var(--grad-warm);box-shadow:0 10px 24px rgba(255,107,74,.28)}
+.svc-card:nth-child(3) .svc-ico{background:linear-gradient(135deg,#12B886,#2DD4A0);box-shadow:0 10px 24px rgba(18,184,134,.25)}
+.svc-card:nth-child(4) .svc-ico{background:linear-gradient(135deg,#5B6CFF,#FF6B4A);box-shadow:0 10px 24px rgba(91,108,255,.2)}
+.svc-card h3{font-size:1.15rem;margin-bottom:8px;letter-spacing:-.2px}
+.svc-card p{color:var(--mut);font-size:.92rem;line-height:1.75;flex:1}
+.svc-tag{
+  display:inline-flex;align-self:flex-start;margin-top:16px;padding:5px 12px;border-radius:99px;
+  font:600 .72rem Inter,sans-serif;background:var(--pn);color:var(--ink);letter-spacing:.02em;
+}
+@media(max-width:700px){.svc-grid{grid-template-columns:1fr}}
+
 
 /* process */
 .pr{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;position:relative}
@@ -166,7 +217,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 .mi{flex:1;min-height:0;background:#0a1128;border-radius:14px;overflow:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;gap:10px}
 .mi img{max-width:100%;max-height:calc(100% - 56px);object-fit:contain}
 
-@media(max-width:940px){.links,.acts .pri{display:none}.hg,.show,.pd,.ct,.sv{grid-template-columns:1fr}.sect,.pr{grid-template-columns:1fr 1fr;gap:20px 0}.sect div:nth-child(3){border-inline-start:0}.pr::before{display:none}.pl{flex-direction:row;overflow-x:auto}.pi{flex:none}.dark{border-radius:24px}.media{height:460px}}
+@media(max-width:940px){.links,.acts .pri{display:none}.hg,.show,.pd,.ct{grid-template-columns:1fr}.sect,.pr{grid-template-columns:1fr 1fr;gap:20px 0}.sect div:nth-child(3){border-inline-start:0}.pr::before{display:none}.pl{flex-direction:row;overflow-x:auto}.pi{flex:none}.dark{border-radius:24px}.media{height:460px}}
 @media(max-width:560px){.dark .wrap{padding-inline:16px}.hook{transform:rotate(-1.5deg)}section{padding:68px 0}.sect,.pr{grid-template-columns:1fr}.sect div{border-inline-start:0;border-top:1px solid var(--line)}.card,form{padding:24px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.b,.done{opacity:1}}
 </style>
@@ -281,11 +332,35 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
     <div class="slogan" data-ar="إيه اللي أقدر أبنيه لشغلك؟" data-en="What can I build for your business?">إيه اللي أقدر أبنيه لشغلك؟</div>
     <p class="lead" data-ar="أربع خدمات بتوفّر وقت فريقك وتقلل الأخطاء." data-en="Four services that save your team time and cut mistakes.">أربع خدمات بتوفّر وقت فريقك وتقلل الأخطاء.</p>
   </div>
-  <div class="sv">
-    <div><i class="fa-solid fa-comments"></i><span><h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3><p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries and follow-ups.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة.</p></span></div>
-    <div><i class="fa-solid fa-link"></i><span><h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3><p data-ar="ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد." data-en="Connect sheets, email, booking systems and chat channels into one flow.">ربط الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل في مسار واحد.</p></span></div>
-    <div><i class="fa-solid fa-brain"></i><span><h3 data-ar="مساعد يفهم بياناتك" data-en="An assistant that knows your data">مساعد يفهم بياناتك</h3><p data-ar="الرد من منيو، سياسات، ملفات، أو قواعد شركتك، مش إجابات عامة." data-en="Replies from your menu, policies, files or company rules, not generic answers.">الرد من منيو، سياسات، ملفات، أو قواعد شركتك، مش إجابات عامة.</p></span></div>
-    <div><i class="fa-solid fa-gears"></i><span><h3 data-ar="أتمتة العمليات الداخلية" data-en="Internal process automation">أتمتة العمليات الداخلية</h3><p data-ar="إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر." data-en="Leave, approvals, alerts and auto-logging instead of repetitive manual work.">إجازات، موافقات، تنبيهات، وتسجيل تلقائي بدل العمل اليدوي المتكرر.</p></span></div>
+  <div class="svc-grid">
+    <article class="svc-card">
+      <span class="svc-num">01</span>
+      <div class="svc-ico"><i class="fa-solid fa-comments"></i></div>
+      <h3 data-ar="بوتات واتساب وتليجرام" data-en="WhatsApp & Telegram bots">بوتات واتساب وتليجرام</h3>
+      <p data-ar="رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة — من غير ما الفريق يرد على كل رسالة." data-en="Automatic replies for customers and staff: orders, bookings, inquiries and follow-ups — without your team answering every message.">رد تلقائي على العملاء والموظفين: طلبات، حجوزات، استفسارات، ومتابعة — من غير ما الفريق يرد على كل رسالة.</p>
+      <span class="svc-tag">WhatsApp · Telegram</span>
+    </article>
+    <article class="svc-card">
+      <span class="svc-num">02</span>
+      <div class="svc-ico"><i class="fa-solid fa-link"></i></div>
+      <h3 data-ar="ربط أدوات شغلك" data-en="Connect your tools">ربط أدوات شغلك</h3>
+      <p data-ar="الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل تتكلم مع بعض في مسار واحد — من غير شغل يدوي بين البرامج." data-en="Sheets, email, booking systems and chat channels talk to each other in one flow — no manual work between apps.">الجداول، الإيميل، أنظمة الحجز، وقنوات التواصل تتكلم مع بعض في مسار واحد — من غير شغل يدوي بين البرامج.</p>
+      <span class="svc-tag">Sheets · Gmail · Cal.com</span>
+    </article>
+    <article class="svc-card">
+      <span class="svc-num">03</span>
+      <div class="svc-ico"><i class="fa-solid fa-brain"></i></div>
+      <h3 data-ar="مساعد يفهم بياناتك" data-en="An assistant that knows your data">مساعد يفهم بياناتك</h3>
+      <p data-ar="الرد من منيو المطعم، سياسات الشركة، أو ملفات العيادة — مش إجابات عامة من النت." data-en="Replies from your menu, company policies or clinic files — not generic answers from the web.">الرد من منيو المطعم، سياسات الشركة، أو ملفات العيادة — مش إجابات عامة من النت.</p>
+      <span class="svc-tag">RAG · Gemini · Pinecone</span>
+    </article>
+    <article class="svc-card">
+      <span class="svc-num">04</span>
+      <div class="svc-ico"><i class="fa-solid fa-gears"></i></div>
+      <h3 data-ar="أتمتة العمليات الداخلية" data-en="Internal process automation">أتمتة العمليات الداخلية</h3>
+      <p data-ar="إجازات، موافقات، تنبيهات، وتسجيل تلقائي — الشغل المتكرر يشتغل لوحده وفريقك يركز على المهم." data-en="Leave, approvals, alerts and auto-logging — repetitive work runs itself so your team focuses on what matters.">إجازات، موافقات، تنبيهات، وتسجيل تلقائي — الشغل المتكرر يشتغل لوحده وفريقك يركز على المهم.</p>
+      <span class="svc-tag">HR · Approvals · Alerts</span>
+    </article>
   </div>
 </div></section>
 
