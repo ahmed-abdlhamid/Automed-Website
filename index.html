@@ -108,7 +108,7 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:
 header{position:fixed;top:0;inset-inline:0;z-index:100;padding:0;pointer-events:none;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid var(--line)}
 header .nav{pointer-events:auto;border:0;border-radius:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;width:min(1160px,calc(100% - 24px));margin-inline:auto}
 header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(13,92,86,.12),transparent),radial-gradient(34% 60% at 82% 25%,rgba(253,146,56,.1),transparent)}
-.nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--line);border-radius:16px}
+.nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;-webkit-backdrop-filter:none;backdrop-filter:none}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset}
 .brand-mark{width:32px;height:32px;border-radius:9px;display:block;flex:none}
 .brand{display:flex;align-items:center;min-height:40px}
@@ -120,7 +120,13 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#FD9238}
 
 .mark{width:32px;height:32px;border-radius:9px;background:var(--grad-warm);color:#fff;display:grid;place-items:center;font-size:.95rem;-webkit-text-fill-color:#fff}
-.links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:9px;color:var(--mut);font-weight:500;font-size:.92rem}.links a:hover{background:var(--bg);color:var(--ink)}
+.links{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.links a{position:relative;padding:8px 12px;border-radius:0;color:var(--mut);font-weight:600;font-size:1.02rem;background:transparent;border:0;transition:color .2s}
+.links a:not(.nav-contact)::after{content:"";position:absolute;inset-inline:12px;bottom:4px;height:2px;background:var(--orange);border-radius:2px;transform:scaleX(0);transform-origin:center;transition:transform .22s ease}
+.links a:not(.nav-contact):hover{color:var(--ink);background:transparent}
+.links a:not(.nav-contact):hover::after{transform:scaleX(1)}
+.nav-end{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
+
 .acts{display:flex;gap:8px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
@@ -440,15 +446,17 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
   .menu-btn{display:grid}
   .desk-contact{display:none}
   .links{
-    display:none;position:absolute;top:calc(100% + 8px);inset-inline:0;
+    display:none;position:absolute;top:100%;inset-inline:0;
     flex-direction:column;gap:4px;padding:12px;
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    background:var(--card);border:1px solid var(--line);border-top:0;border-radius:0 0 16px 16px;
     box-shadow:0 16px 40px rgba(12,31,30,.14);z-index:60;
   }
   .links.open{display:flex}
   .links a{padding:12px 14px;border-radius:10px;font-size:1rem}
-  .nav-contact{display:block;background:var(--orange);color:#fff!important;text-align:center;font-weight:600;margin-top:4px}
+  .links a:not(.nav-contact)::after{display:none}
+  .nav-contact{display:block;background:var(--orange);color:#fff!important;text-align:center;font-weight:600;margin-top:4px;border-radius:12px}
   .nav{position:relative}
+  .nav-end{margin-inline-start:0}
 }
 
 </style>
@@ -467,10 +475,10 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <a href="#process" data-ar="رحلة التنفيذ" data-en="Delivery journey" onclick="closeMenu()">رحلة التنفيذ</a>
     <a class="nav-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me" onclick="closeMenu()">تواصل معي</a>
   </nav>
-  <div class="acts">
+  <div class="nav-end">
+    <a class="btn pri sm desk-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me">تواصل معي</a>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Theme"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
     <button class="btn sm" onclick="toggleLang()" aria-label="Language"><i class="fa-solid fa-globe"></i><span id="lt">EN</span></button>
-    <a class="btn pri sm desk-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me">تواصل معي</a>
     <button class="menu-btn" id="menu-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
       <i class="fa-solid fa-bars" id="menu-icon"></i>
     </button>
