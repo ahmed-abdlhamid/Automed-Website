@@ -105,10 +105,11 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:
 .lead{color:var(--mut);max-width:52ch;margin-top:12px}
 
 /* nav — scrolls with the page (not fixed) */
-header{position:fixed;top:0;inset-inline:0;z-index:100;padding:0;pointer-events:none;background:transparent;border-bottom:1px solid transparent;transition:background .25s,border-color .25s,-webkit-backdrop-filter .25s,backdrop-filter .25s}
+header{position:fixed;top:0;inset-inline:0;z-index:100;padding:0;pointer-events:none;background:var(--nav-bg);border-bottom:1px solid rgba(13,92,86,.10);-webkit-backdrop-filter:blur(16px) saturate(1.35);backdrop-filter:blur(16px) saturate(1.35);transition:background .25s,border-color .25s,backdrop-filter .25s}
 header .nav{pointer-events:auto;border:0;border-radius:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;width:min(1160px,calc(100% - 24px));margin-inline:auto}
-header.is-scrolled{background:rgba(245,248,247,.72);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom-color:var(--line)}
-html[data-theme=dark] header.is-scrolled{background:rgba(10,22,21,.72)}
+header.is-scrolled{background:var(--nav-bg);border-bottom-color:var(--line)}
+html[data-theme=dark] header{border-bottom-color:rgba(61,181,171,.12)}
+html[data-theme=dark] header.is-scrolled{background:var(--nav-bg)}
 header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(13,92,86,.12),transparent),radial-gradient(34% 60% at 82% 25%,rgba(253,146,56,.1),transparent)}
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;-webkit-backdrop-filter:none;backdrop-filter:none}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset}
@@ -160,56 +161,85 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   height:36px !important;
   min-height:36px !important;
   padding:0 !important;
+  margin:0 !important;
   border-radius:10px !important;
+  box-sizing:border-box !important;
   display:grid !important;
   place-items:center !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  outline:none !important;
   line-height:1 !important;
-  box-sizing:border-box !important;
-  transition:
-    background .22s ease,
-    border-color .22s ease,
-    color .22s ease,
-    transform .22s ease,
-    box-shadow .22s ease;
+  flex:0 0 36px !important;
+  transition:border-color .2s ease, box-shadow .2s ease, color .2s ease, background .2s ease;
+}
+
+/* Keep all three controls in one stable order in both Arabic and English. */
+.nav-end{
+  direction:ltr !important;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-inline-start:auto;
+  position:relative;
+  z-index:2;
 }
 
 /* Language */
 .lang-btn{
-  font:600 .76rem "Readex Pro","IBM Plex Sans Arabic",sans-serif !important;
+  width:36px !important;
+  min-width:36px !important;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 !important;
   border:1px solid var(--line) !important;
-  background:var(--card) !important;
+  border-radius:10px !important;
+  background:rgba(255,255,255,.18) !important;
   color:var(--ink) !important;
+  font:600 .78rem/1 "Readex Pro","IBM Plex Sans Arabic",sans-serif !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  box-shadow:none !important;
 }
 .lang-btn:hover{
-  background:#66735F !important;
-  border-color:#66735F !important;
-  color:#fff !important;
-  transform:translateY(-1px);
-  box-shadow:0 7px 18px rgba(102,115,95,.22);
+  background:rgba(255,255,255,.18) !important;
+  border-color:rgba(102,115,95,.62) !important;
+  color:var(--ink) !important;
+  box-shadow:0 0 0 1px rgba(102,115,95,.12), 0 0 12px rgba(102,115,95,.10) !important;
+  transform:none !important;
 }
 
 /* Dark mode */
 .theme-btn{
+  width:36px !important;
+  min-width:36px !important;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 !important;
   border:1px solid var(--line) !important;
-  background:var(--card) !important;
+  border-radius:10px !important;
+  background:rgba(255,255,255,.18) !important;
   color:var(--ink) !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  box-shadow:none !important;
 }
 .theme-btn i{
-  display:block;
+  display:block !important;
   width:1em;
   height:1em;
   line-height:1;
   text-align:center;
 }
 .theme-btn:hover{
-  background:#66735F !important;
-  border-color:#66735F !important;
-  color:#fff !important;
-  transform:translateY(-1px);
-  box-shadow:0 7px 18px rgba(102,115,95,.22);
+  background:rgba(255,255,255,.18) !important;
+  border-color:rgba(102,115,95,.62) !important;
+  color:var(--ink) !important;
+  box-shadow:0 0 0 1px rgba(102,115,95,.12), 0 0 12px rgba(102,115,95,.10) !important;
+  transform:none !important;
 }
 
-/* Contact: orange filled button, icon only on desktop */
+/* Contact: orange filled, icon only on desktop */
 .desk-contact{
   width:36px !important;
   min-width:36px !important;
@@ -228,12 +258,7 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   color:#fff !important;
   line-height:1 !important;
   box-shadow:0 4px 12px rgba(253,146,56,.16);
-  transition:
-    background .22s ease,
-    border-color .22s ease,
-    color .22s ease,
-    transform .22s ease,
-    box-shadow .22s ease;
+  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease,box-shadow .22s ease;
 }
 .desk-contact .contact-desktop-label{display:none !important}
 .desk-contact i{
@@ -253,25 +278,21 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   border:1px solid transparent;
   box-shadow:0 0 0 rgba(253,146,56,0);
   pointer-events:none;
-  transition:border-color .22s ease, box-shadow .22s ease;
+  transition:border-color .22s ease,box-shadow .22s ease;
 }
 .desk-contact:hover{
   background:#f59a3b !important;
   border-color:#f59a3b !important;
   color:#fff !important;
   transform:translateY(-1px);
-  box-shadow:
-    0 7px 20px rgba(253,146,56,.28),
-    0 0 18px rgba(253,146,56,.20);
+  box-shadow:0 7px 20px rgba(253,146,56,.28),0 0 18px rgba(253,146,56,.20);
 }
 .desk-contact:hover::before{
   border-color:rgba(253,146,56,.50);
-  box-shadow:
-    0 0 16px rgba(253,146,56,.28),
-    0 0 28px rgba(253,146,56,.12);
+  box-shadow:0 0 16px rgba(253,146,56,.28),0 0 28px rgba(253,146,56,.12);
 }
 
-/* Mobile contact: orange filled, centered, never wraps */
+/* Mobile contact remains a text CTA */
 @media(max-width:940px){
   .nav-contact{
     display:flex !important;
@@ -301,15 +322,12 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
     background:#f59a3b !important;
     border-color:#f59a3b !important;
     color:#fff !important;
-    box-shadow:
-      0 8px 24px rgba(253,146,56,.26),
-      0 0 18px rgba(253,146,56,.16);
+    box-shadow:0 8px 24px rgba(253,146,56,.26),0 0 18px rgba(253,146,56,.16);
   }
 }
 
-/* Keep mobile menu contact visible */
 @media(max-width:940px){
-  header, header .nav{overflow:visible}
+  header,header .nav{overflow:visible}
   #nav-links.open .nav-contact{
     display:flex !important;
     visibility:visible !important;
@@ -682,12 +700,12 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <a href="#projects" data-ar="معرض الأعمال" data-en="Portfolio" onclick="closeMenu()">معرض الأعمال</a>
     <a href="#services" data-nav-target="services" data-ar="الخدمات" data-en="Services" onclick="closeMenu()">الخدمات</a>
     <a href="#process" data-nav-target="process" data-ar="رحلة التنفيذ" data-en="Delivery journey" onclick="closeMenu()">رحلة التنفيذ</a>
-    <a class="nav-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me" onclick="closeMenu()"><span class="contact-desktop-label">تواصل معي</span></a>
+    <a class="nav-contact" href="#contact" onclick="closeMenu()"><span class="contact-desktop-label" data-ar="تواصل معي" data-en="Contact me">تواصل معي</span></a>
   </nav>
   <div class="nav-end">
-    <a class="btn pri sm desk-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me" aria-label="تواصل معي" title="تواصل معي"><i class="fa-solid fa-headset" aria-hidden="true"></i><span class="contact-desktop-label">تواصل</span></a>
-    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Theme"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
-    <button class="lang-btn" onclick="toggleLang()" aria-label="Language" title="Language"><span id="lt">EN</span></button>
+    <a class="btn pri sm desk-contact header-control" href="#contact" aria-label="تواصل معي" title="تواصل معي"><i class="fa-solid fa-headset" aria-hidden="true"></i><span class="contact-desktop-label" data-ar="تواصل" data-en="Contact">تواصل</span></a>
+    <button class="theme-btn header-control" onclick="toggleTheme()" aria-label="Toggle theme" title="Theme"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+    <button class="lang-btn header-control" onclick="toggleLang()" aria-label="Language" title="Language"><span id="lt">EN</span></button>
     <button class="menu-btn" id="menu-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
       <i class="fa-solid fa-bars" id="menu-icon"></i>
     </button>
