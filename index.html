@@ -91,8 +91,8 @@ html[data-theme=dark]{
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{background:var(--bg);color:var(--ink);font:400 1rem/1.85 "IBM Plex Sans Arabic",sans-serif;overflow-x:hidden;padding-top:76px}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.85 "IBM Plex Sans Arabic",sans-serif;overflow-x:hidden;padding-top:60px}
 h1,h2,h3,.brand,.btn{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif}
 a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -105,8 +105,8 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;font-weight:700;max-width:
 .lead{color:var(--mut);max-width:52ch;margin-top:12px}
 
 /* nav — scrolls with the page (not fixed) */
-header{position:fixed;top:0;inset-inline:0;z-index:100;padding:8px 0 0;pointer-events:none}
-header .nav{pointer-events:auto}
+header{position:fixed;top:0;inset-inline:0;z-index:100;padding:0;pointer-events:none;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid var(--line)}
+header .nav{pointer-events:auto;border:0;border-radius:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;width:min(1160px,calc(100% - 24px));margin-inline:auto}
 header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-index:-1;pointer-events:none;background:radial-gradient(38% 70% at 18% 35%,rgba(13,92,86,.12),transparent),radial-gradient(34% 60% at 82% 25%,rgba(253,146,56,.1),transparent)}
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:16px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--line);border-radius:16px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset}
@@ -449,7 +449,6 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
   .links a{padding:12px 14px;border-radius:10px;font-size:1rem}
   .nav-contact{display:block;background:var(--orange);color:#fff!important;text-align:center;font-weight:600;margin-top:4px}
   .nav{position:relative}
-  header{padding-top:6px}
 }
 
 </style>
@@ -548,7 +547,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
       <span class="sv-r"><em data-ar="المشكلة" data-en="The problem">المشكلة</em> <b data-ar="ردود متكررة وطلبات بتتأخر أو بتتنسي وسط الرسائل." data-en="Repetitive replies and orders that get delayed or lost in the chat.">ردود متكررة وطلبات بتتأخر أو بتتنسي وسط الرسائل.</b></span>
       <span class="sv-r"><em data-ar="اللي هيحصل" data-en="What happens">اللي هيحصل</em> <b data-ar="النظام يفهم رسالة العميل (نص أو صوت)، يرد عليه، يسجّل الطلب وينبّه فريقك." data-en="The system reads the customer message (text or voice), replies, logs the order and alerts your team.">النظام يفهم رسالة العميل (نص أو صوت)، يرد عليه، يسجّل الطلب وينبّه فريقك.</b></span>
       <span class="sv-r"><em data-ar="هتستلم" data-en="You get">هتستلم</em> <b data-ar="مساعد شغال على واتساب أو تليجرام ومربوط بجداولك." data-en="An assistant on WhatsApp or Telegram, connected to your sheets.">مساعد شغال على واتساب أو تليجرام ومربوط بجداولك.</b></span>
-      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="pick(0)">Krokett</a></span>
+      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="return goProject(0)">Krokett</a></span>
     </article>
     <article class="svc-card">
       <span class="svc-num">02</span>
@@ -557,7 +556,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
       <span class="sv-r"><em data-ar="المشكلة" data-en="The problem">المشكلة</em> <b data-ar="استفسارات وحجوزات بتتلخبط، ومواعيد بتضيع." data-en="Inquiries and bookings get mixed up, and appointments slip.">استفسارات وحجوزات بتتلخبط، ومواعيد بتضيع.</b></span>
       <span class="sv-r"><em data-ar="اللي هيحصل" data-en="What happens">اللي هيحصل</em> <b data-ar="النظام يرد على الاستفسارات، يجمع بيانات العميل، يثبّت الموعد ويسجّله." data-en="The system answers inquiries, collects customer data, confirms the slot and logs it.">النظام يرد على الاستفسارات، يجمع بيانات العميل، يثبّت الموعد ويسجّله.</b></span>
       <span class="sv-r"><em data-ar="هتستلم" data-en="You get">هتستلم</em> <b data-ar="مساعد حجز ومتابعة مربوط بسجل المواعيد." data-en="A booking and follow-up assistant connected to your appointment records.">مساعد حجز ومتابعة مربوط بسجل المواعيد.</b></span>
-      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="pick(2)">Nexus Health</a><a class="svc-tag" href="#projects" onclick="pick(3)">Elite Dental</a></span>
+      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="return goProject(2)">Nexus Health</a><a class="svc-tag" href="#projects" onclick="return goProject(3)">Elite Dental</a></span>
     </article>
     <article class="svc-card">
       <span class="svc-num">03</span>
@@ -566,7 +565,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
       <span class="sv-r"><em data-ar="المشكلة" data-en="The problem">المشكلة</em> <b data-ar="طلبات الموظفين والموافقات على ورق أو رسائل مبعثرة." data-en="Staff requests and approvals scattered across paper and messages.">طلبات الموظفين والموافقات على ورق أو رسائل مبعثرة.</b></span>
       <span class="sv-r"><em data-ar="اللي هيحصل" data-en="What happens">اللي هيحصل</em> <b data-ar="الطلب يوصل للمسؤول المختص، يتحدّث السجل، ويتبلّغ الموظف بالقرار تلقائيًا." data-en="The request reaches the right owner, the record updates, and the employee is notified automatically.">الطلب يوصل للمسؤول المختص، يتحدّث السجل، ويتبلّغ الموظف بالقرار تلقائيًا.</b></span>
       <span class="sv-r"><em data-ar="هتستلم" data-en="You get">هتستلم</em> <b data-ar="مسار داخلي واضح مبني على قواعد شركتك." data-en="A clear internal workflow built on your company rules.">مسار داخلي واضح مبني على قواعد شركتك.</b></span>
-      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="pick(1)">HR Ninja</a></span>
+      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="return goProject(1)">HR Ninja</a></span>
     </article>
     <article class="svc-card">
       <span class="svc-num">04</span>
@@ -575,7 +574,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
       <span class="sv-r"><em data-ar="المشكلة" data-en="The problem">المشكلة</em> <b data-ar="مراجعة يدوية بطيئة وفيها احتمال خطأ." data-en="Slow manual review with room for error.">مراجعة يدوية بطيئة وفيها احتمال خطأ.</b></span>
       <span class="sv-r"><em data-ar="اللي هيحصل" data-en="What happens">اللي هيحصل</em> <b data-ar="النظام يستخرج البيانات، يقارنها بقواعدك، ويقرّر أو يحوّل الحالة لمراجعة بشرية." data-en="The system extracts data, checks it against your rules, then decides or escalates to a human.">النظام يستخرج البيانات، يقارنها بقواعدك، ويقرّر أو يحوّل الحالة لمراجعة بشرية.</b></span>
       <span class="sv-r"><em data-ar="هتستلم" data-en="You get">هتستلم</em> <b data-ar="نظام مراجعة بتقرير جاهز لكل حالة." data-en="A review system with a ready report for every case.">نظام مراجعة بتقرير جاهز لكل حالة.</b></span>
-      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="pick(4)">PreAuth Mind</a></span>
+      <span class="svc-ex"><small data-ar="مثال من شغلي" data-en="From my work">مثال من شغلي</small><a class="svc-tag" href="#projects" onclick="return goProject(4)">PreAuth Mind</a></span>
     </article>
   </div>
 </div></section>
@@ -722,7 +721,14 @@ function detail(){
   }
   $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn pri" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
 }
-function pick(i){cur=i;vid=0;list();detail()}
+function goProject(i){
+  pick(i);
+  var el=document.getElementById('projects');
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  try{history.replaceState(null,'','#projects')}catch(e){}
+  return false;
+}
+function pick(i){cur=+i||0;vid=0;list();detail()}
 function pickVid(i){vid=i;detail()}
 function openM(i){
   const p=P[i];
@@ -802,6 +808,12 @@ function closeMenu(){
 window.addEventListener('scroll',function(){closeMenu()},{passive:true});
 
 list();detail();
+
+(function(){
+  var m=location.hash.match(/project[s]?-?(\d+)/i);
+  if(m){pick(+m[1]);}
+})();
+
 }
 function send(ch){
   const n=$('fn').value.trim(),e=$('fe').value.trim(),ph=$('fp').value.trim(),d=$('fd').value.trim();
@@ -832,6 +844,12 @@ function closeMenu(){
 window.addEventListener('scroll',function(){closeMenu()},{passive:true});
 
 list();detail();
+
+(function(){
+  var m=location.hash.match(/project[s]?-?(\d+)/i);
+  if(m){pick(+m[1]);}
+})();
+
 
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');setTimeout(function(){el.classList.remove('rv','in')},1100)})},{threshold:.15});
