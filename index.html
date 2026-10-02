@@ -376,10 +376,11 @@ html[data-theme=dark] .svc-card:hover{box-shadow:0 22px 50px rgba(0,0,0,.45)}
 .ctr{text-align:center}.ctr .slogan{font-size:1.5rem;line-height:1.5}.ctr .lead{margin-inline:auto;max-width:60ch}
 form{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:32px;display:grid;gap:14px}
 label{font-weight:600;font-size:.88rem;display:grid;gap:5px}
-input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg)}
+input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink);background:var(--bg)}
+input::placeholder,textarea::placeholder{color:var(--mut);opacity:.75}
 textarea{resize:none}
 #fp{direction:ltr}html[dir=rtl] #fp{text-align:right}html[dir=ltr] #fp{text-align:left}
-input:focus,textarea:focus{outline:none;border-color:var(--teal);background:var(--card)}
+input:focus,textarea:focus{outline:none;border-color:var(--teal);background:var(--card);color:var(--ink)}
 .ch{display:flex;gap:8px;flex-wrap:wrap}.ch .btn{flex:1;justify-content:center;color:#fff;border:0}
 footer{padding:28px 0 40px;color:var(--mut);font-size:.85rem}
 .fi{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
