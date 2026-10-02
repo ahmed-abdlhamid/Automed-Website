@@ -144,8 +144,60 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
 .btn-wa:hover,.btn-tg:hover{background:var(--teal);border-color:var(--teal);color:#fff}.btn-wa:hover i,.btn-tg:hover i{color:#fff}
 .theme-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card,#fff);color:var(--ink);display:grid;place-items:center;padding:0}
 .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
-/* final navigation refinements */
+/* unified header controls */
+.nav-end{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-inline-start:auto;
+  position:relative;
+  z-index:2;
+}
+
+.header-control{
+  width:36px;
+  min-width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--ink);
+  display:inline-grid;
+  place-items:center;
+  padding:0;
+  transition:
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+
+.header-control:hover{
+  transform:translateY(-1px);
+  background:#66735F;
+  border-color:#66735F;
+  color:#fff;
+  box-shadow:0 7px 18px rgba(102,115,95,.22);
+}
+
+/* Language */
 .lang-btn{
+  font:600 .76rem "Readex Pro","IBM Plex Sans Arabic",sans-serif;
+}
+.lang-btn:hover{
+  background:#66735F;
+  border-color:#66735F;
+  color:#fff;
+}
+html[data-theme=dark] .lang-btn:hover{
+  background:#66735F;
+  border-color:#66735F;
+  color:#fff;
+}
+
+/* Dark mode */
+.theme-btn{
   width:36px;
   min-width:36px;
   height:36px;
@@ -156,63 +208,73 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   display:grid;
   place-items:center;
   padding:0;
-  font:600 .78rem "Readex Pro","IBM Plex Sans Arabic",sans-serif;
-  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease,box-shadow .22s ease;
+  transition:
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
 }
-.lang-btn:hover{
+.theme-btn:hover{
   transform:translateY(-1px);
   background:#66735F;
   border-color:#66735F;
   color:#fff;
   box-shadow:0 7px 18px rgba(102,115,95,.22);
 }
-html[data-theme=dark] .lang-btn:hover{
-  background:#66735F;
-  border-color:#66735F;
-  color:#fff;
-}
 
+/* Contact: icon outside, text remains in mobile menu */
 .desk-contact{
+  width:36px;
+  min-width:36px;
+  height:36px;
+  padding:0 !important;
+  display:inline-grid !important;
+  place-items:center;
+  border-radius:10px !important;
   position:relative;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  min-width:122px;
   background:var(--card) !important;
-  border:1px solid rgba(13,92,86,.55) !important;
+  border:1px solid var(--line) !important;
   color:var(--ink) !important;
-  border-radius:13px;
-  box-shadow:0 4px 14px rgba(13,92,86,.07);
-  overflow:hidden;
-  isolation:isolate;
-  transition:color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease,background .25s ease;
+  box-shadow:none;
+  overflow:visible;
+  transition:
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+.desk-contact .contact-desktop-label{display:none}
+.desk-contact i{
+  font-size:.88rem;
+  line-height:1;
+  transition:transform .25s ease;
 }
 .desk-contact::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:linear-gradient(110deg,transparent 20%,rgba(253,146,56,.16) 48%,transparent 76%);
-  transform:translateX(-120%);
-  transition:transform .55s ease;
-  z-index:-1;
-}
-.desk-contact::after{
-  content:"↗";
-  font-size:.82rem;
-  line-height:1;
-  opacity:.7;
-  transition:transform .25s ease,opacity .25s ease;
+  inset:-3px;
+  border-radius:12px;
+  border:1px solid rgba(253,146,56,0);
+  box-shadow:0 0 0 0 rgba(253,146,56,0);
+  transition:border-color .25s ease,box-shadow .25s ease;
+  pointer-events:none;
 }
 .desk-contact:hover{
-  background:var(--card) !important;
-  color:var(--teal) !important;
+  background:rgba(253,146,56,.08) !important;
   border-color:var(--orange) !important;
-  box-shadow:0 0 0 3px rgba(253,146,56,.08),0 10px 28px rgba(253,146,56,.18);
-  transform:translateY(-2px);
+  color:var(--orange) !important;
+  transform:translateY(-1px);
+  box-shadow:0 7px 20px rgba(253,146,56,.16);
 }
-.desk-contact:hover::before{transform:translateX(120%)}
-.desk-contact:hover::after{transform:translate(2px,-2px);opacity:1}
+.desk-contact:hover::before{
+  border-color:rgba(253,146,56,.42);
+  box-shadow:0 0 16px rgba(253,146,56,.24);
+}
+.desk-contact:hover i{
+  transform:scale(1.08);
+}
 
 @media(max-width:940px){
   .nav-contact{
@@ -230,6 +292,8 @@ html[data-theme=dark] .lang-btn:hover{
     font-weight:600;
     box-shadow:none;
   }
+  .nav-contact .contact-desktop-label{display:inline}
+  .nav-contact i{display:none}
   .nav-contact:hover{
     background:rgba(253,146,56,.09) !important;
     border-color:var(--orange) !important;
@@ -237,7 +301,6 @@ html[data-theme=dark] .lang-btn:hover{
     box-shadow:0 8px 22px rgba(253,146,56,.15);
   }
 }
-
 /* hero */
 .hero{padding:56px 0 80px}
 .hg{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -606,7 +669,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <a class="nav-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me" onclick="closeMenu()">تواصل معي</a>
   </nav>
   <div class="nav-end">
-    <a class="btn pri sm desk-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me">تواصل معي</a>
+    <a class="btn pri sm desk-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me"><i class="fa-solid fa-headset" aria-hidden="true"></i><span class="contact-desktop-label">تواصل</span></a>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Theme"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
     <button class="lang-btn" onclick="toggleLang()" aria-label="Language" title="Language"><span id="lt">EN</span></button>
     <button class="menu-btn" id="menu-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
@@ -931,7 +994,7 @@ function toggleLang(){
   lang=lang==='ar'?'en':'ar';
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  $('lt').textContent=lang==='ar'?'EN':'عربي';
+  $('lt').textContent=lang==='ar'?'EN':'AR';
 
   document.querySelectorAll('[data-ar]').forEach(e=>{
     const v=e.getAttribute('data-'+lang);
