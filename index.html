@@ -144,6 +144,71 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
 .btn-wa:hover,.btn-tg:hover{background:var(--teal);border-color:var(--teal);color:#fff}.btn-wa:hover i,.btn-tg:hover i{color:#fff}
 .theme-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card,#fff);color:var(--ink);display:grid;place-items:center;padding:0}
 .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+/* final navigation refinements */
+.nav-end .btn[aria-label="Language"]{
+  width:72px;
+  min-width:72px;
+  justify-content:center;
+  flex:none;
+  transform:none !important;
+}
+.nav-end .btn[aria-label="Language"]:hover{
+  transform:none !important;
+}
+.desk-contact{
+  position:relative;
+  background:transparent !important;
+  border:1.5px solid var(--orange) !important;
+  color:var(--orange) !important;
+  overflow:visible;
+  isolation:isolate;
+}
+.desk-contact::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border:1px solid transparent;
+  border-radius:inherit;
+  box-shadow:0 0 0 rgba(253,146,56,0);
+  opacity:0;
+  z-index:-1;
+  transition:opacity .25s ease;
+}
+.desk-contact:hover{
+  background:transparent !important;
+  border-color:var(--orange2) !important;
+  color:var(--orange2) !important;
+  box-shadow:0 0 0 1px rgba(253,146,56,.18),0 0 18px rgba(253,146,56,.38),0 0 34px rgba(253,146,56,.18);
+  animation:contactGlow 1.35s ease-in-out infinite;
+}
+.desk-contact:hover::before{opacity:1;animation:contactBorderGlow 1.35s ease-in-out infinite}
+@keyframes contactGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(253,146,56,.16),0 0 14px rgba(253,146,56,.28),0 0 26px rgba(253,146,56,.12)}
+  50%{box-shadow:0 0 0 1px rgba(253,146,56,.34),0 0 24px rgba(253,146,56,.52),0 0 44px rgba(253,146,56,.2)}
+}
+@keyframes contactBorderGlow{
+  0%,100%{transform:scale(1);opacity:.45}
+  50%{transform:scale(1.035);opacity:.95}
+}
+@media(max-width:940px){
+  .nav-contact{
+    display:block;
+    background:transparent !important;
+    border:1.5px solid var(--orange);
+    color:var(--orange) !important;
+    text-align:center;
+    font-weight:600;
+    margin-top:4px;
+    border-radius:12px;
+  }
+  .nav-contact:hover{
+    background:transparent !important;
+    color:var(--orange2) !important;
+    border-color:var(--orange2);
+    box-shadow:0 0 18px rgba(253,146,56,.38);
+  }
+}
+
 
 /* hero */
 .hero{padding:56px 0 80px}
@@ -478,8 +543,8 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
   <nav class="links" id="nav-links">
     <a href="#about" data-ar="من أنا؟" data-en="Who am I?" onclick="closeMenu()">من أنا؟</a>
     <a href="#projects" data-ar="معرض الأعمال" data-en="Portfolio" onclick="closeMenu()">معرض الأعمال</a>
-    <a href="#services" data-ar="الخدمات" data-en="Services" onclick="closeMenu()">الخدمات</a>
-    <a href="#process" data-ar="رحلة التنفيذ" data-en="Delivery journey" onclick="closeMenu()">رحلة التنفيذ</a>
+    <a href="#services" data-nav-target="services" data-ar="الخدمات" data-en="Services" onclick="closeMenu()">الخدمات</a>
+    <a href="#process" data-nav-target="process" data-ar="رحلة التنفيذ" data-en="Delivery journey" onclick="closeMenu()">رحلة التنفيذ</a>
     <a class="nav-contact" href="#contact" data-ar="تواصل معي" data-en="Contact me" onclick="closeMenu()">تواصل معي</a>
   </nav>
   <div class="nav-end">
@@ -738,8 +803,23 @@ function detail(){
 }
 function goProject(i){
   pick(i);
+  closeMenu();
+
   var el=document.getElementById('projects');
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(!el) return false;
+
+  // Render first, then calculate the final position. The second pass handles
+  // mobile layout/media reflow so the selected project does not stop above it.
+  function scrollToProjects(){
+    var headerH=document.querySelector('header')?.offsetHeight || 60;
+    var top=el.getBoundingClientRect().top + window.scrollY - headerH - 8;
+    window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+  }
+
+  requestAnimationFrame(scrollToProjects);
+  setTimeout(scrollToProjects,220);
+  setTimeout(scrollToProjects,650);
+
   try{history.replaceState(null,'','#projects')}catch(e){}
   return false;
 }
@@ -791,89 +871,24 @@ function toggleTheme(){
 })();
 function toggleLang(){
   lang=lang==='ar'?'en':'ar';
-  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   $('lt').textContent=lang==='ar'?'EN':'عربي';
+
   document.querySelectorAll('[data-ar]').forEach(e=>{
     const v=e.getAttribute('data-'+lang);
     if(v!=null) e.innerHTML=v;
   });
+
   $('fn').placeholder=lang==='ar'?'محمد أحمد':'Mohamed Ahmed';
   $('fe').placeholder='ahmed@gmail.com';
   $('fd').placeholder=lang==='ar'
     ?'مثال: عايز بوت واتساب يرد على العملاء ويسجّل الطلبات تلقائيًا'
     :'Example: I need a WhatsApp bot that replies to customers and logs orders automatically';
-  
-function toggleMenu(){
-  const links=document.getElementById('nav-links');
-  const btn=document.getElementById('menu-btn');
-  const ic=document.getElementById('menu-icon');
-  if(!links)return;
-  const open=links.classList.toggle('open');
-  if(btn)btn.setAttribute('aria-expanded',open?'true':'false');
-  if(ic)ic.className=open?'fa-solid fa-xmark':'fa-solid fa-bars';
-}
-function closeMenu(){
-  const links=document.getElementById('nav-links');
-  const btn=document.getElementById('menu-btn');
-  const ic=document.getElementById('menu-icon');
-  if(links)links.classList.remove('open');
-  if(btn)btn.setAttribute('aria-expanded','false');
-  if(ic)ic.className='fa-solid fa-bars';
-}
-window.addEventListener('scroll',function(){closeMenu()},{passive:true});
 
-list();detail();
-
-(function(){
-  var ids=['about','projects','services','process','contact'];
-  function clearActive(){
-    document.querySelectorAll('#nav-links a[href^="#"]').forEach(function(a){
-      if(!a.classList.contains('nav-contact')) a.classList.remove('active');
-    });
-  }
-  function setActive(id){
-    document.querySelectorAll('#nav-links a[href^="#"]').forEach(function(a){
-      if(a.classList.contains('nav-contact')) return;
-      a.classList.toggle('active', a.getAttribute('href')==='#'+id);
-    });
-  }
-  function update(){
-    var headerH=72;
-    var y=window.scrollY+headerH+8;
-    // still in hero / top of page → no active link
-    var about=document.getElementById('about');
-    if(!about || y < about.offsetTop - 20){
-      clearActive();
-      document.querySelector('header')&&document.querySelector('header').classList.toggle('is-scrolled', window.scrollY>12);
-      return;
-    }
-    document.querySelector('header')&&document.querySelector('header').classList.toggle('is-scrolled', window.scrollY>12);
-    var cur=null;
-    ids.forEach(function(id){
-      var el=document.getElementById(id);
-      if(!el) return;
-      var top=el.offsetTop;
-      var bottom=top+el.offsetHeight;
-      if(y>=top && y<bottom) cur=id;
-    });
-    // if past last section start, keep last
-    if(!cur){
-      var last=document.getElementById(ids[ids.length-1]);
-      if(last && y>=last.offsetTop) cur=ids[ids.length-1];
-    }
-    if(cur) setActive(cur); else clearActive();
-  }
-  window.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update);
-  update();
-})();
-
-
-(function(){
-  var m=location.hash.match(/project[s]?-?(\d+)/i);
-  if(m){pick(+m[1]);}
-})();
-
+  // Re-render project details in the selected language.
+  list();
+  detail();
 }
 function send(ch){
   const n=$('fn').value.trim(),e=$('fe').value.trim(),ph=$('fp').value.trim(),d=$('fd').value.trim();
@@ -902,6 +917,21 @@ function closeMenu(){
   if(ic)ic.className='fa-solid fa-bars';
 }
 window.addEventListener('scroll',function(){closeMenu()},{passive:true});
+(function(){
+  document.querySelectorAll('#nav-links a[data-nav-target]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var id=a.getAttribute('data-nav-target');
+      var el=document.getElementById(id);
+      if(!el) return;
+      setTimeout(function(){
+        var headerH=document.querySelector('header')?.offsetHeight || 60;
+        var top=el.getBoundingClientRect().top + window.scrollY - headerH - 8;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      },0);
+    });
+  });
+})();
+
 
 list();detail();
 
