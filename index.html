@@ -115,12 +115,8 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;-webkit-backdrop-filter:none;backdrop-filter:none;position:relative}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset;min-height:40px;position:relative;z-index:2}
 .brand-mark{width:32px;height:32px;border-radius:99px;display:block;flex:none}
-.brand{flex:0 0 auto;width:150px;min-width:150px}
-.brand-logo{height:34px;width:150px;max-width:150px;object-fit:contain;object-position:center;display:block}
-@media(max-width:560px){
-  .brand{width:120px;min-width:120px}
-  .brand-logo{height:28px;width:120px;max-width:120px}
-}
+.brand-logo{height:34px;width:auto;max-width:170px;object-fit:contain;display:block}
+@media(max-width:560px){.brand-logo{height:28px;max-width:140px}}
 .foot-logo{height:24px;width:auto;object-fit:contain;display:block}
 .brand-text{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.3px;line-height:1}
 .b-auto{color:var(--teal)}.b-med{color:var(--orange)}
@@ -224,18 +220,10 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
     justify-content:center !important;
     gap:8px !important;
     border-radius:10px !important;
-    background:transparent !important;
-    border:1.5px solid var(--orange) !important;
-    color:var(--orange) !important;
-    box-shadow:none;
-    transition:transform .2s,box-shadow .25s,background .2s,color .2s !important;
-  }
-  .desk-contact:hover{
-    background:rgba(253,146,56,.1) !important;
-    color:var(--orange) !important;
-    border-color:var(--orange) !important;
-    box-shadow:0 0 0 3px rgba(253,146,56,.18),0 8px 22px rgba(253,146,56,.35) !important;
-    transform:translateY(-1px);
+    background:var(--orange) !important;
+    border:1px solid var(--orange) !important;
+    color:#fff !important;
+    box-shadow:0 4px 12px rgba(253,146,56,.16);
   }
   .desk-contact .contact-desktop-label{
     display:inline !important;
@@ -244,7 +232,6 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   }
   .desk-contact i{
     font-size:.88rem;
-    color:inherit !important;
   }
 }
 
@@ -449,29 +436,11 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 
 /* cards corner accents scoped for mouse hover */
 .xc,.svc-card,.pr>div,.ct form{position:relative;overflow:hidden;border-radius:22px;transition:transform .3s ease,box-shadow .3s ease}
-.xc::before,.svc-card::before,.pr>div::before,.ct form::before{
-  content:"";position:absolute;top:0;inset-inline-end:0;width:60px;height:60px;
-  border-top:4px solid var(--teal);border-inline-end:4px solid var(--teal);
-  border-start-end-radius:22px;background:none!important;opacity:1;
-  transition:width .35s,height .35s,border-color .35s;pointer-events:none;z-index:2
-}
-.xc::after,.svc-card::after,.pr>div::after,.ct form::after{
-  content:"";position:absolute;bottom:0;inset-inline-start:0;width:60px;height:60px;
-  border-bottom:4px solid var(--teal);border-inline-start:4px solid var(--teal);
-  border-end-start-radius:22px;background:none!important;opacity:1;
-  transition:width .35s,height .35s,border-color .35s;pointer-events:none;z-index:2
-}
-/* خدمات + رحلة التنفيذ: الزوايا برتقالي دائم */
-.svc-card::before,.svc-card::after,
-.pr>div::before,.pr>div::after{
-  border-color:var(--orange)
-}
+.xc::before,.svc-card::before,.pr>div::before,.ct form::before{content:"";position:absolute;inset:0 0 auto auto;width:60px;height:60px;border:0;border-top:4px solid var(--teal);border-right:4px solid var(--teal);border-top-right-radius:22px;background:none!important;opacity:1;transition:width .35s,height .35s,border-color .35s;pointer-events:none}
+.xc::after,.svc-card::after,.pr>div::after,.ct form::after{content:"";position:absolute;inset:auto auto 0 0;width:60px;height:60px;border-bottom:4px solid var(--teal);border-left:4px solid var(--teal);border-bottom-left-radius:22px;transition:width .35s,height .35s,border-color .35s;pointer-events:none}
+
 @media (hover: hover) {
-  .xc:hover::before,.xc:hover::after,
-  .svc-card:hover::before,.svc-card:hover::after,
-  .pr>div:hover::before,.pr>div:hover::after{
-    width:96px;height:96px;border-color:var(--orange)
-  }
+  .xc:hover::before,.xc:hover::after,.svc-card:hover::before,.svc-card:hover::after,.pr>div:hover::before,.pr>div:hover::after{width:96px;height:96px;border-color:var(--orange)}
 }
 
 .xc .xi,.xc:nth-child(n) .xi,.svc-ico,.svc-card:nth-child(n) .svc-ico,.pr b,.pr div:nth-child(n) b{background:linear-gradient(135deg,#2E8F83,#1B6F66)!important;box-shadow:0 10px 22px rgba(13,92,86,.25)!important;transition:transform .3s}
@@ -987,21 +956,15 @@ function closeMenu(){
 window.addEventListener('scroll',function(){closeMenu()},{passive:true});
 (function(){
   document.querySelectorAll('#nav-links a[data-nav-target]').forEach(function(a){
-    a.addEventListener('click',function(e){
+    a.addEventListener('click',function(){
       var id=a.getAttribute('data-nav-target');
       var el=document.getElementById(id);
       if(!el) return;
-      e.preventDefault();
-      closeMenu();
-      var headerH=document.querySelector('header')?.offsetHeight || 60;
-      var top=el.getBoundingClientRect().top + window.scrollY - headerH - 8;
-      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-      try{history.replaceState(null,'','#'+id)}catch(err){}
-      // force active state immediately
-      document.querySelectorAll('#nav-links a[href^="#"]').forEach(function(link){
-        if(link.classList.contains('nav-contact')) return;
-        link.classList.toggle('active', link.getAttribute('data-nav-target')===id || link.getAttribute('href')==='#'+id);
-      });
+      setTimeout(function(){
+        var headerH=document.querySelector('header')?.offsetHeight || 60;
+        var top=el.getBoundingClientRect().top + window.scrollY - headerH - 8;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      },0);
     });
   });
 })();
@@ -1022,33 +985,26 @@ list();detail();
     });
   }
   function update(){
-    var headerH=(document.querySelector('header')&&document.querySelector('header').offsetHeight)||60;
-    var probe=headerH+Math.min(120, Math.round(window.innerHeight*0.18));
-    document.querySelector('header')&&document.querySelector('header').classList.toggle('is-scrolled', window.scrollY>12);
+    var headerH=72;
+    var y=window.scrollY+headerH+8;
     var about=document.getElementById('about');
-    if(!about){clearActive();return}
-    var aboutTop=about.getBoundingClientRect().top+window.scrollY;
-    if(window.scrollY+probe < aboutTop){clearActive();return}
-    var cur=null,best=Infinity;
+    if(!about || y < about.offsetTop - 20){
+      clearActive();
+      document.querySelector('header')&&document.querySelector('header').classList.toggle('is-scrolled', window.scrollY>12);
+      return;
+    }
+    document.querySelector('header')&&document.querySelector('header').classList.toggle('is-scrolled', window.scrollY>12);
+    var cur=null;
     ids.forEach(function(id){
       var el=document.getElementById(id);
       if(!el) return;
-      var rect=el.getBoundingClientRect();
-      var top=rect.top;
-      var bottom=rect.bottom;
-      // section under the probe line
-      if(top<=probe && bottom>probe){
-        var dist=Math.abs(top-probe);
-        if(dist<best){best=dist;cur=id}
-      }
+      var top=el.offsetTop;
+      var bottom=top+el.offsetHeight;
+      if(y>=top && y<bottom) cur=id;
     });
     if(!cur){
-      // fallback: last section whose top passed probe
-      ids.forEach(function(id){
-        var el=document.getElementById(id);
-        if(!el) return;
-        if(el.getBoundingClientRect().top<=probe) cur=id;
-      });
+      var last=document.getElementById(ids[ids.length-1]);
+      if(last && y>=last.offsetTop) cur=ids[ids.length-1];
     }
     if(cur) setActive(cur); else clearActive();
   }
