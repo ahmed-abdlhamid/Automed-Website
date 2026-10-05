@@ -28,6 +28,22 @@
 <meta name="twitter:title" content="Automed | أتمتة ذكية للأعمال">
 <meta name="twitter:description" content="نحوّل المهام والعمليات المتكررة إلى أنظمة ذكية تعمل تلقائيًا، لتوفير الوقت وتقليل العمل اليدوي ومساعدة أعمالك على النمو.">
 <meta name="twitter:image" content="https://automed-info.vercel.app/assets/og.jpg?v=2">
+<!-- Vercel Speed Insights -->
+<script>
+  window.si = window.si || function () {
+    (window.siq = window.siq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -115,8 +131,8 @@ header::before{content:"";position:absolute;inset:-40px 0 auto;height:280px;z-in
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;-webkit-backdrop-filter:none;backdrop-filter:none;position:relative}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset;min-height:40px;position:relative;z-index:2}
 .brand-mark{width:32px;height:32px;border-radius:99px;display:block;flex:none}
-.brand-logo{height:34px;width:auto;max-width:170px;object-fit:contain;display:block}
-@media(max-width:560px){.brand-logo{height:28px;max-width:140px}}
+.brand-logo{height:37px;width:auto;max-width:178px;object-fit:contain;display:block}
+@media(max-width:560px){.brand-logo{height:31px;max-width:146px}}
 .foot-logo{height:24px;width:auto;object-fit:contain;display:block}
 .brand-text{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.3px;line-height:1}
 .b-auto{color:var(--teal)}.b-med{color:var(--orange)}
@@ -208,6 +224,12 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
   color:var(--ink) !important;
 }
 
+
+.desk-contact:hover{
+  background:linear-gradient(90deg,#FF6A38,#F9A21E) !important;
+  border-color:transparent !important;
+  box-shadow:0 10px 24px rgba(255,116,70,.28) !important;
+}
 /* Contact button in desktop header showing text & icon */
 @media(min-width:941px){
   .desk-contact{
@@ -220,10 +242,10 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
     justify-content:center !important;
     gap:8px !important;
     border-radius:10px !important;
-    background:var(--orange) !important;
-    border:1px solid var(--orange) !important;
-    color:#fff !important;
-    box-shadow:0 4px 12px rgba(253,146,56,.16);
+    background:linear-gradient(90deg,#FF7446,#FAAD2B) !important;
+    border:1px solid transparent !important;
+    color:#2A1608 !important;
+    box-shadow:0 6px 16px rgba(255,116,70,.18);
   }
   .desk-contact .contact-desktop-label{
     display:inline !important;
@@ -247,9 +269,9 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
     margin-top:8px;
     padding:11px 14px !important;
     box-sizing:border-box !important;
-    background:var(--orange) !important;
-    border:1px solid var(--orange) !important;
-    color:#fff !important;
+    background:linear-gradient(90deg,#FF7446,#FAAD2B) !important;
+    border:1px solid transparent !important;
+    color:#2A1608 !important;
     border-radius:12px !important;
     font-weight:600;
   }
@@ -445,10 +467,10 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 .xc .xi,.xc:nth-child(n) .xi,.svc-ico,.svc-card:nth-child(n) .svc-ico,.pr b,.pr div:nth-child(n) b{background:linear-gradient(135deg,#2E8F83,#1B6F66)!important;box-shadow:0 10px 22px rgba(13,92,86,.25)!important;transition:transform .3s}
 .xc:hover .xi,.svc-card:hover .svc-ico,.pr>div:hover b{transform:rotate(-6deg) scale(1.08)}
 
-/* mobile touch / scroll state: the visible card keeps the orange corner accent */
+/* mobile touch state: orange corners appear only while pressing/touching */
 @media (max-width: 700px){
-  .svc-card.mobile-inview::before,.svc-card.mobile-inview::after,
-  .pr>div.mobile-inview::before,.pr>div.mobile-inview::after,
+  .svc-card.mobile-touch::before,.svc-card.mobile-touch::after,
+  .pr>div.mobile-touch::before,.pr>div.mobile-touch::after,
   .svc-card:active::before,.svc-card:active::after,
   .pr>div:active::before,.pr>div:active::after{
     width:96px;height:96px;border-color:var(--orange);
@@ -587,6 +609,14 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
 @media(max-width:940px){
   header, header .nav{overflow:visible}
   #nav-links.open .nav-contact{display:flex !important;visibility:visible !important;opacity:1 !important}
+}
+
+@media(max-width:940px){
+  .nav-contact:hover,.nav-contact:focus-visible,.nav-contact:active{
+    background:linear-gradient(90deg,#FF6A38,#F9A21E) !important;
+    border-color:transparent !important;
+    color:#2A1608 !important;
+  }
 }
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
@@ -1037,18 +1067,14 @@ list();detail();
   var mobileCards=document.querySelectorAll('.svc-card,.pr>div');
   if(!mobileCards.length) return;
 
-  var mobileIO=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      entry.target.classList.toggle('mobile-inview', entry.isIntersecting);
-    });
-  },{threshold:.58,rootMargin:'-8% 0px -8% 0px'});
-
   mobileCards.forEach(function(card){
-    mobileIO.observe(card);
     card.addEventListener('pointerdown',function(){
       card.classList.add('mobile-touch');
-      clearTimeout(card._touchTimer);
-      card._touchTimer=setTimeout(function(){card.classList.remove('mobile-touch')},700);
+    });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(type){
+      card.addEventListener(type,function(){
+        card.classList.remove('mobile-touch');
+      });
     });
   });
 })();
