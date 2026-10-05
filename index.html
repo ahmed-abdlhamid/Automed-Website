@@ -471,6 +471,7 @@ dialog::backdrop{background:rgba(8,12,28,.9);backdrop-filter:blur(8px)}
 @media (max-width: 700px){
   .svc-card.mobile-touch::before,.svc-card.mobile-touch::after,
   .pr>div.mobile-touch::before,.pr>div.mobile-touch::after,
+  .ct form.mobile-touch::before,.ct form.mobile-touch::after,
   .svc-card:active::before,.svc-card:active::after,
   .pr>div:active::before,.pr>div:active::after{
     width:96px;height:96px;border-color:var(--orange);
@@ -501,7 +502,7 @@ html.js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none}.hero-down{animation:none}}
 
 .ct form{border-radius:26px}.ct form::before{border-top-right-radius:26px}.ct form::after{border-bottom-left-radius:26px}
-.ct form:hover::before,.ct form:hover::after,.ct form:focus-within::before,.ct form:focus-within::after{width:96px;height:96px;border-color:var(--orange)}
+.ct form:hover::before,.ct form:hover::after{width:96px;height:96px;border-color:var(--orange)}
 .pr>div b{background:linear-gradient(135deg,#2E8F83,#1B6F66)!important;box-shadow:0 8px 18px rgba(13,92,86,.25)!important;color:#fff}
 .pri{color:#0A3D39}
 
@@ -1064,18 +1065,23 @@ list();detail();
 })();
 
 (function(){
-  var mobileCards=document.querySelectorAll('.svc-card,.pr>div');
-  if(!mobileCards.length) return;
+  var stickyCards=document.querySelectorAll('.svc-card,.pr>div');
+  if(!stickyCards.length) return;
 
-  mobileCards.forEach(function(card){
+  stickyCards.forEach(function(card){
     card.addEventListener('pointerdown',function(){
+      stickyCards.forEach(function(other){
+        if(other!==card) other.classList.remove('mobile-touch');
+      });
       card.classList.add('mobile-touch');
     });
-    ['pointerup','pointercancel','pointerleave'].forEach(function(type){
-      card.addEventListener(type,function(){
-        card.classList.remove('mobile-touch');
-      });
-    });
+  });
+
+  document.addEventListener('pointerdown',function(e){
+    var inside=Array.prototype.some.call(stickyCards,function(card){ return card.contains(e.target); });
+    if(!inside){
+      stickyCards.forEach(function(card){ card.classList.remove('mobile-touch'); });
+    }
   });
 })();
 
