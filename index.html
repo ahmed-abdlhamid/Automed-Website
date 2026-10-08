@@ -807,16 +807,16 @@ const A='assets/projects/';
 const P=[
 {n:'Krokett Assistant',d:'krokett/',c:['مطاعم ومبيعات','Restaurants & sales'],p:'krokett-full.png',
  s:['مساعد طلبات المطاعم عبر تليجرام','Restaurant ordering assistant on Telegram'],
- t:['العميل يبعت رسالة أو صوت على تليجرام ← النظام يفهم الطلب من المنيو، يحسب السعر، يجمع العنوان وطريقة الدفع، ويسجّل الطلب وينبّه المطبخ تلقائيًا.','Customer sends a text or voice note on Telegram → the system reads the order from the menu, prices it, collects address and payment, then logs the order and alerts the kitchen.'],
- f:[['يفهم الرسائل الصوتية والنصية بالعربية','Understands Arabic voice and text'],['يرد من منيو المطعم والأسعار الحقيقية','Replies from the real menu and prices'],['يسجّل الطلب وينبّه المطبخ بدون تدخل يدوي','Logs the order and alerts the kitchen, no manual work']],
- g:['34 Nodes','n8n','RAG / Pinecone','Gemini API','Telegram API'],
+ t:['العميل يبعت رسالة أو صوت على تليجرام ← النظام يفك الصوت إن وُجد، يوجّه المحادثة (ترحيب / طلب / تتبع / تقييم)، يفهم الطلب من المنيو عبر AI + RAG، يسجّل الطلب، يعالج الدفع، وينبّه المطعم والعميل تلقائيًا.','Customer sends text or voice on Telegram → the system transcribes voice if needed, routes the chat (welcome / order / track / rating), understands the order from the menu via AI + RAG, logs it, handles payment, and notifies the restaurant and customer automatically.'],
+ f:[['يفهم الرسائل النصية والصوتية بالعربية','Understands Arabic text and voice messages'],['توجيه ذكي: ترحيب، طلب، تتبع طلب، وتقييم','Smart routing: welcome, order, track order, and rating'],['AI + RAG من منيو المطعم مع ذاكرة محادثة','AI + RAG from the restaurant menu with chat memory'],['تسجيل الطلب، الدفع، وتنبيه المطعم والعميل','Order logging, payment, and restaurant + customer alerts']],
+ g:['n8n','Gemini AI','Pinecone / RAG','HuggingFace Embeddings','Telegram API','Google Sheets'],
  v:[{f:'krokett-mockup.mp4',portrait:true}],
  b:[
-  {t:['المخطط الكامل','Full blueprint'],f:'krokett-full.png',d:['نظرة شاملة على مسار الطلب من أول رسالة لحد تسجيله وتنبيه المطبخ.','Full path from the first message to order logging and kitchen alert.']},
-  {t:['الاستقبال والصوت','Intake & voice'],f:'Trigger.png',d:['استقبال رسائل تليجرام وفك الرسائل الصوتية عشان النظام يفهم الطلب.','Receives Telegram messages and transcribes voice notes so the system understands the order.']},
-  {t:['توجيه المسارات','Routing'],f:'message-routing.png',d:['توجيه المحادثة: استفسار عن المنيو، طلب جديد، أو متابعة طلب سابق.','Routes the chat: menu inquiry, new order, or follow-up on an existing one.']},
-  {t:['محرك الذكاء الاصطناعي','AI engine'],f:'order-processing.png',d:['الذكاء الاصطناعي + قاعدة المعرفة (RAG) لقراءة المنيو والأسعار والرد بدقة.','AI + knowledge base (RAG) to read the menu and prices and reply accurately.']},
-  {t:['التأكيد والتخزين','Confirm & store'],f:'message-confirmation.png',d:['تسجيل الطلب في الجدول وإرسال تنبيه للمطبخ أو المسؤول.','Logs the order in the sheet and sends an alert to the kitchen or manager.']}
+  {t:['المخطط الكامل','Full blueprint'],f:'krokett-full.png',d:['نظرة على النظام كامل: استقبال تليجرام، توجيه المسارات، الـ AI Agent، ومعالجة الطلب والدفع.','Full system overview: Telegram intake, message routing, AI Agent, and order + payment processing.']},
+  {t:['الاستقبال والصوت','Intake & voice'],f:'Trigger.png',d:['استقبال رسائل تليجرام والـ callbacks، وفك الرسائل الصوتية ودمج النص قبل التوجيه.','Receives Telegram messages and callbacks, downloads voice files, transcribes them, and merges the text before routing.']},
+  {t:['توجيه المسارات','Message routing'],f:'message-routing.png',d:['توجيه المحادثة: ترحيب، تتبع طلب، إعادة طلب، أو تقييم — مع تنبيهات للعميل والمطعم.','Routes the chat: welcome, track order, repeat order, or rating — with alerts to the customer and restaurant.']},
+  {t:['الـ AI Agent','AI Agent'],f:'ai-agent.png',d:['وكيل ذكي بـ Gemini وذاكرة محادثة وقاعدة معرفة Pinecone (المنيو والأسعار) للرد بدقة.','Smart agent with Gemini, chat memory, and a Pinecone knowledge base (menu and prices) for accurate replies.']},
+  {t:['معالجة الطلب والدفع','Order & payment'],f:'order-processing.png',d:['إكمال الطلب، تسجيله في الشيت، إنشاء جلسة دفع إن لزم، وتنبيه المطعم والعميل ثم طلب التقييم.','Completes the order, logs it to the sheet, creates a payment session if needed, notifies restaurant and customer, then asks for a rating.']}
  ]},
 {n:'HR Ninja Assistant',d:'hrninja/',c:['موارد بشرية','HR'],p:'hr-ninja-full.png',
  s:['أتمتة إجازات الموظفين عبر واتساب وتليجرام','Employee leave automation on WhatsApp & Telegram'],
