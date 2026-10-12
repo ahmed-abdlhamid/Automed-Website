@@ -132,7 +132,7 @@ header::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:no
 .nav{width:min(1160px,calc(100% - 24px));margin-inline:auto;height:60px;padding-inline:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;-webkit-backdrop-filter:none;backdrop-filter:none;position:relative}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:none;-webkit-text-fill-color:unset;min-height:40px;position:relative;z-index:2}
 .brand-mark{width:32px;height:32px;border-radius:99px;display:block;flex:none}
-.brand-logo{height:28px;width:auto;max-width:178px;object-fit:contain;display:block}
+.brand-logo{height:34px;width:auto;max-width:178px;object-fit:contain;display:block}
 @media(max-width:560px){.brand-logo{height:25px;max-width:146px}}
 .foot-logo{height:22px;width:auto;object-fit:contain;display:block}
 .brand-text{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.3px;line-height:1}
@@ -626,7 +626,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
 <body>
 <header><div class="nav">
   <a href="#" class="brand" aria-label="Automed">
-    <img class="brand-logo" id="brand-logo" src="assets/logo_web.png" alt="Automed" width="91" height="28"
+    <img class="brand-logo" id="brand-logo" src="assets/logo_web.png" alt="Automed" width="111" height="34"
       data-light="assets/logo_web.png" data-dark="assets/logo_web_dark.png">
   </a>
   <nav class="links" id="nav-links">
@@ -646,6 +646,8 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
   </div>
 </div></header>
 <script>(function(){var d=document.documentElement.getAttribute("data-theme")==="dark";document.querySelectorAll("#brand-logo,#foot-logo").forEach(function(i){var u=i.getAttribute(d?"data-dark":"data-light");if(u)i.src=u})})()</script>
+<script>/* preload both logo variants so the theme switch is instant */
+(function(){document.querySelectorAll("#brand-logo,#foot-logo").forEach(function(i){["data-light","data-dark"].forEach(function(k){var u=i.getAttribute(k);if(u){var p=new Image();p.decoding="async";p.src=u}})})})();</script>
 
 <main>
 <section class="hero"><div class="wrap hg">
