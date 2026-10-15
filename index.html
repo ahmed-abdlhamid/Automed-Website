@@ -289,7 +289,7 @@ html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#
 .hero{padding:56px 0 80px}
 .hg{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .hero p{color:var(--mut);font-size:1.08rem;max-width:54ch;margin-top:20px}
-.ha{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.ha{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.ha .btn{padding:13px 22px;font-size:.98rem}
 
 .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--blue);font-weight:600;font-size:.88rem;margin-bottom:18px}
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
@@ -664,7 +664,8 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     </h1>
     <p data-ar="أصمّم وأبني أنظمة أتمتة ذكية تتولّى المهام اليومية المتكررة في شغلك، من الرد على العملاء وتسجيل الطلبات لمتابعة العمليات الداخلية، وتشتغل على القنوات اللي فريقك بيستخدمها فعلًا. النتيجة وقت أوفر وأخطاء أقل وشغل بيمشي بانتظام وإنت مركّز على نمو شغلك، مع دعم مستمر بعد التسليم." data-en="I design and build smart automation systems that take over the repetitive daily tasks in your business, from replying to customers and logging orders to following up on internal operations, running on the channels your team already uses. The result: more time, fewer errors, and work that runs steadily while you focus on growth, with ongoing support after delivery.">أصمّم وأبني أنظمة أتمتة ذكية تتولّى المهام اليومية المتكررة في شغلك، من الرد على العملاء وتسجيل الطلبات لمتابعة العمليات الداخلية، وتشتغل على القنوات اللي فريقك بيستخدمها فعلًا. النتيجة وقت أوفر وأخطاء أقل وشغل بيمشي بانتظام وإنت مركّز على نمو شغلك، مع دعم مستمر بعد التسليم.</p>
     <div class="ha">
-      <a class="btn pri" href="#projects" data-ar="شوف المشاريع ↓" data-en="See projects ↓">شوف المشاريع ↓</a>
+      <a class="btn pri" id="hero-cta" href="https://wa.me/201021804181?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%D8%AF.%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D8%B9%D9%86%20%D8%A3%D8%AA%D9%85%D8%AA%D8%A9%20%D8%B4%D8%BA%D9%84%D9%8A." data-href-ar="https://wa.me/201021804181?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%D8%AF.%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D8%B9%D9%86%20%D8%A3%D8%AA%D9%85%D8%AA%D8%A9%20%D8%B4%D8%BA%D9%84%D9%8A." data-href-en="https://wa.me/201021804181?text=Hi%20Dr.%20Ahmed%2C%20I%27d%20like%20to%20book%20a%20free%20consultation%20about%20automating%20my%20business." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span data-ar="احجز استشارة مجانية" data-en="Book a free consultation">احجز استشارة مجانية</span></a>
+      <a class="btn" href="#projects" data-ar="تصفح المشاريع ↓" data-en="Browse projects ↓">تصفح المشاريع ↓</a>
     </div>
   </div>
   <div class="hook" aria-label="How it works">
@@ -970,6 +971,7 @@ function toggleLang(){
     const v=e.getAttribute('data-'+lang);
     if(v!=null) e.innerHTML=v;
   });
+  document.querySelectorAll('[data-href-'+lang+']').forEach(a=>a.setAttribute('href',a.getAttribute('data-href-'+lang)));
 
   $('fn').placeholder=lang==='ar'?'محمد أحمد':'Mohamed Ahmed';
   $('fe').placeholder='ahmed@gmail.com';
@@ -980,11 +982,22 @@ function toggleLang(){
   list();
   detail();
 }
+const MAIL_TO='asbany103@gmail.com';
+function isMobile(){return /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)||matchMedia('(pointer:coarse)').matches}
+/* Desktop: open Gmail on the web (mailto needs a desktop mail app). Mobile: mailto opens the Gmail/mail app. */
+function openMail(to,su,body){
+  const mt=`mailto:${to}?subject=${encodeURIComponent(su)}&body=${encodeURIComponent(body)}`;
+  if(isMobile()){location.href=mt;return}
+  const g=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(su)}&body=${encodeURIComponent(body)}`;
+  const w=window.open(g,'_blank');
+  if(w){w.opener=null}else{location.href=mt}
+}
+document.querySelectorAll('.so-gmail').forEach(a=>a.addEventListener('click',ev=>{if(!isMobile()){ev.preventDefault();openMail(MAIL_TO,'','')}}));
 function send(ch){
   const n=$('fn').value.trim(),e=$('fe').value.trim(),ph=$('fp').value.trim(),d=$('fd').value.trim();
   if(!n||!e||!ph||!d){alert(lang==='en'?'Please fill in all fields first.':'من فضلك املأ كل الحقول أولًا.');return}
   const m=`الاسم: ${n}\nالبريد: ${e}\nالموبايل: ${ph}\nالتفاصيل:\n${d}`,q=encodeURIComponent(m);
-  if(ch==='email')location.href=`mailto:asbany103@gmail.com?subject=${encodeURIComponent('طلب تواصل من '+n)}&body=${q}`;
+  if(ch==='email')openMail(MAIL_TO,'طلب تواصل من '+n,m);
   else if(ch==='wa')window.open(`https://wa.me/201021804181?text=${q}`,'_blank');
   else window.open(`https://t.me/ahmed_abdlhamid?text=${q}`,'_blank');
 }
