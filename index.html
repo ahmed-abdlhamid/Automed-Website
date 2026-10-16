@@ -780,6 +780,36 @@ html[dir=rtl] .tl-card::before{inset:0 0 auto 0!important}
  .hero-card-animated .hs,.hook-dots b,.svc-card::before,.tl-card::before,.xc::before,.pr>div::before{transition:none!important}
 }
 
+
+/* Warm gradient progress line and numbered nodes for the delivery timeline */
+.tl-rail{background:rgba(253,146,56,.14)!important}
+.tl-rail i{background:linear-gradient(180deg,#FD9238 0%,#FF7446 52%,#FAAD2B 100%)!important}
+.tl-node,.tl-item:hover .tl-node,.tl-item.sup .tl-node{
+ background:linear-gradient(135deg,#FD9238 0%,#FF7446 55%,#FAAD2B 100%)!important;
+ color:#3B210F!important;border:1px solid rgba(253,146,56,.35)!important;
+ box-shadow:0 7px 18px rgba(253,146,56,.16)!important;
+}
+.tl-item:hover .tl-node{transform:translateY(-1px)!important}
+
+/* Hero: clear cards, slim vertical gradient connectors, no moving dark overlay */
+.hero-card-animated .hs{background:var(--card)!important;box-shadow:none!important;transform:none!important;position:relative}
+.hero-card-animated .hs.flow-active{background:var(--card)!important;border-color:rgba(253,146,56,.72)!important;box-shadow:0 0 0 1px rgba(253,146,56,.08)!important;transform:none!important}
+.hero-card-animated .hs:not(:last-child)::after{
+ content:"";position:absolute;z-index:2;top:100%;inset-inline-start:32px;width:2px;height:10px;
+ background:linear-gradient(180deg,#FD9238 0%,#FF7446 55%,#FAAD2B 100%);
+ opacity:.4;border-radius:3px;pointer-events:none;
+}
+.hero-card-animated .hs.flow-link-active:not(:last-child)::after{
+ opacity:1;background:linear-gradient(180deg,#FD9238 0%,#FF7446 55%,#FAAD2B 100%);
+ box-shadow:0 0 7px rgba(253,146,56,.24);
+}
+html[dir=rtl] .hero-card-animated .hs:not(:last-child)::after{inset-inline-start:32px}
+.hero-card-animated .hs.flow-active b{color:var(--ink)!important}
+.hero-card-animated .hs.flow-active span{color:var(--mut)!important}
+@media(prefers-reduced-motion:reduce){
+ .tl-rail i,.tl-node,.hero-card-animated .hs{transition:none!important}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -1309,7 +1339,8 @@ list();detail();
  window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate);update();
 })();
 
-/* Simple staged highlight: no moving pointer, no cursor spotlight */
+
+/* Highlight each hero stage in sequence; connectors stay slim and readable */
 (function(){
  var card=document.getElementById('hero-card');
  if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -1318,14 +1349,16 @@ list();detail();
  if(steps.length<3||dots.length<3)return;
  var index=0;
  function activate(){
-   steps.forEach(function(step,i){step.classList.toggle('flow-active',i===index)});
+   steps.forEach(function(step,i){
+     step.classList.toggle('flow-active',i===index);
+     step.classList.toggle('flow-link-active',i===index);
+   });
    dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index)});
-   index=(index+1)%3;
+   index=(index+1)%steps.length;
  }
  activate();
  window.setInterval(activate,2400);
 })();
-
 </script>
 </body>
 </html>
