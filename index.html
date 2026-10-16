@@ -139,6 +139,9 @@ header::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:no
 @media(max-width:560px){.brand-logo{height:16px;max-width:146px}}
 .foot-logo{height:16px;width:auto;object-fit:contain;display:block}
 @media(max-width:560px){.foot-logo{height:14px}}
+.logo-dark{display:none}
+html[data-theme=dark] .logo-light{display:none}
+html[data-theme=dark] .logo-dark{display:block}
 .brand-text{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.3px;line-height:1}
 .b-auto{color:var(--teal)}.b-med{color:var(--orange)}
 html[data-theme=dark] .b-auto{color:#2A9B92}html[data-theme=dark] .b-med{color:#FD9238}
@@ -630,8 +633,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
 <body>
 <header><div class="nav">
   <a href="#" class="brand" aria-label="Automed">
-    <img class="brand-logo" id="brand-logo" src="assets/logo_web.png?v=4" alt="Automed" width="98" height="21"
-      data-light="assets/logo_web.png?v=4" data-dark="assets/logo_web_dark.png?v=4">
+    <img class="brand-logo logo-light" src="assets/logo_web.png?v=4" alt="Automed" width="98" height="21"><img class="brand-logo logo-dark" src="assets/logo_web_dark.png?v=4" alt="" aria-hidden="true" width="98" height="21">
   </a>
   <nav class="links" id="nav-links">
     <a href="#about" data-ar="من أنا؟" data-en="Who am I?" onclick="closeMenu()">من أنا؟</a>
@@ -650,8 +652,6 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
   </div>
 </div></header>
 <script>(function(){var d=document.documentElement.getAttribute("data-theme")==="dark";document.querySelectorAll("#brand-logo,#foot-logo").forEach(function(i){var u=i.getAttribute(d?"data-dark":"data-light");if(u)i.src=u})})()</script>
-<script>/* preload both logo variants so the theme switch is instant */
-(function(){document.querySelectorAll("#brand-logo,#foot-logo").forEach(function(i){["data-light","data-dark"].forEach(function(k){var u=i.getAttribute(k);if(u){var p=new Image();p.decoding="async";p.src=u}})})})();</script>
 
 <main>
 <section class="hero"><div class="wrap hg">
@@ -697,7 +697,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <p class="lead" data-ar="خلفيتي الطبية بتخليني أفهم شغل العيادات من جوّه." data-en="My medical background lets me understand clinics from the inside.">خلفيتي الطبية بتخليني أفهم شغل العيادات من جوّه.</p>
     <p class="ab-p" data-ar="أنا د. أحمد عبدالحميد، طبيب أسنان بخبرة 6 سنين في الممارسة الطبية. شفت بنفسي إزاي الوقت بيضيع في الرد على المرضى وتنظيم المواعيد والمتابعة. من هنا دخلت مجال الأتمتة، وبصمّم دلوقتي أنظمة ذكية تخلّي الشغل يمشي لوحده، للعيادات وكمان للمطاعم والموارد البشرية والتأمين الطبي." data-en="I am Dr. Ahmed Abdelhamid, a dentist with 6 years of medical practice. I saw first-hand how time is lost answering patients, organizing appointments and following up. That is how I moved into automation, and today I design smart systems that keep work running on their own, for clinics and also for restaurants, HR and medical insurance.">أنا د. أحمد عبدالحميد، طبيب أسنان بخبرة 6 سنين في الممارسة الطبية. شفت بنفسي إزاي الوقت بيضيع في الرد على المرضى وتنظيم المواعيد والمتابعة. من هنا دخلت مجال الأتمتة، وبصمّم دلوقتي أنظمة ذكية تخلّي الشغل يمشي لوحده، للعيادات وكمان للمطاعم والموارد البشرية والتأمين الطبي.</p>
     <div class="ab-facts"><article class="ab-i"><i class="fa-solid fa-tooth"></i><b data-ar="طبيب أسنان" data-en="Dentist">طبيب أسنان</b><span data-ar="6 سنين خبرة في الممارسة الطبية" data-en="6 years of medical practice">6 سنين خبرة في الممارسة الطبية</span></article><article class="ab-i"><i class="fa-solid fa-stethoscope"></i><b data-ar="فاهم القطاع الطبي" data-en="Medical sector insight">فاهم القطاع الطبي</b><span data-ar="بعرف احتياجات العيادات والمراكز من الداخل" data-en="I know what clinics and centers need from the inside">بعرف احتياجات العيادات والمراكز من الداخل</span></article><article class="ab-i"><i class="fa-solid fa-pen-ruler"></i><b data-ar="اهتمام بالتصميم" data-en="An eye for design">اهتمام بالتصميم</b><span data-ar="خلفية في تصميم الويب وتجربة المستخدم" data-en="A background in web design and user experience">خلفية في تصميم الويب وتجربة المستخدم</span></article></div>
-
+    <div class="ab-btns"><a class="btn pri" href="#projects" data-ar="تصفح الأعمال ↓" data-en="Browse my work ↓">تصفح الأعمال ↓</a><a class="btn ch-wa" href="https://wa.me/201021804181" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a></div>
   </div>
 </div></section>
 
@@ -797,8 +797,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
 
 <footer><div class="wrap fi">
   <div class="foot-brand">
-    <img class="foot-logo" id="foot-logo" src="assets/logo_web.png?v=4" alt="Automed" width="75" height="16"
-      data-light="assets/logo_web.png?v=4" data-dark="assets/logo_web_dark.png?v=4">
+    <img class="foot-logo logo-light" src="assets/logo_web.png?v=4" alt="Automed" width="75" height="16"><img class="foot-logo logo-dark" src="assets/logo_web_dark.png?v=4" alt="" aria-hidden="true" width="75" height="16">
     <span class="foot-copy" data-ar="جميع الحقوق محفوظة © 2026" data-en="All rights reserved © 2026">جميع الحقوق محفوظة © 2026</span>
   </div>
   <div class="so">
@@ -932,12 +931,6 @@ function mTab(i,k,el){
 }
 $('md').addEventListener('click',e=>{if(e.target.id==='md')e.target.close()});
 
-function applyLogos(dark){
-  document.querySelectorAll('#brand-logo,#foot-logo').forEach(function(img){
-    const src=dark?(img.getAttribute('data-dark')||img.src):(img.getAttribute('data-light')||img.src);
-    if(src) img.src=src;
-  });
-}
 function toggleTheme(){
   const dark=document.documentElement.getAttribute('data-theme')==='dark';
   const next=dark?'':'dark';
@@ -946,7 +939,6 @@ function toggleTheme(){
   localStorage.setItem('theme', next||'light');
   const ic=$('theme-icon');
   if(ic){ic.className=next?'fa-solid fa-sun':'fa-solid fa-moon'}
-  applyLogos(!!next);
 }
 (function(){
   const t=localStorage.getItem('theme');
@@ -956,10 +948,6 @@ function toggleTheme(){
     const ic=document.getElementById('theme-icon');
     if(ic) ic.className='fa-solid fa-sun';
   }
-  document.querySelectorAll('#brand-logo,#foot-logo').forEach(function(img){
-    const src=dark?(img.getAttribute('data-dark')||''):(img.getAttribute('data-light')||'');
-    if(src) img.src=src;
-  });
 })();
 function toggleLang(){
   lang=lang==='ar'?'en':'ar';
@@ -990,7 +978,7 @@ function openMail(to,su,body){
   if(isMobile()){location.href=mt;return}
   const g=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(su)}&body=${encodeURIComponent(body)}`;
   const w=window.open(g,'_blank');
-  if(w){w.opener=null}else{location.href=mt}
+  if(w){w.opener=null}else{location.href=g}   /* popup blocked: open Gmail in this tab, never mailto on desktop */
 }
 if(isMobile())document.querySelectorAll('.so-gmail').forEach(a=>{a.setAttribute('href','mailto:'+MAIL_TO);a.removeAttribute('target')});
 function send(ch){
