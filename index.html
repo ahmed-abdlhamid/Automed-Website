@@ -854,8 +854,11 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 
 /* Source-inspired hero pipeline: static card, staged dots, clean active-step outline */
 .hook.hero-card-animated,.hook.hero-card-animated:hover{
-  transform:none!important;animation:none!important;filter:none!important;
+  transform:none!important;filter:none!important;
 }
+/* Keep the reference's gentle vertical float without tilt or mouse tracking. */
+#hero-card.hero-card-animated{animation:heroCardFloat 7s ease-in-out infinite!important}
+@keyframes heroCardFloat{50%{translate:0 -12px}}
 .hook.hero-card-animated.spot::before,.hook.hero-card-animated.spot::after,
 .hook.hero-card-animated::before,.hook.hero-card-animated::after{display:none!important;content:none!important}
 .hero-card-animated .hook-steps{display:flex;flex-direction:column;gap:10px}
@@ -923,6 +926,45 @@ html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
 @media(prefers-reduced-motion:reduce){
  .hook.hero-card-animated,.hook.hero-card-animated:hover{transition:none!important}
  .hero-card-animated .hs,.hero-card-animated .hook-dots b,#timeline .tl-card,#timeline .tl-card::before,#timeline .tl-node{transition:none!important}
+}
+
+
+/* Final reference-aligned interaction polish: one orange top edge, calm active step, subtle form outline. */
+#hero-card.hero-card-animated,
+#hero-card.hero-card-animated:hover{rotate:0deg!important}
+#hero-card .hs{background:var(--card)!important}
+#hero-card .hs.flow-active{
+  border-color:rgba(253,146,56,.62)!important;
+  background:rgba(253,146,56,.055)!important;
+  box-shadow:0 0 0 1px rgba(253,146,56,.045)!important;
+}
+#timeline .tl-card::before{
+  background:var(--orange)!important;
+  transform:scaleX(0);
+  transform-origin:center;
+}
+#timeline .tl-item:hover .tl-card::before{transform:scaleX(1)}
+#timeline .tl-node,#timeline .tl-item.sup .tl-node{
+  color:var(--teal)!important;
+}
+#timeline .tl-item:hover .tl-node{
+  background:var(--orange)!important;
+  color:#2A1608!important;
+  border-color:var(--orange)!important;
+}
+.ct form::before,.ct form::after{content:none!important;display:none!important}
+.ct form{
+  border-color:var(--line)!important;
+  transition:border-color .25s ease,box-shadow .25s ease!important;
+}
+@media(hover:hover){
+  .ct form:hover{
+    border-color:rgba(253,146,56,.58)!important;
+    box-shadow:0 0 0 3px rgba(253,146,56,.07),0 12px 34px rgba(12,31,30,.055)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #hero-card.hero-card-animated{animation:none!important;translate:none!important}
 }
 
 </style>
