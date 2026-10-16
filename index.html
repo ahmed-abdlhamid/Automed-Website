@@ -855,15 +855,16 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 /* Hero card stays exactly static: original colors, spacing, and natural message states.
    Only the small status dot beside the hero badge has a gentle glow animation. */
 /* The hero card stays upright and floats gently as one unit; its messages stay static. */
+/* Subtle, slow vertical drift for the whole hero card; message rows remain still. */
 #hero-card.hero-card-animated,
 #hero-card.hero-card-animated:hover{
   position:relative!important;top:0;
-  animation:heroCardFloat 4.8s ease-in-out infinite!important;
+  animation:heroCardFloat 7.5s ease-in-out infinite!important;
   transform:none!important;translate:none!important;rotate:0deg!important;filter:none!important;
 }
 @keyframes heroCardFloat{
   0%,100%{top:0}
-  50%{top:-9px}
+  50%{top:-4px}
 }
 #hero-card .hook-steps{gap:18px!important}
 #hero-card .hs,#hero-card .hs.flow-active{
@@ -957,11 +958,11 @@ html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
   border-color:var(--line)!important;
   transition:border-color .25s ease,box-shadow .25s ease!important;
 }
-@media(hover:hover){
-  .ct form:hover{
-    border-color:rgba(253,146,56,.58)!important;
-    box-shadow:0 0 0 3px rgba(253,146,56,.07),0 12px 34px rgba(12,31,30,.055)!important;
-  }
+/* Keep the contact form visually steady on hover; contact-channel buttons retain their own hover states. */
+.ct form,.ct form:hover{
+  border-color:var(--line)!important;
+  box-shadow:none!important;
+  transition:none!important;
 }
 @media(prefers-reduced-motion:reduce){
  .badge i{animation:none!important}
