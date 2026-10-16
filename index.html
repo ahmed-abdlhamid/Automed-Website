@@ -510,7 +510,6 @@ html.js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none}.hero-down{animation:none}}
 
 .ct form{border-radius:26px}.ct form::before{border-top-right-radius:26px}.ct form::after{border-bottom-left-radius:26px}
-.ct form:hover::before,.ct form:hover::after{width:96px;height:96px;border-color:var(--orange)}
 .pr>div b{background:linear-gradient(135deg,#2E8F83,#1B6F66)!important;box-shadow:0 8px 18px rgba(13,92,86,.25)!important;color:#fff}
 .pri{color:#0A3D39}
 
@@ -848,7 +847,6 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 /* Contact form: highlight the whole outline, not corner brackets */
 .ct form::before,.ct form::after{content:none!important;display:none!important}
 .ct form{border:1px solid var(--line)!important;transition:border-color .28s ease,box-shadow .28s ease!important}
-.ct form:hover{border-color:rgba(253,146,56,.52)!important;box-shadow:0 16px 38px rgba(253,146,56,.07)!important}
 @media(prefers-reduced-motion:reduce){.hero-card-animated .hs,.hook-dots b,.tl-card::before,.tl-card,.tl-node,.ct form{transition:none!important}}
 
 
@@ -859,12 +857,12 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 #hero-card.hero-card-animated,
 #hero-card.hero-card-animated:hover{
   position:relative!important;top:0;
-  animation:heroCardFloat 7.5s ease-in-out infinite!important;
+  animation:heroCardFloat 10s ease-in-out infinite!important;
   transform:none!important;translate:none!important;rotate:0deg!important;filter:none!important;
 }
 @keyframes heroCardFloat{
   0%,100%{top:0}
-  50%{top:-4px}
+  50%{top:-2px}
 }
 #hero-card .hook-steps{gap:18px!important}
 #hero-card .hs,#hero-card .hs.flow-active{
@@ -969,10 +967,58 @@ html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
  #hero-card.hero-card-animated{animation:none!important}
 }
 
+
+/* Thin reading-progress indicator pinned to the very top of the page. */
+#site-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;
+  pointer-events:none;background:transparent;overflow:hidden;
+}
+#site-progress-fill{
+  display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left center;
+  background:linear-gradient(90deg,var(--orange),var(--teal-mid));
+  will-change:transform;
+}
+html[dir="rtl"] #site-progress-fill{transform-origin:right center}
+@media(prefers-reduced-motion:reduce){#site-progress-fill{transition:none!important}}
+
+/* Neutral contact form hover; keep hover feedback on the contact buttons themselves. */
+.ct form,.ct form:hover{
+  border-color:var(--line)!important;box-shadow:none!important;transform:none!important;
+}
+.ct form::before,.ct form::after,
+.ct form:hover::before,.ct form:hover::after{content:none!important;display:none!important}
+
+/* Highlight the final support stage with Automed's deep olive-teal. */
+.tl-item.sup .tl-card,
+.tl-item.sup:hover .tl-card{
+  background:var(--teal2)!important;border-color:var(--teal2)!important;
+  color:#fff!important;box-shadow:0 16px 38px rgba(10,74,69,.2)!important;
+}
+.tl-item.sup .tl-card h3,
+.tl-item.sup .tl-card p,
+.tl-item.sup .tl-card .sup-note{color:#fff!important}
+.tl-item.sup .tl-card p{opacity:.9}
+.tl-item.sup .tl-card .sup-chip{
+  background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.2)!important;
+  color:#fff!important;
+}
+.tl-item.sup .tl-node,
+.tl-item.sup:hover .tl-node{
+  background:var(--teal2)!important;color:#fff!important;border-color:transparent!important;
+  box-shadow:0 7px 18px rgba(10,74,69,.25)!important;transform:none!important;
+}
+html[data-theme=dark] .tl-item.sup .tl-card,
+html[data-theme=dark] .tl-item.sup:hover .tl-card{
+  background:#123A35!important;border-color:#1A514A!important;
+}
+html[data-theme=dark] .tl-item.sup .tl-node,
+html[data-theme=dark] .tl-item.sup:hover .tl-node{background:#123A35!important}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
 <body>
+<div id="site-progress" aria-hidden="true"><span id="site-progress-fill"></span></div>
 <header><div class="nav">
   <a href="#" class="brand" aria-label="Automed">
     <img class="brand-logo logo-light" src="assets/logo_web.png?v=4" alt="Automed" width="98" height="21"><img class="brand-logo logo-dark" src="assets/logo_web_dark.png?v=4" alt="" aria-hidden="true" width="98" height="21">
@@ -1515,6 +1561,27 @@ list();detail();
 
 
 /* Hero pipeline intentionally has no animation or timed message changes. */;
+
+/* Page reading progress: update on scroll and resize without affecting navigation. */
+(function(){
+  var fill=document.getElementById('site-progress-fill');
+  if(!fill)return;
+  var ticking=false;
+  function update(){
+    var root=document.documentElement;
+    var max=root.scrollHeight-window.innerHeight;
+    var progress=max>0?Math.max(0,Math.min(1,window.scrollY/max)):0;
+    fill.style.transform='scaleX('+progress+')';
+    ticking=false;
+  }
+  function requestUpdate(){
+    if(!ticking){ticking=true;requestAnimationFrame(update)}
+  }
+  window.addEventListener('scroll',requestUpdate,{passive:true});
+  window.addEventListener('resize',requestUpdate);
+  update();
+})();
+
 </script>
 </body>
 </html>
