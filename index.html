@@ -689,6 +689,59 @@ html[dir=rtl] .tl-card::before{inset:0 0 0 auto}
  .tl-card,.tl-node,.faq-item,.faq-q i{transition:none}
 }
 
+
+/* Refined card edge accents: no permanent olive/teal corner marks */
+.svc-card::before,.svc-card::after,.tl-card::before,.tl-card::after,
+.xc::before,.xc::after,.pr>div::before,.pr>div::after,.ct form::before,.ct form::after{
+  content:"";position:absolute;z-index:3;width:0;height:0;opacity:0;pointer-events:none;
+  border:0;border-radius:0;background:none!important;
+  transition:width .32s cubic-bezier(.2,.7,.2,1),height .32s cubic-bezier(.2,.7,.2,1),opacity .22s ease,border-color .22s ease;
+}
+.svc-card::before,.tl-card::before,.xc::before,.pr>div::before,.ct form::before{
+  inset:0 0 auto auto;width:0;height:0;border-top:2px solid var(--orange);border-right:2px solid var(--orange);
+}
+.svc-card::after,.tl-card::after,.xc::after,.pr>div::after,.ct form::after{
+  inset:auto auto 0 0;width:0;height:0;border-bottom:2px solid var(--orange);border-left:2px solid var(--orange);
+}
+.svc-card::before,.svc-card::after,.tl-card::before,.tl-card::after{border-radius:0}
+.svc-card::before,.xc::before,.pr>div::before,.ct form::before{border-top-right-radius:18px}
+.svc-card::after,.xc::after,.pr>div::after,.ct form::after{border-bottom-left-radius:18px}
+.svc-card:hover::before,.svc-card:hover::after,.tl-item:hover .tl-card::before,.tl-item:hover .tl-card::after,
+.xc:hover::before,.xc:hover::after,.pr>div:hover::before,.pr>div:hover::after,.ct form:hover::before,.ct form:hover::after{
+  width:56px;height:56px;opacity:1;
+}
+.svc-card::before,.svc-card::after,.tl-card::before,.tl-card::after{transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),opacity .22s ease}
+.svc-card{border-color:var(--line)}
+.svc-card::before{background:none!important;opacity:0}
+.tl-card::before{inset:0 0 auto auto!important;width:0;height:0;opacity:0;background:none}
+html[dir=rtl] .tl-card::before{inset:0 0 auto auto!important}
+.tl-card{border-color:var(--line)}
+.tl-card::after{inset:auto auto 0 0}
+.tl-item:hover .tl-card::before{inset:0 0 auto auto!important}
+html[dir=rtl] .tl-item:hover .tl-card::before{inset:0 0 auto auto!important}
+html[data-theme=dark] .svc-card:hover,html[data-theme=dark] .tl-item:hover .tl-card{border-color:rgba(253,146,56,.38)}
+
+/* Hero flow animation: a light orange message packet moves between stages */
+.hero-card-animated{transform:rotate(-1.2deg);animation:heroCardFloat 8s ease-in-out infinite;will-change:transform}
+.hero-card-animated:hover{transform:rotate(0) translateY(-4px)}
+.hero-card-animated .hook-steps{position:relative}
+.hero-card-animated .hs{position:relative;transition:background-color .48s ease,border-color .48s ease,box-shadow .48s ease,transform .48s cubic-bezier(.2,.7,.2,1)}
+.hero-card-animated .hs.flow-active{border-color:rgba(253,146,56,.7);background:rgba(253,146,56,.075);box-shadow:0 7px 18px rgba(253,146,56,.08);transform:translateX(-2px)}
+html[dir=ltr] .hero-card-animated .hs.flow-active{transform:translateX(2px)}
+.hero-message-packet{position:absolute;z-index:4;inset-inline-start:5px;top:0;width:26px;height:26px;display:grid;place-items:center;border-radius:9px;color:#42230b;background:linear-gradient(135deg,#FFD28A,#FD9238);box-shadow:0 5px 14px rgba(253,146,56,.28);font-size:11px;opacity:0;transform:translateY(0) scale(.85);transition:top .72s cubic-bezier(.22,.75,.25,1),opacity .22s ease,transform .3s ease;pointer-events:none}
+.hero-message-packet.packet-visible{opacity:1;transform:translateY(0) scale(1)}
+.hero-message-packet i{line-height:1}
+@media(max-width:700px){
+ .hero-card-animated{transform:none;animation:heroCardFloat 9s ease-in-out infinite}
+ .hero-card-animated:hover{transform:translateY(-2px)}
+ .hero-message-packet{inset-inline-start:3px;width:22px;height:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-card-animated{animation:none;will-change:auto}
+ .hero-card-animated .hs,.hero-message-packet{transition:none}
+ .hero-card-animated .hs.flow-active{transform:none}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -1222,6 +1275,40 @@ list();detail();
  if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
  var card=document.getElementById('hero-card');if(!card)return;
  card.addEventListener('pointermove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--px',(e.clientX-r.left)+'px');card.style.setProperty('--py',(e.clientY-r.top)+'px')});
+})();
+
+
+/* Smooth, lightweight message-to-action sequence inside the hero card */
+(function(){
+ var card=document.getElementById('hero-card');
+ if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var steps=Array.from(card.querySelectorAll('.hook-steps .hs'));
+ var stage=card.querySelector('.hook-steps');
+ if(steps.length<3||!stage)return;
+ var packet=document.createElement('span');
+ packet.className='hero-message-packet';
+ packet.setAttribute('aria-hidden','true');
+ packet.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
+ stage.appendChild(packet);
+ var index=-1,timer=null;
+ function movePacket(){
+   if(!card.isConnected)return;
+   index=(index+1)%steps.length;
+   steps.forEach(function(el,i){el.classList.toggle('flow-active',i===index)});
+   var target=steps[index];
+   var y=target.offsetTop+Math.max(7,(target.offsetHeight-26)/2);
+   packet.style.top=y+'px';
+   packet.classList.add('packet-visible');
+ }
+ function restart(){
+   if(timer)window.clearInterval(timer);
+   movePacket();
+   timer=window.setInterval(movePacket,2100);
+ }
+ window.addEventListener('resize',function(){
+   if(index>=0){var y=steps[index].offsetTop+Math.max(7,(steps[index].offsetHeight-26)/2);packet.style.top=y+'px'}
+ });
+ restart();
 })();
 
 </script>
