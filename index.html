@@ -742,6 +742,44 @@ html[dir=ltr] .hero-card-animated .hs.flow-active{transform:translateX(2px)}
  .hero-card-animated .hs.flow-active{transform:none}
 }
 
+
+/* Corrected hero card: upright and steady, with only the three stage lights animating */
+.hook{transform:none!important}
+.hero-card-animated{transform:none!important;animation:none!important;will-change:auto;transition:box-shadow .25s ease,border-color .25s ease}
+.hero-card-animated:hover{transform:none!important;box-shadow:0 20px 44px rgba(13,92,86,.1)!important}
+html[data-theme=dark] .hero-card-animated,html[data-theme=dark] .hero-card-animated:hover{box-shadow:0 24px 55px rgba(0,0,0,.28)!important}
+.hero-card-animated::after,.hero-card-animated::before{display:none!important;content:none!important}
+.hero-card-animated .hs{transform:none!important;transition:background-color .45s ease,border-color .45s ease,box-shadow .45s ease}
+.hero-card-animated .hs.flow-active{transform:none!important;border-color:rgba(253,146,56,.68);background:rgba(253,146,56,.07);box-shadow:0 5px 16px rgba(253,146,56,.07)}
+.hook-dots b{opacity:.35;transition:background-color .4s ease,opacity .4s ease,box-shadow .4s ease}
+.hook-dots b.is-active{background:var(--orange);opacity:1;box-shadow:0 0 0 3px rgba(253,146,56,.14),0 0 12px rgba(253,146,56,.32)}
+.hero-message-packet{display:none!important}
+
+/* Replace opposing corner brackets with one clean orange line along the top edge */
+.svc-card::before,.svc-card::after,.tl-card::before,.tl-card::after,
+.xc::before,.xc::after,.pr>div::before,.pr>div::after,.ct form::before,.ct form::after{
+ content:none!important;display:none!important;
+}
+.svc-card::before,.tl-card::before,.xc::before,.pr>div::before{
+ content:""!important;display:block!important;position:absolute;z-index:4;
+ top:0!important;right:0!important;bottom:auto!important;left:0!important;
+ width:auto!important;height:2px!important;padding:0!important;border:0!important;border-radius:inherit!important;
+ background:linear-gradient(90deg,transparent 0%,var(--orange) 12%,var(--orange) 88%,transparent 100%)!important;
+ opacity:0!important;transform:scaleX(.2);transform-origin:center;
+ transition:opacity .25s ease,transform .42s cubic-bezier(.2,.7,.2,1)!important;pointer-events:none;
+}
+.svc-card:hover::before,.tl-item:hover .tl-card::before,.xc:hover::before,.pr>div:hover::before{
+ opacity:1!important;transform:scaleX(1);
+}
+.svc-card{border-color:var(--line)!important}
+.svc-card:hover{border-color:var(--line)!important}
+.tl-card::before{inset:0 0 auto 0!important}
+html[dir=rtl] .tl-card::before{inset:0 0 auto 0!important}
+@media(prefers-reduced-motion:reduce){
+ .hero-card-animated{animation:none!important;transition:none!important}
+ .hero-card-animated .hs,.hook-dots b,.svc-card::before,.tl-card::before,.xc::before,.pr>div::before{transition:none!important}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -1270,45 +1308,22 @@ list();detail();
  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
  window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate);update();
 })();
-/* Pointer spotlight for the hero card on fine pointers only */
-(function(){
- if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
- var card=document.getElementById('hero-card');if(!card)return;
- card.addEventListener('pointermove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--px',(e.clientX-r.left)+'px');card.style.setProperty('--py',(e.clientY-r.top)+'px')});
-})();
 
-
-/* Smooth, lightweight message-to-action sequence inside the hero card */
+/* Simple staged highlight: no moving pointer, no cursor spotlight */
 (function(){
  var card=document.getElementById('hero-card');
  if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- var steps=Array.from(card.querySelectorAll('.hook-steps .hs'));
- var stage=card.querySelector('.hook-steps');
- if(steps.length<3||!stage)return;
- var packet=document.createElement('span');
- packet.className='hero-message-packet';
- packet.setAttribute('aria-hidden','true');
- packet.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
- stage.appendChild(packet);
- var index=-1,timer=null;
- function movePacket(){
-   if(!card.isConnected)return;
-   index=(index+1)%steps.length;
-   steps.forEach(function(el,i){el.classList.toggle('flow-active',i===index)});
-   var target=steps[index];
-   var y=target.offsetTop+Math.max(7,(target.offsetHeight-26)/2);
-   packet.style.top=y+'px';
-   packet.classList.add('packet-visible');
+ var steps=Array.from(card.querySelectorAll('.hook-steps > .hs'));
+ var dots=Array.from(card.querySelectorAll('.hook-dots b'));
+ if(steps.length<3||dots.length<3)return;
+ var index=0;
+ function activate(){
+   steps.forEach(function(step,i){step.classList.toggle('flow-active',i===index)});
+   dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index)});
+   index=(index+1)%3;
  }
- function restart(){
-   if(timer)window.clearInterval(timer);
-   movePacket();
-   timer=window.setInterval(movePacket,2100);
- }
- window.addEventListener('resize',function(){
-   if(index>=0){var y=steps[index].offsetTop+Math.max(7,(steps[index].offsetHeight-26)/2);packet.style.top=y+'px'}
- });
- restart();
+ activate();
+ window.setInterval(activate,2400);
 })();
 
 </script>
