@@ -818,7 +818,7 @@ html[dir=rtl] .tl-card::before{inset:0 0 0 auto}
   </div>
 </div></section>
 
-<section id="process" style="padding-top:0"><div class="wrap">
+<section id="process" style="padding:64px 0 72px"><div class="wrap">
   <div class="sh">
     <h2 data-ar="رحلة التنفيذ" data-en="Delivery journey">رحلة التنفيذ</h2>
     <div class="slogan" data-ar="من الفكرة لنظام شغال" data-en="From idea to a working system">من الفكرة لنظام شغال</div>
@@ -1192,7 +1192,7 @@ list();detail();
 
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');setTimeout(function(){el.classList.remove('rv','in')},1100)})},{threshold:.15});
-  document.querySelectorAll('.sh,.xc,.svc-card,.pr>div,.tools,.show,.ct form,.ab-photo,.ab-txt').forEach(function(el){el.classList.add('rv');el.style.setProperty('--i',Array.prototype.indexOf.call(el.parentNode.children,el)%4);io.observe(el)});
+  document.querySelectorAll('.sh,.xc,.svc-card,.pr>div,.tl-item,.tools,.show,.ct form,.ab-photo,.ab-txt').forEach(function(el){el.classList.add('rv');el.style.setProperty('--i',Array.prototype.indexOf.call(el.parentNode.children,el)%4);io.observe(el)});
   var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var t=+e.target.dataset.count,t0=performance.now();(function f(n){var k=Math.min((n-t0)/1200,1);e.target.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})});
   document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
 })();
