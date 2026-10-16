@@ -627,6 +627,68 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     color:#2A1608 !important;
   }
 }
+
+/* Reference-inspired motion, adapted to Automed's existing teal/orange identity */
+.hero{position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;z-index:-1;inset:-20px 0 0;pointer-events:none;background:radial-gradient(ellipse at 78% 25%,rgba(253,146,56,.12),transparent 38%),radial-gradient(ellipse at 18% 58%,rgba(26,122,114,.12),transparent 42%)}
+.hero-card-animated{position:relative;isolation:isolate;transform:rotate(-2deg);transition:transform .45s cubic-bezier(.2,.75,.25,1),box-shadow .45s,border-color .35s;animation:heroCardFloat 7s ease-in-out infinite;box-shadow:0 22px 55px rgba(13,92,86,.12)}
+.hero-card-animated::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(253,146,56,.7),rgba(26,122,114,.4),rgba(253,146,56,.12));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.8;transition:opacity .35s}
+.hero-card-animated::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--px,50%) var(--py,40%),rgba(253,146,56,.17),transparent 72%);pointer-events:none}
+.hero-card-animated:hover{transform:rotate(0) translateY(-7px) scale(1.012);box-shadow:0 30px 72px rgba(13,92,86,.2);border-color:rgba(253,146,56,.4)}
+.hero-card-animated:hover::before{opacity:1}
+html[data-theme=dark] .hero-card-animated{box-shadow:0 24px 65px rgba(0,0,0,.32)}
+html[data-theme=dark] .hero-card-animated:hover{box-shadow:0 32px 76px rgba(0,0,0,.45)}
+@keyframes heroCardFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.hero-card-animated .hook-steps,.hero-card-animated .hook-top{position:relative;z-index:1}
+
+/* Vertical delivery timeline */
+.timeline{position:relative;max-width:900px;margin:38px auto 0;padding-block:4px}
+.tl-rail{position:absolute;top:8px;bottom:8px;inset-inline-start:27px;width:2px;background:var(--line);overflow:hidden;border-radius:4px}
+.tl-rail i{display:block;width:100%;height:0;background:linear-gradient(180deg,var(--orange),var(--teal-mid));border-radius:4px;transition:height .12s linear}
+.tl-item{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;margin-bottom:20px}
+.tl-item:last-child{margin-bottom:0}
+.tl-node{position:relative;z-index:1;width:56px;height:56px;border:1px solid rgba(253,146,56,.45);border-radius:17px;display:grid;place-items:center;background:var(--card);color:var(--teal);font:700 1.1rem "Readex Pro",sans-serif;box-shadow:0 8px 24px rgba(13,92,86,.1);transition:transform .3s,background .3s,color .3s,border-color .3s}
+.tl-card{position:relative;min-width:0;padding:22px 24px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:0 12px 34px rgba(12,31,30,.045);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.tl-card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--orange),var(--teal-mid));opacity:.9}
+html[dir=rtl] .tl-card::before{inset:0 0 0 auto}
+.tl-card h3{font-size:1.08rem;margin-bottom:5px}
+.tl-card>p{color:var(--mut);font-size:.94rem;line-height:1.8;margin:0}
+.tl-card .me{display:block;margin-top:12px;padding:8px 12px;border-radius:10px;background:var(--teal-soft);font-size:.82rem;color:var(--ink)}
+.tl-card .me em{font-style:normal;color:var(--teal);font-weight:600}
+.tl-item:hover .tl-card{transform:translateY(-3px);border-color:rgba(253,146,56,.38);box-shadow:0 18px 42px rgba(12,31,30,.09)}
+.tl-item:hover .tl-node{transform:scale(1.06);background:var(--grad);color:#fff;border-color:transparent}
+.tl-item.sup .tl-node{background:var(--grad-warm);color:#3a210d;border-color:transparent}
+.tl-card .sup-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.tl-card .sup-chip{font-size:.78rem;color:var(--teal);background:var(--teal-soft);border:1px solid var(--pline);border-radius:99px;padding:5px 10px}
+.tl-card .sup-note{display:block;margin-top:12px;color:var(--mut);font-size:.82rem}
+
+/* FAQ accordion */
+.faq{max-width:860px;margin:30px auto 0;display:grid;gap:10px}
+.faq-item{border:1px solid var(--line);border-radius:17px;background:var(--card);overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.faq-item:hover,.faq-item.open{border-color:rgba(253,146,56,.55);box-shadow:0 12px 32px rgba(12,31,30,.06)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 21px;border:0;background:transparent;color:var(--ink);font:600 .98rem "Readex Pro","IBM Plex Sans Arabic",sans-serif;text-align:start;cursor:pointer}
+.faq-q i{flex:none;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--teal-soft);color:var(--teal);font-size:.82rem;transition:transform .3s,background .3s,color .3s}
+.faq-item.open .faq-q i{transform:rotate(45deg);background:var(--grad-warm);color:#2b1b0b}
+.faq-panel[hidden]{display:none}
+.faq-panel p{padding:0 21px 20px;color:var(--mut);font-size:.92rem;line-height:1.9}
+@media(max-width:700px){
+ .hero-card-animated{transform:none;animation:heroCardFloat 8s ease-in-out infinite}
+ .hero-card-animated:hover{transform:translateY(-3px)}
+ .timeline{margin-top:28px}
+ .tl-item{grid-template-columns:44px minmax(0,1fr);gap:11px;margin-bottom:14px}
+ .tl-rail{inset-inline-start:21px}
+ .tl-node{width:44px;height:44px;border-radius:14px;font-size:1rem}
+ .tl-card{padding:17px 16px;border-radius:16px}
+ .tl-card h3{font-size:1rem}.tl-card>p{font-size:.88rem}
+ .faq-q{padding:16px;font-size:.9rem}
+ .faq-panel p{padding:0 16px 17px;font-size:.88rem}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-card-animated{animation:none;transition:none}
+ .hero-card-animated:hover{transform:none}
+ .tl-card,.tl-node,.faq-item,.faq-q i{transition:none}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -640,6 +702,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <a href="#projects" data-ar="معرض الأعمال" data-en="Portfolio" onclick="closeMenu()">معرض الأعمال</a>
     <a href="#services" data-nav-target="services" data-ar="الخدمات" data-en="Services" onclick="closeMenu()">الخدمات</a>
     <a href="#process" data-nav-target="process" data-ar="رحلة التنفيذ" data-en="Delivery journey" onclick="closeMenu()">رحلة التنفيذ</a>
+    <a href="#faq" data-nav-target="faq" data-ar="أسئلة شائعة" data-en="FAQ" onclick="closeMenu()">أسئلة شائعة</a>
     <a class="nav-contact" href="#contact" onclick="closeMenu()"><span class="contact-desktop-label" data-ar="تواصل معي" data-en="Contact me">تواصل معي</span></a>
   </nav>
   <div class="nav-end">
@@ -668,7 +731,7 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
       <a class="btn" href="#projects" data-ar="تصفح الأعمال ↓" data-en="Browse my work ↓">تصفح الأعمال ↓</a>
     </div>
   </div>
-  <div class="hook" aria-label="How it works">
+  <div class="hook hero-card-animated spot" id="hero-card" aria-label="How it works">
     <div class="hook-top"><span class="hook-dots"><b></b><b></b><b></b></span><span data-ar="آلية العمل" data-en="how it works">آلية العمل</span></div>
     <div class="hook-steps">
       <div class="hs"><i class="fa-solid fa-comments ic1"></i><div><b data-ar="رسالة من العميل أو الموظف" data-en="Message from customer or staff">رسالة من العميل أو الموظف</b><span data-ar="واتساب · تليجرام · إيميل" data-en="WhatsApp · Telegram · Email">واتساب · تليجرام · إيميل</span></div></div>
@@ -761,14 +824,49 @@ html .hero h1 em{background:linear-gradient(90deg,#FF7446,#FAAD2B 55%,#FEEAB8);-
     <div class="slogan" data-ar="من الفكرة لنظام شغال" data-en="From idea to a working system">من الفكرة لنظام شغال</div>
     <p class="lead" data-ar="خمس مراحل واضحة، وبتعرف في كل مرحلة هتاخد إيه." data-en="Five clear stages, and you know what you get at each one.">خمس مراحل واضحة، وبتعرف في كل مرحلة هتاخد إيه.</p>
   </div>
-  <div class="pr">
-    <div><b>1</b><h3 data-ar="جلسة فهم" data-en="Discovery session">جلسة فهم</h3><p data-ar="نفهم شغلك ونحدد المهام اللي تتأتمت." data-en="We learn your work and pick the tasks to automate.">نفهم شغلك ونحدد المهام اللي تتأتمت.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نطاق واضح للمشروع." data-en="A clear project scope.">نطاق واضح للمشروع.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تحكيلي شغلك اليومي." data-en="Tell me about your daily work.">تحكيلي شغلك اليومي.</span></span></div>
-    <div><b>2</b><h3 data-ar="تصميم المسار" data-en="Flow design">تصميم المسار</h3><p data-ar="نرسم الرسالة هتروح فين، والنظام هيعمل إيه." data-en="We map where the message goes and what the system does.">نرسم الرسالة هتروح فين، والنظام هيعمل إيه.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="خطة بسيطة تشوفها قبل البناء." data-en="A simple plan you see before we build.">خطة بسيطة تشوفها قبل البناء.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="توافق أو تعدّل." data-en="Approve it or adjust it.">توافق أو تعدّل.</span></span></div>
-    <div><b>3</b><h3 data-ar="البناء والربط" data-en="Build & connect">البناء والربط</h3><p data-ar="نبني النظام ونربطه بأدواتك وحساباتك." data-en="We build the system and connect it to your tools and accounts.">نبني النظام ونربطه بأدواتك وحساباتك.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نسخة شغالة للتجربة." data-en="A working version to try.">نسخة شغالة للتجربة.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تديني صلاحية الوصول." data-en="Give me access to your tools.">تديني صلاحية الوصول.</span></span></div>
-    <div><b>4</b><h3 data-ar="التجربة والتسليم" data-en="Test & handover">التجربة والتسليم</h3><p data-ar="نجرّب على مواقف حقيقية ونسلّم بشرح بسيط." data-en="We test on real situations and hand over with a simple guide.">نجرّب على مواقف حقيقية ونسلّم بشرح بسيط.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نظام شغال وشرح استخدامه." data-en="A live system and how to use it.">نظام شغال وشرح استخدامه.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تجرّب وتقولي ملاحظاتك." data-en="Try it and share feedback.">تجرّب وتقولي ملاحظاتك.</span></span></div>
-    <div class="sup"><b>5</b><h3 data-ar="الدعم والمتابعة" data-en="Support & follow-up">الدعم والمتابعة</h3><p data-ar="التسليم مش آخر الرحلة. بعد ما النظام يشتغل، بنفضل نتابعه ونتأكد إنه مستقر، ونتعامل مع أي عطل أو مشكلة تشغيل تحتاج تدخل. إنت تركّز في شغلك، واحنا نهتم إن النظام يفضل شغال." data-en="Delivery isn't the end of the journey. After the system goes live, we keep monitoring it and making sure it stays stable, and we handle any fault or operational issue that needs attention. You focus on your work, and we make sure the system keeps running.">التسليم مش آخر الرحلة. بعد ما النظام يشتغل، بنفضل نتابعه ونتأكد إنه مستقر، ونتعامل مع أي عطل أو مشكلة تشغيل تحتاج تدخل. إنت تركّز في شغلك، واحنا نهتم إن النظام يفضل شغال.</p><span class="sup-chips"><span class="sup-chip" data-ar="متابعة وتشغيل مستمر" data-en="Ongoing monitoring & operation">متابعة وتشغيل مستمر</span><span class="sup-chip" data-ar="دعم فني ومعالجة الأعطال" data-en="Technical support & fault handling">دعم فني ومعالجة الأعطال</span><span class="sup-chip" data-ar="صيانة وتحديثات تشغيلية" data-en="Maintenance & operational updates">صيانة وتحديثات تشغيلية</span></span><span class="sup-note" data-ar="أي إضافة أو تطوير جديد بنتفق عليه الأول قبل التنفيذ." data-en="Any new addition or development is agreed on first, before we build it.">أي إضافة أو تطوير جديد بنتفق عليه الأول قبل التنفيذ.</span></div>
+  <div class="timeline" id="timeline">
+    <div class="tl-rail" aria-hidden="true"><i id="tlFill"></i></div>
+    <article class="tl-item">
+      <div class="tl-node">1</div>
+      <div class="tl-card"><h3 data-ar="جلسة فهم" data-en="Discovery session">جلسة فهم</h3><p data-ar="نفهم شغلك ونحدد المهام اللي تتأتمت." data-en="We learn your work and pick the tasks to automate.">نفهم شغلك ونحدد المهام اللي تتأتمت.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نطاق واضح للمشروع." data-en="A clear project scope.">نطاق واضح للمشروع.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تحكيلي شغلك اليومي." data-en="Tell me about your daily work.">تحكيلي شغلك اليومي.</span></span>
+      </div>
+    </article>
+    <article class="tl-item">
+      <div class="tl-node">2</div>
+      <div class="tl-card"><h3 data-ar="تصميم المسار" data-en="Flow design">تصميم المسار</h3><p data-ar="نرسم الرسالة هتروح فين، والنظام هيعمل إيه." data-en="We map where the message goes and what the system does.">نرسم الرسالة هتروح فين، والنظام هيعمل إيه.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="خطة بسيطة تشوفها قبل البناء." data-en="A simple plan you see before we build.">خطة بسيطة تشوفها قبل البناء.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="توافق أو تعدّل." data-en="Approve it or adjust it.">توافق أو تعدّل.</span></span>
+      </div>
+    </article>
+    <article class="tl-item">
+      <div class="tl-node">3</div>
+      <div class="tl-card"><h3 data-ar="البناء والربط" data-en="Build & connect">البناء والربط</h3><p data-ar="نبني النظام ونربطه بأدواتك وحساباتك." data-en="We build the system and connect it to your tools and accounts.">نبني النظام ونربطه بأدواتك وحساباتك.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نسخة شغالة للتجربة." data-en="A working version to try.">نسخة شغالة للتجربة.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تديني صلاحية الوصول." data-en="Give me access to your tools.">تديني صلاحية الوصول.</span></span>
+      </div>
+    </article>
+    <article class="tl-item">
+      <div class="tl-node">4</div>
+      <div class="tl-card"><h3 data-ar="التجربة والتسليم" data-en="Test & handover">التجربة والتسليم</h3><p data-ar="نجرّب على مواقف حقيقية ونسلّم بشرح بسيط." data-en="We test on real situations and hand over with a simple guide.">نجرّب على مواقف حقيقية ونسلّم بشرح بسيط.</p><span class="me"><em data-ar="هتستلم:" data-en="You get:">هتستلم:</em> <span data-ar="نظام شغال وشرح استخدامه." data-en="A live system and how to use it.">نظام شغال وشرح استخدامه.</span></span><span class="me"><em data-ar="دورك:" data-en="Your part:">دورك:</em> <span data-ar="تجرّب وتقولي ملاحظاتك." data-en="Try it and share feedback.">تجرّب وتقولي ملاحظاتك.</span></span>
+      </div>
+    </article>
+    <article class="tl-item sup">
+      <div class="tl-node"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+      <div class="tl-card"><h3 data-ar="الدعم والمتابعة" data-en="Support & follow-up">الدعم والمتابعة</h3><p data-ar="التسليم مش آخر الرحلة. بعد ما النظام يشتغل، بنفضل نتابعه ونتأكد إنه مستقر، ونتعامل مع أي عطل أو مشكلة تشغيل تحتاج تدخل. إنت تركّز في شغلك، واحنا نهتم إن النظام يفضل شغال." data-en="Delivery isn't the end of the journey. After the system goes live, we keep monitoring it and making sure it stays stable, and we handle any fault or operational issue that needs attention. You focus on your work, and we make sure the system keeps running.">التسليم مش آخر الرحلة. بعد ما النظام يشتغل، بنفضل نتابعه ونتأكد إنه مستقر، ونتعامل مع أي عطل أو مشكلة تشغيل تحتاج تدخل. إنت تركّز في شغلك، واحنا نهتم إن النظام يفضل شغال.</p><span class="sup-chips"><span class="sup-chip" data-ar="متابعة وتشغيل مستمر" data-en="Ongoing monitoring & operation">متابعة وتشغيل مستمر</span><span class="sup-chip" data-ar="دعم فني ومعالجة الأعطال" data-en="Technical support & fault handling">دعم فني ومعالجة الأعطال</span><span class="sup-chip" data-ar="صيانة وتحديثات تشغيلية" data-en="Maintenance & operational updates">صيانة وتحديثات تشغيلية</span></span><span class="sup-note" data-ar="أي إضافة أو تطوير جديد بنتفق عليه الأول قبل التنفيذ." data-en="Any new addition or development is agreed on first, before we build it.">أي إضافة أو تطوير جديد بنتفق عليه الأول قبل التنفيذ.</span>
+      </div>
+    </article>
   </div>
   
+</div></section>
+
+<section id="faq" style="padding:72px 0 80px"><div class="wrap">
+  <div class="sh">
+    <h2 data-ar="أسئلة شائعة" data-en="Frequently asked questions">أسئلة شائعة</h2>
+    <div class="slogan" data-ar="إجابات سريعة قبل ما نبدأ" data-en="Quick answers before we start">إجابات سريعة قبل ما نبدأ</div>
+  </div>
+  <div class="faq">
+    <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span data-ar="إزاي أعرف إن شغلي محتاج أتمتة؟" data-en="How do I know if my work needs automation?">إزاي أعرف إن شغلي محتاج أتمتة؟</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-panel" hidden><p data-ar="لو فيه مهام بتتكرر كتير، زي الرد على نفس الاستفسارات، تسجيل الطلبات، تنظيم الحجوزات أو متابعة الموظفين، فغالبًا نقدر نقلل فيها الوقت والشغل اليدوي. بنبدأ بفهم طريقة شغلك ونحدد إذا كانت الأتمتة مناسبة فعلًا." data-en="If tasks repeat often—answering the same questions, logging orders, organizing bookings, or following up with staff—we can often reduce manual work and save time. We start by understanding your process and checking whether automation is a good fit.">لو فيه مهام بتتكرر كتير، زي الرد على نفس الاستفسارات، تسجيل الطلبات، تنظيم الحجوزات أو متابعة الموظفين، فغالبًا نقدر نقلل فيها الوقت والشغل اليدوي. بنبدأ بفهم طريقة شغلك ونحدد إذا كانت الأتمتة مناسبة فعلًا.</p></div></article>
+    <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span data-ar="هل لازم أغيّر رقم واتساب أو طريقة شغل الفريق؟" data-en="Do I need to change our WhatsApp number or team workflow?">هل لازم أغيّر رقم واتساب أو طريقة شغل الفريق؟</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-panel" hidden><p data-ar="مش بالضرورة. حسب طبيعة النظام والتكاملات المتاحة، نقدر نشتغل على القنوات والأدوات اللي فريقك بيستخدمها بالفعل، ونحدد طريقة الربط المناسبة قبل التنفيذ." data-en="Not necessarily. Depending on the system and available integrations, we can work with the channels and tools your team already uses. We agree on the right integration approach before implementation.">مش بالضرورة. حسب طبيعة النظام والتكاملات المتاحة، نقدر نشتغل على القنوات والأدوات اللي فريقك بيستخدمها بالفعل، ونحدد طريقة الربط المناسبة قبل التنفيذ.</p></div></article>
+    <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span data-ar="قد إيه بياخد تنفيذ النظام؟" data-en="How long does implementation take?">قد إيه بياخد تنفيذ النظام؟</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-panel" hidden><p data-ar="المدة بتختلف حسب عدد الخطوات والتكاملات المطلوبة. بعد جلسة فهم الشغل وتحديد النطاق، بنوضح المراحل والجدول الزمني المتوقع قبل ما نبدأ البناء." data-en="Timing depends on the number of steps and integrations. After we understand the workflow and define the scope, we outline the stages and expected timeline before building starts.">المدة بتختلف حسب عدد الخطوات والتكاملات المطلوبة. بعد جلسة فهم الشغل وتحديد النطاق، بنوضح المراحل والجدول الزمني المتوقع قبل ما نبدأ البناء.</p></div></article>
+    <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span data-ar="هل هحتاج خبرة تقنية عشان أستخدم النظام؟" data-en="Do I need technical skills to use the system?">هل هحتاج خبرة تقنية عشان أستخدم النظام؟</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-panel" hidden><p data-ar="الهدف إن النظام يسهّل شغلك، مش يضيف تعقيد. بنراعي طريقة استخدام فريقك، وبنسلّم النظام مع شرح لطريقة التعامل معاه حسب المشروع." data-en="The goal is to make work easier, not more complicated. We account for how your team works and provide a handover with guidance tailored to the project.">الهدف إن النظام يسهّل شغلك، مش يضيف تعقيد. بنراعي طريقة استخدام فريقك، وبنسلّم النظام مع شرح لطريقة التعامل معاه حسب المشروع.</p></div></article>
+    <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span data-ar="إيه اللي بيحصل بعد التسليم؟" data-en="What happens after delivery?">إيه اللي بيحصل بعد التسليم؟</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-panel" hidden><p data-ar="فيه متابعة ودعم بعد التسليم حسب الاتفاق، للتأكد إن النظام مستقر والتعامل مع مشاكل التشغيل. وأي إضافة أو تطوير جديد بنتفق عليه الأول قبل تنفيذه." data-en="Post-delivery support and monitoring are provided according to the agreement, helping keep the system stable and addressing operational issues. Any new feature or development is agreed on before implementation.">فيه متابعة ودعم بعد التسليم حسب الاتفاق، للتأكد إن النظام مستقر والتعامل مع مشاكل التشغيل. وأي إضافة أو تطوير جديد بنتفق عليه الأول قبل تنفيذه.</p></div></article>
+  </div>
 </div></section>
 
 <section id="contact" style="padding-top:0"><div class="wrap">
@@ -1025,7 +1123,7 @@ window.addEventListener('scroll',function(){closeMenu()},{passive:true});
 list();detail();
 
 (function(){
-  var ids=['about','projects','services','process','contact'];
+  var ids=['about','projects','services','process','faq','contact'];
   function clearActive(){
     document.querySelectorAll('#nav-links a[href^="#"]').forEach(function(a){
       if(!a.classList.contains('nav-contact')) a.classList.remove('active');
@@ -1098,6 +1196,34 @@ list();detail();
   var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var t=+e.target.dataset.count,t0=performance.now();(function f(n){var k=Math.min((n-t0)/1200,1);e.target.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})});
   document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
 })();
+
+/* FAQ accordion: one answer open at a time */
+(function(){
+ document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+   var item=btn.closest('.faq-item'),panel=item.querySelector('.faq-panel'),wasOpen=btn.getAttribute('aria-expanded')==='true';
+   document.querySelectorAll('.faq-item').forEach(function(other){
+    other.classList.remove('open');other.querySelector('.faq-q').setAttribute('aria-expanded','false');other.querySelector('.faq-panel').hidden=true;
+   });
+   if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');panel.hidden=false}
+  });
+ });
+})();
+/* Timeline progress follows scroll position */
+(function(){
+ var tl=document.getElementById('timeline'),fill=document.getElementById('tlFill');if(!tl||!fill)return;
+ var ticking=false;
+ function update(){var r=tl.getBoundingClientRect(),passed=window.innerHeight*.72-r.top,p=Math.max(0,Math.min(1,passed/Math.max(r.height,1)));fill.style.height=(p*100)+'%';ticking=false}
+ function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+ window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate);update();
+})();
+/* Pointer spotlight for the hero card on fine pointers only */
+(function(){
+ if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ var card=document.getElementById('hero-card');if(!card)return;
+ card.addEventListener('pointermove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--px',(e.clientX-r.left)+'px');card.style.setProperty('--py',(e.clientY-r.top)+'px')});
+})();
+
 </script>
 </body>
 </html>
