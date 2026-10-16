@@ -851,6 +851,80 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 .ct form:hover{border-color:rgba(253,146,56,.52)!important;box-shadow:0 16px 38px rgba(253,146,56,.07)!important}
 @media(prefers-reduced-motion:reduce){.hero-card-animated .hs,.hook-dots b,.tl-card::before,.tl-card,.tl-node,.ct form{transition:none!important}}
 
+
+/* Source-inspired hero pipeline: static card, staged dots, clean active-step outline */
+.hook.hero-card-animated,.hook.hero-card-animated:hover{
+  transform:none!important;animation:none!important;filter:none!important;
+}
+.hook.hero-card-animated.spot::before,.hook.hero-card-animated.spot::after,
+.hook.hero-card-animated::before,.hook.hero-card-animated::after{display:none!important;content:none!important}
+.hero-card-animated .hook-steps{display:flex;flex-direction:column;gap:10px}
+.hero-card-animated .hs,
+.hero-card-animated .hs.flow-active{
+  position:relative;background:var(--card)!important;color:var(--ink)!important;
+  border:1px solid var(--line)!important;border-radius:14px;
+  box-shadow:none!important;transform:none!important;
+  transition:border-color .28s ease,background-color .28s ease,box-shadow .28s ease!important;
+}
+.hero-card-animated .hs.flow-active{
+  border-color:rgba(253,146,56,.68)!important;
+  background:rgba(253,146,56,.045)!important;
+  box-shadow:0 0 0 1px rgba(253,146,56,.055)!important;
+}
+.hero-card-animated .hs.flow-active b{color:var(--ink)!important}
+.hero-card-animated .hs.flow-active span{color:var(--mut)!important}
+.hero-card-animated .hs::after{content:none!important;display:none!important}
+.hero-card-animated .hook-dots b{
+  background:var(--mut)!important;opacity:.38;box-shadow:none!important;
+  transition:background-color .28s ease,opacity .28s ease,box-shadow .28s ease!important;
+}
+.hero-card-animated .hook-dots b.is-active{
+  background:var(--orange)!important;opacity:1;
+  box-shadow:0 0 0 3px rgba(253,146,56,.13)!important;
+}
+
+/* Execution timeline: original scroll-progress rail and simple single top-edge hover */
+#timeline.timeline{position:relative}
+#timeline .tl-rail{background:var(--line)!important;width:2px;overflow:hidden}
+#timeline .tl-rail i{
+  background:linear-gradient(180deg,#FD9238 0%,#F47C35 55%,#E96B2C 100%)!important;
+  border-radius:4px;transition:height .16s linear!important;
+}
+#timeline .tl-card{
+  position:relative;overflow:hidden;border:1px solid var(--line)!important;
+  transform:translateY(0);box-shadow:0 12px 34px rgba(12,31,30,.045)!important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease!important;
+}
+#timeline .tl-card::before{
+  content:""!important;position:absolute!important;display:block!important;
+  inset:0 0 auto 0!important;width:100%!important;height:3px!important;
+  border:0!important;border-radius:20px 20px 0 0!important;
+  background:linear-gradient(90deg,#FD9238 0%,#F47C35 55%,#E96B2C 100%)!important;
+  opacity:0!important;transform:scaleX(.12);transform-origin:center;
+  transition:opacity .22s ease,transform .36s cubic-bezier(.2,.7,.2,1)!important;
+}
+html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
+#timeline .tl-card::after{content:none!important;display:none!important}
+#timeline .tl-item:hover .tl-card{
+  transform:translateY(-4px)!important;border-color:var(--line)!important;
+  box-shadow:0 18px 40px rgba(12,31,30,.085)!important;
+}
+#timeline .tl-item:hover .tl-card::before{opacity:1!important;transform:scaleX(1)}
+#timeline .tl-node,#timeline .tl-item.sup .tl-node{
+  background:var(--card)!important;color:var(--teal)!important;
+  border:1px solid var(--line)!important;box-shadow:0 8px 24px rgba(13,92,86,.08)!important;
+  transform:none!important;transition:background-color .24s ease,color .24s ease,border-color .24s ease,box-shadow .24s ease!important;
+}
+#timeline .tl-item:hover .tl-node{
+  background:#FD9238!important;color:#3B210F!important;border-color:#FD9238!important;
+  box-shadow:0 7px 18px rgba(253,146,56,.18)!important;
+}
+#timeline .tl-item.sup:hover .tl-node{background:#FD9238!important;color:#3B210F!important;border-color:#FD9238!important}
+@media(prefers-reduced-motion:reduce){
+ .hook.hero-card-animated,.hook.hero-card-animated:hover{transition:none!important}
+ .hero-card-animated .hs,.hero-card-animated .hook-dots b,#timeline .tl-card,#timeline .tl-card::before,#timeline .tl-node{transition:none!important}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -1371,17 +1445,26 @@ list();detail();
   });
  });
 })();
-/* Timeline progress follows scroll position */
+/* Timeline progress follows the original viewport-based draw behavior */
 (function(){
- var tl=document.getElementById('timeline'),fill=document.getElementById('tlFill');if(!tl||!fill)return;
+ var tl=document.getElementById('timeline'),fill=document.getElementById('tlFill');
+ if(!tl||!fill)return;
  var ticking=false;
- function update(){var r=tl.getBoundingClientRect(),passed=window.innerHeight*.72-r.top,p=Math.max(0,Math.min(1,passed/Math.max(r.height,1)));fill.style.height=(p*100)+'%';ticking=false}
+ function update(){
+   var r=tl.getBoundingClientRect();
+   var passed=(window.innerHeight*.75)-r.top;
+   var p=Math.max(0,Math.min(1,passed/Math.max(r.height,1)));
+   fill.style.height=(p*100)+'%';
+   ticking=false;
+ }
  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
- window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate);update();
-})();
+ window.addEventListener('scroll',requestUpdate,{passive:true});
+ window.addEventListener('resize',requestUpdate);
+ update();
+})();;
 
 
-/* Highlight each hero stage in sequence; connectors stay slim and readable */
+/* Original-style staged hero pipeline: active step and matching dot only */
 (function(){
  var card=document.getElementById('hero-card');
  if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -1390,16 +1473,13 @@ list();detail();
  if(steps.length<3||dots.length<3)return;
  var index=0;
  function activate(){
-   steps.forEach(function(step,i){
-     step.classList.toggle('flow-active',i===index);
-     step.classList.toggle('flow-link-active',i===index);
-   });
+   steps.forEach(function(step,i){step.classList.toggle('flow-active',i===index)});
    dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index)});
-   index=(index+1)%steps.length;
+   index=(index+1)%Math.min(steps.length,dots.length);
  }
  activate();
- window.setInterval(activate,2400);
-})();
+ window.setInterval(activate,2600);
+})();;
 </script>
 </body>
 </html>
