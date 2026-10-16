@@ -852,41 +852,27 @@ html[dir=rtl] .tl-card::before{right:0!important;left:0!important}
 @media(prefers-reduced-motion:reduce){.hero-card-animated .hs,.hook-dots b,.tl-card::before,.tl-card,.tl-node,.ct form{transition:none!important}}
 
 
-/* Source-inspired hero pipeline: static card, staged dots, clean active-step outline */
-.hook.hero-card-animated,.hook.hero-card-animated:hover{
-  transform:none!important;filter:none!important;
+/* Hero card stays exactly static: original colors, spacing, and natural message states.
+   Only the small status dot beside the hero badge has a gentle glow animation. */
+#hero-card.hero-card-animated,
+#hero-card.hero-card-animated:hover{
+  animation:none!important;transform:rotate(-2.5deg)!important;
+  translate:none!important;rotate:0deg!important;filter:none!important;
 }
-/* Keep the reference's gentle vertical float without tilt or mouse tracking. */
-#hero-card.hero-card-animated{animation:heroCardFloat 7s ease-in-out infinite!important}
-@keyframes heroCardFloat{50%{translate:0 -12px}}
-.hook.hero-card-animated.spot::before,.hook.hero-card-animated.spot::after,
-.hook.hero-card-animated::before,.hook.hero-card-animated::after{display:none!important;content:none!important}
-.hero-card-animated .hook-steps{display:flex;flex-direction:column;gap:10px}
-.hero-card-animated .hs,
-.hero-card-animated .hs.flow-active{
-  position:relative;background:var(--card)!important;color:var(--ink)!important;
-  border:1px solid var(--line)!important;border-radius:14px;
-  box-shadow:none!important;transform:none!important;
-  transition:border-color .28s ease,background-color .28s ease,box-shadow .28s ease!important;
+#hero-card .hs,#hero-card .hs.flow-active{
+  background:var(--card)!important;color:var(--ink)!important;
+  border-color:var(--line)!important;box-shadow:none!important;
+  transform:none!important;
 }
-.hero-card-animated .hs.flow-active{
-  border-color:rgba(253,146,56,.68)!important;
-  background:rgba(253,146,56,.045)!important;
-  box-shadow:0 0 0 1px rgba(253,146,56,.055)!important;
-}
-.hero-card-animated .hs.flow-active b{color:var(--ink)!important}
-.hero-card-animated .hs.flow-active span{color:var(--mut)!important}
-.hero-card-animated .hs::after{content:none!important;display:none!important}
-.hero-card-animated .hook-dots b{
-  background:var(--mut)!important;opacity:.38;box-shadow:none!important;
-  transition:background-color .28s ease,opacity .28s ease,box-shadow .28s ease!important;
-}
-.hero-card-animated .hook-dots b.is-active{
-  background:var(--orange)!important;opacity:1;
-  box-shadow:0 0 0 3px rgba(253,146,56,.13)!important;
+#hero-card .hook-dots b{background:var(--mut)!important;opacity:.4!important;box-shadow:none!important}
+#hero-card .hook-dots b.is-active{background:var(--mut)!important;opacity:.4!important;box-shadow:none!important}
+.badge i{animation:badgeStatusGlow 2.2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(253,146,56,0)}
+@keyframes badgeStatusGlow{
+  0%,100%{box-shadow:0 0 0 0 rgba(253,146,56,0);filter:brightness(1)}
+  50%{box-shadow:0 0 0 5px rgba(253,146,56,.12),0 0 12px rgba(253,146,56,.35);filter:brightness(1.2)}
 }
 
-/* Execution timeline: original scroll-progress rail and simple single top-edge hover */
+/* Execution timeline: top-edge hover remains separate from the scroll-driven active stage */
 #timeline.timeline{position:relative}
 #timeline .tl-rail{background:var(--line)!important;width:2px;overflow:hidden}
 #timeline .tl-rail i{
@@ -929,29 +915,29 @@ html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
 }
 
 
-/* Final reference-aligned interaction polish: one orange top edge, calm active step, subtle form outline. */
-#hero-card.hero-card-animated,
-#hero-card.hero-card-animated:hover{rotate:0deg!important}
-#hero-card .hs{background:var(--card)!important}
-#hero-card .hs.flow-active{
-  border-color:rgba(253,146,56,.62)!important;
-  background:rgba(253,146,56,.055)!important;
-  box-shadow:0 0 0 1px rgba(253,146,56,.045)!important;
-}
-#timeline .tl-card::before{
-  background:var(--orange)!important;
-  transform:scaleX(0);
-  transform-origin:center;
-}
-#timeline .tl-item:hover .tl-card::before{transform:scaleX(1)}
+/* Timeline stage follows scroll position, never cursor hover. */
 #timeline .tl-node,#timeline .tl-item.sup .tl-node{
-  color:var(--teal)!important;
+  background:var(--card)!important;color:var(--teal)!important;
+  border-color:var(--line)!important;
+  box-shadow:0 8px 24px rgba(13,92,86,.08)!important;
+}
+#timeline .tl-item.is-current .tl-node{
+  background:var(--orange)!important;color:#2A1608!important;
+  border-color:var(--orange)!important;
+  box-shadow:0 7px 18px rgba(253,146,56,.18)!important;
 }
 #timeline .tl-item:hover .tl-node{
-  background:var(--orange)!important;
-  color:#2A1608!important;
+  background:var(--card)!important;color:var(--teal)!important;
+  border-color:var(--line)!important;
+}
+#timeline .tl-item.is-current:hover .tl-node{
+  background:var(--orange)!important;color:#2A1608!important;
   border-color:var(--orange)!important;
 }
+#timeline .tl-card::before{
+  background:var(--orange)!important;transform:scaleX(0);transform-origin:center;
+}
+#timeline .tl-item:hover .tl-card::before{transform:scaleX(1)}
 .ct form::before,.ct form::after{content:none!important;display:none!important}
 .ct form{
   border-color:var(--line)!important;
@@ -964,7 +950,8 @@ html[dir=rtl] #timeline .tl-card::before{inset:0 0 auto 0!important}
   }
 }
 @media(prefers-reduced-motion:reduce){
-  #hero-card.hero-card-animated{animation:none!important;translate:none!important}
+ .badge i{animation:none!important}
+ #hero-card.hero-card-animated{animation:none!important}
 }
 
 </style>
@@ -1487,16 +1474,19 @@ list();detail();
   });
  });
 })();
-/* Timeline progress follows the original viewport-based draw behavior */
+/* Timeline progress and active stage are driven by scroll position, independent of the pointer. */
 (function(){
  var tl=document.getElementById('timeline'),fill=document.getElementById('tlFill');
  if(!tl||!fill)return;
+ var items=Array.from(tl.querySelectorAll('.tl-item'));
  var ticking=false;
  function update(){
    var r=tl.getBoundingClientRect();
    var passed=(window.innerHeight*.75)-r.top;
    var p=Math.max(0,Math.min(1,passed/Math.max(r.height,1)));
    fill.style.height=(p*100)+'%';
+   var activeIndex=Math.min(items.length-1,Math.floor(p*items.length));
+   items.forEach(function(item,i){item.classList.toggle('is-current',i===activeIndex)});
    ticking=false;
  }
  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
@@ -1506,22 +1496,7 @@ list();detail();
 })();;
 
 
-/* Original-style staged hero pipeline: active step and matching dot only */
-(function(){
- var card=document.getElementById('hero-card');
- if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- var steps=Array.from(card.querySelectorAll('.hook-steps > .hs'));
- var dots=Array.from(card.querySelectorAll('.hook-dots b'));
- if(steps.length<3||dots.length<3)return;
- var index=0;
- function activate(){
-   steps.forEach(function(step,i){step.classList.toggle('flow-active',i===index)});
-   dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index)});
-   index=(index+1)%Math.min(steps.length,dots.length);
- }
- activate();
- window.setInterval(activate,2600);
-})();;
+/* Hero pipeline intentionally has no animation or timed message changes. */;
 </script>
 </body>
 </html>
