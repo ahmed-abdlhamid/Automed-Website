@@ -1014,6 +1014,41 @@ html[data-theme=dark] .tl-item.sup:hover .tl-card{
 html[data-theme=dark] .tl-item.sup .tl-node,
 html[data-theme=dark] .tl-item.sup:hover .tl-node{background:#123A35!important}
 
+
+/* Final motion polish: animate the hero workflow itself, not the whole card. */
+#hero-card.hero-card-animated,
+#hero-card.hero-card-animated:hover{
+  top:0!important;transform:none!important;translate:none!important;rotate:0deg!important;
+  animation:none!important;will-change:auto!important;
+}
+#hero-card .hs{
+  animation:heroStepPulse 6s ease-in-out infinite;
+  transition:border-color .3s ease,box-shadow .3s ease,background-color .3s ease;
+}
+#hero-card .hs:nth-child(1){animation-delay:0s}
+#hero-card .hs:nth-child(2){animation-delay:2s}
+#hero-card .hs:nth-child(3){animation-delay:4s}
+@keyframes heroStepPulse{
+  0%,25%,100%{border-color:var(--line);box-shadow:none}
+  10%,18%{border-color:rgba(253,146,56,.58);box-shadow:0 5px 18px rgba(253,146,56,.09)}
+}
+#hero-card .hs-result{animation:heroResultPulse 6s ease-in-out infinite;animation-delay:4.8s}
+@keyframes heroResultPulse{
+  0%,65%,100%{box-shadow:none;border-color:rgba(13,92,86,.25)}
+  75%,88%{box-shadow:0 7px 22px rgba(13,92,86,.12);border-color:var(--teal)}
+}
+/* The process timeline responds to scroll: smooth progress and a clear active step. */
+#timeline .tl-rail i{transition:height .32s ease-out!important}
+#timeline .tl-card{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background-color .3s ease}
+#timeline .tl-item.is-current .tl-card{
+  border-color:rgba(253,146,56,.42);
+  box-shadow:0 14px 34px rgba(12,31,30,.065);
+}
+@media(prefers-reduced-motion:reduce){
+  #hero-card .hs,#hero-card .hs-result{animation:none!important}
+  #timeline .tl-rail i,#timeline .tl-card{transition:none!important}
+}
+
 </style>
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -1396,7 +1431,7 @@ function toggleLang(){
   list();
   detail();
 }
-const MAIL_TO='asbany103@gmail.com';
+const MAIL_TO='automed.official@gmail.com';
 function isMobile(){return /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)}
 /* Desktop: open Gmail on the web (mailto needs a desktop mail app). Mobile: mailto opens the Gmail/mail app. */
 function openMail(to,su,body){
