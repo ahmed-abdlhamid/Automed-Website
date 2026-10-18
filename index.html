@@ -341,7 +341,21 @@ html[data-theme=dark] .logo-dark{display:block}
   }
 }
 
-.menu-btn{display:none;width:36px;height:36px;padding:0}
+.menu-btn{
+  display:none;width:36px;height:36px;min-width:36px;padding:0;
+  place-items:center;flex:none;
+  border:1px solid var(--line);border-radius:11px;
+  background:transparent;color:var(--ink);
+  line-height:1;
+  transition:border-color var(--t-mid) var(--e),background-color var(--t-mid) var(--e),
+             color var(--t-mid) var(--e),transform var(--t-fast) var(--e);
+}
+.menu-btn i{display:block;font-size:1rem;line-height:1}
+@media (hover:hover){
+  .menu-btn:hover{border-color:var(--line-2);background:var(--bg-2)}
+  html[data-theme=dark] .menu-btn:hover{background:var(--card-2)}
+}
+.menu-btn:active{transform:scale(.94)}
 .nav-contact{display:none}
 
 /* ----------------------------------------------------------------- 5. hero */
@@ -789,7 +803,7 @@ html[data-theme=dark] .tl-item.sup .tl-card{background:linear-gradient(140deg,#1
 
 /* ------------------------------------------------------------------ 10. faq */
 #faq{padding:clamp(56px,7vw,88px) 0}
-.faq{max-width:880px;display:grid;gap:10px}
+.faq{width:min(880px,100%);margin-inline:auto;display:grid;gap:10px}
 .faq-item{
   background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;
