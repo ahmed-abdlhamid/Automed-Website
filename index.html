@@ -803,7 +803,21 @@ html[data-theme=dark] .tl-item.sup .tl-card{background:linear-gradient(140deg,#1
 
 /* ------------------------------------------------------------------ 10. faq */
 #faq{padding:clamp(56px,7vw,88px) 0}
-.faq{width:min(880px,100%);margin-inline:auto;display:grid;gap:10px}
+/* Keep the FAQ accordion precisely centered in both RTL and LTR layouts. */
+#faq .faq{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:10px;
+  width:100%;
+  max-width:880px;
+  margin-left:auto;
+  margin-right:auto;
+  justify-self:center;
+  position:relative;
+  left:0;
+  right:0;
+}
+#faq .faq-item{width:100%;min-width:0}
 .faq-item{
   background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;
