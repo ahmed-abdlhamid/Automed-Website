@@ -224,10 +224,10 @@ h2{font-size:clamp(1.75rem,3.4vw,2.55rem);line-height:1.28;letter-spacing:-.5px}
 }
 html[data-theme=dark] .slogan{color:var(--teal-300)}
 
-/* section headers */
-.sh{max-width:760px;margin-bottom:clamp(28px,4vw,48px)}
-.sh h2{max-width:26ch}
-.sh .lead{max-width:60ch}
+/* Section headers: centered, consistent across the page */
+.sh{max-width:760px;margin:0 auto clamp(28px,4vw,48px);text-align:center}
+.sh h2{max-width:none}
+.sh .lead{max-width:60ch;margin-inline:auto}
 .sh.ctr{text-align:center;margin-inline:auto}
 .sh.ctr .lead{margin-inline:auto}
 .sh.ctr h2{max-width:none}
@@ -334,7 +334,11 @@ html[data-theme=dark] .logo-dark{display:block}
 }
 .desk-contact .contact-desktop-label{font:600 .88rem/1 var(--font-head)}
 @media (hover:hover){
-  .desk-contact:hover{box-shadow:0 12px 28px rgba(255,116,70,.32);transform:translateY(-2px);border-color:transparent}
+  .desk-contact:hover{
+    background:var(--grad-sheen);color:#2A1608;
+    box-shadow:0 12px 28px rgba(255,116,70,.32);
+    transform:translateY(-2px);border-color:transparent;
+  }
 }
 
 .menu-btn{display:none;width:36px;height:36px;padding:0}
@@ -353,7 +357,7 @@ html[data-theme=dark] .logo-dark{display:block}
 html[data-theme=dark] .hero-shell{box-shadow:0 34px 80px rgba(0,0,0,.5)}
 
 /* clipped decorative layers */
-.hero-aurora,.hero-grid,.hero-glow{
+.hero-aurora,.hero-grid{
   position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden;
 }
 .hero-aurora::before,.hero-aurora::after{
@@ -382,14 +386,6 @@ html[data-theme=dark] .hero-shell{box-shadow:0 34px 80px rgba(0,0,0,.5)}
   -webkit-mask-image:radial-gradient(120% 90% at 70% 12%,#000 0%,transparent 72%);
   mask-image:radial-gradient(120% 90% at 70% 12%,#000 0%,transparent 72%);
 }
-.hero-glow{
-  background:radial-gradient(420px circle at var(--mx,72%) var(--my,18%),rgba(255,255,255,.12),transparent 62%);
-  opacity:0;transition:opacity var(--t-slow) var(--e);z-index:1;
-}
-@media (hover:hover) and (pointer:fine){
-  .hero-shell:hover .hero-glow{opacity:1}
-}
-
 .hg{
   position:relative;z-index:2;
   display:grid;grid-template-columns:1.06fr .94fr;
@@ -649,19 +645,18 @@ html[data-theme=dark] .dark{box-shadow:0 30px 70px rgba(0,0,0,.45)}
 .mi-cap{color:rgba(255,255,255,.78);font-size:.9rem;line-height:1.7;text-align:center;padding:4px 8px 2px;max-width:70ch;margin-inline:auto}
 
 /* -------------------------------------------------------------- 8. services */
-.svc-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:18px;align-items:stretch;
+}
 .svc-card{
   position:relative;overflow:hidden;
-  grid-column:span 6;
+  min-width:0;height:100%;
   display:flex;flex-direction:column;
   background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
   padding:clamp(22px,2.6vw,30px);
   transition:transform var(--t-mid) var(--e),box-shadow var(--t-mid) var(--e),border-color var(--t-mid) var(--e);
 }
-.svc-card:nth-child(1){grid-column:span 7}
-.svc-card:nth-child(2){grid-column:span 5}
-.svc-card:nth-child(3){grid-column:span 5}
-.svc-card:nth-child(4){grid-column:span 7}
 /* single orange hairline along the top edge, revealed on hover */
 .svc-card::before{
   content:"";position:absolute;top:0;inset-inline:0;height:2px;
@@ -822,12 +817,13 @@ html[data-theme=dark] .tl-item.sup .tl-card{background:linear-gradient(140deg,#1
 
 /* -------------------------------------------------------------- 11. contact */
 #contact{padding:clamp(56px,7vw,88px) 0 clamp(48px,6vw,72px)}
-.contact-grid{
-  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  gap:clamp(32px,5vw,64px);align-items:start;
+.contact-grid{display:block}
+.contact-grid .sh{
+  max-width:760px;margin:0 auto clamp(28px,4vw,40px);
+  text-align:center;
 }
-.contact-grid .sh{margin-bottom:0}
-.ct{max-width:none;margin:0}
+.contact-grid .sh .lead{margin-inline:auto}
+.ct{max-width:760px;margin-inline:auto}
 form{
   background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
   padding:clamp(22px,3vw,32px);display:grid;gap:15px;
@@ -951,12 +947,12 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   .links a{padding:9px 11px;font-size:.95rem}
 }
 @media(max-width:1024px){
-  .svc-card,.svc-card:nth-child(n){grid-column:span 6}
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ab{grid-template-columns:.95fr 1.05fr;gap:40px}
   .ab-facts{grid-template-columns:1fr 1fr}
 }
 @media(max-width:940px){
-  .hg,.show,.pd,.contact-grid,.ab{grid-template-columns:1fr}
+  .hg,.show,.pd,.ab{grid-template-columns:1fr}
   .show{gap:18px}
   .pl{flex-direction:row;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
   .pi{flex:none;min-width:210px}
@@ -998,7 +994,8 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   header,header .nav{overflow:visible}
 }
 @media(max-width:760px){
-  .svc-card,.svc-card:nth-child(n){grid-column:span 12}
+  .svc-grid{grid-template-columns:1fr;grid-auto-rows:auto}
+  .svc-card{height:auto}
   .tl-item{grid-template-columns:44px minmax(0,1fr);gap:11px;margin-bottom:14px}
   .tl-rail{inset-inline-start:21px}
   .tl-node{width:44px;height:44px;border-radius:14px;font-size:1rem}
@@ -1032,7 +1029,6 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   html.js [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
   .hero-enter{animation:none!important;opacity:1!important;transform:none!important}
   .hs,.hs::after,.hs-result,.badge i,.ab-chip,.hero-down,.hero-aurora::before,.hero-aurora::after{animation:none!important}
-  .hero-glow{display:none}
   .pd,.faq-panel:not([hidden]),dialog[open]{animation:none!important}
 }
 @media print{
@@ -1073,7 +1069,6 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   <div class="hero-shell">
     <span class="hero-aurora" aria-hidden="true"></span>
     <span class="hero-grid" aria-hidden="true"></span>
-    <span class="hero-glow" aria-hidden="true"></span>
     <div class="hg">
   <div class="hero-copy">
     <div class="badge hero-enter" style="--d:40ms"><i></i><span data-ar="أتمتة ذكية للأعمال" data-en="Smart business automation">أتمتة ذكية للأعمال</span></div>
@@ -1620,29 +1615,7 @@ list();detail();
   root.classList.add('reveal-ready');
 })();
 
-/* Hero ambient light follows the pointer on fine-pointer devices only. */
-(function(){
-  var shell=document.querySelector('.hero-shell');
-  if(!shell) return;
-  if(!window.matchMedia||!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var raf=null,x=72,y=18;
-  shell.addEventListener('pointermove',function(e){
-    var r=shell.getBoundingClientRect();
-    x=((e.clientX-r.left)/r.width)*100;
-    y=((e.clientY-r.top)/r.height)*100;
-    if(raf) return;
-    raf=requestAnimationFrame(function(){
-      shell.style.setProperty('--mx',x.toFixed(2)+'%');
-      shell.style.setProperty('--my',y.toFixed(2)+'%');
-      raf=null;
-    });
-  },{passive:true});
-  shell.addEventListener('pointerleave',function(){
-    shell.style.setProperty('--mx','72%');
-    shell.style.setProperty('--my','18%');
-  });
-})();
+
 
 /* FAQ accordion: one answer open at a time */
 (function(){
