@@ -253,7 +253,7 @@ html[data-theme=dark] .slogan{color:var(--teal-300)}
 @media (hover:hover){
   .btn.pri:hover{
     background:#FC9038;
-    box-shadow:none;
+    box-shadow:0 0 0 3px rgba(252,144,56,.16),0 0 24px rgba(252,144,56,.48);
     border-color:transparent;
     transform:translateY(-2px);
   }
@@ -330,17 +330,17 @@ html[data-theme=dark] .logo-dark{display:block}
   border-color:transparent;
   background:#FC9038;color:#2A1608;
   box-shadow:none;
-  transition:transform var(--t-fast) var(--e);
+  transition:transform var(--t-fast) var(--e),box-shadow var(--t-mid) var(--e),background-color var(--t-mid) var(--e);
 }
 .desk-contact .contact-desktop-label{font:600 .88rem/1 var(--font-head)}
 @media (hover:hover){
-  .desk-contact:hover{
+  a.btn.desk-contact:hover{
     background:rgba(252,144,56,.14);color:#2A1608;
-    box-shadow:none;
-    transform:none;
+    box-shadow:0 0 0 3px rgba(252,144,56,.13),0 0 20px rgba(252,144,56,.42);
+    transform:translateY(0) !important;
     border-color:rgba(252,144,56,.35);
   }
-  html[data-theme=dark] .desk-contact:hover{
+  html[data-theme=dark] a.btn.desk-contact:hover{
     background:rgba(252,144,56,.18);color:var(--ink);
   }
 }
