@@ -246,15 +246,16 @@ html[data-theme=dark] .slogan{color:var(--teal-300)}
 }
 .btn:active{transform:translateY(0) scale(.985);box-shadow:var(--sh-1)}
 .btn.pri{
-  background:#FAA52D;
+  background:#FC9038;
   border-color:transparent;color:#2A1608;
   box-shadow:none;
 }
 @media (hover:hover){
   .btn.pri:hover{
-    background:#E8941E;
+    background:#FC9038;
     box-shadow:none;
     border-color:transparent;
+    transform:translateY(-3px);
   }
 }
 .btn.sm{padding:8px 13px;font-size:.85rem}
@@ -327,15 +328,16 @@ html[data-theme=dark] .logo-dark{display:block}
   width:auto;min-width:unset;height:36px;padding:0 15px;gap:7px;
   display:inline-flex;align-items:center;justify-content:center;
   border-color:transparent;
-  background:#FAA52D;color:#2A1608;
+  background:#FC9038;color:#2A1608;
   box-shadow:none;
+  transition:transform var(--t-fast) var(--e);
 }
 .desk-contact .contact-desktop-label{font:600 .88rem/1 var(--font-head)}
 @media (hover:hover){
   .desk-contact:hover{
-    background:#E8941E;color:#2A1608;
+    background:#FC9038;color:#2A1608;
     box-shadow:none;
-    transform:translateY(-2px);border-color:transparent;
+    transform:translateY(-3px);border-color:transparent;
   }
 }
 
