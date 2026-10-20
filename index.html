@@ -255,7 +255,7 @@ html[data-theme=dark] .slogan{color:var(--teal-300)}
     background:#FC9038;
     box-shadow:none;
     border-color:transparent;
-    transform:translateY(-3px);
+    transform:translateY(-2px);
   }
 }
 .btn.sm{padding:8px 13px;font-size:.85rem}
@@ -335,9 +335,13 @@ html[data-theme=dark] .logo-dark{display:block}
 .desk-contact .contact-desktop-label{font:600 .88rem/1 var(--font-head)}
 @media (hover:hover){
   .desk-contact:hover{
-    background:#FC9038;color:#2A1608;
+    background:rgba(252,144,56,.14);color:#2A1608;
     box-shadow:none;
-    transform:translateY(-3px);border-color:transparent;
+    transform:none;
+    border-color:rgba(252,144,56,.35);
+  }
+  html[data-theme=dark] .desk-contact:hover{
+    background:rgba(252,144,56,.18);color:var(--ink);
   }
 }
 
