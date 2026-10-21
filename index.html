@@ -553,6 +553,12 @@ html[data-theme=dark] .hs .ic2{background:rgba(253,146,56,.18);color:var(--orang
   position:relative;width:100%;max-width:500px;margin-inline:auto;aspect-ratio:1/1;
   display:flex;align-items:flex-end;
 }
+.ab-portrait{
+  position:absolute;inset:0;display:flex;align-items:flex-end;
+  /* Fade the portrait and its backing together so the circle cannot show below it. */
+  -webkit-mask-image:linear-gradient(#000 76%,transparent 94%);
+  mask-image:linear-gradient(#000 76%,transparent 94%);
+}
 .ab-circle{
   position:absolute;inset:auto 0 0 0;aspect-ratio:1/1;margin-inline:auto;width:88%;
   border-radius:50%;
@@ -561,8 +567,6 @@ html[data-theme=dark] .hs .ic2{background:rgba(253,146,56,.18);color:var(--orang
 }
 .ab-photo img{
   position:relative;z-index:2;width:112%;max-width:none;margin-inline:-6%;height:auto;display:block;
-  -webkit-mask-image:linear-gradient(#000 88%,transparent);
-  mask-image:linear-gradient(#000 88%,transparent);
   filter:drop-shadow(0 14px 22px rgba(0,0,0,.25));
 }
 .ab-dot{position:absolute;z-index:1;border-radius:50%;background:var(--grad-warm)}
@@ -1132,8 +1136,11 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
 
 <section id="about"><div class="wrap ab">
   <div class="ab-photo" data-reveal="scale">
-    <span class="ab-circle"></span><span class="ab-dot d1"></span><span class="ab-dot d2"></span>
-    <img src="assets/ahmed.webp" alt="د. أحمد عبدالحميد" width="1100" height="910" loading="lazy">
+    <div class="ab-portrait">
+      <span class="ab-circle" aria-hidden="true"></span>
+      <img src="assets/ahmed.webp" alt="د. أحمد عبدالحميد" width="1100" height="910" loading="lazy">
+    </div>
+    <span class="ab-dot d1"></span><span class="ab-dot d2"></span>
     <span class="ab-chip c1"><i class="fa-solid fa-tooth"></i><b data-ar="طبيب أسنان" data-en="Dentist">طبيب أسنان</b></span>
     <span class="ab-chip c2"><i class="fa-solid fa-bolt"></i><b data-ar="أنظمة أتمتة للأعمال" data-en="Business automation">أنظمة أتمتة للأعمال</b></span>
   </div>
