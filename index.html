@@ -1055,6 +1055,48 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   .ch .btn{flex:1 1 100%}
 }
 
+/* ------------------------------------------------------- 16.5 card refresh
+   A cleaner card system: tighter geometry, clear orange focus, no floating lift.
+   Brand, page copy, and section order stay unchanged on this first redesign pass.
+*/
+.svc-grid{gap:22px}
+.svc-ico{transition:transform var(--t-slow) var(--e-spring),background var(--t-mid) var(--e),box-shadow var(--t-mid) var(--e)}
+.svc-card{
+  border-radius:20px;
+  padding:clamp(25px,2.8vw,34px);
+  box-shadow:var(--sh-1);
+  transition:background-color var(--t-mid) var(--e),box-shadow var(--t-mid) var(--e),border-color var(--t-mid) var(--e);
+}
+.svc-card::before{
+  top:18px;bottom:18px;inset-inline-start:0;inset-inline-end:auto;
+  width:3px;height:auto;
+  background:var(--orange);
+  opacity:0;transform:scaleY(.32);transform-origin:center;
+  transition:opacity var(--t-mid) var(--e),transform var(--t-slow) var(--e);
+}
+@media(hover:hover){
+  .svc-card:hover{
+    transform:none;
+    background:var(--card-2);
+    border-color:rgba(253,146,56,.48);
+    box-shadow:0 12px 30px rgba(11,29,28,.075),0 0 0 3px rgba(253,146,56,.07);
+  }
+  .svc-card:hover::before{opacity:1;transform:scaleY(1)}
+  .svc-card:hover .svc-ico{
+    transform:rotate(-3deg);
+    background:linear-gradient(135deg,var(--orange),var(--orange-3));
+    box-shadow:0 8px 20px rgba(252,144,56,.22);
+  }
+  .ab-i:hover{transform:none;background:var(--card-2);border-color:rgba(253,146,56,.45);box-shadow:var(--sh-1)}
+  .ab-i:hover i{background:rgba(252,144,56,.14);color:#E8742A}
+  .tl-item:hover .tl-card{transform:none;border-color:rgba(253,146,56,.42);box-shadow:var(--sh-1)}
+}
+.tl-card{border-radius:18px;box-shadow:none}
+@media(max-width:760px){
+  .svc-grid{gap:14px}
+  .svc-card{padding:22px 20px;border-radius:18px}
+}
+
 /* 17. accessibility: reduced motion & print */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
