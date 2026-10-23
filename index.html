@@ -1097,6 +1097,24 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   .svc-card{padding:22px 20px;border-radius:18px}
 }
 
+
+/* Touch equivalent of the services hover treatment. */
+@media (hover:none){
+  .svc-card.is-touch-active{
+    transform:none;
+    background:var(--card-2);
+    border-color:rgba(253,146,56,.48);
+    box-shadow:0 12px 30px rgba(11,29,28,.075),0 0 0 3px rgba(253,146,56,.07);
+  }
+  .svc-card.is-touch-active::before{opacity:1;transform:scaleY(1)}
+  .svc-card.is-touch-active .svc-num{opacity:.11}
+  .svc-card.is-touch-active .svc-ico{
+    transform:rotate(-3deg);
+    background:linear-gradient(135deg,var(--orange),var(--orange-3));
+    box-shadow:0 8px 20px rgba(252,144,56,.22);
+  }
+}
+
 /* 17. accessibility: reduced motion & print */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -1766,6 +1784,20 @@ list();detail();
   });
 })();
 
+
+/* A tap highlights one service card; tapping elsewhere clears it. */
+(function(){
+  var touchMedia=window.matchMedia('(hover:none)');
+  var cards=Array.from(document.querySelectorAll('#services .svc-card'));
+  function clear(){cards.forEach(function(card){card.classList.remove('is-touch-active')})}
+  document.addEventListener('click',function(event){
+    if(!touchMedia.matches)return;
+    var card=event.target.closest('#services .svc-card');
+    clear();
+    if(card)card.classList.add('is-touch-active');
+  });
+  touchMedia.addEventListener('change',clear);
+})();
 </script>
 </body>
 </html>
