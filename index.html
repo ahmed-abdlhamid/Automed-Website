@@ -1785,18 +1785,30 @@ list();detail();
 })();
 
 
-/* A tap highlights one service card; tapping elsewhere clears it. */
+/* Touching or dragging across a service card mirrors its desktop hover. */
 (function(){
   var touchMedia=window.matchMedia('(hover:none)');
   var cards=Array.from(document.querySelectorAll('#services .svc-card'));
-  function clear(){cards.forEach(function(card){card.classList.remove('is-touch-active')})}
-  document.addEventListener('click',function(event){
+  var active=null;
+  function activate(card){
+    if(card===active)return;
+    cards.forEach(function(item){item.classList.toggle('is-touch-active',item===card)});
+    active=card;
+  }
+  function track(event){
     if(!touchMedia.matches)return;
-    var card=event.target.closest('#services .svc-card');
-    clear();
-    if(card)card.classList.add('is-touch-active');
+    var touch=event.touches[0];
+    if(!touch)return;
+    var target=document.elementFromPoint(touch.clientX,touch.clientY);
+    activate(target?target.closest('#services .svc-card'):null);
+  }
+  document.addEventListener('touchstart',track,{passive:true});
+  document.addEventListener('touchmove',track,{passive:true});
+  document.addEventListener('touchcancel',function(){activate(null)},{passive:true});
+  document.addEventListener('click',function(event){
+    if(touchMedia.matches)activate(event.target.closest('#services .svc-card'));
   });
-  touchMedia.addEventListener('change',clear);
+  touchMedia.addEventListener('change',function(){activate(null)});
 })();
 </script>
 </body>
