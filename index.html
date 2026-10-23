@@ -1115,6 +1115,17 @@ html[dir=rtl] #site-progress-fill{transform-origin:right center}
   }
 }
 
+/* Touch equivalent of the existing about-card hover. */
+@media (hover:none){
+  #about .ab-i.is-touch-active{
+    transform:none;
+    background:var(--card-2);
+    border-color:rgba(253,146,56,.45);
+    box-shadow:var(--sh-1);
+  }
+  #about .ab-i.is-touch-active i{background:rgba(252,144,56,.14);color:#E8742A}
+}
+
 /* 17. accessibility: reduced motion & print */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -1785,10 +1796,10 @@ list();detail();
 })();
 
 
-/* Touching or dragging across a service card mirrors its desktop hover. */
+/* Touching or dragging across service and about cards mirrors desktop hover. */
 (function(){
   var touchMedia=window.matchMedia('(hover:none)');
-  var cards=Array.from(document.querySelectorAll('#services .svc-card'));
+  var cards=Array.from(document.querySelectorAll('#services .svc-card, #about .ab-i'));
   var active=null;
   function activate(card){
     if(card===active)return;
@@ -1800,13 +1811,13 @@ list();detail();
     var touch=event.touches[0];
     if(!touch)return;
     var target=document.elementFromPoint(touch.clientX,touch.clientY);
-    activate(target?target.closest('#services .svc-card'):null);
+    activate(target?target.closest('#services .svc-card, #about .ab-i'):null);
   }
   document.addEventListener('touchstart',track,{passive:true});
   document.addEventListener('touchmove',track,{passive:true});
   document.addEventListener('touchcancel',function(){activate(null)},{passive:true});
   document.addEventListener('click',function(event){
-    if(touchMedia.matches)activate(event.target.closest('#services .svc-card'));
+    if(touchMedia.matches)activate(event.target.closest('#services .svc-card, #about .ab-i'));
   });
   touchMedia.addEventListener('change',function(){activate(null)});
 })();
