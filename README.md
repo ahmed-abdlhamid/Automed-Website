@@ -1,100 +1,77 @@
-# Automed — Smart Business Automation
+# Automed Website
 
-**Automed designs and builds AI-powered automation systems that help businesses reduce repetitive work, organize operations, and serve customers more efficiently.**
+<p align="center">
+  <strong>Arabic-first business automation, presented clearly.</strong><br />
+  A responsive portfolio website for Automed's AI-powered automation services and selected work.
+</p>
 
-🌐 **Live website:** https://automed-info.vercel.app/
+<p align="center">
+  <a href="https://automed-info.vercel.app/">Live website</a>
+  ·
+  <a href="https://github.com/ahmed-abdlhamid/Automed-Website">Source code</a>
+</p>
 
-This repository contains the source code for the Automed website. It presents the services, selected automation projects, delivery process, and contact options for businesses exploring practical AI agents and workflow automation.
+---
 
-## About Automed
+## Overview
 
-Automed works with businesses across different sectors—not just healthcare. Depending on the business need, solutions can support restaurants, shops, clinics, and companies with customer communication, order intake, booking and follow-up, internal workflows, and document review.
+This repository contains the public Automed website. It introduces the services, showcases example projects, explains the delivery process, and gives prospective clients ways to get in touch.
 
-The goal is to fit automation into the tools and processes a team already uses, rather than adding complexity for its own sake.
+Automed builds practical automation systems for businesses across different sectors. Depending on the use case, these may help organize customer conversations, orders, bookings, follow-ups, and internal workflows.
 
-## Website Features
+## Website highlights
 
-- **Arabic-first, bilingual experience** with Arabic RTL and English LTR layouts.
-- **Light and dark themes** with saved theme preference.
-- **Responsive design** for desktop, tablet, and mobile.
-- **Service overview** covering customer service and order automation, booking and follow-up, internal processes, and AI-assisted document review.
-- **Interactive portfolio** with project details and supporting media.
-- **Delivery journey** explaining the stages from discovery through implementation and support.
-- **FAQ accordion** and contact form that prepares a message for the visitor's selected contact channel.
-- **SEO and sharing metadata**, favicons, and a web app manifest.
-- **Vercel Web Analytics and Speed Insights** integrations for the deployed site.
-- **Accessibility considerations**, including keyboard focus styles and reduced-motion support.
-
-## Featured Work
-
-The portfolio includes examples of automation concepts and systems such as:
-
-- **Krokett** — customer conversations and restaurant order workflows.
-- **HR Ninja** — internal HR processes.
-- **Nexus Health** and **Elite Dental** — booking and follow-up scenarios.
-- **PreAuth Mind** — AI-assisted document review.
-
-These are portfolio examples of different use cases; the exact scope and integrations depend on each implementation.
+- Arabic-first content with Arabic RTL and English LTR layouts.
+- Responsive layouts for mobile, tablet, and desktop.
+- Light and dark themes with a saved visitor preference.
+- Service pages and an interactive portfolio with project details.
+- Delivery-process information, FAQ accordion, and contact options.
+- Search and social-sharing metadata, favicons, and a web app manifest.
+- Vercel Web Analytics and Speed Insights on the deployed site.
+- Keyboard focus styles and reduced-motion support.
 
 ## Technology
 
-The website is intentionally lightweight and uses a static front-end:
+The current site is a static front end; it does not require a framework or build step.
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - Vanilla JavaScript
-- Google Fonts: IBM Plex Sans Arabic and Readex Pro
+- IBM Plex Sans Arabic and Readex Pro, loaded from Google Fonts
 - Font Awesome icons
-- Vercel for hosting and deployment
+- Vercel hosting
 
-There is no framework or build step required for the current static website.
+## Run locally
 
-## Run Locally
-
-You can preview the site using any static HTTP server.
-
-### Python
-
-From the repository root, run:
+From the repository root, start a local static server:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open http://127.0.0.1:8000/ in your browser.
+Open [http://localhost:8000](http://localhost:8000).
 
-You can also open `index.html` directly, but using a local HTTP server is recommended for a more realistic preview.
+Opening `index.html` directly may work for a basic preview, but an HTTP server provides a more representative local environment. Vercel Analytics and Speed Insights are available on the deployed site; requests to their Vercel endpoints may return 404 when using a basic local server.
 
-**Note:** Vercel Analytics and Speed Insights endpoints are provided by the deployed Vercel environment. Their `/_vercel/...` requests may return 404 when running through a basic local static server; that alone does not indicate that the website's main page or assets have failed.
-
-## Project Structure
+## Project structure
 
 ```text
 .
-├── index.html             # Main page, styles, content, and client-side behavior
-├── assets/                # Logos, favicons, images, and portfolio media
+├── index.html             # Main page, styles, and client-side behavior
+├── assets/                # Brand assets, images, favicons, and portfolio media
 ├── manifest.webmanifest   # Web app manifest
 ├── vercel.json            # Vercel routing configuration
 └── README.md
 ```
 
-The exact contents of `assets/` may evolve as portfolio media and brand assets are updated.
-
 ## Deployment
 
-The site is configured for Vercel and is available at:
-
-https://automed-info.vercel.app/
-
-The current implementation is a static site. Changes to the repository's configured deployment branch can be deployed through the existing GitHub–Vercel integration, depending on the project's deployment settings.
+The site is deployed on Vercel at [automed-info.vercel.app](https://automed-info.vercel.app/). The repository is configured as a static site. Deployments are handled through the repository's existing GitHub–Vercel integration and project settings.
 
 ## Contact
 
-- **Website:** https://automed-info.vercel.app/
-- **GitHub:** https://github.com/ahmed-abdlhamid
-
-For service inquiries, use the contact options on the website.
+For service inquiries, use the contact options on the [Automed website](https://automed-info.vercel.app/).
 
 ---
 
-*Automed — practical AI agents and automation systems for everyday business operations.*
+<p align="center"><sub>Automed — وفر وقتك</sub></p>
