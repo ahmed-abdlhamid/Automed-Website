@@ -50,6 +50,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preload" href="assets/fonts/Tajawal-Black.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
@@ -366,7 +367,17 @@ function detail(){
     m=(p.v.length>1?`<div class="vt">${p.v.map((x,i)=>`<button aria-pressed="${i===vid}" onclick="pickVid(${i})">${T(x.l)}</button>`).join('')}</div>`:'')+
       `<video controls muted loop playsinline preload="metadata" poster="${src(p,p.p)}" src="${src(p,v.f)}" onerror="console.warn('video missing',this.src)"></video>`;
   }
-  $('pd').innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div><h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn pri" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button></div></div>`;
+  const info=`<h3>${p.n}</h3><div class="sub">${T(p.s)}</div><p>${T(p.t)}</p><ul>${p.f.map(f=>`<li>${T(f)}</li>`).join('')}</ul><div class="tags">${p.g.map(g=>`<span>${g}</span>`).join('')}</div><button class="btn pri" onclick="openM(${cur})"><i class="fa-solid fa-sitemap"></i>${lang==='ar'?'عرض تفاصيل النظام':'View system details'}</button>`;
+  const key=cur+':'+vid;
+  const panel=$('pd'),existing=panel.querySelector('.pd');
+  if(existing&&panel.dataset.mediaKey===key){
+    existing.lastElementChild.innerHTML=info;
+    const tabs=existing.querySelectorAll('.vt button');
+    tabs.forEach((button,i)=>{button.textContent=T(p.v[i].l)});
+    return;
+  }
+  panel.innerHTML=`<div class="pd"><div class="media${portrait?' is-portrait':''}">${m}</div><div>${info}</div></div>`;
+  panel.dataset.mediaKey=key;
 }
 function goProject(i){
   pick(i);
@@ -388,8 +399,12 @@ function goProject(i){
   try{history.replaceState(null,'','#projects')}catch(e){}
   return false;
 }
-function pick(i){cur=+i||0;vid=0;list();detail()}
-function pickVid(i){vid=i;detail()}
+function pick(i){
+  const next=+i||0;
+  if(next===cur&&$('pd').firstElementChild)return;
+  cur=next;vid=0;list();detail();
+}
+function pickVid(i){if(vid===i)return;vid=i;detail()}
 function openM(i){
   const p=P[i];
   const x=`<button class="x" onclick="$('md').close()" aria-label="${lang==='ar'?'إغلاق':'Close'}">&times;</button>`;
@@ -601,7 +616,7 @@ list();detail();
     Array.prototype.forEach.call(group.children,function(child,i){
       if(child.hasAttribute('data-reveal')) return;
       child.setAttribute('data-reveal','');
-      child.style.setProperty('--rd',Math.min(i,6)*70+'ms');
+      child.style.setProperty('--rd',Math.min(i,6)*65+'ms');
       targets.push(child);
     });
   });
@@ -622,14 +637,18 @@ list();detail();
     });
   },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
   targets.forEach(function(el){io.observe(el)});
-  /* safety net: if the observer never reported anything, show the content instead of
-     leaving it hidden for good */
-  window.addEventListener('load',function(){
-    setTimeout(function(){
-      if(!document.querySelector('[data-reveal].is-in')) showAll();
-    },2000);
-  });
+  /* Only rescue elements already in view. An empty first viewport is normal;
+     it must not reveal every off-screen card before the visitor reaches it. */
+  setTimeout(function(){
+    var visible=targets.filter(function(el){
+      var rect=el.getBoundingClientRect();
+      return rect.top<window.innerHeight-24&&rect.bottom>72;
+    });
+    visible.forEach(function(el){el.classList.add('is-in')});
+  },1800);
   root.classList.add('reveal-ready');
+  var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  motion.addEventListener('change',function(e){if(e.matches){showAll();io.disconnect()}});
 })();
 
 
@@ -652,27 +671,29 @@ list();detail();
   });
  });
 })();
-/* Timeline progress and active stage are driven by scroll position, independent of the pointer. */
+/* Read all stage positions before updating the rail and active node. */
 (function(){
  var tl=document.getElementById('timeline'),fill=document.getElementById('tlFill');
  if(!tl||!fill)return;
- var items=Array.from(tl.querySelectorAll('.tl-item'));
- var ticking=false;
+ var items=Array.from(tl.querySelectorAll('.tl-item')),ticking=false;
  function update(){
-   var r=tl.getBoundingClientRect();
-   var passed=(window.innerHeight*.75)-r.top;
-   var p=Math.max(0,Math.min(1,passed/Math.max(r.height,1)));
-   fill.style.height=(p*100)+'%';
-   var activeIndex=Math.min(items.length-1,Math.floor(p*items.length));
+   var rect=tl.getBoundingClientRect();
+   var positions=items.map(function(item){return item.getBoundingClientRect().top});
+   var anchor=window.innerHeight*.65;
+   var p=Math.max(0,Math.min(1,(anchor-rect.top)/Math.max(rect.height,1)));
+   var activeIndex=0;
+   positions.forEach(function(top,i){if(top<=anchor)activeIndex=i});
+   fill.style.transform='scaleY('+p+')';
    items.forEach(function(item,i){item.classList.toggle('is-current',i===activeIndex)});
    ticking=false;
  }
  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
  window.addEventListener('scroll',requestUpdate,{passive:true});
  window.addEventListener('resize',requestUpdate);
+ window.addEventListener('load',requestUpdate);
+ if(document.fonts)document.fonts.ready.then(requestUpdate);
  update();
 })();
-
 
 /* Page reading progress: update on scroll and resize without affecting navigation. */
 (function(){
@@ -706,30 +727,36 @@ list();detail();
 })();
 
 
-/* Touching or dragging across service and about cards mirrors desktop hover. */
+/* Passive touch tracking batches hit testing and visual feedback once per frame. */
 (function(){
-  var touchMedia=window.matchMedia('(hover:none)');
-  var cards=Array.from(document.querySelectorAll('#services .svc-card, #about .ab-i'));
-  var active=null;
+  var touchMedia=window.matchMedia('(hover:none)'),active=null,pending=false,point=null;
   function activate(card){
     if(card===active)return;
-    cards.forEach(function(item){item.classList.toggle('is-touch-active',item===card)});
+    if(active)active.classList.remove('is-touch-active');
+    if(card)card.classList.add('is-touch-active');
     active=card;
   }
-  function track(event){
-    if(!touchMedia.matches)return;
-    var touch=event.touches[0];
-    if(!touch)return;
-    var target=document.elementFromPoint(touch.clientX,touch.clientY);
+  function update(){
+    pending=false;
+    if(!point||!touchMedia.matches)return;
+    var target=document.elementFromPoint(point.x,point.y);
     activate(target?target.closest('#services .svc-card, #about .ab-i'):null);
+  }
+  function requestUpdate(){if(!pending){pending=true;requestAnimationFrame(update)}}
+  function track(event){
+    if(!touchMedia.matches||!event.touches.length)return;
+    point={x:event.touches[0].clientX,y:event.touches[0].clientY};
+    requestUpdate();
   }
   document.addEventListener('touchstart',track,{passive:true});
   document.addEventListener('touchmove',track,{passive:true});
-  document.addEventListener('touchcancel',function(){activate(null)},{passive:true});
+  window.addEventListener('scroll',function(){if(point)requestUpdate()},{passive:true});
+  document.addEventListener('touchend',function(){point=null},{passive:true});
+  document.addEventListener('touchcancel',function(){point=null;activate(null)},{passive:true});
   document.addEventListener('click',function(event){
     if(touchMedia.matches)activate(event.target.closest('#services .svc-card, #about .ab-i'));
   });
-  touchMedia.addEventListener('change',function(){activate(null)});
+  touchMedia.addEventListener('change',function(){point=null;activate(null)});
 })();
 </script>
 </body>
